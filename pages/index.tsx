@@ -415,15 +415,15 @@ const Index: NextPage<unknown> = () => {
 									dropShadow="0px 0px 6px white"
 									/>
 								</Link>
-								{/* <Link isExternal href="https://nextjs.org/">
-									<Image src="images/reactjs.svg" alt="Nextjs" draggable={false} loading="lazy" decoding="async" width="5rem"/>
-								</Link>
 								<Link isExternal href="https://nextjs.org/">
+									<Image src="images/reactjs.svg" alt="Nextjs" draggable={false} loading="lazy" decoding="async" width="7rem"/>
+								</Link>
+								{/* <Link isExternal href="https://nextjs.org/">
 									<Image src="images/chakra.svg" alt="Nextjs" draggable={false} loading="lazy" decoding="async" width="5rem"/>
 								</Link> */}
-								<Link isExternal href="https://www.digitalocean.com/">
+								{/* <Link isExternal href="https://www.digitalocean.com/">
 									<Image src="images/do.svg" alt="Digital Ocean" draggable={false} loading="lazy" decoding="async" width="8rem"/>
-								</Link>
+								</Link> */}
 							</HStack>
 						</Stack>
 					</Stack>
