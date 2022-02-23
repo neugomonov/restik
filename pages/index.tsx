@@ -136,7 +136,7 @@ const Index: NextPage<unknown> = () => {
 								mb="1rem"
 							>
 								{t('development')}
-							</Tag>
+							</Tag>	
 						)}
 						<Menu
 							isLazy
@@ -392,7 +392,7 @@ const Index: NextPage<unknown> = () => {
 								</SimpleGrid>
 								<Divider/>
 								<Stack spacing={10} minWidth="18rem" pt="1rem">
-									<Checkbox isRequired>{t('iAgree')} <Link color="teal.500" href="#">{t('terms')}</Link> {t('and')} <Link color="teal.500" href="#">{t('privacy')}</Link>.</Checkbox>
+									<Checkbox isRequired>{t('iAgree')} <Link color="orange" href="#">{t('terms')}</Link> {t('and')} <Link color="orange" href="#">{t('privacy')}</Link>.</Checkbox>
 									<Button
 										type="submit"
 										colorScheme="orange"
