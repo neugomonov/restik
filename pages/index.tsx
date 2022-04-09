@@ -202,7 +202,7 @@ const Index: NextPage<unknown> = () => {
 											<Heading size="md">{item.name}</Heading>
 											<Text color="gray.500">¼ / ½ kg</Text>
 										</Flex>
-										<Text as="i" color="gray.600" fontSize=".8rem">
+										<Text as="i" color="gray.500" fontSize=".8rem">
 											{item.ingredients.join(', ').length >= 30 ? (
 												<Tooltip
 													hasArrow
@@ -392,7 +392,7 @@ const Index: NextPage<unknown> = () => {
 								</SimpleGrid>
 								<Divider/>
 								<Stack spacing={10} minWidth="18rem" pt="1rem">
-									<Checkbox isRequired>{t('iAgree')} <Link color="orange" href="#">{t('terms')}</Link> {t('and')} <Link color="orange" href="#">{t('privacy')}</Link>.</Checkbox>
+									<Checkbox isRequired>{t('iAgree')} <Link color="yellow.500" href="#">{t('terms')}</Link> {t('and')} <Link color="yellow.500" href="#">{t('privacy')}</Link>.</Checkbox>
 									<Button
 										type="submit"
 										colorScheme="orange"

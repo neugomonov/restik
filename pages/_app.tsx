@@ -40,22 +40,21 @@ const App = ({Component, pageProps}: AppProps): JSX.Element => {
 					styles={css`
 						body {
 							position: relative;
-
-							  &::before {
+							&::before {
 								content: ' ';
 								position: fixed;
 								width: 100%;
 								height: 100%;
 								top: 0;
 								left: 0;
-								background-color: white;
+								background-color: black;
 								background: url('images/background.jpg') no-repeat center center;
 								background-size: cover;
 								will-change: transform;
 								z-index: -1;
-  							  }
+							}
 						}
-      				`}
+						`}
 				/>
 				<Head>
 					<title>{info.name}</title>
