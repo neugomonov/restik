@@ -39,9 +39,9 @@ export const getDeliveryHours = (date: Date): string[] | undefined => {
 	}
 
 	// Не разрешать заказы, если текущая дата не указана в расписании ресторана.
-	if ((!isWithinInterval(date, {start: opens, end: closes}) || isHoliday || times.opens === '0') && !isDevelopment) {
-		return undefined;
-	}
+	// if ((!isWithinInterval(date, {start: opens, end: closes}) || isHoliday || times.opens === '0') && !isDevelopment) {
+	// 	return undefined;
+	// }
 
 	const suggestions = [];
 

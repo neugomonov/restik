@@ -1,35 +1,36 @@
-import React, {useState, useEffect} from 'react';
-import {AppProps} from 'next/app';
-import Head from 'next/head';
-import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
-import {RecoilRoot} from 'recoil';
-import {Global, css} from '@emotion/react';
-import {ChakraProvider} from '@chakra-ui/react';
+import React, { useState, useEffect } from "react";
+import { AppProps } from "next/app";
+import Head from "next/head";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { RecoilRoot } from "recoil";
+import { Global, css } from "@emotion/react";
+import { ChakraProvider } from "@chakra-ui/react";
 
-import {_cart, CartState} from '../lib/recoil-atoms';
-import StateSaver from '../components/state-saver';
-import info from '../lib/info';
+import { _cart, CartState } from "../lib/recoil-atoms";
+import StateSaver from "../components/state-saver";
+import info from "../lib/info";
+import NextNProgress from "nextjs-progressbar";
 
 const client = new ApolloClient({
 	uri: process.env.SERVER_URL,
-	cache: new InMemoryCache()
+	cache: new InMemoryCache(),
 });
 
-const App = ({Component, pageProps}: AppProps): JSX.Element => {
+const App = ({ Component, pageProps }: AppProps): JSX.Element => {
 	const [cart, setCart] = useState<CartState | undefined>(undefined);
 
 	useEffect(() => {
-		const previous = localStorage.getItem('cart');
+		const previous = localStorage.getItem("cart");
 
 		if (previous) {
 			try {
 				setCart(JSON.parse(previous));
 			} catch {
-				setCart({items: [], total: 0});
+				setCart({ items: [], total: 0 });
 			}
 		} else {
-			localStorage.setItem('cart', JSON.stringify({items: [], total: 0}));
-			setCart({items: [], total: 0});
+			localStorage.setItem("cart", JSON.stringify({ items: [], total: 0 }));
+			setCart({ items: [], total: 0 });
 		}
 	}, []);
 
@@ -41,34 +42,36 @@ const App = ({Component, pageProps}: AppProps): JSX.Element => {
 						body {
 							position: relative;
 							&::before {
-								content: ' ';
+								content: " ";
 								position: fixed;
 								width: 100%;
 								height: 100%;
 								top: 0;
 								left: 0;
 								background-color: black;
-								background: url('images/background.jpg') no-repeat center center;
+								background: url("images/pizzabackground.jpg") no-repeat center
+									center;
 								background-size: cover;
 								will-change: transform;
 								z-index: -1;
 							}
 						}
-						`}
+					`}
 				/>
 				<Head>
 					<title>{info.name}</title>
 				</Head>
 				{cart && (
 					<RecoilRoot
-						initializeState={({set}) => {
+						initializeState={({ set }) => {
 							if (cart) {
 								set(_cart, cart);
 							}
 						}}
 					>
 						<StateSaver>
-							<Component {...pageProps}/>
+							<NextNProgress options={{ showSpinner: false }} color="#DD6B20" />
+							<Component {...pageProps} />
 						</StateSaver>
 					</RecoilRoot>
 				)}

@@ -1,8 +1,8 @@
 const info = {
-	name: 'Лоремипсумная',
+	name: 'Пиццерия',
 	description: {
-		en: 'Your favorite restaurant! We offer fresh and tasty food and low prices.',
-		ru: 'Ваш любимый ресторан! Мы предлагаем свежую и вкусную еду и низкие цены.'
+		en: 'Your favorite pizzeria! We offer fresh and tasty food and low prices.',
+		ru: 'Ваша любимая пиццерия! Мы предлагаем свежую и вкусную еду и низкие цены.'
 	},
 	currency: '₽',
 	callingCode: '+7',
