@@ -42,6 +42,7 @@ export default NextAuth({
 		deleteDoc,
 		runTransaction,
 	}),
+
 	// Configure one or more authentication providers
 	providers: [
 		GoogleProvider({
