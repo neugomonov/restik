@@ -115,7 +115,7 @@ export default function CallToActionWithVideo() {
 						top={"-20%"}
 						left={0}
 						zIndex={-1}
-						color={useColorModeValue("orange.50", "orange.400")}
+						color={useColorModeValue("orange.400", "orange.400")}
 					/>
 					<Box
 						position={"relative"}
