@@ -55,4 +55,5 @@ export default NextAuth({
 	secret: process.env.NEXTAUTH_SECRET,
 	// database: process.env.DATABASE_URL!,
 });
+
 // export { db };
