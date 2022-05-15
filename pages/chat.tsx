@@ -9,7 +9,7 @@ import NewsBox from "../components/NewsBox";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { collection } from "@firebase/firestore";
+import { collection, addDoc } from "@firebase/firestore";
 import {
 	Avatar,
 	Box,
@@ -33,6 +33,8 @@ import { db } from "../firebase";
 import getOtherEmail from "../utils/getOtherEmail";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import ChatListBox from "../components/ChatListBox";
+
 const Index: NextPage<unknown> = () => {
 	const { data: session } = useSession();
 
@@ -50,6 +52,26 @@ const Index: NextPage<unknown> = () => {
 	console.log(snapshot);
 	console.log(chats);
 	console.log("thanks");
+
+	// const chatExists = (email: string) =>
+	// 	chats?.find(
+	// 		(chat) =>
+	// 			chat.users.includes(session?.user?.email) && chat.users.includes(email)
+	// 	);
+
+	// const newChat = async () => {
+	// 	const input = prompt("Введите email того, с кем вы хотите начать чат");
+	// 	if (
+	// 		!chatExists(input) &&
+	// 		input != session?.user?.email &&
+	// 		input != null &&
+	// 		input != ""
+	// 	) {
+	// 		await addDoc(collection(db, "chats"), {
+	// 			users: [session?.user?.email, input],
+	// 		});
+	// 	}
+	// };
 
 	// const chatList = () => {
 	// 	return chats
@@ -131,7 +153,8 @@ const Index: NextPage<unknown> = () => {
 									direction={{ base: "column-reverse", xl: "row" }}
 									spacing={3}
 								>
-									<Box
+									<ChatListBox />
+									{/* <Box
 										borderWidth="1px"
 										borderRadius="lg"
 										padding="1rem"
@@ -139,75 +162,23 @@ const Index: NextPage<unknown> = () => {
 										height="90vh"
 										minW={{ base: "auto", xl: "50%" }}
 									>
+										<Heading size="md">
+											Для вопросов к Пиццерии создайте чат и введите наш email -
+											neugomonovv@gmail.com 📧
+										</Heading>
+
+										<Button m={5} p={4} onClick={() => newChat()}>
+											Создать чат
+										</Button>
+
 										<Flex
 											direction="column"
 											sx={{ scrollbarWidth: "none" }}
 											flex={1}
 										>
-											{/* {chatList()} */}
+											{chatList()}
 										</Flex>
-										<Stack spacing={3}>
-											{/* <ProductImage
-													src={`/${item.image}`}
-													alt={`${t("photoOf")} ${item.name}`}
-													draggable={false}
-													loading="lazy"
-													decoding="async"
-													width="auto"
-													height={150}
-													objectFit="cover"
-													borderRadius="md"
-												/> */}
-											{/* <Text color="gray.500">03.04.2022</Text> */}
-											<Flex height="65vh"></Flex>
-											<Stack
-												direction={"row"}
-												// height=" 10vh"
-												// position=" fixed"
-												// bottom=" 0"
-											>
-												<Input
-													placeholder={"Ваше сообщение"}
-													bg={
-														colorMode === "dark"
-															? "whiteAlpha.100"
-															: "blackAlpha.100"
-													}
-													border={0}
-													_focus={{
-														bg: "whiteAlpha.300",
-													}}
-													// onChange={(e) => setValue(e.target.value)}
-												/>
-												<IconButton
-													colorScheme="orange"
-													// bg={useColorModeValue("orange.400", "yellow.500")}
-													// color={useColorModeValue("white", "gray.800")}
-													aria-label="Send"
-													icon={<MdOutlineSend />}
-													// onClick={sendMessage}
-												/>
-											</Stack>
-
-											{/* <ButtonGroup isAttached>
-												{item.variants.map((element) => (
-													<Button
-														key={element.type}
-														leftIcon={<IoMdAdd />}
-														colorScheme="orange"
-														width="100%"
-													>
-														<Stack spacing={0}>
-															<Text>{element.type}</Text>
-															<Text opacity=".8" fontSize=".75rem">
-																{element.price} {info.currency ?? "USD"}
-															</Text>
-														</Stack>
-													</Button>
-												))}
-											</ButtonGroup> */}
-										</Stack>
-									</Box>
+									</Box> */}
 									<Stack
 										// display={{ base: "none", md: "flex" }}
 										direction="column"

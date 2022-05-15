@@ -235,8 +235,13 @@ export default function PromoBox() {
 						rightIcon={<ArrowForwardIcon />}
 						colorScheme="orange"
 						variant="outline"
+						onClick={async () => {
+							await router.push("/promo", "/promo", {
+								locale: "ru",
+							});
+						}}
 					>
-						Читать далее
+						Акции
 					</Button>
 				</Stack>
 			</Box>

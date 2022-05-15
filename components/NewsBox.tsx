@@ -235,8 +235,13 @@ export default function NewsBox() {
 						rightIcon={<ArrowForwardIcon />}
 						colorScheme="orange"
 						variant="outline"
+						onClick={async () => {
+							await router.push("/news", "/news", {
+								locale: "ru",
+							});
+						}}
 					>
-						Читать далее
+						Новости
 					</Button>
 				</Stack>
 			</Box>
