@@ -10,8 +10,11 @@ import {
 	useColorModeValue,
 	createIcon,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 export default function CallToActionWithAnnotation() {
+	const router = useRouter();
+
 	return (
 		<>
 			<Head>
@@ -39,9 +42,9 @@ export default function CallToActionWithAnnotation() {
 							или приходите к нам
 						</Text>
 					</Heading>
-					<Text color={"gray.500"}>
+					<Text colorScheme={"gray"}>
 						Мы всегда будем рады видеть вас в нашем уютном месте, где всегда
-						веет аромат итальянских блюд!{" "}
+						веет ароматом вкуснейших итальянских блюд!{" "}
 					</Text>
 					<Stack
 						direction={"column"}
@@ -58,13 +61,27 @@ export default function CallToActionWithAnnotation() {
 							_hover={{
 								bg: "orange.500",
 							}}
+							onClick={async () => {
+								await router.push("/menu", "/menu", {
+									locale: "ru",
+								});
+							}}
 						>
 							К меню{" "}
 						</Button>
-						<Button variant={"link"} colorScheme={"orange"} size={"sm"}>
+						<Button
+							variant={"link"}
+							colorScheme={"orange"}
+							size={"sm"}
+							onClick={async () => {
+								await router.push("/promo", "/promo", {
+									locale: "ru",
+								});
+							}}
+						>
 							Посмотреть акции{" "}
 						</Button>
-						<Box>
+						<Box display={{ base: "none", md: "flex" }}>
 							<Icon
 								as={Arrow}
 								color={useColorModeValue("gray.800", "gray.300")}

@@ -131,12 +131,12 @@ const Index: NextPage<unknown> = () => {
 													objectFit="cover"
 													borderRadius="md"
 												/>
-												<Text color="gray.500">03.04.2022</Text>
+												<Text colorScheme={"gray"}>03.04.2022</Text>
 
 												<Heading size="md" mr="1%">
 													{item.name}
 												</Heading>
-												<Text color="gray.500" fontSize=".8rem">
+												<Text colorScheme={"gray"} fontSize=".8rem">
 													{item.ingredients.join(", ")}
 												</Text>
 											</Stack>

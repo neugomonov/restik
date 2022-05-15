@@ -6,8 +6,11 @@ import {
 	VStack,
 	useBreakpointValue,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 export default function WithBackgroundImage() {
+	const router = useRouter();
+
 	return (
 		<Flex
 			w={"full"}
@@ -39,6 +42,11 @@ export default function WithBackgroundImage() {
 							colorScheme={"orange"}
 							rounded={"full"}
 							_hover={{ bg: "orange.500" }}
+							onClick={async () => {
+								await router.push("/menu", "/menu", {
+									locale: "ru",
+								});
+							}}
 						>
 							К пиццам! 🍕
 						</Button>

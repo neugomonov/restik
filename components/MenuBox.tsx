@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import NextImage from "next/image";
 import SidebarWithHeader from "./SidebarWithHeader";
-import AppHeader from "./AppHeader";
 
 import {
 	Center,
@@ -223,7 +222,7 @@ export default function MenuBox() {
 					>
 						<MenuItem
 							onClick={async () => {
-								await router.push("/menu", "/", { locale: "en" });
+								await router.push("/menu", "/en/menu", { locale: "en" });
 							}}
 						>
 							English
@@ -267,7 +266,7 @@ export default function MenuBox() {
 						</Tooltip>
 					</Avatar>
 					<Heading>{info.name ?? t("restaurantName")}</Heading>
-					<Text color="gray.500">
+					<Text colorScheme={"gray"}>
 						{info.description[lang as "en" | "ru"] ??
 							t("restaurantDescription")}
 					</Text>
@@ -300,9 +299,10 @@ export default function MenuBox() {
 								/>
 								<Flex width="100%" justifyContent="space-between">
 									<Heading size="md">{item.name}</Heading>
-									<Text color="gray.500">¼ / ½ kg</Text>
+									<Text colorScheme={"gray"}>¼ / ½ kg</Text>
 								</Flex>
-								<Text as="i" color="gray.500" fontSize=".8rem">
+								{/* создание позиции меню из сетки блюд*/}
+								<Text as="i" colorScheme={"gray"} fontSize=".8rem">
 									{item.ingredients.join(", ").length >= 30 ? (
 										<Tooltip
 											hasArrow
@@ -330,6 +330,8 @@ export default function MenuBox() {
 										item.ingredients.join(", ")
 									)}
 								</Text>
+								{/* создание позиции меню из сетки блюд - конец*/}
+
 								<ButtonGroup isAttached>
 									{item.variants.map((element) => (
 										<Button
@@ -554,14 +556,14 @@ export default function MenuBox() {
 								{t("iAgree")}{" "}
 								<Link
 									color={colorMode === "dark" ? "yellow.500" : "orange.500"}
-									href="#"
+									href="https://en.wikipedia.org/wiki/Terms_of_service"
 								>
 									{t("terms")}
 								</Link>{" "}
 								{t("and")}{" "}
 								<Link
 									color={colorMode === "dark" ? "yellow.500" : "orange.500"}
-									href="#"
+									href="https://foundation.wikimedia.org/wiki/Privacy_policy"
 								>
 									{t("privacy")}
 								</Link>

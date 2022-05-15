@@ -1,4 +1,8 @@
 import React, { ReactNode } from "react";
+import firebase from "../firebase";
+import { getAuth } from "firebase/auth";
+import { useSession, signIn, signOut } from "next-auth/react";
+
 import {
 	IconButton,
 	Avatar,
@@ -76,6 +80,10 @@ import { ReactText } from "react";
 import useTranslation from "next-translate/useTranslation";
 import { BiNews } from "react-icons/bi";
 import { useRouter } from "next/router";
+import LoginSidebar from "./LoginSidebar";
+import LoginHeader from "./LoginHeader";
+// import { signOut, useSession } from "next-auth/client";
+
 const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
 
 const Logo = (props: any) => {
@@ -165,6 +173,22 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 	const linkHoverColor = useColorModeValue("gray.800", "white");
 	const popoverContentBgColor = useColorModeValue("white", "gray.800");
 	const router = useRouter();
+	// const [session] = useSession();
+	// const auth = getAuth();
+	// const user = auth.currentUser;
+	// if (user !== null) {
+	// 	// The user object has basic properties such as display name, email, etc.
+	// 	const displayName = user.displayName;
+	// 	const email = user.email;
+	// 	const photoURL = user.photoURL;
+	// 	const emailVerified = user.emailVerified;
+
+	// 	// The user's ID, unique to the Firebase project. Do NOT use
+	// 	// this value to authenticate with your backend server, if
+	// 	// you have one. Use User.getToken() instead.
+	// 	const uid = user.uid;
+	// }
+	const { data: session } = useSession();
 
 	return (
 		<Box
@@ -202,83 +226,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				</Text>
 				<CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
 			</Flex>
-
-			<Flex
-				alignItems={"center"}
-				justifyContent={"center"}
-				display={{ base: "none", md: "flex" }}
-				mx="2"
-			>
-				<Menu>
-					<MenuButton transition="all 0.3s" _focus={{ boxShadow: "none" }}>
-						<Box
-							p={4}
-							alignItems={"center"}
-							justifyContent={"center"}
-							display={{ base: "none", md: "flex" }}
-							// mx="8"
-							transition=".3s ease"
-							borderWidth="1px"
-							borderRadius="lg"
-							// padding="1rem"
-							// margin=".5rem"
-							// marginBottom="4rem"
-							// width={{ base: "100%", xl: "5xl" }}
-							// mt={{ base: "6rem", md: ".5rem" }}
-							boxShadow="rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px"
-							backgroundColor={
-								colorMode === "dark"
-									? "rgba(6, 8, 13, 0.25)"
-									: "rgba(255, 255, 255, 0.25)"
-							}
-							position="relative"
-							// backdropFilter="auto"
-							// backdropBlur="20px"
-						>
-							<HStack>
-								<Avatar
-									size={"sm"}
-									src={
-										"https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-									}
-								/>
-								<VStack
-									display={{ base: "none", md: "flex" }}
-									alignItems="flex-start"
-									spacing="1px"
-									ml="2"
-								>
-									<Text fontSize="sm">Мария Иванова</Text>
-									<Text
-										fontSize="xs"
-										color={useColorModeValue("gray.600", "gray.300")}
-									>
-										Посетитель
-									</Text>
-								</VStack>
-								<Box display={{ base: "none", md: "flex" }}>
-									<FiChevronDown />
-								</Box>
-							</HStack>
-						</Box>
-					</MenuButton>
-					<MenuList
-						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
-						borderColor={useColorModeValue("gray.200", "gray.700")}
-					>
-						<MenuItem
-							onClick={async () => {
-								await router.push("/profile", "/profile", { locale: "ru" });
-							}}
-						>
-							Профиль
-						</MenuItem>
-						<MenuItem>Настройки</MenuItem>
-						<MenuDivider />
-						<MenuItem>Выйти</MenuItem>
-					</MenuList>
-				</Menu>
-			</Flex>
+			<LoginSidebar />
 
 			<Stack
 				direction="row"
@@ -372,6 +320,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 	const { colorMode, toggleColorMode } = useColorMode();
 	const { t, lang } = useTranslation("home");
 	const router = useRouter();
+	const { data: session } = useSession();
 
 	return (
 		<Flex
@@ -435,56 +384,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 					aria-label="open menu"
 					icon={<FiBell />}
 				/>
-				<Flex alignItems={"center"}>
-					<Menu>
-						<MenuButton
-							py={2}
-							transition="all 0.3s"
-							_focus={{ boxShadow: "none" }}
-						>
-							<HStack>
-								<Avatar
-									size={"sm"}
-									src={
-										"https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-									}
-								/>
-								<VStack
-									display={{ base: "none", md: "flex" }}
-									alignItems="flex-start"
-									spacing="1px"
-									ml="2"
-								>
-									<Text fontSize="sm">Мария Иванова</Text>
-									<Text
-										fontSize="xs"
-										color={useColorModeValue("gray.600", "gray.300")}
-									>
-										Посетитель
-									</Text>
-								</VStack>
-								<Box display={{ base: "none", md: "flex" }}>
-									<FiChevronDown />
-								</Box>
-							</HStack>
-						</MenuButton>
-						<MenuList
-							bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
-							borderColor={useColorModeValue("gray.200", "gray.700")}
-						>
-							<MenuItem
-								onClick={async () => {
-									await router.push("/profile", "/profile", { locale: "ru" });
-								}}
-							>
-								Профиль
-							</MenuItem>
-							<MenuItem>Настройки</MenuItem>
-							<MenuDivider />
-							<MenuItem>Выйти</MenuItem>
-						</MenuList>
-					</Menu>
-				</Flex>
+				<LoginHeader />
 			</HStack>
 		</Flex>
 	);

@@ -189,7 +189,6 @@ const Index: NextPage<unknown> = () => {
 	return (
 		<>
 			{/* <Flex flexDirection={{base: "row-reverse", md: "column-reverse"}}> */}
-			{/* <AppHeader/> */}
 			<Flex flexDirection="column" ml={{ base: "0", md: "60" }}>
 				<Flex
 					// h={0}

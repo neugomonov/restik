@@ -62,7 +62,7 @@ export default function SplitWithImage() {
 						Наша команда
 					</Text>
 					<Heading>Пиццерия с репутацией</Heading>
-					<Text color={"gray.500"} fontSize={"lg"}>
+					<Text colorScheme={"gray"} fontSize={"lg"}>
 						Мы готовим отличную пиццу и будем рады рассказать вам, как именно мы
 						её делаем.{" "}
 					</Text>

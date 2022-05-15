@@ -9,15 +9,18 @@ import {
 	IconProps,
 	Image,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 export default function CallToActionWithIllustration() {
+	const router = useRouter();
+
 	return (
 		<Container maxW={"5xl"}>
 			<Stack
 				textAlign={"center"}
 				align={"center"}
 				spacing={{ base: 8, md: 10 }}
-				py={{ base: 20, md: 28 }}
+				pt={{ base: 20, md: 28 }}
 			>
 				<Heading
 					fontWeight={600}
@@ -30,7 +33,7 @@ export default function CallToActionWithIllustration() {
 						и вкусно
 					</Text>
 				</Heading>
-				<Text color={"gray.500"} maxW={"3xl"}>
+				<Text colorScheme={"gray"} maxW={"3xl"}>
 					Использование современных компьютерных технологий - это, можно
 					сказать, наша фишка! Автоматизированная форма заказа есть у операторов
 					- она дает возможность максимально быстро и без ошибок оформить заказ.
@@ -38,22 +41,35 @@ export default function CallToActionWithIllustration() {
 					которые новые заказы приходят в течение нескольких секунд! Логисты
 					также работают в автоматизированной форме, для курьеров разработано
 					мобильное приложение, а для оформления заказов в зале - касса POS и
-					мобильный официант. Также в наших кафе и ресторанах установлена
-					электронная система вызова официанта - Вам не нужно махать руками,
-					чтобы на Вас обратили внимание.
+					мобильный официант. Также в нашей пиццерии установлена электронная
+					система вызова официанта - Вам не нужно махать руками, чтобы на Вас
+					обратили внимание.
 				</Text>
-				<Stack spacing={6} direction={"row"}>
+				<Stack spacing={6} direction={{ base: "column", md: "row" }}>
 					<Button
 						rounded={"full"}
 						px={6}
 						colorScheme={"orange"}
 						bg={"orange.400"}
 						_hover={{ bg: "orange.500" }}
+						onClick={async () => {
+							await router.push("/news", "/news", {
+								locale: "ru",
+							});
+						}}
 					>
 						Посмотреть наши новости
 					</Button>
-					<Button rounded={"full"} px={6}>
-						Далее
+					<Button
+						rounded={"full"}
+						px={6}
+						onClick={async () => {
+							await router.push("/about", "/about", {
+								locale: "ru",
+							});
+						}}
+					>
+						Наша кухня
 					</Button>
 				</Stack>
 				<Flex w={"full"} justifyContent={"center"}>
@@ -62,7 +78,7 @@ export default function CallToActionWithIllustration() {
 						// borderRadius="full"
 						src="https://cdn.dribbble.com/users/5950507/screenshots/14543756/media/3cf8ea17f7e1a1b04c56e8b82f8b1a28.gif"
 						// height={{ sm: "24rem", lg: "28rem" }}
-						mt={{ base: 12, sm: 16 }}
+						// mt={{ base: 12, sm: 16 }}
 					/>
 				</Flex>
 			</Stack>

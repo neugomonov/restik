@@ -5,6 +5,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { RecoilRoot } from "recoil";
 import { Global, css } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";
+import { SessionProvider } from "next-auth/react";
 
 import { _cart, CartState } from "../lib/recoil-atoms";
 import StateSaver from "../components/state-saver";
@@ -16,7 +17,10 @@ const client = new ApolloClient({
 	cache: new InMemoryCache(),
 });
 
-const App = ({ Component, pageProps }: AppProps): JSX.Element => {
+const App = ({
+	Component,
+	pageProps: { session, ...pageProps },
+}: AppProps): JSX.Element => {
 	const [cart, setCart] = useState<CartState | undefined>(undefined);
 
 	useEffect(() => {
@@ -35,48 +39,53 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
 	}, []);
 
 	return (
-		<ApolloProvider client={client}>
-			<ChakraProvider>
-				<Global
-					styles={css`
-						body {
-							position: relative;
-							&::before {
-								content: " ";
-								position: fixed;
-								width: 100%;
-								height: 100%;
-								top: 0;
-								left: 0;
-								background-color: black;
-								background: url("images/pizzabackground.jpg") no-repeat center
-									center;
-								background-size: cover;
-								will-change: transform;
-								z-index: -1;
+		<SessionProvider session={session}>
+			<ApolloProvider client={client}>
+				<ChakraProvider>
+					<Global
+						styles={css`
+							body {
+								position: relative;
+								&::before {
+									content: " ";
+									position: fixed;
+									width: 100%;
+									height: 100%;
+									top: 0;
+									left: 0;
+									background-color: black;
+									background: url("images/pizzabackground.jpg") no-repeat center
+										center;
+									background-size: cover;
+									will-change: transform;
+									z-index: -1;
+								}
 							}
-						}
-					`}
-				/>
-				<Head>
-					<title>{info.name}</title>
-				</Head>
-				{cart && (
-					<RecoilRoot
-						initializeState={({ set }) => {
-							if (cart) {
-								set(_cart, cart);
-							}
-						}}
-					>
-						<StateSaver>
-							<NextNProgress options={{ showSpinner: false }} color="#DD6B20" />
-							<Component {...pageProps} />
-						</StateSaver>
-					</RecoilRoot>
-				)}
-			</ChakraProvider>
-		</ApolloProvider>
+						`}
+					/>
+					<Head>
+						<title>{info.name}</title>
+					</Head>
+					{cart && (
+						<RecoilRoot
+							initializeState={({ set }) => {
+								if (cart) {
+									set(_cart, cart);
+								}
+							}}
+						>
+							<StateSaver>
+								<NextNProgress
+									options={{ showSpinner: false }}
+									color="#DD6B20"
+								/>
+								<Component {...pageProps} />
+							</StateSaver>
+						</RecoilRoot>
+					)}
+				</ChakraProvider>
+			</ApolloProvider>
+		</SessionProvider>
 	);
 };
 

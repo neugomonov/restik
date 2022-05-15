@@ -49,10 +49,12 @@ import { MdPassword, MdPlace } from "react-icons/md";
 import { BiRename } from "react-icons/bi";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { MdOutlineMessage, MdOutlineSend } from "react-icons/md";
+import { useSession } from "next-auth/react";
 
 const Index: NextPage<unknown> = () => {
 	const { t, lang } = useTranslation("home");
 	const { colorMode } = useColorMode();
+	const { data: session } = useSession();
 
 	return (
 		<>
@@ -118,8 +120,8 @@ const Index: NextPage<unknown> = () => {
 									spacing={3}
 								>
 									<Box
-										borderWidth="1px"
-										borderRadius="lg"
+										// borderWidth="1px"
+										// borderRadius="lg"
 										padding="1rem"
 										width="100%"
 										// height="90vh"
@@ -152,19 +154,14 @@ const Index: NextPage<unknown> = () => {
 												// backdropBlur="20px"
 											>
 												<VStack>
-													<Avatar
-														size={"3xl"}
-														src={
-															"https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-														}
-													/>
+													<Avatar size={"3xl"} src={session?.user?.image!} />
 													<VStack
 														// display={{ base: "none", md: "flex" }}
 														alignItems="flex-start"
 														spacing="1px"
 														ml="2"
 													>
-														<Text fontSize="3xl">Мария Иванова</Text>
+														<Text fontSize="3xl">{session?.user?.name}</Text>
 														<Text
 															fontSize="xl"
 															color={useColorModeValue("gray.600", "gray.300")}

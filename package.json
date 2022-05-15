@@ -8,7 +8,8 @@
         "build": "next build",
         "dev": "next dev",
         "start": "next start",
-        "test": "xo && stylelint './**/*.ts'"
+        "test": "xo && stylelint './**/*.ts'",
+        "deploy": "gh-pages -d build"
     },
     "engines": {
         "node": "12.x"
@@ -53,16 +54,21 @@
         "@chakra-ui/react": "^1.8.5",
         "@emotion/react": "11.1.4",
         "@emotion/styled": "11.0.0",
+        "@next-auth/firebase-adapter": "^0.1.2-pr.183-76202b42.8",
         "core-js": "3.8.2",
         "date-fns": "2.16.1",
+        "firebase": "^9.8.1",
         "framer-motion": "3.10.6",
         "gh-pages": "^3.2.3",
         "graphql": "15.4.0",
         "next": "10.0.5",
+        "next-auth": "^4.3.4",
         "next-translate": "1.0.1",
         "nextjs-progressbar": "^0.0.14",
         "react": "17.0.1",
         "react-dom": "17.0.1",
+        "react-firebase-hooks": "^5.0.3",
+        "react-firebaseui": "^6.0.0",
         "react-hook-form": "6.14.1",
         "react-icons": "^4.3.1",
         "react-router-dom": "^6.3.0",

@@ -3,13 +3,17 @@ import { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import NextImage from "next/image";
+/*Импорт компонентов из предназначенной папки*/
 import SidebarWithHeader from "../components/SidebarWithHeader";
-import MenuBox from "../components/MenuBox";
-import VideoBox from "../components/VideoBox";
-import NewsBox from "../components/NewsBox";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
 import CallToActionWithVideo from "../components/CallToActionWithVideo";
+import WithBackgroundImage from "../components/WithBackgroundImage";
+import SplitScreen from "../components/SplitScreen";
+import CallToActionWithIllustration from "../components/CallToActionWithIllustration";
+import CallToActionWithAnnotation from "../components/CallToActionWithAnnotation";
+
+/*Импорт компонентов из предназначенной папки - конец*/
 
 import {
 	Center,
@@ -60,14 +64,6 @@ import info from "../lib/info";
 import menu from "../lib/menu";
 import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
-
-import { MdOutlineSkipNext } from "react-icons/md";
-import { BiMoviePlay, BiNews } from "react-icons/bi";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
-import WithBackgroundImage from "../components/WithBackgroundImage";
-import SplitScreen from "../components/SplitScreen";
-import CallToActionWithIllustration from "../components/CallToActionWithIllustration";
-import CallToActionWithAnnotation from "../components/CallToActionWithAnnotation";
 
 const Tooltip = dynamic(async () => (await import("@chakra-ui/react")).Tooltip);
 const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
@@ -185,7 +181,6 @@ const Index: NextPage<unknown> = () => {
 	return (
 		<>
 			{/* <Flex flexDirection={{base: "row-reverse", md: "column-reverse"}}> */}
-			{/* <AppHeader/> */}
 			<Flex flexDirection="column" ml={{ base: "0", md: "60" }}>
 				<Flex
 					// h={0}
@@ -213,11 +208,13 @@ const Index: NextPage<unknown> = () => {
 						backdropFilter="auto"
 						backdropBlur="20px"
 					>
+						{/*Использование компонентов в разработке сайта*/}
 						<WithBackgroundImage />
-						<CallToActionWithIllustration />
 						<CallToActionWithVideo />
 						<SplitScreen />
+						<CallToActionWithIllustration />
 						<CallToActionWithAnnotation />
+						{/*Использование компонентов в разработке сайта - конец*/}
 					</Box>
 					{/* <Flex
 						flexShrink="10"

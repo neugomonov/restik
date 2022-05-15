@@ -22,6 +22,7 @@ import { BiMailSend } from "react-icons/bi";
 
 import info from "../lib/info";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
 const Logo = (props: any) => {
 	const { t, lang } = useTranslation("menu");
@@ -84,6 +85,7 @@ const ListHeader = ({ children }: { children: ReactNode }) => {
 export default function LargeWithNewsletter() {
 	const { colorMode, toggleColorMode } = useColorMode();
 	const { t, lang } = useTranslation("common");
+	const router = useRouter();
 
 	return (
 		<Box
@@ -121,13 +123,13 @@ export default function LargeWithNewsletter() {
 						</Text>
 
 						<Stack direction={"row"} spacing={6}>
-							<SocialButton label={"Twitter"} href={"#"}>
+							<SocialButton label={"Twitter"} href={"https://twitter.com"}>
 								<FaTwitter />
 							</SocialButton>
-							<SocialButton label={"YouTube"} href={"#"}>
+							<SocialButton label={"YouTube"} href={"https://youtube.com"}>
 								<FaYoutube />
 							</SocialButton>
-							<SocialButton label={"Instagram"} href={"#"}>
+							<SocialButton label={"Instagram"} href={"https://instagram.com"}>
 								<FaInstagram />
 							</SocialButton>
 						</Stack>
@@ -170,17 +172,65 @@ export default function LargeWithNewsletter() {
 					</Stack>
 					<Stack align={"flex-start"}>
 						<ListHeader>Компания</ListHeader>
-						<Link href={"#"}>Наша кухня</Link>
-						<Link href={"#"}>Новости</Link>
-						<Link href={"#"}>Чат</Link>
-						<Link href={"#"}>Акции</Link>
-						<Link href={"#"}>Меню</Link>
+						<Link
+							onClick={async () => {
+								await router.push("/about", "/about", {
+									locale: "ru",
+								});
+							}}
+						>
+							Наша кухня
+						</Link>
+						<Link
+							onClick={async () => {
+								await router.push("/news", "/news", {
+									locale: "ru",
+								});
+							}}
+						>
+							Новости
+						</Link>
+						<Link
+							onClick={async () => {
+								await router.push("/chat", "/chat", {
+									locale: "ru",
+								});
+							}}
+						>
+							Чат
+						</Link>
+						<Link
+							onClick={async () => {
+								await router.push("/promo", "/promo", {
+									locale: "ru",
+								});
+							}}
+						>
+							Акции
+						</Link>
+						<Link
+							onClick={async () => {
+								await router.push("/menu", "/menu", {
+									locale: "ru",
+								});
+							}}
+						>
+							Меню
+						</Link>
 					</Stack>
 					<Stack align={"flex-start"}>
 						<ListHeader>Поддержка</ListHeader>
-						<Link href={"#"}>Условия обслуживания</Link>
-						<Link href={"#"}>Юридическая информация</Link>
-						<Link href={"#"}>Политика конфиденциальности</Link>
+						<Link href={"https://en.wikipedia.org/wiki/Terms_of_service"}>
+							Условия обслуживания
+						</Link>
+						<Link
+							href={"https://en.wikipedia.org/wiki/Wikipedia:Legal_disclaimer"}
+						>
+							Юридическая информация
+						</Link>
+						<Link href={"https://foundation.wikimedia.org/wiki/Privacy_policy"}>
+							Политика конфиденциальности
+						</Link>
 					</Stack>
 					<Stack align={"flex-start"}>
 						<ListHeader>Узнавайте о выгодных предложениях первыми</ListHeader>

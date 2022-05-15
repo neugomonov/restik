@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import NextImage from "next/image";
 import SidebarWithHeader from "./SidebarWithHeader";
-import AppHeader from "./AppHeader";
 
 import {
 	Center,
@@ -226,10 +225,10 @@ export default function PromoBox() {
 						objectFit="cover"
 						borderRadius="md"
 					/>
-					<Text color="gray.500">03.04.2022</Text>
+					<Text colorScheme={"gray"}>03.04.2022</Text>
 
 					<Heading mr="1%">Приходите за выгодой в пиццерию! </Heading>
-					<Text color="gray.500">
+					<Text colorScheme={"gray"}>
 						За заказ доставки от 999 рублей дарим вкусные подарки!
 					</Text>
 					<Button

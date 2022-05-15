@@ -7,10 +7,13 @@ import {
 	Text,
 	useBreakpointValue,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 export default function SplitScreen() {
+	const router = useRouter();
+
 	return (
-		<Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
+		<Stack direction={{ base: "column", lg: "row" }}>
 			<Flex p={8} flex={1} align={"center"} justify={"center"}>
 				<Stack spacing={6} w={"full"} maxW={"lg"}>
 					<Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
@@ -47,10 +50,22 @@ export default function SplitScreen() {
 							_hover={{
 								bg: "orange.500",
 							}}
+							onClick={async () => {
+								await router.push("/promo", "/promo", {
+									locale: "ru",
+								});
+							}}
 						>
 							Посмотреть наши акции{" "}
 						</Button>
-						<Button rounded={"full"}>Далее</Button>
+						<Button
+							rounded={"full"}
+							onClick={async () => {
+								await router.push("https://t.me/neugomonov_v");
+							}}
+						>
+							Наш Телеграм
+						</Button>
 					</Stack>
 				</Stack>
 			</Flex>

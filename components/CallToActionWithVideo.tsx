@@ -13,15 +13,18 @@ import {
 	IconProps,
 	useColorModeValue,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 export default function CallToActionWithVideo() {
+	const router = useRouter();
+
 	return (
-		<Container maxW={"7xl"}>
+		<Container maxW={"5xl"}>
 			<Stack
 				align={"center"}
 				spacing={{ base: 8, md: 10 }}
-				py={{ base: 20, md: 28 }}
-				direction={{ base: "column", md: "row" }}
+				py={20}
+				direction={{ base: "column", lg: "row" }}
 			>
 				<Stack flex={1} spacing={{ base: 5, md: 10 }}>
 					<Heading
@@ -50,7 +53,7 @@ export default function CallToActionWithVideo() {
 							лучших ингредиентов
 						</Text>
 					</Heading>
-					<Text color={"gray.500"}>
+					<Text colorScheme={"gray"} maxW={"3xl"}>
 						Высокое качество - вот что наша пиццерия ставит на первое место. Мы
 						выбираем лучшие продукты, лучшее оборудование и лучших специалистов!
 						Держать качество всегда на одинаково высоком уровне во всех наших
@@ -64,7 +67,7 @@ export default function CallToActionWithVideo() {
 					</Text>
 					<Stack
 						spacing={{ base: 4, sm: 6 }}
-						direction={{ base: "column", sm: "row" }}
+						direction={{ base: "column", lg: "row" }}
 					>
 						<Button
 							rounded={"full"}
@@ -74,6 +77,11 @@ export default function CallToActionWithVideo() {
 							colorScheme={"orange"}
 							bg={"orange.400"}
 							_hover={{ bg: "orange.500" }}
+							onClick={async () => {
+								await router.push("/menu", "/menu", {
+									locale: "ru",
+								});
+							}}
 						>
 							Посмотреть меню
 						</Button>
@@ -83,8 +91,13 @@ export default function CallToActionWithVideo() {
 							fontWeight={"normal"}
 							px={6}
 							leftIcon={<PlayIcon h={4} w={4} color={"gray.300"} />}
+							onClick={async () => {
+								await router.push(
+									"https://www.youtube.com/watch?v=9AG8A40BzXw&list=PLWDQtIyZRZu17Oha9o2zC0aD7adlmAZl6&index=4"
+								);
+							}}
 						>
-							Узнать, как у нас это получается
+							Как мы готовим
 						</Button>
 					</Stack>
 				</Stack>
@@ -111,6 +124,12 @@ export default function CallToActionWithVideo() {
 						boxShadow={"2xl"}
 						width={"full"}
 						overflow={"hidden"}
+						onClick={async () => {
+							await router.push(
+								"https://www.youtube.com/watch?v=9AG8A40BzXw&list=PLWDQtIyZRZu17Oha9o2zC0aD7adlmAZl6&index=4"
+							);
+						}}
+						cursor="pointer"
 					>
 						<IconButton
 							aria-label={"Play Button"}

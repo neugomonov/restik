@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import NextImage from "next/image";
 import SidebarWithHeader from "./SidebarWithHeader";
-import AppHeader from "./AppHeader";
 
 import {
 	Center,
@@ -315,7 +314,20 @@ export default function MenuBox() {
 							) : (
 								<Stack textAlign="center" marginTop="5rem">
 									<Heading size="md">{t("emptyCart")}</Heading>
-									<Text>{t("emptyCartMessage")}</Text>
+									<Text>
+										Давай, добавь{" "}
+										<Link
+											color={colorMode === "dark" ? "yellow.500" : "orange.600"}
+											onClick={async () => {
+												await router.push("/menu", "/menu", {
+													locale: "ru",
+												});
+											}}
+										>
+											что-нибудь вкусненькое
+										</Link>
+										!
+									</Text>
 								</Stack>
 							)}
 						</DrawerBody>
@@ -334,7 +346,12 @@ export default function MenuBox() {
 							<Button
 								leftIcon={<IoMdCheckmarkCircle />}
 								mr={3}
-								onClick={onClose}
+								onClick={async () => {
+									await router.push("/menu", "/menu", {
+										locale: "ru",
+									});
+									onClose();
+								}}
 								disabled={cart.items.length === 0}
 							>
 								К заказу{" "}

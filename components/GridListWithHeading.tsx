@@ -25,7 +25,7 @@ export default function GridListWithHeading() {
 		<Box p={4}>
 			<Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
 				<Heading fontSize={"3xl"}>Мы ценим ваше мнение</Heading>
-				<Text color={"gray.600"} fontSize={"xl"}>
+				<Text colorScheme={"gray"} fontSize={"xl"}>
 					Мы всегда советуемся с посетителями для составления меню тех блюд,
 					которые вы любите больше всего.
 				</Text>
@@ -40,7 +40,7 @@ export default function GridListWithHeading() {
 							</Box>
 							<VStack align={"start"}>
 								<Text fontWeight={600}>{feature.title}</Text>
-								<Text color={"gray.600"}>{feature.text}</Text>
+								<Text colorScheme={"gray"}>{feature.text}</Text>
 							</VStack>
 						</HStack>
 					))}
