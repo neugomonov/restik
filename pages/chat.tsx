@@ -53,43 +53,6 @@ const Index: NextPage<unknown> = () => {
 	console.log(chats);
 	console.log("thanks");
 
-	// const chatExists = (email: string) =>
-	// 	chats?.find(
-	// 		(chat) =>
-	// 			chat.users.includes(session?.user?.email) && chat.users.includes(email)
-	// 	);
-
-	// const newChat = async () => {
-	// 	const input = prompt("Введите email того, с кем вы хотите начать чат");
-	// 	if (
-	// 		!chatExists(input) &&
-	// 		input != session?.user?.email &&
-	// 		input != null &&
-	// 		input != ""
-	// 	) {
-	// 		await addDoc(collection(db, "chats"), {
-	// 			users: [session?.user?.email, input],
-	// 		});
-	// 	}
-	// };
-
-	// const chatList = () => {
-	// 	return chats
-	// 		?.filter((chat) => chat.users.includes(session?.user?.email))
-	// 		.map((chat) => (
-	// 			<Flex
-	// 				key={Math.random()}
-	// 				p={3}
-	// 				align="center"
-	// 				_hover={{ bg: "gray.100", cursor: "pointer" }}
-	// 				onClick={() => redirect(chat.id)}
-	// 			>
-	// 				<Avatar src="" marginEnd={3} />
-	// 				<Text>{getOtherEmail(chat.users, session?.user?.email)}</Text>
-	// 			</Flex>
-	// 		));
-	// };
-
 	return (
 		<>
 			{/* <Head>

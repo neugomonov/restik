@@ -24,7 +24,7 @@ export default function GridListWithHeading() {
 	return (
 		<Box p={4}>
 			<Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
-				<Heading fontSize={"3xl"}>Мы ценим ваше мнение</Heading>
+				<Heading fontSize={"3xl"}>Лучшая пиццерия Нижнего Новгорода</Heading>
 				<Text colorScheme={"gray"} fontSize={"xl"}>
 					Мы всегда советуемся с посетителями для составления меню тех блюд,
 					которые вы любите больше всего.

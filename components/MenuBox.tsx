@@ -1,23 +1,18 @@
-import React, { useRef } from "react";
-import { NextPage } from "next";
+import React from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import NextImage from "next/image";
-import SidebarWithHeader from "./SidebarWithHeader";
 
 import {
-	Center,
 	Box,
 	useColorMode,
 	Stack,
-	HStack,
 	Avatar,
 	AvatarBadge,
 	Heading,
 	SimpleGrid,
 	ButtonGroup,
 	Button,
-	useToast,
 	FormControl,
 	FormLabel,
 	InputGroup,
@@ -28,26 +23,18 @@ import {
 	Checkbox,
 	Link,
 	Text,
-	Image,
 	IconButton,
 	useDisclosure,
 	Tag,
 	Divider,
 	chakra,
 	Flex,
-	AspectRatio,
 } from "@chakra-ui/react";
 
 import { useRecoilState } from "recoil";
 import { useForm } from "react-hook-form";
 import useTranslation from "next-translate/useTranslation";
-import {
-	IoMdAdd,
-	IoMdCart,
-	IoMdTrash,
-	IoMdRemove,
-	IoMdCheckmarkCircle,
-} from "react-icons/io";
+import { IoMdAdd } from "react-icons/io";
 import { HiOutlineTranslate } from "react-icons/hi";
 
 import info from "../lib/info";
@@ -55,59 +42,7 @@ import menu from "../lib/menu";
 import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
 
-import LargeWithNewsletter from "./Footer";
-import { MdOutlineSkipNext } from "react-icons/md";
-import { BiMoviePlay, BiNews } from "react-icons/bi";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
-
 const Tooltip = dynamic(async () => (await import("@chakra-ui/react")).Tooltip);
-const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
-const DrawerBody = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerBody
-);
-const DrawerHeader = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerHeader
-);
-const DrawerFooter = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerFooter
-);
-const DrawerOverlay = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerOverlay
-);
-const DrawerContent = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerContent
-);
-const DrawerCloseButton = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerCloseButton
-);
-const Stat = dynamic(async () => (await import("@chakra-ui/react")).Stat);
-const StatLabel = dynamic(
-	async () => (await import("@chakra-ui/react")).StatLabel
-);
-const StatNumber = dynamic(
-	async () => (await import("@chakra-ui/react")).StatNumber
-);
-const StatHelpText = dynamic(
-	async () => (await import("@chakra-ui/react")).StatHelpText
-);
-const AlertDialog = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialog
-);
-const AlertDialogBody = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogBody
-);
-const AlertDialogHeader = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogHeader
-);
-const AlertDialogFooter = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogFooter
-);
-const AlertDialogContent = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogContent
-);
-const AlertDialogOverlay = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogOverlay
-);
 const UnorderedList = dynamic(
 	async () => (await import("@chakra-ui/react")).UnorderedList
 );
@@ -149,20 +84,11 @@ export default function MenuBox() {
 	const [cart, setCart] = useRecoilState(_cart);
 	const { register, handleSubmit, watch } = useForm<FormState>();
 	const { colorMode } = useColorMode();
-	const toast = useToast();
-	const { isOpen, onOpen, onClose } = useDisclosure();
-	const btnRef = useRef();
-	const {
-		isOpen: isAlertOpen,
-		onOpen: onAlertOpen,
-		onClose: onAlertClose,
-	} = useDisclosure();
 	const {
 		isOpen: isMenuOpen,
 		onOpen: onMenuOpen,
 		onClose: onMenuClose,
 	} = useDisclosure();
-	const cancelRef = useRef();
 	const { t, lang } = useTranslation("menu");
 
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
@@ -181,15 +107,6 @@ export default function MenuBox() {
 					justifyContent: "space-between",
 				}}
 			>
-				{/* {info.isDevelopment && (
-        <Tag
-            textTransform="uppercase"
-            colorScheme="yellow"
-            variant="solid"
-            mb="1rem"
-        >
-            {t("development")}
-        </Tag> */}
 				{info.isDevelopment && (
 					<Tag
 						textTransform="uppercase"

@@ -10,6 +10,7 @@ import {
 	Container,
 } from "@chakra-ui/react";
 import {} from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 interface FeatureProps {
 	heading: string;
@@ -28,6 +29,8 @@ const Feature = ({ heading, text }: FeatureProps) => {
 };
 
 export default function gridListWithCTA() {
+	const router = useRouter();
+
 	return (
 		<Box as={Container} maxW="7xl" mt={14} p={4}>
 			<Grid
@@ -43,7 +46,15 @@ export default function gridListWithCTA() {
 						<chakra.h2 fontSize="3xl" fontWeight="700">
 							Вы всегда можете связаться с нами
 						</chakra.h2>
-						<Button colorScheme="orange" size="md">
+						<Button
+							colorScheme="orange"
+							size="md"
+							onClick={async () => {
+								await router.push("/chat", "/chat", {
+									locale: "ru",
+								});
+							}}
+						>
 							Чат
 						</Button>
 					</VStack>
@@ -67,20 +78,20 @@ export default function gridListWithCTA() {
 				gap={{ base: "8", sm: "12", md: "16" }}
 			>
 				<Feature
-					heading={"Мы ценим ваше мнение"}
-					text={"Вы всегда можете связаться с нами"}
+					heading={"Изысканный интерьер"}
+					text={"Вам будет приятно находиться у нас"}
 				/>
 				<Feature
-					heading={"Мы ценим ваше мнение"}
-					text={"Вы всегда можете связаться с нами"}
+					heading={"Талантливые шеф-повара"}
+					text={"Порадуем лучшими блюдами итальянской кухни"}
 				/>
 				<Feature
-					heading={"Мы ценим ваше мнение"}
-					text={"Вы всегда можете связаться с нами"}
+					heading={"Вежливый персонал"}
+					text={"Обеспечим вам качественное обслуживание"}
 				/>
 				<Feature
-					heading={"Мы ценим ваше мнение"}
-					text={"Вы всегда можете связаться с нами"}
+					heading={"Организация праздников"}
+					text={"Гарантируем вам отличный праздничный вечер"}
 				/>
 			</Grid>
 		</Box>
