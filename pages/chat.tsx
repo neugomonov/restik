@@ -42,7 +42,7 @@ const Index: NextPage<unknown> = () => {
 	const chats = snapshot?.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 	const router = useRouter();
 
-	const redirect = (id) => {
+	const redirect = (id: string) => {
 		router.push(`/chat/${id}`);
 	};
 
@@ -51,22 +51,22 @@ const Index: NextPage<unknown> = () => {
 	console.log(chats);
 	console.log("thanks");
 
-	const chatList = () => {
-		return chats
-			?.filter((chat) => chat.users.includes(session?.user?.email))
-			.map((chat) => (
-				<Flex
-					key={Math.random()}
-					p={3}
-					align="center"
-					_hover={{ bg: "gray.100", cursor: "pointer" }}
-					onClick={() => redirect(chat.id)}
-				>
-					<Avatar src="" marginEnd={3} />
-					<Text>{getOtherEmail(chat.users, session?.user?.email)}</Text>
-				</Flex>
-			));
-	};
+	// const chatList = () => {
+	// 	return chats
+	// 		?.filter((chat) => chat.users.includes(session?.user?.email))
+	// 		.map((chat) => (
+	// 			<Flex
+	// 				key={Math.random()}
+	// 				p={3}
+	// 				align="center"
+	// 				_hover={{ bg: "gray.100", cursor: "pointer" }}
+	// 				onClick={() => redirect(chat.id)}
+	// 			>
+	// 				<Avatar src="" marginEnd={3} />
+	// 				<Text>{getOtherEmail(chat.users, session?.user?.email)}</Text>
+	// 			</Flex>
+	// 		));
+	// };
 
 	return (
 		<>
@@ -144,7 +144,7 @@ const Index: NextPage<unknown> = () => {
 											sx={{ scrollbarWidth: "none" }}
 											flex={1}
 										>
-											{chatList()}
+											{/* {chatList()} */}
 										</Flex>
 										<Stack spacing={3}>
 											{/* <ProductImage
