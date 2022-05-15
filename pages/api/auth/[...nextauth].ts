@@ -52,6 +52,7 @@ export default NextAuth({
 
 		// ...add more providers here
 	],
+	secret: process.env.NEXTAUTH_SECRET,
 	// database: process.env.DATABASE_URL!,
 });
 // export { db };
