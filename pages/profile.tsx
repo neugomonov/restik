@@ -8,6 +8,8 @@ import VideoBox from "../components/VideoBox";
 import NewsBox from "../components/NewsBox";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
+import OrdersTable from "../components/OrdersTable";
+import ProfileButtons from "../components/ProfileButtons";
 import {
 	Avatar,
 	Box,
@@ -116,7 +118,7 @@ const Index: NextPage<unknown> = () => {
 								direction={"row"}
 							>
 								<Stack
-									direction={{ base: "column-reverse", xl: "row" }}
+									direction={{ base: "column-reverse", lg: "row" }}
 									spacing={3}
 								>
 									<Box
@@ -184,29 +186,7 @@ const Index: NextPage<unknown> = () => {
 																Сменить пароль
 															</Button>
 														</Stack>
-														<Stack direction={{ base: "column", md: "row" }}>
-															<Button
-																size="md"
-																aria-label={t("remove")}
-																leftIcon={<AiOutlinePhone />}
-															>
-																Телефон
-															</Button>
-															<Button
-																size="md"
-																aria-label={t("add")}
-																leftIcon={<MdPlace />}
-															>
-																Адрес
-															</Button>
-															<Button
-																size="md"
-																aria-label={t("add")}
-																leftIcon={<AiTwotoneMail />}
-															>
-																Почта
-															</Button>
-														</Stack>
+														<ProfileButtons />{" "}
 													</VStack>
 													<Box display={{ base: "none", md: "flex" }}>
 														<FiChevronDown />
@@ -238,6 +218,7 @@ const Index: NextPage<unknown> = () => {
 									</Stack>
 								</Stack>
 							</Stack>
+							{/* <Heading>Админ-панель</Heading> */}
 							<Stack
 								alignItems={"center"}
 								justifyContent={"center"}
@@ -252,150 +233,7 @@ const Index: NextPage<unknown> = () => {
 									// height="90vh"
 									minW={{ base: "auto", xl: "50%" }}
 								>
-									<TableContainer>
-										<Table variant="striped" colorScheme="gray">
-											<TableCaption>Таблица заказов</TableCaption>
-											<Thead>
-												<Tr>
-													<Th>№</Th>
-													<Th>id покупателя</Th>
-													<Th>Состав</Th>
-													<Th>Вид оплаты</Th>
-													<Th>Телефон, место</Th>
-													<Th>Статус</Th>
-												</Tr>
-											</Thead>
-											<Tbody>
-												<Tr>
-													<Td>1</Td>
-													<Td>10</Td>
-													<Td>Капричоза, Латте x 2</Td>
-													<Td>Онлайн</Td>
-													<Td>+7 956 348 15 87, Пушкина, 1</Td>
-													<Td>
-														<Menu>
-															<MenuButton
-																transition="all 0.3s"
-																_focus={{ boxShadow: "none" }}
-															>
-																<Stack direction="row">
-																	<Box display="flex">
-																		{" "}
-																		Принят
-																		<FiChevronDown />
-																	</Box>
-																</Stack>
-															</MenuButton>
-															<MenuList
-																bg={useColorModeValue(
-																	"rgb(255, 255, 255)",
-																	"rgb(6, 8, 13)"
-																)}
-																borderColor={useColorModeValue(
-																	"gray.200",
-																	"gray.700"
-																)}
-															>
-																<MenuItem>Принят</MenuItem>
-																<MenuItem>Готовится</MenuItem>
-																<MenuItem>Доставляется</MenuItem>
-																<MenuDivider />
-																<MenuItem>Выполнен</MenuItem>
-															</MenuList>
-														</Menu>
-													</Td>
-												</Tr>
-												<Tr>
-													<Td>2</Td>
-													<Td>10</Td>
-													<Td>Капричоза, Латте x 2</Td>
-													<Td>Онлайн</Td>
-													<Td>+7 956 348 15 87, Пушкина, 1</Td>
-													<Td>
-														<Menu>
-															<MenuButton
-																transition="all 0.3s"
-																_focus={{ boxShadow: "none" }}
-															>
-																<Stack direction="row">
-																	<Box display="flex">
-																		{" "}
-																		Выполнен
-																		<FiChevronDown />
-																	</Box>
-																</Stack>
-															</MenuButton>
-															<MenuList
-																bg={useColorModeValue(
-																	"rgb(255, 255, 255)",
-																	"rgb(6, 8, 13)"
-																)}
-																borderColor={useColorModeValue(
-																	"gray.200",
-																	"gray.700"
-																)}
-															>
-																<MenuItem>Принят</MenuItem>
-																<MenuItem>Готовится</MenuItem>
-																<MenuItem>Доставляется</MenuItem>
-																<MenuDivider />
-																<MenuItem>Выполнен</MenuItem>
-															</MenuList>
-														</Menu>
-													</Td>
-												</Tr>
-												<Tr>
-													<Td>3</Td>
-													<Td>10</Td>
-													<Td>Капричоза, Латте x 2</Td>
-													<Td>Онлайн</Td>
-													<Td>+7 956 348 15 87, Пушкина, 1</Td>
-													<Td>
-														<Menu>
-															<MenuButton
-																transition="all 0.3s"
-																_focus={{ boxShadow: "none" }}
-															>
-																<Stack direction="row">
-																	<Box display="flex">
-																		{" "}
-																		Принят
-																		<FiChevronDown />
-																	</Box>
-																</Stack>
-															</MenuButton>
-															<MenuList
-																bg={useColorModeValue(
-																	"rgb(255, 255, 255)",
-																	"rgb(6, 8, 13)"
-																)}
-																borderColor={useColorModeValue(
-																	"gray.200",
-																	"gray.700"
-																)}
-															>
-																<MenuItem>Принят</MenuItem>
-																<MenuItem>Готовится</MenuItem>
-																<MenuItem>Доставляется</MenuItem>
-																<MenuDivider />
-																<MenuItem>Выполнен</MenuItem>
-															</MenuList>
-														</Menu>
-													</Td>
-												</Tr>
-											</Tbody>
-											<Tfoot>
-												<Tr>
-													<Th>№</Th>
-													<Th>id покупателя</Th>
-													<Th>Состав</Th>
-													<Th>Вид оплаты</Th>
-													<Th>Телефон, место</Th>
-													<Th>Статус</Th>
-												</Tr>
-											</Tfoot>
-										</Table>
-									</TableContainer>
+									<OrdersTable />
 								</Box>
 							</Stack>
 						</Stack>

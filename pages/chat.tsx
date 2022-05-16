@@ -116,7 +116,22 @@ const Index: NextPage<unknown> = () => {
 									direction={{ base: "column-reverse", xl: "row" }}
 									spacing={3}
 								>
-									<ChatListBox />
+									<Box
+										borderWidth="1px"
+										borderRadius="lg"
+										padding="1rem"
+										width="100%"
+										height="90vh"
+										minW={{ base: "auto", xl: "50%" }}
+									>
+										<Heading size="md">
+											Для вопросов к Пиццерии создайте чат и введите наш email -
+											neugomonovv@gmail.com 📧
+										</Heading>
+
+										<ChatListBox />
+									</Box>
+
 									{/* <Box
 										borderWidth="1px"
 										borderRadius="lg"

@@ -20,6 +20,7 @@ import {
 	Image,
 	Input,
 	Stack,
+	TableContainer,
 	Tag,
 	Text,
 	useColorMode,
@@ -33,6 +34,7 @@ import { db } from "../firebase";
 import getOtherEmail from "../utils/getOtherEmail";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+
 export default function ChatListBox() {
 	const { data: session } = useSession();
 
@@ -83,24 +85,14 @@ export default function ChatListBox() {
 					onClick={() => redirect(chat.id)}
 				>
 					<Avatar src="" marginEnd={3} />
-					<Text>{getOtherEmail(chat.users, session?.user?.email)}</Text>
+					<Text fontSize={{ base: "xs", sm: "md" }}>
+						{getOtherEmail(chat.users, session?.user?.email)}
+					</Text>
 				</Flex>
 			));
 	};
 	return (
-		<Box
-			borderWidth="1px"
-			borderRadius="lg"
-			padding="1rem"
-			width="100%"
-			height="90vh"
-			minW={{ base: "auto", xl: "50%" }}
-		>
-			<Heading size="md">
-				Для вопросов к Пиццерии создайте чат и введите наш email -
-				neugomonovv@gmail.com 📧
-			</Heading>
-
+		<>
 			<Button m={5} p={4} onClick={() => newChat()}>
 				Создать чат
 			</Button>
@@ -108,6 +100,6 @@ export default function ChatListBox() {
 			<Flex direction="column" sx={{ scrollbarWidth: "none" }} flex={1}>
 				{chatList()}
 			</Flex>
-		</Box>
+		</>
 	);
 }
