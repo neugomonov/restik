@@ -38,7 +38,7 @@ export default function SplitScreen() {
 							соцсетях
 						</Text>{" "}
 					</Heading>
-					<Text fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
+					<Text fontSize={{ base: "md", lg: "lg" }} colorScheme={"gray"}>
 						Там мы размещаем наши новые акции. Подписывайтесь и будьте в курсе
 						всех выгодных предложений нашей пиццерии!{" "}
 					</Text>
