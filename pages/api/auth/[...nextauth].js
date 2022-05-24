@@ -46,14 +46,28 @@ export default NextAuth({
 	// Configure one or more authentication providers
 	providers: [
 		GoogleProvider({
-			clientId: process.env.GOOGLE_CLIENT_ID!,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+			clientId: process.env.GOOGLE_CLIENT_ID,
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 		}),
 
 		// ...add more providers here
 	],
 	secret: process.env.NEXTAUTH_SECRET,
 	// database: process.env.DATABASE_URL!,
+	callbacks: {
+		async session({ session, token, user }) {
+			console.log(
+				"--Session CALLED--",
+				session,
+				"--user--",
+				user,
+				"--token--",
+				token
+			);
+			session.user.role = user.role; //ADD THIS LINE SO THAT ROLL IS INCLUDED AS PART OF SESSION INFO.
+			return session;
+		},
+	},
 });
 
 // export { db };

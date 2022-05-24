@@ -7,6 +7,7 @@ import {
 	Menu,
 	MenuButton,
 	MenuDivider,
+	MenuGroup,
 	MenuItem,
 	MenuList,
 	Stack,
@@ -22,7 +23,7 @@ export default function LoginSidebar() {
 	const { colorMode } = useColorMode();
 
 	const { data: session, status } = useSession();
-	console.log(session);
+	// console.log(session);
 
 	if (session) {
 		return (
@@ -63,7 +64,10 @@ export default function LoginSidebar() {
 											fontSize="xs"
 											color={useColorModeValue("gray.600", "gray.300")}
 										>
-											Посетитель
+											{session?.user?.email!.length! >= 13
+												? `${session?.user?.email!.slice(0, 10)}...`
+												: session?.user?.email!}
+
 											{/* {session?.user?.role} */}
 										</Text>
 									</VStack>

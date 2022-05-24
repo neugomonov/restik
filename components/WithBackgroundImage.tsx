@@ -41,6 +41,7 @@ export default function WithBackgroundImage() {
 						<Button
 							colorScheme={"orange"}
 							rounded={"full"}
+							bg={"orange.400"}
 							_hover={{ bg: "orange.500" }}
 							onClick={async () => {
 								await router.push("/menu", "/menu", {

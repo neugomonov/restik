@@ -7,6 +7,7 @@ import {
 	Menu,
 	MenuButton,
 	MenuDivider,
+	MenuGroup,
 	MenuItem,
 	MenuList,
 	Stack,
@@ -45,7 +46,7 @@ export default function LoginHeader() {
 										fontSize="xs"
 										color={useColorModeValue("gray.600", "gray.300")}
 									>
-										Посетитель
+										{session?.user?.email!}
 									</Text>
 								</VStack>
 								<Box display={{ base: "none", md: "flex" }}>

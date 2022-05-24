@@ -46,7 +46,6 @@ export default function Chat() {
 	const q = query(collection(db, `chats/${id}/messages`), orderBy("timestamp"));
 	const [messages] = useCollectionData(q);
 	const bottomOfChat = useRef();
-	// const { colorMode } = useColorMode();
 
 	const getMessages = () =>
 		messages?.map((msg) => {

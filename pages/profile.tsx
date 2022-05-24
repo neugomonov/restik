@@ -168,9 +168,9 @@ const Index: NextPage<unknown> = () => {
 															fontSize="xl"
 															color={useColorModeValue("gray.600", "gray.300")}
 														>
-															Посетитель
+															{session?.user?.email!}
 														</Text>
-														<Stack direction={{ base: "column", md: "row" }}>
+														{/* <Stack direction={{ base: "column", md: "row" }}>
 															<Button
 																size="md"
 																aria-label={t("remove")}
@@ -185,7 +185,7 @@ const Index: NextPage<unknown> = () => {
 															>
 																Сменить пароль
 															</Button>
-														</Stack>
+														</Stack> */}
 														<ProfileButtons />{" "}
 													</VStack>
 													<Box display={{ base: "none", md: "flex" }}>

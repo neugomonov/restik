@@ -45,11 +45,9 @@ export default function SplitScreen() {
 					<Stack direction={{ base: "column", md: "row" }} spacing={4}>
 						<Button
 							rounded={"full"}
+							colorScheme={"orange"}
 							bg={"orange.400"}
-							color={"white"}
-							_hover={{
-								bg: "orange.500",
-							}}
+							_hover={{ bg: "orange.500" }}
 							onClick={async () => {
 								await router.push("/promo", "/promo", {
 									locale: "ru",

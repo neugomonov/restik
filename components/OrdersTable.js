@@ -69,16 +69,8 @@ export default function OrdersTable() {
 	const router = useRouter();
 	const [orders, setOrders] = useState([{ name: "Loading...", id: "initial" }]);
 	const [users, setUsers] = useState([{ name: "Loading...", id: "initial" }]);
-	console.log("please");
-	console.log(snapshot);
-	console.log(orders);
-	console.log(users);
-	console.log("thanks");
-	// console.log(
-	// 	new Date(orders.map((order) => order.timestamp) * 1000)
-	// 		.toISOString()
-	// 		.substr(11, 8)
-	// );
+	const alovelaceDocumentRef = doc(db, 'admins', 'neugomonovv@gmail.com');
+	const usersCollectionRef = collection(db, 'admins');
 
 	useEffect(
 		() =>
@@ -105,14 +97,13 @@ export default function OrdersTable() {
 		}
 	};
 
-	// console.log(session?.user?.role);
 
 	const handleNew = async () => {
 		const products = prompt("Введите что хотите заказать 🍕");
 		if (products != null && products != "") {
 			const phone = prompt("Введите ваш телефон 🤙");
 			const address = prompt("Введите адрес доставки 🏠");
-			const payment = prompt("Наличные или Онлайн 💸");
+			const payment = prompt("Наличные или Онлайн? 💸");
 			const total = prompt("Введите сумму оплаты 💵");
 			const email = prompt("Введите ваш email 📧");
 			const status = "Принят";
@@ -131,13 +122,6 @@ export default function OrdersTable() {
 		}
 	};
 
-	// const handleEditStatusChakraEditable = async (id) => {
-	// 	console.log(id);
-	// 	const status = "Принят";
-	// 	const docRef = doc(db, "orders", id);
-	// 	const payload = status;
-	// 	setDoc(docRef, payload);
-	// };
 
 	const handleEditStatus = async (id) => {
 		const status = prompt("Готовится/Доставляется/Выполнен? 🤔");
@@ -151,6 +135,9 @@ export default function OrdersTable() {
 			updateDoc(docRef, payload);
 		}
 	};
+	const [snapshotAdmins] = useCollection(collection(db, "admins"));
+
+	const admins = snapshotAdmins?.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
 	return (
 		<>
@@ -173,60 +160,40 @@ export default function OrdersTable() {
 						</Tr>
 					</Thead>
 					<Tbody>
-						{orders.map((order) => (
-							<Tr key={order.id}>
-								<Td>
-									{order.status}
-									<IconButton
-										size="sm"
-										icon={<EditIcon />}
-										onClick={() => handleEditStatus(order.id)}
-									/>
-								</Td>
-								<Td>{order.products}</Td>
-								<Td>{order.phone}</Td>
-								<Td>{order.address}</Td>
-								<Td>{order.payment}</Td>
-								<Td>{order.total}</Td>
-								<Td>{order.email}</Td>
-							</Tr>
-						))}
-						{/* <Tr>
-							<Td>1</Td>
-							<Td>10</Td>
-							<Td>Капричоза, Латте x 2</Td>
-							<Td>Онлайн</Td>
-							<Td>+7 956 348 15 87, Пушкина, 1</Td>
-							<Td>
-								<Menu>
-									<MenuButton
-										transition="all 0.3s"
-										_focus={{ boxShadow: "none" }}
-									>
-										<Stack direction="row">
-											<Box display="flex">
-												{" "}
-												Принят
-												<FiChevronDown />
-											</Box>
-										</Stack>
-									</MenuButton>
-									<MenuList
-										bg={useColorModeValue(
-											"rgb(255, 255, 255)",
-											"rgb(6, 8, 13)"
-										)}
-										borderColor={useColorModeValue("gray.200", "gray.700")}
-									>
-										<MenuItem>Принят</MenuItem>
-										<MenuItem>Готовится</MenuItem>
-										<MenuItem>Доставляется</MenuItem>
-										<MenuDivider />
-										<MenuItem>Выполнен</MenuItem>
-									</MenuList>
-								</Menu>
-							</Td>
-						</Tr> */}
+						{session?.user?.role == "Админ"
+							? orders.map((order) => (
+								<Tr key={order.id}>
+									<Td>
+										{order.status}
+										<IconButton
+											size="sm"
+											icon={<EditIcon />}
+											onClick={() => handleEditStatus(order.id)}
+										/>
+									</Td>
+									<Td>{order.products}</Td>
+									<Td>{order.phone}</Td>
+									<Td>{order.address}</Td>
+									<Td>{order.payment}</Td>
+									<Td>{order.total}</Td>
+									<Td>{order.email}</Td>
+								</Tr>
+							))
+							: orders
+								?.filter((order) =>
+									order.email?.includes(session?.user?.email)
+								)
+								.map((order) => (
+									<Tr key={order.id}>
+										<Td>{order.status}</Td>
+										<Td>{order.products}</Td>
+										<Td>{order.phone}</Td>
+										<Td>{order.address}</Td>
+										<Td>{order.payment}</Td>
+										<Td>{order.total}</Td>
+										<Td>{order.email}</Td>
+									</Tr>
+								))}
 					</Tbody>
 					<Tfoot>
 						<Tr>

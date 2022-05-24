@@ -48,10 +48,6 @@ export default function ChatListBox() {
 		router.push(`/chat/${id}`);
 	};
 
-	console.log("please");
-	console.log(snapshot);
-	console.log(chats);
-	console.log("thanks");
 
 	const chatExists = (email) =>
 		chats?.find(
