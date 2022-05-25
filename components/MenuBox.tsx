@@ -158,7 +158,7 @@ export default function MenuBox() {
 				<Stack alignItems="center" spacing={3}>
 					<Avatar
 						name={info.name}
-						src="images/chief.jpg"
+						src="/images/chief.jpg"
 						size="2xl"
 						draggable={false}
 					>

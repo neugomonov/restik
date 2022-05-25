@@ -133,6 +133,11 @@ export default function OrdersTable() {
 			const docRef = doc(db, "orders", id);
 			const payload = { status };
 			updateDoc(docRef, payload);
+			await addDoc(collection(db, `notifications`), {
+				recipient: id,
+				text: "Ваш заказ готовится! 😋",
+			});
+
 		}
 	};
 	const [snapshotAdmins] = useCollection(collection(db, "admins"));

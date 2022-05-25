@@ -215,7 +215,7 @@ export default function NewsBox() {
 			<Box padding="1rem">
 				<Stack spacing={3}>
 					<Image
-						src="images/covers/news/openup.jpg"
+						src="/images/covers/news/openup.jpg"
 						draggable={false}
 						loading="lazy"
 						decoding="async"

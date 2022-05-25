@@ -168,7 +168,7 @@ const Index: NextPage<unknown> = () => {
 											ответим!
 										</Heading>
 										<Image
-											src="images/chat.gif"
+											src="/images/chat.gif"
 											draggable={false}
 											loading="lazy"
 											decoding="async"

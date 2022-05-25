@@ -31,7 +31,7 @@ const Logo = (props: any) => {
 		<Stack direction="row" alignItems="center" spacing={3}>
 			<Avatar
 				name={info.name}
-				src="images/chief.jpg"
+				src="/images/chief.jpg"
 				size="lg"
 				draggable={false}
 			/>
@@ -141,7 +141,7 @@ export default function LargeWithNewsletter() {
 								</Link> */}
 								<Link isExternal href="https://nextjs.org/">
 									<Image
-										src="images/reactjs.svg"
+										src="/images/reactjs.svg"
 										alt="Nextjs"
 										draggable={false}
 										loading="lazy"
@@ -151,7 +151,7 @@ export default function LargeWithNewsletter() {
 								</Link>
 								<Link isExternal href="https://nextjs.org/">
 									<Image
-										src="images/Nextjs.svg"
+										src="/images/Nextjs.svg"
 										alt="Nextjs"
 										draggable={false}
 										loading="lazy"

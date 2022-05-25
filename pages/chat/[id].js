@@ -35,6 +35,7 @@ import getOtherEmail from "../../utils/getOtherEmail";
 import { useRef, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import BottomBar from "../../components/BottomBar";
+import { Image } from "@chakra-ui/react";
 
 export default function Chat() {
 	const router = useRouter();
@@ -170,8 +171,8 @@ export default function Chat() {
 														direction="column"
 														pt={4}
 														mx={5}
-														// overflowX="scroll"
-														// sx={{ scrollbarWidth: "none" }}
+													// overflowX="scroll"
+													// sx={{ scrollbarWidth: "none" }}
 													>
 														{getMessages()}
 														{/* <div ref={bottomOfChat}></div> */}
@@ -196,9 +197,9 @@ export default function Chat() {
 											<Flex height="65vh"></Flex>
 											<Stack
 												direction={"row"}
-												// height=" 10vh"
-												// position=" fixed"
-												// bottom=" 0"
+											// height=" 10vh"
+											// position=" fixed"
+											// bottom=" 0"
 											>
 												{/* <Input
 													placeholder={"Ваше сообщение"}
@@ -252,8 +253,8 @@ export default function Chat() {
 											Задавайте вопросы в чат с Пиццерией, и мы обязательно
 											ответим!
 										</Heading>
-										{/* <Image
-											src="images/chat.gif"
+										<Image
+											src="/images/chat.gif"
 											draggable={false}
 											loading="lazy"
 											decoding="async"
@@ -261,7 +262,7 @@ export default function Chat() {
 											height={300}
 											objectFit="cover"
 											borderRadius="md"
-										/> */}
+										/>
 									</Stack>
 								</Stack>
 							</Stack>
@@ -274,7 +275,7 @@ export default function Chat() {
 						alignItems={"center"}
 						width={{ base: "100%", xl: "xl" }}
 						margin=".5rem"
-						// width="35%"
+					// width="35%"
 					>
 						<VideoBox />
 						<NewsBox />

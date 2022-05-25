@@ -19,11 +19,13 @@ export default function BottomBar({ id, user }) {
 
 	const sendMessage = async (e) => {
 		e.preventDefault();
-		await addDoc(collection(db, `chats/${id}/messages`), {
-			text: input,
-			sender: session?.user?.email,
-			timestamp: serverTimestamp(),
-		});
+		if (input !== "") {
+			await addDoc(collection(db, `chats/${id}/messages`), {
+				text: input,
+				sender: session?.user?.email,
+				timestamp: serverTimestamp(),
+			});
+		}
 		setInput("");
 	};
 

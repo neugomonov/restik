@@ -93,7 +93,7 @@ const Logo = (props: any) => {
 		<Stack direction="row" alignItems="center" spacing={3}>
 			<Avatar
 				name={info.name}
-				src="images/chief.jpg"
+				src="/images/chief.jpg"
 				size="md"
 				draggable={false}
 			/>
