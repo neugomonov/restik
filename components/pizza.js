@@ -111,7 +111,7 @@ const Pizza = () => {
 			};
 
 			return () => {
-				console.log("unmount");
+				console.log("pizza unmounted");
 				cancelAnimationFrame(req);
 				renderer.dispose();
 			};

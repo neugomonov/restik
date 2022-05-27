@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import firebase from "../firebase";
 import { getAuth } from "firebase/auth";
 import { useSession, signIn, signOut } from "next-auth/react";
@@ -38,6 +38,7 @@ import {
 	PopoverContent,
 	useBreakpointValue,
 	Heading,
+	Tag,
 } from "@chakra-ui/react";
 import {
 	FiHome,
@@ -50,9 +51,10 @@ import {
 	FiChevronDown,
 } from "react-icons/fi";
 import { GrRestaurant } from "react-icons/gr";
-import { FaPizzaSlice } from "react-icons/fa";
+import { FaBell, FaPizzaSlice } from "react-icons/fa";
 import { IoRestaurantOutline, IoPizzaOutline } from "react-icons/io5";
 import dynamic from "next/dynamic";
+import { db } from "../firebase";
 
 import {
 	MdOutlineDarkMode,
@@ -82,6 +84,19 @@ import { BiNews } from "react-icons/bi";
 import { useRouter } from "next/router";
 import LoginSidebar from "./LoginSidebar";
 import LoginHeader from "./LoginHeader";
+import NotificationList from "./NotificationList";
+import { useCollection } from "react-firebase-hooks/firestore";
+import {
+	collection,
+	limit,
+	onSnapshot,
+	query,
+	where,
+	getDocs,
+	doc,
+	deleteDoc,
+	updateDoc,
+} from "firebase/firestore";
 // import { signOut, useSession } from "next-auth/client";
 
 const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
@@ -172,6 +187,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 	const linkColor = useColorModeValue("gray.600", "gray.200");
 	const linkHoverColor = useColorModeValue("gray.800", "white");
 	const popoverContentBgColor = useColorModeValue("white", "gray.800");
+
 	const router = useRouter();
 	// const [session] = useSession();
 	// const auth = getAuth();
@@ -188,7 +204,57 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 	// 	// you have one. Use User.getToken() instead.
 	// 	const uid = user.uid;
 	// }
+
 	const { data: session } = useSession();
+	const [notificationsCount, setNotificationsCount] = useState(0);
+
+	useEffect(() => {
+		async function getNotificationsCount() {
+			if (!session?.user || !session?.user?.email) return;
+
+			const qq = await query(
+				collection(db, "notifications"),
+				where("read", "==", false),
+				where("recipient", "==", session?.user?.email)
+				// limit(5)
+			);
+			const count = onSnapshot(qq, (querySnapshot) => {
+				setNotificationsCount(querySnapshot.size);
+			});
+			return () => {
+				count();
+			};
+		}
+		getNotificationsCount();
+	}, []);
+	const deleteAll = async () => {
+		const qq = await query(
+			collection(db, "notifications"),
+			// where("read", "==", false),
+			where("recipient", "==", session?.user?.email)
+		);
+		const snapshot = await getDocs(qq);
+		const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+		results.forEach(async (result) => {
+			const docRef = doc(db, "notifications", result.id);
+			await deleteDoc(docRef);
+		});
+	};
+	const readAll = async () => {
+		const qq = await query(
+			collection(db, "notifications"),
+			where("read", "==", false),
+			where("recipient", "==", session?.user?.email)
+		);
+		const snapshot = await getDocs(qq);
+		const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+		results.forEach(async (result) => {
+			const read = true;
+			const docRef = doc(db, "notifications", result.id);
+			const payload = { read };
+			await updateDoc(docRef, payload);
+		});
+	};
 
 	return (
 		<Box
@@ -206,6 +272,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			backdropFilter="auto"
 			backdropBlur="20px"
 			overflowY="auto"
+			overflowX="hidden"
 			css={{
 				"&::-webkit-scrollbar": {
 					width: "4px",
@@ -235,14 +302,79 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				display={{ base: "none", md: "flex" }}
 				mb="2"
 			>
-				<Button
-					size="lg"
-					variant="ghost"
-					aria-label="open menu"
-					leftIcon={<FiBell />}
-				>
-					Оповещения
-				</Button>
+				{/* <IconButton
+					css={{
+						position: "relative !important",
+					}}
+					py={"2"}
+					colorScheme={"gray"}
+					aria-label={"Notifications"}
+					size={"lg"}
+					icon={
+						<>
+							<FaBell color={"gray.750"} />
+							<Box
+								as={"span"}
+								color={"white"}
+								position={"absolute"}
+								top={"6px"}
+								right={"4px"}
+								fontSize={"0.8rem"}
+								bgColor={"red"}
+								borderRadius={"lg"}
+								zIndex={9999}
+								p={"1px"}
+							>
+								10{" "}
+							</Box>
+						</>
+					}
+				/> */}
+				<Menu>
+					<Button
+						as={MenuButton}
+						p="2"
+						align="center"
+						justify="center"
+						size="lg"
+						variant="ghost"
+						aria-label="open menu"
+						leftIcon={
+							<Stack direction="row" spacing={2}>
+								<FiBell />{" "}
+								{notificationsCount > 0 && (
+									<Tag
+										borderRadius="full"
+										colorScheme="red"
+										variant="solid"
+										position="absolute"
+										top={notificationsCount >= 10 ? -3 : -1}
+										left={-1}
+									>
+										{notificationsCount >= 10 ? "10+" : notificationsCount}
+									</Tag>
+								)}
+							</Stack>
+						}
+					>
+						Оповещения
+					</Button>
+					<MenuList
+						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
+						borderColor={useColorModeValue("gray.200", "gray.700")}
+					>
+						<Flex align="center" justify="space-around">
+							<Text alignSelf="center" as={Link} onClick={deleteAll}>
+								🧹 Очистить
+							</Text>
+							<Text alignSelf="center" as={Link} onClick={readAll}>
+								Прочитано ✉️
+							</Text>
+						</Flex>
+						<NotificationList />
+					</MenuList>
+				</Menu>
+
 				<IconButton
 					size={"lg"}
 					icon={
@@ -257,12 +389,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 					onClick={toggleColorMode}
 				/>
 			</Stack>
-
 			{LinkItems.map((link) => (
 				<NavItem key={link.name} icon={link.icon} href={link.href}>
 					{link.name}
 				</NavItem>
 			))}
+
 			<Flex mt="10rem">
 				<Pizza />
 			</Flex>
@@ -285,6 +417,7 @@ const NavItem = ({ icon, href, children, ...rest }: NavItemProps) => {
 				onClick={async () => {
 					await router.push(href, href, { locale: "ru" });
 				}}
+				transition="all 0.2s"
 				align="center"
 				p="4"
 				mx="4"

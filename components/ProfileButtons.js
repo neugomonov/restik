@@ -105,14 +105,13 @@ export default function ProfileButtons() {
 
 	return (
 		<>
-			<Stack direction={{ base: "column", md: "row" }}>
+			<Stack direction={{ base: "column", xl: "row" }}>
 				{users
 					?.filter((user) => user.email?.includes(session?.user?.email))
 					.map((user) => (
 						<Button
 							key={user.id}
 							size="md"
-							aria-label={t("remove")}
 							leftIcon={<AiFillPhone />}
 							onClick={() => handleEditPhone(user.id)}
 						>
@@ -126,7 +125,6 @@ export default function ProfileButtons() {
 						<Button
 							key={user.id}
 							size="md"
-							aria-label={t("add")}
 							leftIcon={<MdPlace />}
 							onClick={() => handleEditAddress(user.id)}
 						>
@@ -139,7 +137,6 @@ export default function ProfileButtons() {
 						<Button
 							key={user.id}
 							size="md"
-							aria-label={t("add")}
 							leftIcon={<IoCash />}
 							onClick={() => handleEditPayment(user.id)}
 						>

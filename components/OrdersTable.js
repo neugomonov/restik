@@ -57,7 +57,14 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, addDoc } from "@firebase/firestore";
 import { db } from "../firebase";
 import { useRouter } from "next/router";
-import { doc, onSnapshot, setDoc, updateDoc } from "firebase/firestore";
+import {
+	doc,
+	onSnapshot,
+	setDoc,
+	updateDoc,
+	serverTimestamp,
+	getDoc,
+} from "firebase/firestore";
 
 export default function OrdersTable() {
 	const { data: session } = useSession();
@@ -69,8 +76,8 @@ export default function OrdersTable() {
 	const router = useRouter();
 	const [orders, setOrders] = useState([{ name: "Loading...", id: "initial" }]);
 	const [users, setUsers] = useState([{ name: "Loading...", id: "initial" }]);
-	const alovelaceDocumentRef = doc(db, 'admins', 'neugomonovv@gmail.com');
-	const usersCollectionRef = collection(db, 'admins');
+	const alovelaceDocumentRef = doc(db, "admins", "neugomonovv@gmail.com");
+	const usersCollectionRef = collection(db, "admins");
 
 	useEffect(
 		() =>
@@ -97,7 +104,6 @@ export default function OrdersTable() {
 		}
 	};
 
-
 	const handleNew = async () => {
 		const products = prompt("Введите что хотите заказать 🍕");
 		if (products != null && products != "") {
@@ -122,27 +128,36 @@ export default function OrdersTable() {
 		}
 	};
 
-
 	const handleEditStatus = async (id) => {
 		const status = prompt("Готовится/Доставляется/Выполнен? 🤔");
+		// const email = prompt("Введите email заказчика 📧");
 		if (
 			status == "Готовится" ||
 			status == "Доставляется" ||
 			status == "Выполнен"
+			// 	&&
+			// email !== null &&
+			// email !== ""
 		) {
 			const docRef = doc(db, "orders", id);
+			const docSnap = await getDoc(docRef);
+
 			const payload = { status };
 			updateDoc(docRef, payload);
 			await addDoc(collection(db, `notifications`), {
-				recipient: id,
-				text: "Ваш заказ готовится! 😋",
+				recipient: docSnap.data().email,
+				text: "🍕 Ваш заказ " + status + "!",
+				timestamp: serverTimestamp(),
+				read: false,
 			});
-
 		}
 	};
 	const [snapshotAdmins] = useCollection(collection(db, "admins"));
 
-	const admins = snapshotAdmins?.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+	const admins = snapshotAdmins?.docs.map((doc) => ({
+		id: doc.id,
+		...doc.data(),
+	}));
 
 	return (
 		<>
@@ -167,30 +182,15 @@ export default function OrdersTable() {
 					<Tbody>
 						{session?.user?.role == "Админ"
 							? orders.map((order) => (
-								<Tr key={order.id}>
-									<Td>
-										{order.status}
-										<IconButton
-											size="sm"
-											icon={<EditIcon />}
-											onClick={() => handleEditStatus(order.id)}
-										/>
-									</Td>
-									<Td>{order.products}</Td>
-									<Td>{order.phone}</Td>
-									<Td>{order.address}</Td>
-									<Td>{order.payment}</Td>
-									<Td>{order.total}</Td>
-									<Td>{order.email}</Td>
-								</Tr>
-							))
-							: orders
-								?.filter((order) =>
-									order.email?.includes(session?.user?.email)
-								)
-								.map((order) => (
 									<Tr key={order.id}>
-										<Td>{order.status}</Td>
+										<Td>
+											{order.status}
+											<IconButton
+												size="sm"
+												icon={<EditIcon />}
+												onClick={() => handleEditStatus(order.id)}
+											/>
+										</Td>
 										<Td>{order.products}</Td>
 										<Td>{order.phone}</Td>
 										<Td>{order.address}</Td>
@@ -198,7 +198,22 @@ export default function OrdersTable() {
 										<Td>{order.total}</Td>
 										<Td>{order.email}</Td>
 									</Tr>
-								))}
+							  ))
+							: orders
+									?.filter((order) =>
+										order.email?.includes(session?.user?.email)
+									)
+									.map((order) => (
+										<Tr key={order.id}>
+											<Td>{order.status}</Td>
+											<Td>{order.products}</Td>
+											<Td>{order.phone}</Td>
+											<Td>{order.address}</Td>
+											<Td>{order.payment}</Td>
+											<Td>{order.total}</Td>
+											<Td>{order.email}</Td>
+										</Tr>
+									))}
 					</Tbody>
 					<Tfoot>
 						<Tr>

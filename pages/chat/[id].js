@@ -171,8 +171,23 @@ export default function Chat() {
 														direction="column"
 														pt={4}
 														mx={5}
-													// overflowX="scroll"
-													// sx={{ scrollbarWidth: "none" }}
+														maxH="85vh"
+														overflowY="auto"
+														css={{
+															"&::-webkit-scrollbar": {
+																width: "4px",
+															},
+															"&::-webkit-scrollbar-track": {
+																width: "6px",
+															},
+															"&::-webkit-scrollbar-thumb": {
+																background: "rgba(6, 8, 13, 0.25)",
+																borderRadius: "24px",
+															},
+														}}
+
+														// overflowX="scroll"
+														// sx={{ scrollbarWidth: "none" }}
 													>
 														{getMessages()}
 														{/* <div ref={bottomOfChat}></div> */}
@@ -197,9 +212,9 @@ export default function Chat() {
 											<Flex height="65vh"></Flex>
 											<Stack
 												direction={"row"}
-											// height=" 10vh"
-											// position=" fixed"
-											// bottom=" 0"
+												// height=" 10vh"
+												// position=" fixed"
+												// bottom=" 0"
 											>
 												{/* <Input
 													placeholder={"Ваше сообщение"}
@@ -275,7 +290,7 @@ export default function Chat() {
 						alignItems={"center"}
 						width={{ base: "100%", xl: "xl" }}
 						margin=".5rem"
-					// width="35%"
+						// width="35%"
 					>
 						<VideoBox />
 						<NewsBox />

@@ -121,8 +121,22 @@ const Index: NextPage<unknown> = () => {
 										borderRadius="lg"
 										padding="1rem"
 										width="100%"
-										height="90vh"
 										minW={{ base: "auto", xl: "50%" }}
+										height="90vh"
+										maxH="90vh"
+										overflowY="auto"
+										css={{
+											"&::-webkit-scrollbar": {
+												width: "4px",
+											},
+											"&::-webkit-scrollbar-track": {
+												width: "6px",
+											},
+											"&::-webkit-scrollbar-thumb": {
+												background: "rgba(6, 8, 13, 0.25)",
+												borderRadius: "24px",
+											},
+										}}
 									>
 										<Heading size="md">
 											Для вопросов к Пиццерии создайте чат и введите наш email -

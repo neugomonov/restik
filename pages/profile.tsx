@@ -114,7 +114,6 @@ const Index: NextPage<unknown> = () => {
 								minW={{ base: "auto", xl: "20rem" }}
 								spacing={3}
 								px={{ base: "1rem", xl: "10%" }}
-								// alignItems="center"
 								direction={"row"}
 							>
 								<Stack
@@ -122,26 +121,20 @@ const Index: NextPage<unknown> = () => {
 									spacing={3}
 								>
 									<Box
-										// borderWidth="1px"
-										// borderRadius="lg"
 										padding="1rem"
 										width="100%"
-										// height="90vh"
 										minW={{ base: "auto", xl: "50%" }}
 									>
 										{" "}
 										<Flex
 											alignItems={"center"}
 											justifyContent={"center"}
-											// display={{ base: "none", md: "flex" }}
 											mx="2"
 										>
 											<Box
 												p={4}
 												alignItems={"center"}
 												justifyContent={"center"}
-												// display={{ base: "none", md: "flex" }}
-												// mx="8"
 												transition=".3s ease"
 												borderWidth="1px"
 												borderRadius="lg"
@@ -152,17 +145,10 @@ const Index: NextPage<unknown> = () => {
 														: "rgba(255, 255, 255, 0.25)"
 												}
 												position="relative"
-												// backdropFilter="auto"
-												// backdropBlur="20px"
 											>
 												<VStack>
 													<Avatar size={"3xl"} src={session?.user?.image!} />
-													<VStack
-														// display={{ base: "none", md: "flex" }}
-														alignItems="flex-start"
-														spacing="1px"
-														ml="2"
-													>
+													<VStack alignItems="center" spacing="0" ml="2">
 														<Text fontSize="3xl">{session?.user?.name}</Text>
 														<Text
 															fontSize="xl"
@@ -170,22 +156,6 @@ const Index: NextPage<unknown> = () => {
 														>
 															{session?.user?.email!}
 														</Text>
-														{/* <Stack direction={{ base: "column", md: "row" }}>
-															<Button
-																size="md"
-																aria-label={t("remove")}
-																leftIcon={<BiRename />}
-															>
-																Сменить логин
-															</Button>
-															<Button
-																size="md"
-																aria-label={t("add")}
-																leftIcon={<MdPassword />}
-															>
-																Сменить пароль
-															</Button>
-														</Stack> */}
 														<ProfileButtons />{" "}
 													</VStack>
 													<Box display={{ base: "none", md: "flex" }}>
@@ -218,13 +188,11 @@ const Index: NextPage<unknown> = () => {
 									</Stack>
 								</Stack>
 							</Stack>
-							{/* <Heading>Админ-панель</Heading> */}
 							<Stack
 								alignItems={"center"}
 								justifyContent={"center"}
 								direction="column"
 							>
-								{/* <Heading>Админ-панель</Heading> */}
 								<Box
 									borderWidth="1px"
 									borderRadius="lg"
