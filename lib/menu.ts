@@ -5,7 +5,7 @@ const { types } = info;
 const translatedIngredients = new Map([
 	["Margherita", { en: "Margherita", ru: "Маргарита" }],
 	["Capricciosa", { en: "Capricciosa", ru: "Капричоза" }],
-	["Napoletana", { en: "Napoletana", ru: "Наполетана " }],
+	["Napoletana", { en: "Napoletana", ru: "Наполетана" }],
 	["Calzone", { en: "Calzone", ru: "Кальцоне" }],
 	["Quattro-Formaggi", { en: "Quattro-Formaggi", ru: "Четыре сыра" }],
 	["Caprese", { en: "Caprese", ru: "Капрезе" }],

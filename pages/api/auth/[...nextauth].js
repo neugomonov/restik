@@ -64,7 +64,11 @@ export default NextAuth({
 				"--token--",
 				token
 			);
-			session.user.role = user.role; //ADD THIS LINE SO THAT ROLL IS INCLUDED AS PART OF SESSION INFO.
+			session.user.role = user.role;
+			session.user.address = user.address;
+			session.user.phone = user.phone;
+			session.user.payment = user.payment;
+
 			return session;
 		},
 	},

@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import NextImage from "next/image";
 import SidebarWithHeader from "./SidebarWithHeader";
+import stringifyCartPositions from "./stringifyCartPositions";
 
 import {
 	Center,
@@ -59,6 +60,9 @@ import LargeWithNewsletter from "./Footer";
 import { MdOutlineSkipNext } from "react-icons/md";
 import { BiMoviePlay, BiNews } from "react-icons/bi";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../firebase";
+import { useSession } from "next-auth/react";
 
 const Tooltip = dynamic(async () => (await import("@chakra-ui/react")).Tooltip);
 const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
@@ -146,6 +150,7 @@ const ProductImage = chakra(NextImage, {
 
 export default function MenuBox() {
 	const router = useRouter();
+	const { data: session } = useSession();
 
 	const [cart, setCart] = useRecoilState(_cart);
 	const { register, handleSubmit, watch } = useForm<FormState>();
@@ -172,6 +177,20 @@ export default function MenuBox() {
 	const onSubmit = (data: FormData) => {
 		console.log(data);
 	};
+	// console.log(JSON.stringify(cart.items));
+	// let cartItemsString = cart.items.map(({ name }) => name);
+	// console.log(cartItemsString.join(", "));
+	// console.log(
+	// 	cart.items
+	// 		.map(function (x) {
+	// 			return x.name;
+	// 		})
+	// 		.join(", ")
+	// );
+
+	// console.log(Object.values(cart.items).join());
+	// console.log(cart.total);
+	let handleNew = stringifyCartPositions();
 
 	return (
 		<>
@@ -347,12 +366,7 @@ export default function MenuBox() {
 							<Button
 								leftIcon={<IoMdCheckmarkCircle />}
 								mr={3}
-								onClick={async () => {
-									await router.push("/menu", "/menu", {
-										locale: "ru",
-									});
-									onClose();
-								}}
+								onClick={handleNew}
 								disabled={cart.items.length === 0}
 							>
 								К заказу{" "}
