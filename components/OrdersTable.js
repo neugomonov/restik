@@ -112,6 +112,7 @@ export default function OrdersTable() {
 			const payment = prompt("Наличные или Онлайн? 💸");
 			const total = prompt("Введите сумму оплаты 💵");
 			const email = prompt("Введите ваш email 📧");
+			const timestamp = serverTimestamp();
 			const status = "Принят";
 
 			const collectionRef = collection(db, "orders");
@@ -122,6 +123,7 @@ export default function OrdersTable() {
 				payment,
 				total,
 				email,
+				timestamp,
 				status,
 			};
 			const docRef = await addDoc(collectionRef, payload);

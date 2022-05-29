@@ -60,7 +60,12 @@ import LargeWithNewsletter from "./Footer";
 import { MdOutlineSkipNext } from "react-icons/md";
 import { BiMoviePlay, BiNews } from "react-icons/bi";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { addDoc, collection } from "firebase/firestore";
+import {
+	addDoc,
+	collection,
+	FieldValue,
+	serverTimestamp,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import { useSession } from "next-auth/react";
 
@@ -191,7 +196,6 @@ export default function MenuBox() {
 	// console.log(Object.values(cart.items).join());
 	// console.log(cart.total);
 	let handleNew = stringifyCartPositions();
-
 	return (
 		<>
 			<IconButton

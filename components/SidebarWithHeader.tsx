@@ -454,6 +454,54 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 	const { t, lang } = useTranslation("home");
 	const router = useRouter();
 	const { data: session } = useSession();
+	const [notificationsCount, setNotificationsCount] = useState(0);
+	useEffect(() => {
+		async function getNotificationsCount() {
+			if (!session?.user || !session?.user?.email) return;
+
+			const qq = await query(
+				collection(db, "notifications"),
+				where("read", "==", false),
+				where("recipient", "==", session?.user?.email)
+				// limit(5)
+			);
+			const count = onSnapshot(qq, (querySnapshot) => {
+				setNotificationsCount(querySnapshot.size);
+			});
+			return () => {
+				count();
+			};
+		}
+		getNotificationsCount();
+	}, []);
+	const deleteAll = async () => {
+		const qq = await query(
+			collection(db, "notifications"),
+			// where("read", "==", false),
+			where("recipient", "==", session?.user?.email)
+		);
+		const snapshot = await getDocs(qq);
+		const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+		results.forEach(async (result) => {
+			const docRef = doc(db, "notifications", result.id);
+			await deleteDoc(docRef);
+		});
+	};
+	const readAll = async () => {
+		const qq = await query(
+			collection(db, "notifications"),
+			where("read", "==", false),
+			where("recipient", "==", session?.user?.email)
+		);
+		const snapshot = await getDocs(qq);
+		const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+		results.forEach(async (result) => {
+			const read = true;
+			const docRef = doc(db, "notifications", result.id);
+			const payload = { read };
+			await updateDoc(docRef, payload);
+		});
+	};
 
 	return (
 		<Flex
@@ -510,13 +558,49 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 					aria-label={"Change Color Theme"}
 					onClick={toggleColorMode}
 				/>
+				<Menu>
+					<IconButton
+						as={MenuButton}
+						p="4"
+						align="center"
+						justify="center"
+						size="lg"
+						variant="ghost"
+						aria-label="open menu"
+						icon={
+							<Stack direction="row" spacing={2}>
+								<FiBell />{" "}
+								{notificationsCount > 0 && (
+									<Tag
+										borderRadius="full"
+										colorScheme="red"
+										variant="solid"
+										position="absolute"
+										top={notificationsCount >= 10 ? -3 : -1}
+										left={-1}
+									>
+										{notificationsCount >= 10 ? "10+" : notificationsCount}
+									</Tag>
+								)}
+							</Stack>
+						}
+					/>
+					<MenuList
+						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
+						borderColor={useColorModeValue("gray.200", "gray.700")}
+					>
+						<Flex align="center" justify="space-around">
+							<Text alignSelf="center" as={Link} onClick={deleteAll}>
+								🧹 Очистить
+							</Text>
+							<Text alignSelf="center" as={Link} onClick={readAll}>
+								Прочитано ✉️
+							</Text>
+						</Flex>
+						<NotificationList />
+					</MenuList>
+				</Menu>
 
-				<IconButton
-					size="lg"
-					variant="ghost"
-					aria-label="open menu"
-					icon={<FiBell />}
-				/>
 				<LoginHeader />
 			</HStack>
 		</Flex>

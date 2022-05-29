@@ -1,5 +1,5 @@
 import { useDisclosure, useToast } from "@chakra-ui/react";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
@@ -39,14 +39,20 @@ export default function stringifyCartPositions() {
 	}
 	// console.log("stringifiedn't");
 	// console.log(stringified.substring(2));
+
 	let stringifiedProducts = stringified.substring(2);
 	const handleNew = async () => {
+		let disco = cart.total - cart.total * 0.3;
+		let currentTime = new Date().getTime() / 1000;
+		let timeOfDiscoEnd = 1661776053;
+		let total = 0;
+		currentTime < timeOfDiscoEnd ? (total = disco) : (total = cart.total);
 		const products = stringifiedProducts;
-		const total = cart.total;
 		const phone = session?.user?.phone;
 		const payment = session?.user?.payment;
 		const address = session?.user?.address;
 		const email = session?.user?.email;
+		const timestamp = serverTimestamp();
 		const status = "Принят";
 		const collectionRef = collection(db, "orders");
 		const payload = {
@@ -56,6 +62,7 @@ export default function stringifyCartPositions() {
 			payment,
 			total,
 			email,
+			timestamp,
 			status,
 		};
 		const docRef = await addDoc(collectionRef, payload);
