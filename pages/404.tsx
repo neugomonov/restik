@@ -24,10 +24,12 @@ import {
 import info from "../lib/info";
 import { BiErrorAlt } from "react-icons/bi";
 import { ArrowBackIcon } from "@chakra-ui/icons";
+import { useRouter } from "next/router";
 
 const Index: NextPage<unknown> = () => {
 	const { t, lang } = useTranslation("home");
 	const { colorMode } = useColorMode();
+	const router = useRouter();
 
 	return (
 		<>
@@ -98,7 +100,13 @@ const Index: NextPage<unknown> = () => {
 									Такой страницы не существует. Что-то здесь не так. Лучше
 									вернуться назад.
 								</Text>
-								<Button leftIcon={<ArrowBackIcon />} colorScheme="orange">
+								<Button
+									leftIcon={<ArrowBackIcon />}
+									colorScheme="orange"
+									onClick={async () => {
+										await router.back();
+									}}
+								>
 									Назад
 								</Button>
 							</Stack>

@@ -126,8 +126,8 @@ const Index: NextPage<unknown> = () => {
 													draggable={false}
 													loading="lazy"
 													decoding="async"
-													width="auto"
-													height={150}
+													width="3840"
+													height={1920}
 													objectFit="cover"
 													borderRadius="md"
 												/>

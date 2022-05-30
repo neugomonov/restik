@@ -115,6 +115,7 @@ export default function LoginSidebar() {
 					fontWeight={600}
 					colorScheme={"orange"}
 					onClick={() => signIn()}
+					data-testid="button"
 				>
 					Войти
 				</Button>
