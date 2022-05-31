@@ -210,7 +210,7 @@ const Index: NextPage<unknown> = () => {
 						<MenuBox />
 					</Box>
 					<Flex
-						flexShrink="10"
+						flexShrink={10}
 						flexDirection="column"
 						// h={{ base: "100%", xl: "140rem" }}
 						alignItems={"center"}
