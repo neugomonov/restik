@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import firebase from "../firebase";
-import { getAuth } from "firebase/auth";
+// import firebase from "../firebase";
+// import { getAuth } from "firebase/auth";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 import {
