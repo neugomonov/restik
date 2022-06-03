@@ -43,6 +43,7 @@ export default function WithBackgroundImage() {
 							rounded={"full"}
 							bg={"orange.400"}
 							_hover={{ bg: "orange.500" }}
+							data-testid="button"
 							onClick={async () => {
 								await router.push("/menu", "/menu", {
 									locale: "ru",

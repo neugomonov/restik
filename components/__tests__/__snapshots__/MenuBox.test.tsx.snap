@@ -1,0 +1,2948 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <span
+      className="css-124qy5l"
+    >
+      Меню
+       
+    </span>
+    <button
+      aria-controls="menu-list-18"
+      aria-expanded={false}
+      aria-haspopup="menu"
+      aria-label="Change language"
+      className="chakra-button chakra-menu__menu-button css-198bfjk"
+      id="menu-button-18"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden={true}
+        fill="none"
+        focusable={false}
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+      </svg>
+    </button>
+    <div
+      className="css-0"
+      style={
+        Object {
+          "inset": "0 auto auto 0",
+          "minWidth": "max-content",
+          "position": "absolute",
+          "visibility": "hidden",
+        }
+      }
+    >
+      <div
+        aria-orientation="vertical"
+        className="chakra-menu__menu-list css-12r7kuq"
+        id="menu-list-18"
+        onKeyDown={[Function]}
+        role="menu"
+        style={
+          Object {
+            "opacity": 0,
+            "transform": "scale(0.8) translateZ(0)",
+            "transformOrigin": "var(--popper-transform-origin)",
+            "visibility": "hidden",
+          }
+        }
+        tabIndex={-1}
+      />
+    </div>
+  </div>,
+  <div
+    className="chakra-stack css-137fd6w"
+  >
+    <div
+      className="chakra-stack css-1m032t"
+    >
+      <span
+        className="chakra-avatar css-1ruhx4w"
+        draggable={false}
+      >
+        <div
+          aria-label="Пиццерия"
+          className="chakra-avatar__initials css-0"
+          role="img"
+        >
+          П
+        </div>
+        <div
+          className="chakra-avatar__badge css-hxpkvu"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+        />
+      </span>
+      <h2
+        className="chakra-heading css-0"
+      >
+        Пиццерия
+      </h2>
+      <p
+        className="chakra-text css-0"
+      >
+        menu:restaurantDescription
+      </p>
+    </div>
+    <div
+      className="css-w5lq8y"
+    >
+      <div
+        className="css-4fr6ed"
+      >
+        <div
+          className="chakra-stack css-15duo8n"
+        >
+          <span
+            style={
+              Object {
+                "background": "none",
+                "border": 0,
+                "boxSizing": "border-box",
+                "display": "inline-block",
+                "height": "initial",
+                "margin": 0,
+                "maxWidth": "100%",
+                "opacity": 1,
+                "overflow": "hidden",
+                "padding": 0,
+                "position": "relative",
+                "width": "initial",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "background": "none",
+                  "border": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": "initial",
+                  "margin": 0,
+                  "maxWidth": "100%",
+                  "opacity": 1,
+                  "padding": 0,
+                  "width": "initial",
+                }
+              }
+            >
+              <img
+                alt=""
+                aria-hidden={true}
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%273840%27%20height=%271920%27/%3e"
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
+                }
+              />
+            </span>
+            <img
+              alt="menu:photoOf undefined"
+              className="css-1vligom"
+              data-nimg="intrinsic"
+              decoding="async"
+              onError={[Function]}
+              onLoad={[Function]}
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style={
+                Object {
+                  "border": "none",
+                  "bottom": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": 0,
+                  "left": 0,
+                  "margin": "auto",
+                  "maxHeight": "100%",
+                  "maxWidth": "100%",
+                  "minHeight": "100%",
+                  "minWidth": "100%",
+                  "objectFit": undefined,
+                  "objectPosition": undefined,
+                  "padding": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "width": 0,
+                }
+              }
+            />
+            <noscript>
+              <img
+                alt="menu:photoOf undefined"
+                className="css-1vligom"
+                data-nimg="intrinsic"
+                decoding="async"
+                loading="lazy"
+                src="/_next/image?url=%2Fimages%2Fcovers%2Fmargherita.webp&w=3840&q=75"
+                srcSet="/_next/image?url=%2Fimages%2Fcovers%2Fmargherita.webp&w=3840&q=75 1x"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": undefined,
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+            </noscript>
+          </span>
+          <div
+            className="css-z7mtfw"
+          >
+            <h2
+              className="chakra-heading css-0"
+            />
+            <p
+              className="chakra-text css-0"
+            >
+              ¼ / ½ kg
+            </p>
+          </div>
+          <i
+            className="chakra-text css-19xb2ia"
+          >
+            , 
+          </i>
+          <div
+            className="chakra-button__group css-1ayoy1w"
+            role="group"
+          >
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  280
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  380
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-4fr6ed"
+      >
+        <div
+          className="chakra-stack css-15duo8n"
+        >
+          <span
+            style={
+              Object {
+                "background": "none",
+                "border": 0,
+                "boxSizing": "border-box",
+                "display": "inline-block",
+                "height": "initial",
+                "margin": 0,
+                "maxWidth": "100%",
+                "opacity": 1,
+                "overflow": "hidden",
+                "padding": 0,
+                "position": "relative",
+                "width": "initial",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "background": "none",
+                  "border": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": "initial",
+                  "margin": 0,
+                  "maxWidth": "100%",
+                  "opacity": 1,
+                  "padding": 0,
+                  "width": "initial",
+                }
+              }
+            >
+              <img
+                alt=""
+                aria-hidden={true}
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%273840%27%20height=%271920%27/%3e"
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
+                }
+              />
+            </span>
+            <img
+              alt="menu:photoOf undefined"
+              className="css-1vligom"
+              data-nimg="intrinsic"
+              decoding="async"
+              onError={[Function]}
+              onLoad={[Function]}
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style={
+                Object {
+                  "border": "none",
+                  "bottom": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": 0,
+                  "left": 0,
+                  "margin": "auto",
+                  "maxHeight": "100%",
+                  "maxWidth": "100%",
+                  "minHeight": "100%",
+                  "minWidth": "100%",
+                  "objectFit": undefined,
+                  "objectPosition": undefined,
+                  "padding": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "width": 0,
+                }
+              }
+            />
+            <noscript>
+              <img
+                alt="menu:photoOf undefined"
+                className="css-1vligom"
+                data-nimg="intrinsic"
+                decoding="async"
+                loading="lazy"
+                src="/_next/image?url=%2Fimages%2Fcovers%2Fcapricciosa.jpg&w=3840&q=75"
+                srcSet="/_next/image?url=%2Fimages%2Fcovers%2Fcapricciosa.jpg&w=3840&q=75 1x"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": undefined,
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+            </noscript>
+          </span>
+          <div
+            className="css-z7mtfw"
+          >
+            <h2
+              className="chakra-heading css-0"
+            />
+            <p
+              className="chakra-text css-0"
+            >
+              ¼ / ½ kg
+            </p>
+          </div>
+          <i
+            className="chakra-text css-19xb2ia"
+          >
+            , , 
+          </i>
+          <div
+            className="chakra-button__group css-1ayoy1w"
+            role="group"
+          >
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  120
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  200
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-4fr6ed"
+      >
+        <div
+          className="chakra-stack css-15duo8n"
+        >
+          <span
+            style={
+              Object {
+                "background": "none",
+                "border": 0,
+                "boxSizing": "border-box",
+                "display": "inline-block",
+                "height": "initial",
+                "margin": 0,
+                "maxWidth": "100%",
+                "opacity": 1,
+                "overflow": "hidden",
+                "padding": 0,
+                "position": "relative",
+                "width": "initial",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "background": "none",
+                  "border": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": "initial",
+                  "margin": 0,
+                  "maxWidth": "100%",
+                  "opacity": 1,
+                  "padding": 0,
+                  "width": "initial",
+                }
+              }
+            >
+              <img
+                alt=""
+                aria-hidden={true}
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%273840%27%20height=%271920%27/%3e"
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
+                }
+              />
+            </span>
+            <img
+              alt="menu:photoOf undefined"
+              className="css-1vligom"
+              data-nimg="intrinsic"
+              decoding="async"
+              onError={[Function]}
+              onLoad={[Function]}
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style={
+                Object {
+                  "border": "none",
+                  "bottom": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": 0,
+                  "left": 0,
+                  "margin": "auto",
+                  "maxHeight": "100%",
+                  "maxWidth": "100%",
+                  "minHeight": "100%",
+                  "minWidth": "100%",
+                  "objectFit": undefined,
+                  "objectPosition": undefined,
+                  "padding": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "width": 0,
+                }
+              }
+            />
+            <noscript>
+              <img
+                alt="menu:photoOf undefined"
+                className="css-1vligom"
+                data-nimg="intrinsic"
+                decoding="async"
+                loading="lazy"
+                src="/_next/image?url=%2Fimages%2Fcovers%2Fnapoletana.jpg&w=3840&q=75"
+                srcSet="/_next/image?url=%2Fimages%2Fcovers%2Fnapoletana.jpg&w=3840&q=75 1x"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": undefined,
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+            </noscript>
+          </span>
+          <div
+            className="css-z7mtfw"
+          >
+            <h2
+              className="chakra-heading css-0"
+            />
+            <p
+              className="chakra-text css-0"
+            >
+              ¼ / ½ kg
+            </p>
+          </div>
+          <i
+            className="chakra-text css-19xb2ia"
+          >
+            , , , 
+          </i>
+          <div
+            className="chakra-button__group css-1ayoy1w"
+            role="group"
+          >
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  210
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  390
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-4fr6ed"
+      >
+        <div
+          className="chakra-stack css-15duo8n"
+        >
+          <span
+            style={
+              Object {
+                "background": "none",
+                "border": 0,
+                "boxSizing": "border-box",
+                "display": "inline-block",
+                "height": "initial",
+                "margin": 0,
+                "maxWidth": "100%",
+                "opacity": 1,
+                "overflow": "hidden",
+                "padding": 0,
+                "position": "relative",
+                "width": "initial",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "background": "none",
+                  "border": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": "initial",
+                  "margin": 0,
+                  "maxWidth": "100%",
+                  "opacity": 1,
+                  "padding": 0,
+                  "width": "initial",
+                }
+              }
+            >
+              <img
+                alt=""
+                aria-hidden={true}
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%273840%27%20height=%271920%27/%3e"
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
+                }
+              />
+            </span>
+            <img
+              alt="menu:photoOf undefined"
+              className="css-1vligom"
+              data-nimg="intrinsic"
+              decoding="async"
+              onError={[Function]}
+              onLoad={[Function]}
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style={
+                Object {
+                  "border": "none",
+                  "bottom": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": 0,
+                  "left": 0,
+                  "margin": "auto",
+                  "maxHeight": "100%",
+                  "maxWidth": "100%",
+                  "minHeight": "100%",
+                  "minWidth": "100%",
+                  "objectFit": undefined,
+                  "objectPosition": undefined,
+                  "padding": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "width": 0,
+                }
+              }
+            />
+            <noscript>
+              <img
+                alt="menu:photoOf undefined"
+                className="css-1vligom"
+                data-nimg="intrinsic"
+                decoding="async"
+                loading="lazy"
+                src="/_next/image?url=%2Fimages%2Fcovers%2FCalzone.jpg&w=3840&q=75"
+                srcSet="/_next/image?url=%2Fimages%2Fcovers%2FCalzone.jpg&w=3840&q=75 1x"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": undefined,
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+            </noscript>
+          </span>
+          <div
+            className="css-z7mtfw"
+          >
+            <h2
+              className="chakra-heading css-0"
+            />
+            <p
+              className="chakra-text css-0"
+            >
+              ¼ / ½ kg
+            </p>
+          </div>
+          <i
+            className="chakra-text css-19xb2ia"
+          >
+            , , , , 
+          </i>
+          <div
+            className="chakra-button__group css-1ayoy1w"
+            role="group"
+          >
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  200
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  380
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-4fr6ed"
+      >
+        <div
+          className="chakra-stack css-15duo8n"
+        >
+          <span
+            style={
+              Object {
+                "background": "none",
+                "border": 0,
+                "boxSizing": "border-box",
+                "display": "inline-block",
+                "height": "initial",
+                "margin": 0,
+                "maxWidth": "100%",
+                "opacity": 1,
+                "overflow": "hidden",
+                "padding": 0,
+                "position": "relative",
+                "width": "initial",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "background": "none",
+                  "border": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": "initial",
+                  "margin": 0,
+                  "maxWidth": "100%",
+                  "opacity": 1,
+                  "padding": 0,
+                  "width": "initial",
+                }
+              }
+            >
+              <img
+                alt=""
+                aria-hidden={true}
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%273840%27%20height=%271920%27/%3e"
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
+                }
+              />
+            </span>
+            <img
+              alt="menu:photoOf undefined"
+              className="css-1vligom"
+              data-nimg="intrinsic"
+              decoding="async"
+              onError={[Function]}
+              onLoad={[Function]}
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style={
+                Object {
+                  "border": "none",
+                  "bottom": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": 0,
+                  "left": 0,
+                  "margin": "auto",
+                  "maxHeight": "100%",
+                  "maxWidth": "100%",
+                  "minHeight": "100%",
+                  "minWidth": "100%",
+                  "objectFit": undefined,
+                  "objectPosition": undefined,
+                  "padding": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "width": 0,
+                }
+              }
+            />
+            <noscript>
+              <img
+                alt="menu:photoOf undefined"
+                className="css-1vligom"
+                data-nimg="intrinsic"
+                decoding="async"
+                loading="lazy"
+                src="/_next/image?url=%2Fimages%2Fcovers%2FQuattro-Formaggi.jpg&w=3840&q=75"
+                srcSet="/_next/image?url=%2Fimages%2Fcovers%2FQuattro-Formaggi.jpg&w=3840&q=75 1x"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": undefined,
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+            </noscript>
+          </span>
+          <div
+            className="css-z7mtfw"
+          >
+            <h2
+              className="chakra-heading css-0"
+            />
+            <p
+              className="chakra-text css-0"
+            >
+              ¼ / ½ kg
+            </p>
+          </div>
+          <i
+            className="chakra-text css-19xb2ia"
+          >
+            , , , 
+          </i>
+          <div
+            className="chakra-button__group css-1ayoy1w"
+            role="group"
+          >
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  210
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  390
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-4fr6ed"
+      >
+        <div
+          className="chakra-stack css-15duo8n"
+        >
+          <span
+            style={
+              Object {
+                "background": "none",
+                "border": 0,
+                "boxSizing": "border-box",
+                "display": "inline-block",
+                "height": "initial",
+                "margin": 0,
+                "maxWidth": "100%",
+                "opacity": 1,
+                "overflow": "hidden",
+                "padding": 0,
+                "position": "relative",
+                "width": "initial",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "background": "none",
+                  "border": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": "initial",
+                  "margin": 0,
+                  "maxWidth": "100%",
+                  "opacity": 1,
+                  "padding": 0,
+                  "width": "initial",
+                }
+              }
+            >
+              <img
+                alt=""
+                aria-hidden={true}
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%273840%27%20height=%271920%27/%3e"
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
+                }
+              />
+            </span>
+            <img
+              alt="menu:photoOf undefined"
+              className="css-1vligom"
+              data-nimg="intrinsic"
+              decoding="async"
+              onError={[Function]}
+              onLoad={[Function]}
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style={
+                Object {
+                  "border": "none",
+                  "bottom": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": 0,
+                  "left": 0,
+                  "margin": "auto",
+                  "maxHeight": "100%",
+                  "maxWidth": "100%",
+                  "minHeight": "100%",
+                  "minWidth": "100%",
+                  "objectFit": undefined,
+                  "objectPosition": undefined,
+                  "padding": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "width": 0,
+                }
+              }
+            />
+            <noscript>
+              <img
+                alt="menu:photoOf undefined"
+                className="css-1vligom"
+                data-nimg="intrinsic"
+                decoding="async"
+                loading="lazy"
+                src="/_next/image?url=%2Fimages%2Fcovers%2Fcaprese.jpg&w=3840&q=75"
+                srcSet="/_next/image?url=%2Fimages%2Fcovers%2Fcaprese.jpg&w=3840&q=75 1x"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": undefined,
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+            </noscript>
+          </span>
+          <div
+            className="css-z7mtfw"
+          >
+            <h2
+              className="chakra-heading css-0"
+            />
+            <p
+              className="chakra-text css-0"
+            >
+              ¼ / ½ kg
+            </p>
+          </div>
+          <i
+            className="chakra-text css-19xb2ia"
+          >
+            , , , 
+          </i>
+          <div
+            className="chakra-button__group css-1ayoy1w"
+            role="group"
+          >
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  150
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  270
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-4fr6ed"
+      >
+        <div
+          className="chakra-stack css-15duo8n"
+        >
+          <span
+            style={
+              Object {
+                "background": "none",
+                "border": 0,
+                "boxSizing": "border-box",
+                "display": "inline-block",
+                "height": "initial",
+                "margin": 0,
+                "maxWidth": "100%",
+                "opacity": 1,
+                "overflow": "hidden",
+                "padding": 0,
+                "position": "relative",
+                "width": "initial",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "background": "none",
+                  "border": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": "initial",
+                  "margin": 0,
+                  "maxWidth": "100%",
+                  "opacity": 1,
+                  "padding": 0,
+                  "width": "initial",
+                }
+              }
+            >
+              <img
+                alt=""
+                aria-hidden={true}
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%273840%27%20height=%271920%27/%3e"
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
+                }
+              />
+            </span>
+            <img
+              alt="menu:photoOf undefined"
+              className="css-1vligom"
+              data-nimg="intrinsic"
+              decoding="async"
+              onError={[Function]}
+              onLoad={[Function]}
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style={
+                Object {
+                  "border": "none",
+                  "bottom": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": 0,
+                  "left": 0,
+                  "margin": "auto",
+                  "maxHeight": "100%",
+                  "maxWidth": "100%",
+                  "minHeight": "100%",
+                  "minWidth": "100%",
+                  "objectFit": undefined,
+                  "objectPosition": undefined,
+                  "padding": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "width": 0,
+                }
+              }
+            />
+            <noscript>
+              <img
+                alt="menu:photoOf undefined"
+                className="css-1vligom"
+                data-nimg="intrinsic"
+                decoding="async"
+                loading="lazy"
+                src="/_next/image?url=%2Fimages%2Fcovers%2Ftarhun.jpg&w=3840&q=75"
+                srcSet="/_next/image?url=%2Fimages%2Fcovers%2Ftarhun.jpg&w=3840&q=75 1x"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": undefined,
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+            </noscript>
+          </span>
+          <div
+            className="css-z7mtfw"
+          >
+            <h2
+              className="chakra-heading css-0"
+            />
+            <p
+              className="chakra-text css-0"
+            >
+              ¼ / ½ kg
+            </p>
+          </div>
+          <i
+            className="chakra-text css-19xb2ia"
+          >
+            
+          </i>
+          <div
+            className="chakra-button__group css-1ayoy1w"
+            role="group"
+          >
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  60
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  100
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-4fr6ed"
+      >
+        <div
+          className="chakra-stack css-15duo8n"
+        >
+          <span
+            style={
+              Object {
+                "background": "none",
+                "border": 0,
+                "boxSizing": "border-box",
+                "display": "inline-block",
+                "height": "initial",
+                "margin": 0,
+                "maxWidth": "100%",
+                "opacity": 1,
+                "overflow": "hidden",
+                "padding": 0,
+                "position": "relative",
+                "width": "initial",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "background": "none",
+                  "border": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": "initial",
+                  "margin": 0,
+                  "maxWidth": "100%",
+                  "opacity": 1,
+                  "padding": 0,
+                  "width": "initial",
+                }
+              }
+            >
+              <img
+                alt=""
+                aria-hidden={true}
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%273840%27%20height=%271920%27/%3e"
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
+                }
+              />
+            </span>
+            <img
+              alt="menu:photoOf undefined"
+              className="css-1vligom"
+              data-nimg="intrinsic"
+              decoding="async"
+              onError={[Function]}
+              onLoad={[Function]}
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style={
+                Object {
+                  "border": "none",
+                  "bottom": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": 0,
+                  "left": 0,
+                  "margin": "auto",
+                  "maxHeight": "100%",
+                  "maxWidth": "100%",
+                  "minHeight": "100%",
+                  "minWidth": "100%",
+                  "objectFit": undefined,
+                  "objectPosition": undefined,
+                  "padding": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "width": 0,
+                }
+              }
+            />
+            <noscript>
+              <img
+                alt="menu:photoOf undefined"
+                className="css-1vligom"
+                data-nimg="intrinsic"
+                decoding="async"
+                loading="lazy"
+                src="/_next/image?url=%2Fimages%2Fcovers%2Fpomegranate-juice.jpg&w=3840&q=75"
+                srcSet="/_next/image?url=%2Fimages%2Fcovers%2Fpomegranate-juice.jpg&w=3840&q=75 1x"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": undefined,
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+            </noscript>
+          </span>
+          <div
+            className="css-z7mtfw"
+          >
+            <h2
+              className="chakra-heading css-0"
+            />
+            <p
+              className="chakra-text css-0"
+            >
+              ¼ / ½ kg
+            </p>
+          </div>
+          <i
+            className="chakra-text css-19xb2ia"
+          >
+            
+          </i>
+          <div
+            className="chakra-button__group css-1ayoy1w"
+            role="group"
+          >
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  70
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  120
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-4fr6ed"
+      >
+        <div
+          className="chakra-stack css-15duo8n"
+        >
+          <span
+            style={
+              Object {
+                "background": "none",
+                "border": 0,
+                "boxSizing": "border-box",
+                "display": "inline-block",
+                "height": "initial",
+                "margin": 0,
+                "maxWidth": "100%",
+                "opacity": 1,
+                "overflow": "hidden",
+                "padding": 0,
+                "position": "relative",
+                "width": "initial",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "background": "none",
+                  "border": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": "initial",
+                  "margin": 0,
+                  "maxWidth": "100%",
+                  "opacity": 1,
+                  "padding": 0,
+                  "width": "initial",
+                }
+              }
+            >
+              <img
+                alt=""
+                aria-hidden={true}
+                src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%273840%27%20height=%271920%27/%3e"
+                style={
+                  Object {
+                    "background": "none",
+                    "border": 0,
+                    "display": "block",
+                    "height": "initial",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "opacity": 1,
+                    "padding": 0,
+                    "width": "initial",
+                  }
+                }
+              />
+            </span>
+            <img
+              alt="menu:photoOf undefined"
+              className="css-1vligom"
+              data-nimg="intrinsic"
+              decoding="async"
+              onError={[Function]}
+              onLoad={[Function]}
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style={
+                Object {
+                  "border": "none",
+                  "bottom": 0,
+                  "boxSizing": "border-box",
+                  "display": "block",
+                  "height": 0,
+                  "left": 0,
+                  "margin": "auto",
+                  "maxHeight": "100%",
+                  "maxWidth": "100%",
+                  "minHeight": "100%",
+                  "minWidth": "100%",
+                  "objectFit": undefined,
+                  "objectPosition": undefined,
+                  "padding": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "width": 0,
+                }
+              }
+            />
+            <noscript>
+              <img
+                alt="menu:photoOf undefined"
+                className="css-1vligom"
+                data-nimg="intrinsic"
+                decoding="async"
+                loading="lazy"
+                src="/_next/image?url=%2Fimages%2Fcovers%2FLatte.jpg&w=3840&q=75"
+                srcSet="/_next/image?url=%2Fimages%2Fcovers%2FLatte.jpg&w=3840&q=75 1x"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": undefined,
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+            </noscript>
+          </span>
+          <div
+            className="css-z7mtfw"
+          >
+            <h2
+              className="chakra-heading css-0"
+            />
+            <p
+              className="chakra-text css-0"
+            >
+              ¼ / ½ kg
+            </p>
+          </div>
+          <i
+            className="chakra-text css-19xb2ia"
+          >
+            
+          </i>
+          <div
+            className="chakra-button__group css-1ayoy1w"
+            role="group"
+          >
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  150
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+            <button
+              className="chakra-button css-zlpei0"
+              data-testid="testbutton"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="currentColor"
+                  focusable={false}
+                  height="1em"
+                  stroke="currentColor"
+                  strokeWidth="0"
+                  style={
+                    Object {
+                      "color": undefined,
+                    }
+                  }
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"
+                  />
+                </svg>
+              </span>
+              <div
+                className="chakra-stack css-1h3nfwc"
+              >
+                <p
+                  className="chakra-text css-0"
+                />
+                <p
+                  className="chakra-text css-1hspgd5"
+                >
+                  250
+                   
+                  ₽
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr
+      aria-orientation="horizontal"
+      className="chakra-divider css-1upb9tn"
+    />
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="chakra-stack css-137fd6w"
+      >
+        <h2
+          className="chakra-heading css-0"
+        >
+          menu:contact
+        </h2>
+        <div
+          className="css-100rrrl"
+        >
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="name"
+              id="name-label"
+            >
+              menu:name
+              <span
+                aria-hidden={true}
+                className="chakra-form__required-indicator css-0"
+                role="presentation"
+              >
+                *
+              </span>
+            </label>
+            <input
+              aria-required={true}
+              className="chakra-input css-0"
+              disabled={false}
+              id="name"
+              name="name"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              placeholder="menu:namePlaceholder"
+              readOnly={false}
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="email"
+              id="email-label"
+            >
+              menu:email
+              <span
+                aria-hidden={true}
+                className="chakra-form__required-indicator css-0"
+                role="presentation"
+              >
+                *
+              </span>
+            </label>
+            <input
+              aria-required={true}
+              className="chakra-input css-0"
+              disabled={false}
+              id="email"
+              name="email"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              placeholder="ivanov_i@gmail.com"
+              readOnly={false}
+              required={true}
+              type="email"
+            />
+          </div>
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="phone"
+              id="phone-label"
+            >
+              menu:phone
+              <span
+                aria-hidden={true}
+                className="chakra-form__required-indicator css-0"
+                role="presentation"
+              >
+                *
+              </span>
+            </label>
+            <div
+              className="chakra-input__group css-4302v8"
+            >
+              <div
+                className="chakra-input__left-addon css-1lhl5nw"
+              >
+                +7
+              </div>
+              <input
+                aria-required={true}
+                className="chakra-input css-fu3wfu"
+                disabled={false}
+                id="phone"
+                name="phone"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                placeholder="777 123 45 67"
+                readOnly={false}
+                required={true}
+                type="phone"
+              />
+            </div>
+          </div>
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="company"
+              id="company-label"
+            >
+              menu:company
+            </label>
+            <input
+              className="chakra-input css-0"
+              disabled={false}
+              id="company"
+              name="company"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              placeholder="menu:companyPlaceholder"
+              readOnly={false}
+              required={false}
+              type="text"
+            />
+          </div>
+        </div>
+        <h2
+          className="chakra-heading css-0"
+        >
+          menu:delivery
+        </h2>
+        <div
+          className="css-100rrrl"
+        >
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="address"
+              id="address-label"
+            >
+              menu:address
+              <span
+                aria-hidden={true}
+                className="chakra-form__required-indicator css-0"
+                role="presentation"
+              >
+                *
+              </span>
+            </label>
+            <input
+              aria-required={true}
+              className="chakra-input css-0"
+              disabled={false}
+              id="address"
+              name="address"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              placeholder="menu:addressPlaceholder"
+              readOnly={false}
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="postal"
+              id="postal-label"
+            >
+              menu:postal
+              <span
+                aria-hidden={true}
+                className="chakra-form__required-indicator css-0"
+                role="presentation"
+              >
+                *
+              </span>
+            </label>
+            <input
+              aria-required={true}
+              className="chakra-input css-0"
+              disabled={false}
+              id="postal"
+              name="postal"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              placeholder="603001"
+              readOnly={false}
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="city"
+              id="city-label"
+            >
+              menu:city
+              <span
+                aria-hidden={true}
+                className="chakra-form__required-indicator css-0"
+                role="presentation"
+              >
+                *
+              </span>
+            </label>
+            <input
+              aria-required={true}
+              className="chakra-input css-0"
+              disabled={false}
+              id="city"
+              name="city"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              placeholder="menu:cityPlaceholder"
+              readOnly={false}
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="floor"
+              id="floor-label"
+            >
+              menu:floor
+            </label>
+            <input
+              className="chakra-input css-0"
+              disabled={false}
+              id="floor"
+              name="floor"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              placeholder="5"
+              readOnly={false}
+              required={false}
+              type="text"
+            />
+          </div>
+        </div>
+        <h2
+          className="chakra-heading css-0"
+        >
+          menu:time
+        </h2>
+        <div
+          className="css-100rrrl"
+        >
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="time"
+              id="time-label"
+            >
+              menu:deliveryTime
+              <span
+                aria-hidden={true}
+                className="chakra-form__required-indicator css-0"
+                role="presentation"
+              >
+                *
+              </span>
+            </label>
+            <div
+              className="chakra-select__wrapper css-42b2qy"
+            >
+              <select
+                aria-required={true}
+                className="chakra-select css-1ik61og"
+                disabled={false}
+                id="time"
+                name="time"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                readOnly={false}
+                required={true}
+              >
+                <option
+                  value=""
+                >
+                  menu:select
+                </option>
+                <option
+                  value="asap"
+                >
+                  menu:asap
+                </option>
+                <option
+                  value="22:26"
+                >
+                  22:26
+                </option>
+                <option
+                  value="23:26"
+                >
+                  23:26
+                </option>
+                <option
+                  value="00:26"
+                >
+                  00:26
+                </option>
+                <option
+                  value="01:26"
+                >
+                  01:26
+                </option>
+                <option
+                  value="02:26"
+                >
+                  02:26
+                </option>
+                <option
+                  value="03:26"
+                >
+                  03:26
+                </option>
+                <option
+                  value="04:26"
+                >
+                  04:26
+                </option>
+                <option
+                  value="05:26"
+                >
+                  05:26
+                </option>
+                <option
+                  value="06:26"
+                >
+                  06:26
+                </option>
+                <option
+                  value="07:26"
+                >
+                  07:26
+                </option>
+                <option
+                  value="08:26"
+                >
+                  08:26
+                </option>
+                <option
+                  value="09:26"
+                >
+                  09:26
+                </option>
+              </select>
+              <div
+                className="chakra-select__icon-wrapper css-162mkon"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="chakra-select__icon"
+                  focusable={false}
+                  role="presentation"
+                  style={
+                    Object {
+                      "color": "currentColor",
+                      "height": "1em",
+                      "width": "1em",
+                    }
+                  }
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="notes"
+              id="notes-label"
+            >
+              menu:notes
+            </label>
+            <textarea
+              className="chakra-textarea css-nwqaai"
+              disabled={false}
+              id="notes"
+              name="notes"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              placeholder="menu:deliveryPlaceholder"
+              readOnly={false}
+              required={false}
+            />
+          </div>
+        </div>
+        <h2
+          className="chakra-heading css-0"
+        >
+          menu:payment
+        </h2>
+        <div
+          className="css-100rrrl"
+        >
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="payment"
+              id="payment-label"
+            >
+              menu:paymentMethod
+              <span
+                aria-hidden={true}
+                className="chakra-form__required-indicator css-0"
+                role="presentation"
+              >
+                *
+              </span>
+            </label>
+            <div
+              className="chakra-select__wrapper css-42b2qy"
+            >
+              <select
+                aria-required={true}
+                className="chakra-select css-1ik61og"
+                disabled={false}
+                id="payment"
+                name="payment"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                readOnly={false}
+                required={true}
+              >
+                <option
+                  value=""
+                >
+                  menu:select
+                </option>
+                <option
+                  value="cash"
+                >
+                  menu:cash
+                </option>
+                <option
+                  value="stripe"
+                >
+                  Онлайн
+                </option>
+              </select>
+              <div
+                className="chakra-select__icon-wrapper css-162mkon"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="chakra-select__icon"
+                  focusable={false}
+                  role="presentation"
+                  style={
+                    Object {
+                      "color": "currentColor",
+                      "height": "1em",
+                      "width": "1em",
+                    }
+                  }
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="tip"
+              id="tip-label"
+            >
+              menu:tip
+            </label>
+            <div
+              className="chakra-select__wrapper css-42b2qy"
+            >
+              <select
+                className="chakra-select css-1ik61og"
+                defaultValue="none"
+                disabled={false}
+                id="tip"
+                name="tip"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                readOnly={false}
+                required={false}
+              >
+                <option
+                  value="none"
+                >
+                  menu:tipNone
+                </option>
+                <option
+                  value="0 ₽"
+                >
+                  5% (
+                  0
+                   
+                  ₽
+                  )
+                </option>
+                <option
+                  value="0 ₽"
+                >
+                  10% (
+                  0
+                   
+                  ₽
+                  )
+                </option>
+                <option
+                  value="0 ₽"
+                >
+                  15% (
+                  0
+                   
+                  ₽
+                  )
+                </option>
+              </select>
+              <div
+                className="chakra-select__icon-wrapper css-162mkon"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="chakra-select__icon"
+                  focusable={false}
+                  role="presentation"
+                  style={
+                    Object {
+                      "color": "currentColor",
+                      "height": "1em",
+                      "width": "1em",
+                    }
+                  }
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr
+          aria-orientation="horizontal"
+          className="chakra-divider css-1upb9tn"
+        />
+        <div
+          className="chakra-stack css-qpgvs5"
+        >
+          <label
+            className="chakra-checkbox css-1elxtiq"
+            onClick={[Function]}
+          >
+            <input
+              checked={false}
+              className="chakra-checkbox__input"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              required={true}
+              style={
+                Object {
+                  "border": "0px",
+                  "clip": "rect(0px, 0px, 0px, 0px)",
+                  "height": "1px",
+                  "margin": "-1px",
+                  "overflow": "hidden",
+                  "padding": "0px",
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": "1px",
+                }
+              }
+              type="checkbox"
+            />
+            <span
+              aria-hidden={true}
+              className="chakra-checkbox__control css-dnty2r"
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+            />
+            <span
+              className="chakra-checkbox__label css-1oeb2oe"
+              onMouseDown={[Function]}
+              onTouchStart={[Function]}
+            >
+              menu:iAgree
+               
+              <a
+                className="chakra-link css-34we4g"
+                href="https://en.wikipedia.org/wiki/Terms_of_service"
+              >
+                menu:terms
+              </a>
+               
+              menu:and
+               
+              <a
+                className="chakra-link css-34we4g"
+                href="https://foundation.wikimedia.org/wiki/Privacy_policy"
+              >
+                menu:privacy
+              </a>
+              .
+            </span>
+          </label>
+          <button
+            className="chakra-button css-5c2176"
+            type="submit"
+          >
+            menu:pay
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>,
+]
+`;

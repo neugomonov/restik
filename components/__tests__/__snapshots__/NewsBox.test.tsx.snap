@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="css-16ng1kq"
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <span
+      className="css-124qy5l"
+    >
+      Новости
+       
+    </span>
+    <button
+      aria-label="News"
+      className="chakra-button css-198bfjk"
+      type="button"
+    >
+      <svg
+        aria-hidden={true}
+        fill="currentColor"
+        focusable={false}
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M19.875 3H4.125C2.953 3 2 3.897 2 5v14c0 1.103.953 2 2.125 2h15.75C21.047 21 22 20.103 22 19V5c0-1.103-.953-2-2.125-2zm0 16H4.125c-.057 0-.096-.016-.113-.016-.007 0-.011.002-.012.008L3.988 5.046c.007-.01.052-.046.137-.046h15.75c.079.001.122.028.125.008l.012 13.946c-.007.01-.052.046-.137.046z"
+        />
+        <path
+          d="M6 7h6v6H6zm7 8H6v2h12v-2h-4zm1-4h4v2h-4zm0-4h4v2h-4z"
+        />
+      </svg>
+    </button>
+  </div>
+  <div
+    className="css-q5fqw0"
+  >
+    <div
+      className="chakra-stack css-15duo8n"
+    >
+      <img
+        className="chakra-image css-145mpb9"
+        decoding="async"
+        draggable={false}
+        loading="lazy"
+        src="/images/covers/news/openup.jpg"
+      />
+      <p
+        className="chakra-text css-0"
+      >
+        03.04.2022
+      </p>
+      <h2
+        className="chakra-heading css-1xuv852"
+      >
+        Мы открылись! 🎉 
+      </h2>
+      <p
+        className="chakra-text css-0"
+      >
+        Заказывайте домой, ешьте у нас, следите за нашими новостями, будет много интересного. И вкусного! 🍕
+      </p>
+      <button
+        className="chakra-button css-5c2176"
+        data-testid="button"
+        onClick={[Function]}
+        type="button"
+      >
+        Новости
+        <span
+          className="chakra-button__icon css-1hzyiq5"
+        >
+          <svg
+            aria-hidden={true}
+            className="chakra-icon css-onkibi"
+            focusable={false}
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -61,6 +61,7 @@ export default function CallToActionWithAnnotation() {
 							_hover={{
 								bg: "orange.500",
 							}}
+							data-testid="button"
 							onClick={async () => {
 								await router.push("/menu", "/menu", {
 									locale: "ru",

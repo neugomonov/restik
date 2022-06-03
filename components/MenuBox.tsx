@@ -256,6 +256,7 @@ export default function MenuBox() {
 											leftIcon={<IoMdAdd />}
 											colorScheme="orange"
 											width="100%"
+											data-testid="testbutton"
 											isDisabled={!deliveryHours || deliveryHours.length === 0}
 											onClick={async () => {
 												const { merge } = await import("../utils/merge");

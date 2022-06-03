@@ -235,6 +235,7 @@ export default function NewsBox() {
 						rightIcon={<ArrowForwardIcon />}
 						colorScheme="orange"
 						variant="outline"
+						data-testid="button"
 						onClick={async () => {
 							await router.push("/news", "/news", {
 								locale: "ru",
