@@ -92,6 +92,7 @@ export default function LoginHeader() {
 					fontWeight={600}
 					colorScheme={"orange"}
 					onClick={() => signIn()}
+					data-testid="button"
 				>
 					Войти
 				</Button>

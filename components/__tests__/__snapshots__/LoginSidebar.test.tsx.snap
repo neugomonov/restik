@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="chakra-stack css-hwd34h"
+>
+  <button
+    className="chakra-button css-ufcox6"
+    data-testid="button"
+    onClick={[Function]}
+    type="button"
+  >
+    Войти
+  </button>
+</div>
+`;

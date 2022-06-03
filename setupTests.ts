@@ -1,5 +1,5 @@
-import "@testing-library/jest-dom/extend-expect";
 require("jest-fetch-mock").enableMocks();
+import "@testing-library/jest-dom/extend-expect";
 
 // import { mswServer } from "mocks/mswServer";
 
