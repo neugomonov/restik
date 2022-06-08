@@ -1,6 +1,5 @@
 import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { SessionProvider } from "next-auth/react";
 import CallToActionWithAnnotation from "../CallToActionWithAnnotation";
 import renderer from "react-test-renderer";
 import { RecoilRoot } from "recoil";

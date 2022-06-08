@@ -6,57 +6,28 @@ import NextImage from "next/image";
 import SidebarWithHeader from "./SidebarWithHeader";
 
 import {
-	Center,
 	Box,
 	useColorMode,
 	Stack,
-	HStack,
-	Avatar,
-	AvatarBadge,
 	Heading,
-	SimpleGrid,
-	ButtonGroup,
 	Button,
 	useToast,
-	FormControl,
-	FormLabel,
-	InputGroup,
-	InputLeftAddon,
-	Input,
-	Select,
-	Textarea,
-	Checkbox,
-	Link,
 	Text,
 	Image,
 	IconButton,
 	useDisclosure,
 	Tag,
-	Divider,
 	chakra,
-	Flex,
-	AspectRatio,
 } from "@chakra-ui/react";
 
 import { useRecoilState } from "recoil";
 import { useForm } from "react-hook-form";
 import useTranslation from "next-translate/useTranslation";
-import {
-	IoMdAdd,
-	IoMdCart,
-	IoMdTrash,
-	IoMdRemove,
-	IoMdCheckmarkCircle,
-} from "react-icons/io";
-import { HiOutlineTranslate } from "react-icons/hi";
 
 import info from "../lib/info";
-import menu from "../lib/menu";
 import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
 
-import LargeWithNewsletter from "./Footer";
-import { MdOutlineSkipNext } from "react-icons/md";
 import { BiMoviePlay, BiNews } from "react-icons/bi";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
@@ -179,7 +150,6 @@ export default function NewsBox() {
 			borderWidth="1px"
 			borderRadius="lg"
 			padding="1rem"
-			// margin=".5rem"
 			width={{ base: "100%", xl: "100%" }}
 			boxShadow="rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px"
 			backgroundColor={
@@ -187,7 +157,6 @@ export default function NewsBox() {
 					? "rgba(6, 8, 13, 0.75)"
 					: "rgba(255, 255, 255, 0.75)"
 			}
-			// display="flex"
 			position="sticky"
 			top="100%"
 			backdropFilter="auto"
@@ -246,33 +215,6 @@ export default function NewsBox() {
 					</Button>
 				</Stack>
 			</Box>
-
-			{/* <Stack spacing={5}>
-				<Stack
-					minW={{ base: "auto", xl: "20rem" }}
-					spacing={3}
-					px={{ base: "1rem", xl: "10%" }}
-				>
-					<Avatar
-						name={info.name}
-						src="images/openup.jpg"
-						size="2xl"
-						draggable={false}
-					></Avatar>
-					<Heading>Мы открылись! 🎉</Heading>
-					<Text colorScheme={"gray"}>
-						Заказывайте домой, ешьте у нас, следите за нашими новостями, будет
-						много интересного. И вкусного! 🍕{" "}
-					</Text>
-					<Button
-						rightIcon={<ArrowForwardIcon />}
-						colorScheme="orange"
-						variant="outline"
-					>
-						Читать далее
-					</Button>
-				</Stack>
-			</Stack> */}
 		</Box>
 	);
 }

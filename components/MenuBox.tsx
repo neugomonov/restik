@@ -501,5 +501,3 @@ export default function MenuBox() {
 		</>
 	);
 }
-
-// export default MenuPage;

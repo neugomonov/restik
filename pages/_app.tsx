@@ -6,7 +6,6 @@ import { RecoilRoot } from "recoil";
 import { Global, css } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { SessionProvider } from "next-auth/react";
-
 import { _cart, CartState } from "../lib/recoil-atoms";
 import StateSaver from "../components/state-saver";
 import info from "../lib/info";
@@ -22,7 +21,6 @@ const App = ({
 	pageProps: { session, ...pageProps },
 }: AppProps): JSX.Element => {
 	const [cart, setCart] = useState<CartState | undefined>(undefined);
-
 	useEffect(() => {
 		const previous = localStorage.getItem("cart");
 
