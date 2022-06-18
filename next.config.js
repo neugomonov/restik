@@ -28,6 +28,9 @@ const nextConfig = {
 		locales: ["en", "ru"],
 		defaultLocale: "ru",
 	},
+	env: {
+		stripe_public_key: process.env.STRIPE_PUBLIC_KEY,
+	},
 };
 
 module.exports = withTranslate(withOptimizedImages(withOffline(nextConfig)));

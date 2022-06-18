@@ -56,6 +56,8 @@
         "@emotion/react": "11.1.4",
         "@emotion/styled": "11.0.0",
         "@next-auth/firebase-adapter": "^0.1.2-pr.183-76202b42.8",
+        "@stripe/stripe-js": "^1.32.0",
+        "axios": "^0.27.2",
         "core-js": "3.8.2",
         "date-fns": "2.16.1",
         "firebase": "^9.8.1",
@@ -78,6 +80,7 @@
         "react-router-dom": "^6.3.0",
         "react-test-renderer": "17.0.2",
         "recoil": "0.1.2",
+        "stripe": "^9.9.0",
         "three": "^0.141.0",
         "vercel": "^24.2.3"
     },

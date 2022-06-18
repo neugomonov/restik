@@ -12,7 +12,6 @@ import WithBackgroundImage from "../components/WithBackgroundImage";
 import SplitScreen from "../components/SplitScreen";
 import CallToActionWithIllustration from "../components/CallToActionWithIllustration";
 import CallToActionWithAnnotation from "../components/CallToActionWithAnnotation";
-
 /*Импорт компонентов из предназначенной папки - конец*/
 
 import {

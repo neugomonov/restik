@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import NextImage from "next/image";
+import { useSession } from "next-auth/react";
 
 import {
 	Box,
@@ -29,6 +30,7 @@ import {
 	Divider,
 	chakra,
 	Flex,
+	useToast,
 } from "@chakra-ui/react";
 
 import { useRecoilState } from "recoil";
@@ -36,11 +38,16 @@ import { useForm } from "react-hook-form";
 import useTranslation from "next-translate/useTranslation";
 import { IoMdAdd } from "react-icons/io";
 import { HiOutlineTranslate } from "react-icons/hi";
-
+import axios from "axios";
 import info from "../lib/info";
 import menu from "../lib/menu";
 import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebase";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(process.env.stripe_public_key!);
 
 const Tooltip = dynamic(async () => (await import("@chakra-ui/react")).Tooltip);
 const UnorderedList = dynamic(
@@ -82,6 +89,8 @@ const ProductImage = chakra(NextImage, {
 export default function MenuBox() {
 	const router = useRouter();
 	const [cart, setCart] = useRecoilState(_cart);
+	const { data: session } = useSession();
+	const toast = useToast();
 	const { register, handleSubmit, watch } = useForm<FormState>();
 	const { colorMode } = useColorMode();
 	const {
@@ -90,12 +99,101 @@ export default function MenuBox() {
 		onClose: onMenuClose,
 	} = useDisclosure();
 	const { t, lang } = useTranslation("menu");
+	const [address, setAddress] = useState("");
+	const [city, setCity] = useState("");
+	const [company, setCompany] = useState("");
+	const [email, setEmail] = useState("");
+	const [floor, setFloor] = useState("");
+	const [name, setName] = useState("");
+	const [notes, setNotes] = useState("");
+	const [payment, setPayment] = useState("");
+	const [phone, setPhone] = useState("");
+	const [postal, setPostal] = useState("");
+	const [time, setTime] = useState("");
+	const [tip, setTip] = useState("");
 
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
 	const deliveryHours = getDeliveryHours(new Date());
+	let stringified = "";
+	for (let index = 0; index < cart.items.length; ++index) {
+		let element = cart.items[index];
+		let csvString = cart.items[index].quantity
+			.toString()
+			.concat("x ", cart.items[index].name, " (", cart.items[index].type, ")");
+		stringified = stringified.concat(", ", csvString);
+	}
 
-	const onSubmit = (data: FormData) => {
+	let stringifiedProducts = stringified.substring(2);
+	// const handleNew = async () => {
+	// };
+
+	const onSubmit = async (data: FormData) => {
 		console.log(data);
+		// console.log(name.value);
+		// console.log(address);
+		// console.log(city);
+		// console.log(company);
+		// console.log(email);
+		// console.log(floor);
+		// console.log(name);
+		// console.log(notes);
+		// console.log(payment);
+		// console.log(phone);
+		// console.log(postal);
+		// console.log(time);
+		// console.log(tip);
+
+		// console.log(data.get("email"));
+
+		// console.log(stringifiedProducts);
+		let disco = cart.total - cart.total * 0.3;
+		let currentTime = new Date().getTime() / 1000;
+		let timeOfDiscoEnd = 1661776053;
+		let total = 0;
+		currentTime < timeOfDiscoEnd ? (total = disco) : (total = cart.total);
+		const products = stringifiedProducts;
+		const timestamp = serverTimestamp();
+		const status = "Принят";
+		const collectionRef = collection(db, "orders");
+		const payload = {
+			products,
+			phone,
+			address,
+			payment,
+			total,
+			email,
+			timestamp,
+			status,
+			tip,
+			time,
+			postal,
+			notes,
+			name,
+			floor,
+			company,
+			city,
+		};
+		const docRef = await addDoc(collectionRef, payload);
+		setCart({ items: [], total: 0 });
+		toast({
+			title: "Заказ принят",
+			status: "success",
+			duration: 3000,
+			isClosable: true,
+		});
+		if (payment == "stripe") {
+			const stripe = await stripePromise;
+			const checkoutSession = await axios.post("api/create-checkout-session", {
+				items: cart.items,
+				email: email,
+			});
+			const result = await stripe?.redirectToCheckout({
+				sessionId: checkoutSession.data.id,
+			})!;
+			if (result.error) {
+				alert(result.error.message);
+			}
+		}
 	};
 
 	return (
@@ -298,6 +396,7 @@ export default function MenuBox() {
 									name="name"
 									type="text"
 									placeholder={t("namePlaceholder")}
+									onChange={(event) => setName(event.currentTarget.value)}
 								/>
 							</FormControl>
 							<FormControl isRequired id="email">
@@ -308,6 +407,7 @@ export default function MenuBox() {
 									name="email"
 									type="email"
 									placeholder="ivanov_i@gmail.com"
+									onChange={(event) => setEmail(event.currentTarget.value)}
 								/>
 							</FormControl>
 							<FormControl isRequired id="phone">
@@ -323,6 +423,7 @@ export default function MenuBox() {
 										name="phone"
 										type="phone"
 										placeholder="777 123 45 67"
+										onChange={(event) => setPhone(event.currentTarget.value)}
 									/>
 								</InputGroup>
 							</FormControl>
@@ -333,6 +434,7 @@ export default function MenuBox() {
 									name="company"
 									type="text"
 									placeholder={t("companyPlaceholder")}
+									onChange={(event) => setCompany(event.currentTarget.value)}
 								/>
 							</FormControl>
 						</SimpleGrid>
@@ -346,6 +448,7 @@ export default function MenuBox() {
 									name="address"
 									type="text"
 									placeholder={t("addressPlaceholder")}
+									onChange={(event) => setAddress(event.currentTarget.value)}
 								/>
 							</FormControl>
 							<FormControl isRequired id="postal">
@@ -356,6 +459,7 @@ export default function MenuBox() {
 									name="postal"
 									type="text"
 									placeholder="603001"
+									onChange={(event) => setPostal(event.currentTarget.value)}
 								/>
 							</FormControl>
 							<FormControl isRequired id="city">
@@ -366,6 +470,7 @@ export default function MenuBox() {
 									name="city"
 									type="text"
 									placeholder={t("cityPlaceholder")}
+									onChange={(event) => setCity(event.currentTarget.value)}
 								/>
 							</FormControl>
 							<FormControl id="floor">
@@ -375,6 +480,7 @@ export default function MenuBox() {
 									name="floor"
 									type="text"
 									placeholder="5"
+									onChange={(event) => setFloor(event.currentTarget.value)}
 								/>
 							</FormControl>
 						</SimpleGrid>
@@ -387,6 +493,7 @@ export default function MenuBox() {
 									isRequired
 									name="time"
 									placeholder={t("select")}
+									onChange={(event) => setTime(event.currentTarget.value)}
 								>
 									{deliveryHours && deliveryHours.length > 0 && (
 										<option value="asap">{t("asap")}</option>
@@ -405,6 +512,7 @@ export default function MenuBox() {
 									name="notes"
 									resize="vertical"
 									placeholder={t("deliveryPlaceholder")}
+									onChange={(event) => setNotes(event.currentTarget.value)}
 								/>
 							</FormControl>
 						</SimpleGrid>
@@ -417,6 +525,7 @@ export default function MenuBox() {
 									isRequired
 									name="payment"
 									placeholder={t("select")}
+									onChange={(event) => setPayment(event.currentTarget.value)}
 								>
 									<option value="cash">{t("cash")}</option>
 									<option value="stripe">Онлайн</option>
@@ -424,7 +533,12 @@ export default function MenuBox() {
 							</FormControl>
 							<FormControl id="tip">
 								<FormLabel>{t("tip")}</FormLabel>
-								<Select ref={register} name="tip" defaultValue="none">
+								<Select
+									ref={register}
+									name="tip"
+									defaultValue="none"
+									onChange={(event) => setTip(event.currentTarget.value)}
+								>
 									<option value="none">{t("tipNone")}</option>
 									<option
 										value={`${
@@ -490,7 +604,11 @@ export default function MenuBox() {
 							<Button
 								type="submit"
 								colorScheme="orange"
-								isDisabled={!deliveryHours || deliveryHours.length === 0}
+								isDisabled={
+									!deliveryHours ||
+									deliveryHours.length === 0 ||
+									cart.total == 0
+								}
 							>
 								{watch("payment") === "stripe" ? t("placeAndPay") : t("pay")}
 							</Button>

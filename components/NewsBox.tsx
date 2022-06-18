@@ -1,9 +1,7 @@
 import React, { useRef } from "react";
-import { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import NextImage from "next/image";
-import SidebarWithHeader from "./SidebarWithHeader";
 
 import {
 	Box,

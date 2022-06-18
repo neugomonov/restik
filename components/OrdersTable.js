@@ -72,7 +72,6 @@ export default function OrdersTable() {
 	const { t, lang } = useTranslation("home");
 	const { colorMode } = useColorMode();
 	const [snapshot] = useCollection(collection(db, "orders"));
-	// const orders = snapshot?.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 	const router = useRouter();
 	const [orders, setOrders] = useState([{ name: "Loading...", id: "initial" }]);
 	const [users, setUsers] = useState([{ name: "Loading...", id: "initial" }]);

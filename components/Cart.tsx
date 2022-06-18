@@ -370,7 +370,10 @@ export default function MenuBox() {
 							<Button
 								leftIcon={<IoMdCheckmarkCircle />}
 								mr={3}
-								onClick={handleNew}
+								onClick={async () => {
+									await onClose();
+									await handleNew();
+								}}
 								disabled={cart.items.length === 0}
 							>
 								К заказу{" "}

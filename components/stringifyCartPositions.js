@@ -1,10 +1,14 @@
 import { useDisclosure, useToast } from "@chakra-ui/react";
+import { loadStripe } from "@stripe/stripe-js";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { db } from "../firebase";
 import { _cart } from "../lib/recoil-atoms";
+import axios from "axios";
+
+const stripePromise = loadStripe(process.env.stripe_public_key);
 
 export default function stringifyCartPositions() {
 	const [cart, setCart] = useRecoilState(_cart);
@@ -41,42 +45,70 @@ export default function stringifyCartPositions() {
 	// console.log(stringified.substring(2));
 
 	let stringifiedProducts = stringified.substring(2);
+	let phone = "";
+	let payment = "";
+	let address = "";
 	const handleNew = async () => {
-		let disco = cart.total - cart.total * 0.3;
-		let currentTime = new Date().getTime() / 1000;
-		let timeOfDiscoEnd = 1661776053;
-		let total = 0;
-		currentTime < timeOfDiscoEnd ? (total = disco) : (total = cart.total);
-		const products = stringifiedProducts;
-		const phone = session?.user?.phone;
-		const payment = session?.user?.payment;
-		const address = session?.user?.address;
-		const email = session?.user?.email;
-		const timestamp = serverTimestamp();
-		const status = "Принят";
-		const collectionRef = collection(db, "orders");
-		const payload = {
-			products,
-			phone,
-			address,
-			payment,
-			total,
-			email,
-			timestamp,
-			status,
-		};
-		const docRef = await addDoc(collectionRef, payload);
-		setCart({ items: [], total: 0 });
-		toast({
-			title: "Заказ принят",
-			status: "success",
-			duration: 3000,
-			isClosable: true,
-		});
-		await router.push("/menu", "/menu", {
-			locale: "ru",
-		});
-		onClose();
+		if (session) {
+			let disco = cart.total - cart.total * 0.3;
+			let currentTime = new Date().getTime() / 1000;
+			let timeOfDiscoEnd = 1661776053;
+			let total = 0;
+			currentTime < timeOfDiscoEnd ? (total = disco) : (total = cart.total);
+			const products = stringifiedProducts;
+			session?.user?.phone
+				? (phone = session?.user?.phone)
+				: (phone = prompt("Введите ваш телефон 🤙"));
+			session?.user?.address
+				? (address = session?.user?.address)
+				: (address = prompt("Введите адрес доставки 🏠"));
+			session?.user?.payment
+				? (payment = session?.user?.payment)
+				: (payment = prompt("Наличные или Онлайн? 💸"));
+			const email = session?.user?.email;
+			const timestamp = serverTimestamp();
+			const status = "Принят";
+			const collectionRef = collection(db, "orders");
+			const payload = {
+				products,
+				phone,
+				address,
+				payment,
+				total,
+				email,
+				timestamp,
+				status,
+			};
+			const docRef = await addDoc(collectionRef, payload);
+			setCart({ items: [], total: 0 });
+			toast({
+				title: "Заказ принят",
+				status: "success",
+				duration: 3000,
+				isClosable: true,
+			});
+			if (payment.toLowerCase() == "онлайн") {
+				const stripe = await stripePromise;
+				const checkoutSession = await axios.post(
+					"api/create-checkout-session",
+					{
+						items: cart.items,
+						email: email,
+					}
+				);
+				const result = await stripe.redirectToCheckout({
+					sessionId: checkoutSession.data.id,
+				});
+				if (result.error) {
+					alert(result.error.message);
+				}
+			}
+		} else {
+			await router.push("/menu", "/menu", {
+				locale: "ru",
+			});
+		}
+		// await onClose();
 	};
 	return handleNew;
 
