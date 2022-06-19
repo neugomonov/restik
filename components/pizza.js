@@ -51,18 +51,12 @@ const Pizza = () => {
 			container.appendChild(renderer.domElement);
 			setRenderer(renderer);
 
-			// 640 -> 240
-			// 8   -> 6
 			const scale = scH * 0.005 + 4.8;
 			const camera = new THREE.OrthographicCamera(
 				-1.3,
 				1.3,
 				1.3,
 				-1.3,
-				// -scale,
-				// scale,
-				// scale,
-				// -scale,
 				0.01,
 				50000
 			);

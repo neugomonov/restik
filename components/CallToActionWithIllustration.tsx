@@ -5,8 +5,6 @@ import {
 	Stack,
 	Text,
 	Button,
-	Icon,
-	IconProps,
 	Image,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
@@ -75,10 +73,7 @@ export default function CallToActionWithIllustration() {
 				<Flex w={"full"} justifyContent={"center"}>
 					<Image
 						borderRadius="full"
-						// borderRadius="full"
 						src="https://cdn.dribbble.com/users/5950507/screenshots/14543756/media/3cf8ea17f7e1a1b04c56e8b82f8b1a28.gif"
-						// height={{ sm: "24rem", lg: "28rem" }}
-						// mt={{ base: 12, sm: 16 }}
 					/>
 				</Flex>
 			</Stack>

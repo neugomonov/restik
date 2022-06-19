@@ -1,57 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
-import Head from "next/head";
-import SidebarWithHeader from "../components/SidebarWithHeader";
-import MenuBox from "../components/MenuBox";
-import VideoBox from "../components/VideoBox";
-import NewsBox from "../components/NewsBox";
-import Cart from "../components/Cart";
-import LargeWithNewsletter from "../components/Footer";
 import {
-	Avatar,
-	Box,
 	Button,
-	ButtonGroup,
-	Flex,
-	Heading,
 	IconButton,
-	Image,
-	Input,
-	Stack,
-	HStack,
-	VStack,
 	Table,
 	TableCaption,
 	TableContainer,
-	Tag,
 	Tbody,
 	Td,
-	Text,
 	Tfoot,
 	Th,
 	Thead,
 	Tr,
 	useColorMode,
-	useColorModeValue,
-	Menu,
-	MenuButton,
-	MenuItem,
-	MenuList,
-	MenuDivider,
-	Editable,
-	EditablePreview,
-	EditableInput,
 } from "@chakra-ui/react";
-import { FiChevronDown } from "react-icons/fi";
-
-import info from "../lib/info";
-import { CgProfile } from "react-icons/cg";
-import { AiOutlinePhone, AiTwotoneMail } from "react-icons/ai";
-import { MdPassword, MdPlace } from "react-icons/md";
-import { BiRename } from "react-icons/bi";
 import { ArrowBackIcon, EditIcon } from "@chakra-ui/icons";
-import { MdOutlineMessage, MdOutlineSend } from "react-icons/md";
 import { useSession } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, addDoc } from "@firebase/firestore";
@@ -60,7 +23,6 @@ import { useRouter } from "next/router";
 import {
 	doc,
 	onSnapshot,
-	setDoc,
 	updateDoc,
 	serverTimestamp,
 	getDoc,
@@ -93,16 +55,6 @@ export default function OrdersTable() {
 		[]
 	);
 
-	const handleEditAddress = async (id) => {
-		const email = prompt("Введите ваш email");
-		const address = prompt("Введите ваш адрес");
-		if ((email = session?.user?.email)) {
-			const docRef = doc(db, "orders", id);
-			const payload = { email, address };
-			updateDoc(docRef, payload);
-		}
-	};
-
 	const handleNew = async () => {
 		const products = prompt("Введите что хотите заказать 🍕");
 		if (products != null && products != "") {
@@ -131,14 +83,10 @@ export default function OrdersTable() {
 
 	const handleEditStatus = async (id) => {
 		const status = prompt("Готовится/Доставляется/Выполнен? 🤔");
-		// const email = prompt("Введите email заказчика 📧");
 		if (
 			status == "Готовится" ||
 			status == "Доставляется" ||
 			status == "Выполнен"
-			// 	&&
-			// email !== null &&
-			// email !== ""
 		) {
 			const docRef = doc(db, "orders", id);
 			const docSnap = await getDoc(docRef);

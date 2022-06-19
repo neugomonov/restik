@@ -1,92 +1,10 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import firebase from "../firebase";
-import { getAuth } from "firebase/auth";
 import { useSession, signIn, signOut } from "next-auth/react";
-
-import {
-	IconButton,
-	Avatar,
-	// Box,
-	CloseButton,
-	Flex,
-	HStack,
-	VStack,
-	Icon,
-	useColorMode,
-	useColorModeValue,
-	Link,
-	Drawer,
-	DrawerOverlay,
-	DrawerContent,
-	Text,
-	useDisclosure,
-	BoxProps,
-	FlexProps,
-	Menu,
-	MenuButton,
-	MenuDivider,
-	MenuItem,
-	MenuList,
-	DrawerFooter,
-	DrawerBody,
-	DrawerHeader,
-	Button,
-	Stack,
-	Collapse,
-	Popover,
-	PopoverTrigger,
-	PopoverContent,
-	useBreakpointValue,
-	Heading,
-} from "@chakra-ui/react";
-import {
-	FiHome,
-	FiTrendingUp,
-	FiCompass,
-	FiStar,
-	FiSettings,
-	FiMenu,
-	FiBell,
-	FiChevronDown,
-} from "react-icons/fi";
-import { GrRestaurant } from "react-icons/gr";
-import { FaBell, FaPizzaSlice } from "react-icons/fa";
-import { IoRestaurantOutline, IoPizzaOutline } from "react-icons/io5";
-import dynamic from "next/dynamic";
+import { useColorMode, MenuItem } from "@chakra-ui/react";
 import { db } from "../firebase";
-
-import {
-	MdOutlineDarkMode,
-	MdExpandLess,
-	MdExpandMore,
-	MdOutlineLightMode,
-	MdMenu,
-	MdKitchen,
-	MdOutlineMessage,
-} from "react-icons/md";
-import {
-	HamburgerIcon,
-	CloseIcon,
-	ChevronDownIcon,
-	ChevronRightIcon,
-} from "@chakra-ui/icons";
-
-import LargeWithNewsletter from "./Footer";
-
-import info from "../lib/info";
-import Pizza from "./pizza";
-
-import { IconType } from "react-icons";
-import { ReactText } from "react";
 import useTranslation from "next-translate/useTranslation";
-import { BiNews } from "react-icons/bi";
 import { useRouter } from "next/router";
-import LoginSidebar from "./LoginSidebar";
-import LoginHeader from "./LoginHeader";
-import {
-	useCollection,
-	useCollectionData,
-} from "react-firebase-hooks/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
 import {
 	collection,
 	deleteDoc,
@@ -104,7 +22,6 @@ export default function NotificationList() {
 	const { t, lang } = useTranslation("home");
 	const { colorMode } = useColorMode();
 	const [snapshot] = useCollection(collection(db, "notifications"));
-	// const [notifications] = useCollectionData(q);
 
 	const [notifications, setNotifications] = useState([
 		{ name: "Loading...", id: "initial" },

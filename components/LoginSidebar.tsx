@@ -7,7 +7,6 @@ import {
 	Menu,
 	MenuButton,
 	MenuDivider,
-	MenuGroup,
 	MenuItem,
 	MenuList,
 	Stack,
@@ -23,7 +22,6 @@ export default function LoginSidebar() {
 	const { colorMode } = useColorMode();
 
 	const { data: session, status } = useSession();
-	// console.log(session);
 
 	if (session) {
 		return (
@@ -67,8 +65,6 @@ export default function LoginSidebar() {
 											{session?.user?.email!.length! >= 13
 												? `${session?.user?.email!.slice(0, 10)}...`
 												: session?.user?.email!}
-
-											{/* {session?.user?.role} */}
 										</Text>
 									</VStack>
 									<Box display={{ base: "none", md: "flex" }}>
@@ -106,10 +102,8 @@ export default function LoginSidebar() {
 				spacing={6}
 			>
 				<Button
-					// as="a"
 					size="lg"
 					variant="outline"
-					// href="/auth"
 					display={{ base: "none", md: "inline-flex" }}
 					fontSize={"sm"}
 					fontWeight={600}

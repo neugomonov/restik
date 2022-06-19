@@ -1,16 +1,12 @@
 import React, { ReactNode, useEffect, useState } from "react";
-// import firebase from "../firebase";
-// import { getAuth } from "firebase/auth";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 import {
 	IconButton,
 	Avatar,
-	// Box,
 	CloseButton,
 	Flex,
 	HStack,
-	VStack,
 	Icon,
 	useColorMode,
 	useColorModeValue,
@@ -24,56 +20,23 @@ import {
 	FlexProps,
 	Menu,
 	MenuButton,
-	MenuDivider,
-	MenuItem,
 	MenuList,
-	DrawerFooter,
-	DrawerBody,
-	DrawerHeader,
 	Button,
 	Stack,
-	Collapse,
-	Popover,
-	PopoverTrigger,
-	PopoverContent,
-	useBreakpointValue,
 	Heading,
 	Tag,
 } from "@chakra-ui/react";
-import {
-	FiHome,
-	FiTrendingUp,
-	FiCompass,
-	FiStar,
-	FiSettings,
-	FiMenu,
-	FiBell,
-	FiChevronDown,
-} from "react-icons/fi";
-import { GrRestaurant } from "react-icons/gr";
-import { FaBell, FaPizzaSlice } from "react-icons/fa";
+import { FiHome, FiMenu, FiBell } from "react-icons/fi";
 import { IoRestaurantOutline, IoPizzaOutline } from "react-icons/io5";
 import dynamic from "next/dynamic";
 import { db } from "../firebase";
 
 import {
 	MdOutlineDarkMode,
-	MdExpandLess,
-	MdExpandMore,
 	MdOutlineLightMode,
-	MdMenu,
 	MdKitchen,
 	MdOutlineMessage,
 } from "react-icons/md";
-import {
-	HamburgerIcon,
-	CloseIcon,
-	ChevronDownIcon,
-	ChevronRightIcon,
-} from "@chakra-ui/icons";
-
-import LargeWithNewsletter from "./Footer";
-
 import info from "../lib/info";
 import Pizza from "./pizza";
 
@@ -85,10 +48,8 @@ import { useRouter } from "next/router";
 import LoginSidebar from "./LoginSidebar";
 import LoginHeader from "./LoginHeader";
 import NotificationList from "./NotificationList";
-import { useCollection } from "react-firebase-hooks/firestore";
 import {
 	collection,
-	limit,
 	onSnapshot,
 	query,
 	where,
@@ -97,7 +58,6 @@ import {
 	deleteDoc,
 	updateDoc,
 } from "firebase/firestore";
-// import { signOut, useSession } from "next-auth/client";
 
 const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
 
@@ -141,8 +101,7 @@ export default function SidebarWithHeader({
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	return (
-		<Box /*bg={useColorModeValue("rgba(255, 255, 255, 0.75)", "rgba(6, 8, 13, 0.75)")}*/
-		>
+		<Box>
 			<SidebarContent
 				onClose={() => onClose}
 				display={{ base: "none", md: "block" }}
@@ -171,9 +130,6 @@ export default function SidebarWithHeader({
 			</Drawer>
 			{/* mobilenav */}
 			<MobileNav onOpen={onOpen} />
-			{/* <Box ml={{ base: 0, md: 60 }} p="4">
-				{children}
-			</Box> */}
 		</Box>
 	);
 }
@@ -189,21 +145,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 	const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
 	const router = useRouter();
-	// const [session] = useSession();
-	// const auth = getAuth();
-	// const user = auth.currentUser;
-	// if (user !== null) {
-	// 	// The user object has basic properties such as display name, email, etc.
-	// 	const displayName = user.displayName;
-	// 	const email = user.email;
-	// 	const photoURL = user.photoURL;
-	// 	const emailVerified = user.emailVerified;
-
-	// 	// The user's ID, unique to the Firebase project. Do NOT use
-	// 	// this value to authenticate with your backend server, if
-	// 	// you have one. Use User.getToken() instead.
-	// 	const uid = user.uid;
-	// }
 
 	const { data: session } = useSession();
 	const [notificationsCount, setNotificationsCount] = useState(0);
@@ -216,7 +157,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				collection(db, "notifications"),
 				where("read", "==", false),
 				where("recipient", "==", session?.user?.email)
-				// limit(5)
 			);
 			const count = onSnapshot(qq, (querySnapshot) => {
 				setNotificationsCount(querySnapshot.size);
@@ -230,7 +170,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 	const deleteAll = async () => {
 		const qq = await query(
 			collection(db, "notifications"),
-			// where("read", "==", false),
 			where("recipient", "==", session?.user?.email)
 		);
 		const snapshot = await getDocs(qq);
@@ -281,7 +220,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 					width: "6px",
 				},
 				"&::-webkit-scrollbar-thumb": {
-					// background: scrollbarColor,
 					borderRadius: "24px",
 				},
 			}}
@@ -302,34 +240,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				display={{ base: "none", md: "flex" }}
 				mb="2"
 			>
-				{/* <IconButton
-					css={{
-						position: "relative !important",
-					}}
-					py={"2"}
-					colorScheme={"gray"}
-					aria-label={"Notifications"}
-					size={"lg"}
-					icon={
-						<>
-							<FaBell color={"gray.750"} />
-							<Box
-								as={"span"}
-								color={"white"}
-								position={"absolute"}
-								top={"6px"}
-								right={"4px"}
-								fontSize={"0.8rem"}
-								bgColor={"red"}
-								borderRadius={"lg"}
-								zIndex={9999}
-								p={"1px"}
-							>
-								10{" "}
-							</Box>
-						</>
-					}
-				/> */}
 				<Menu>
 					<Button
 						as={MenuButton}
@@ -463,7 +373,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 				collection(db, "notifications"),
 				where("read", "==", false),
 				where("recipient", "==", session?.user?.email)
-				// limit(5)
 			);
 			const count = onSnapshot(qq, (querySnapshot) => {
 				setNotificationsCount(querySnapshot.size);
@@ -477,7 +386,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 	const deleteAll = async () => {
 		const qq = await query(
 			collection(db, "notifications"),
-			// where("read", "==", false),
 			where("recipient", "==", session?.user?.email)
 		);
 		const snapshot = await getDocs(qq);
@@ -524,7 +432,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			position="fixed"
 			top="0"
 			w="100%"
-			// position={"sticky"}
 			{...rest}
 		>
 			<IconButton
@@ -538,7 +445,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			<Text
 				display={{ base: "flex", md: "none" }}
 				fontSize="2xl"
-				// fontFamily="monospace"
 				fontWeight="bold"
 			>
 				{info.name ?? t("restaurantName")}

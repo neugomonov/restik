@@ -94,8 +94,6 @@ export default function LargeWithNewsletter() {
 			borderRadius="lg"
 			padding="1rem"
 			margin=".5rem"
-			// marginBottom="4rem"
-			// width={{ base: "96%", xl: "96%" }}
 			boxShadow="rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px"
 			backgroundColor={
 				colorMode === "dark"
@@ -106,7 +104,6 @@ export default function LargeWithNewsletter() {
 			backdropFilter="auto"
 			backdropBlur="20px"
 			color={useColorModeValue("gray.700", "gray.200")}
-			// mt="148rem"
 		>
 			<Container as={Stack} maxW={"6xl"} py={10}>
 				<SimpleGrid
@@ -138,9 +135,6 @@ export default function LargeWithNewsletter() {
 						<Stack spacing={3}>
 							<Text>{t("powered")}</Text>
 							<HStack direction="row" isInline={true} spacing={5}>
-								{/* <Link isExternal href="https://www.digitalocean.com/">
-									<Image src="images/Vercel.svg" alt="Digital Ocean" draggable={false} loading="lazy" decoding="async" width="8rem"/>
-								</Link> */}
 								<Link isExternal href="https://nextjs.org/">
 									<Image
 										src="/images/reactjs.svg"
@@ -163,12 +157,6 @@ export default function LargeWithNewsletter() {
 										dropShadow="0px 0px 6px white"
 									/>
 								</Link>
-								{/* <Link isExternal href="https://nextjs.org/">
-									<Image src="images/chakra.svg" alt="Nextjs" draggable={false} loading="lazy" decoding="async" width="5rem"/>
-								</Link> */}
-								{/* <Link isExternal href="https://www.digitalocean.com/">
-									<Image src="images/do.svg" alt="Digital Ocean" draggable={false} loading="lazy" decoding="async" width="8rem"/>
-								</Link> */}
 							</HStack>
 						</Stack>
 					</Stack>

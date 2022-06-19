@@ -3,8 +3,6 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 export default async (req, res) => {
 	const { items, email, phone } = req.body;
 
-	// console.log(items);
-	// console.log(email);
 	const transformedItems = items.map((item) => ({
 		quantity: item.quantity,
 		price_data: {
@@ -13,8 +11,6 @@ export default async (req, res) => {
 			product_data: {
 				name: item.name,
 				images: [item.image],
-				// type: item.type,
-				// quantity: item.quantity,
 			},
 		},
 	}));

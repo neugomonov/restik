@@ -1,9 +1,7 @@
 import React from "react";
 import { NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
-import Head from "next/head";
 import SidebarWithHeader from "../components/SidebarWithHeader";
-import MenuBox from "../components/MenuBox";
 import VideoBox from "../components/VideoBox";
 import NewsBox from "../components/NewsBox";
 import Cart from "../components/Cart";
@@ -11,26 +9,18 @@ import LargeWithNewsletter from "../components/Footer";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, addDoc } from "@firebase/firestore";
 import {
-	Avatar,
 	Box,
-	Button,
 	Flex,
 	Heading,
 	IconButton,
 	Image,
-	Input,
 	Stack,
 	Tag,
-	Text,
 	useColorMode,
 } from "@chakra-ui/react";
 import info from "../lib/info";
-import { BiErrorAlt } from "react-icons/bi";
-import { ArrowBackIcon } from "@chakra-ui/icons";
 import { MdOutlineMessage, MdOutlineSend } from "react-icons/md";
-// import { db } from "./api/auth/[...nextauth]";
 import { db } from "../firebase";
-import getOtherEmail from "../utils/getOtherEmail";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import ChatListBox from "../components/ChatListBox";
@@ -55,14 +45,8 @@ const Index: NextPage<unknown> = () => {
 
 	return (
 		<>
-			{/* <Head>
-				<title>Пиццерия ⸻ Страница не найдена</title>
-			</Head> */}
 			<Flex flexDirection="column" ml={{ base: "0", md: "60" }}>
 				<Flex
-					// h={0}
-					// alignItems={"start"}
-					// justifyContent={"center"}
 					flexDirection={{ base: "column", xl: "row" }}
 					mr={{ base: "1rem", xl: "0" }}
 				>
@@ -72,7 +56,6 @@ const Index: NextPage<unknown> = () => {
 						borderRadius="lg"
 						padding="1rem"
 						margin=".5rem"
-						// marginBottom="4rem"
 						width={{ base: "100%", xl: "5xl" }}
 						mt={{ base: "6rem", md: ".5rem" }}
 						boxShadow="rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px"
@@ -109,7 +92,6 @@ const Index: NextPage<unknown> = () => {
 								minW={{ base: "auto", xl: "20rem" }}
 								spacing={3}
 								px={{ base: "1rem", xl: "10%" }}
-								// alignItems="center"
 								direction={"row"}
 							>
 								<Stack
@@ -146,33 +128,7 @@ const Index: NextPage<unknown> = () => {
 										<ChatListBox />
 									</Box>
 
-									{/* <Box
-										borderWidth="1px"
-										borderRadius="lg"
-										padding="1rem"
-										width="100%"
-										height="90vh"
-										minW={{ base: "auto", xl: "50%" }}
-									>
-										<Heading size="md">
-											Для вопросов к Пиццерии создайте чат и введите наш email -
-											neugomonovv@gmail.com 📧
-										</Heading>
-
-										<Button m={5} p={4} onClick={() => newChat()}>
-											Создать чат
-										</Button>
-
-										<Flex
-											direction="column"
-											sx={{ scrollbarWidth: "none" }}
-											flex={1}
-										>
-											{chatList()}
-										</Flex>
-									</Box> */}
 									<Stack
-										// display={{ base: "none", md: "flex" }}
 										direction="column"
 										pl={{ base: "none", xl: "10%" }}
 										spacing={5}
@@ -199,11 +155,9 @@ const Index: NextPage<unknown> = () => {
 					<Flex
 						flexShrink={10}
 						flexDirection="column"
-						// h={{ base: "100%", xl: "140rem" }}
 						alignItems={"center"}
 						width={{ base: "100%", xl: "xl" }}
 						margin=".5rem"
-						// width="35%"
 					>
 						<VideoBox />
 						<NewsBox />

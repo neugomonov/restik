@@ -1,42 +1,23 @@
 import React, { useRef } from "react";
-import { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import NextImage from "next/image";
-// import SidebarWithHeader from "./SidebarWithHeader";
 import stringifyCartPositions from "./stringifyCartPositions";
 
 import {
-	Center,
-	Box,
 	useColorMode,
 	Stack,
-	HStack,
-	Avatar,
-	AvatarBadge,
 	Heading,
-	SimpleGrid,
 	ButtonGroup,
 	Button,
 	useToast,
-	FormControl,
-	FormLabel,
-	InputGroup,
-	InputLeftAddon,
-	Input,
-	Select,
-	Textarea,
-	Checkbox,
 	Link,
 	Text,
-	Image,
 	IconButton,
 	useDisclosure,
 	Tag,
 	Divider,
 	chakra,
-	Flex,
-	AspectRatio,
 } from "@chakra-ui/react";
 
 import { useRecoilState } from "recoil";
@@ -49,24 +30,11 @@ import {
 	IoMdRemove,
 	IoMdCheckmarkCircle,
 } from "react-icons/io";
-import { HiOutlineTranslate } from "react-icons/hi";
 
 import info from "../lib/info";
-import menu from "../lib/menu";
 import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
 
-import LargeWithNewsletter from "./Footer";
-import { MdOutlineSkipNext } from "react-icons/md";
-import { BiMoviePlay, BiNews } from "react-icons/bi";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
-import {
-	addDoc,
-	collection,
-	FieldValue,
-	serverTimestamp,
-} from "firebase/firestore";
-import { db } from "../firebase";
 import { useSession } from "next-auth/react";
 
 const Tooltip = dynamic(async () => (await import("@chakra-ui/react")).Tooltip);
@@ -182,19 +150,6 @@ export default function MenuBox() {
 	const onSubmit = (data: FormData) => {
 		console.log(data);
 	};
-	// console.log(JSON.stringify(cart.items));
-	// let cartItemsString = cart.items.map(({ name }) => name);
-	// console.log(cartItemsString.join(", "));
-	// console.log(
-	// 	cart.items
-	// 		.map(function (x) {
-	// 			return x.name;
-	// 		})
-	// 		.join(", ")
-	// );
-
-	// console.log(Object.values(cart.items).join());
-	// console.log(cart.total);
 	let handleNew = stringifyCartPositions();
 	return (
 		<>

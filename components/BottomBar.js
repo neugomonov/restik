@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
 	FormControl,
 	Input,
-	Button,
 	useColorMode,
 	IconButton,
 	HStack,
@@ -39,8 +38,6 @@ export default function BottomBar({ id, user }) {
 					_focus={{
 						bg: "whiteAlpha.300",
 					}}
-					// onChange={(e) => setValue(e.target.value)}
-
 					autoComplete="off"
 					onChange={(e) => setInput(e.target.value)}
 					value={input}
@@ -52,9 +49,6 @@ export default function BottomBar({ id, user }) {
 					icon={<MdOutlineSend />}
 				/>
 			</HStack>
-			{/* <Button type="submit" hidden>
-				Submit
-			</Button> */}
 		</FormControl>
 	);
 }

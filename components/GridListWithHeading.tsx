@@ -11,7 +11,6 @@ import {
 } from "@chakra-ui/react";
 import { CheckIcon } from "@chakra-ui/icons";
 
-// Replace test data with your own
 const features = Array.apply(null, Array(8)).map(function (x, i) {
 	return {
 		id: i,

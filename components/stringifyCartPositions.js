@@ -30,19 +30,12 @@ export default function stringifyCartPositions() {
 	let stringified = "";
 	for (let index = 0; index < cart.items.length; ++index) {
 		let element = cart.items[index];
-		// ...use `element`...
-		// let csvString = Object.keys(cart.items[index])
-		// 	.map((field) => cart.items[index][field])
-		// 	.join(", ");
 		let csvString = cart.items[index].quantity
 			.toString()
 			.concat("x ", cart.items[index].name, " (", cart.items[index].type, ")");
 
 		stringified = stringified.concat(", ", csvString);
-		// return stringified;
 	}
-	// console.log("stringifiedn't");
-	// console.log(stringified.substring(2));
 
 	let stringifiedProducts = stringified.substring(2);
 	let phone = "";
@@ -109,19 +102,6 @@ export default function stringifyCartPositions() {
 				locale: "ru",
 			});
 		}
-		// await onClose();
 	};
 	return handleNew;
-
-	// console.log("stringified");
-	// console.log(
-	// 	cart.items.map((item) => (item.quantity, item.name, item.type)).join(", ")
-	// );
-	// // cart.items[1]
-	// console.log(
-	// 	cart.items[2].quantity
-	// 		.toString()
-	// 		.concat("x ", cart.items[2].name, " (", cart.items[2].type, ") ")
-	// );
-	// console.log(cart.items.map(({ name }) => name));
 }

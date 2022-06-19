@@ -168,7 +168,6 @@ const Index: NextPage<unknown> = () => {
 		onClose: onMenuClose,
 	} = useDisclosure();
 	const cancelRef = useRef();
-	// const { t, lang } = useTranslation("home");
 
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
 	const deliveryHours = getDeliveryHours(new Date());
@@ -179,12 +178,8 @@ const Index: NextPage<unknown> = () => {
 
 	return (
 		<>
-			{/* <Flex flexDirection={{base: "row-reverse", md: "column-reverse"}}> */}
 			<Flex flexDirection="column" ml={{ base: "0", md: "60" }}>
 				<Flex
-					// h={0}
-					// alignItems={"start"}
-					// justifyContent={"center"}
 					flexDirection={{ base: "column", xl: "row" }}
 					mr={{ base: "1rem", xl: "0" }}
 				>
@@ -194,7 +189,6 @@ const Index: NextPage<unknown> = () => {
 						borderRadius="lg"
 						padding="1rem"
 						margin=".5rem"
-						// marginBottom="4rem"
 						width="100%"
 						mt={{ base: "6rem", md: ".5rem" }}
 						boxShadow="rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px"
@@ -215,23 +209,10 @@ const Index: NextPage<unknown> = () => {
 						<CallToActionWithAnnotation />
 						{/*Использование компонентов в разработке сайта - конец*/}
 					</Box>
-					{/* <Flex
-						flexShrink="10"
-						flexDirection="column"
-						// h={{ base: "100%", xl: "140rem" }}
-						alignItems={"center"}
-						width={{ base: "100%", xl: "xl" }}
-						margin=".5rem"
-						// width="35%"
-					>
-						<VideoBox />
-						<NewsBox />
-					</Flex> */}
 				</Flex>
 				<LargeWithNewsletter />
 			</Flex>
 			<SidebarWithHeader children />
-			{/* </Flex> */}
 			<Cart />
 		</>
 	);

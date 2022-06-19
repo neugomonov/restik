@@ -1,19 +1,4 @@
-import {
-	Avatar,
-	Box,
-	Button,
-	Flex,
-	Heading,
-	// IconButton,
-	// Image,
-	// Input,
-	Stack,
-	// Tag,
-	Text,
-	// useColorMode,
-} from "@chakra-ui/layout";
-import { MdOutlineMessage, MdOutlineSend } from "react-icons/md";
-import info from "../../lib/info";
+import { Box, Flex, Heading, Stack, Text } from "@chakra-ui/layout";
 import SidebarWithHeader from "../../components/SidebarWithHeader";
 
 import VideoBox from "../../components/VideoBox";
@@ -21,17 +6,14 @@ import NewsBox from "../../components/NewsBox";
 import Cart from "../../components/Cart";
 import LargeWithNewsletter from "../../components/Footer";
 
-import chat from "../chat";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import {
 	useCollectionData,
 	useDocumentData,
 } from "react-firebase-hooks/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { collection, doc, orderBy, query } from "firebase/firestore";
 import { db } from "../../firebase";
-import getOtherEmail from "../../utils/getOtherEmail";
 import { useRef, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import BottomBar from "../../components/BottomBar";
@@ -92,25 +74,12 @@ export default function Chat() {
 								alignItems: "center",
 								justifyContent: "space-between",
 							}}
-						>
-							{/* {info.isDevelopment && (
-								<Tag
-									textTransform="uppercase"
-									colorScheme="orange"
-									variant="solid"
-									mb="1rem"
-								>
-									Чат{" "}
-								</Tag>
-							)} */}
-							{/* <IconButton aria-label="Chat" icon={<MdOutlineMessage />} /> */}
-						</div>
+						></div>
 						<Stack spacing={5}>
 							<Stack
 								minW={{ base: "auto", xl: "20rem" }}
 								spacing={3}
 								px={{ base: "1rem", xl: "10%" }}
-								// alignItems="center"
 								direction={"row"}
 							>
 								<Stack
@@ -135,11 +104,7 @@ export default function Chat() {
 													<title>Пиццерия ⸻ Чат 💬</title>
 												</Head>
 
-												{/* <Sidebar /> */}
-
 												<Flex flex={1} direction="column">
-													{/* <Topbar email={getOtherEmail(chat?.users, user)} /> */}
-
 													<Flex
 														flex={1}
 														direction="column"
@@ -159,81 +124,19 @@ export default function Chat() {
 																borderRadius: "24px",
 															},
 														}}
-
-														// overflowX="scroll"
-														// sx={{ scrollbarWidth: "none" }}
 													>
 														{getMessages()}
-														{/* <div ref={bottomOfChat}></div> */}
 													</Flex>
 													<BottomBar id={id} user={session?.user} />
 												</Flex>
 											</Flex>
 										</Flex>
 										<Stack spacing={3}>
-											{/* <ProductImage
-												src={`/${item.image}`}
-												alt={`${t("photoOf")} ${item.name}`}
-												draggable={false}
-												loading="lazy"
-												decoding="async"
-												width="auto"
-												height={150}
-												objectFit="cover"
-												borderRadius="md"
-											/> */}
-											{/* <Text color="gray.500">03.04.2022</Text> */}
 											<Flex height="65vh"></Flex>
-											<Stack
-												direction={"row"}
-												// height=" 10vh"
-												// position=" fixed"
-												// bottom=" 0"
-											>
-												{/* <Input
-													placeholder={"Ваше сообщение"}
-													// bg={
-													// 	colorMode === "dark"
-													// 		? "whiteAlpha.100"
-													// 		: "blackAlpha.100"
-													// }
-													border={0}
-													_focus={{
-														bg: "whiteAlpha.300",
-													}}
-													// onChange={(e) => setValue(e.target.value)}
-												/> */}
-												{/* <IconButton
-													colorScheme="orange"
-													// bg={useColorModeValue("orange.400", "yellow.500")}
-													// color={useColorModeValue("white", "gray.800")}
-													aria-label="Send"
-													icon={<MdOutlineSend />}
-													// onClick={sendMessage}
-												/> */}
-											</Stack>
-
-											{/* <ButtonGroup isAttached>
-											{item.variants.map((element) => (
-												<Button
-													key={element.type}
-													leftIcon={<IoMdAdd />}
-													colorScheme="orange"
-													width="100%"
-												>
-													<Stack spacing={0}>
-														<Text>{element.type}</Text>
-														<Text opacity=".8" fontSize=".75rem">
-															{element.price} {info.currency ?? "USD"}
-														</Text>
-													</Stack>
-												</Button>
-											))}
-										</ButtonGroup> */}
+											<Stack direction={"row"}></Stack>
 										</Stack>
 									</Box>
 									<Stack
-										// display={{ base: "none", md: "flex" }}
 										direction="column"
 										pl={{ base: "none", xl: "10%" }}
 										spacing={5}
@@ -260,11 +163,9 @@ export default function Chat() {
 					<Flex
 						flexShrink={10}
 						flexDirection="column"
-						// h={{ base: "100%", xl: "140rem" }}
 						alignItems={"center"}
 						width={{ base: "100%", xl: "xl" }}
 						margin=".5rem"
-						// width="35%"
 					>
 						<VideoBox />
 						<NewsBox />

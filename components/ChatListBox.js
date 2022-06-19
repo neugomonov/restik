@@ -1,35 +1,8 @@
 import React from "react";
-import { NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
-import Head from "next/head";
-import SidebarWithHeader from "../components/SidebarWithHeader";
-import MenuBox from "../components/MenuBox";
-import VideoBox from "../components/VideoBox";
-import NewsBox from "../components/NewsBox";
-import Cart from "../components/Cart";
-import LargeWithNewsletter from "../components/Footer";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, addDoc } from "@firebase/firestore";
-import {
-	Avatar,
-	Box,
-	Button,
-	Flex,
-	Heading,
-	IconButton,
-	Image,
-	Input,
-	Stack,
-	TableContainer,
-	Tag,
-	Text,
-	useColorMode,
-} from "@chakra-ui/react";
-import info from "../lib/info";
-import { BiErrorAlt } from "react-icons/bi";
-import { ArrowBackIcon } from "@chakra-ui/icons";
-import { MdOutlineMessage, MdOutlineSend } from "react-icons/md";
-// import { db } from "./api/auth/[...nextauth]";
+import { Avatar, Button, Flex, Text, useColorMode } from "@chakra-ui/react";
 import { db } from "../firebase";
 import getOtherEmail from "../utils/getOtherEmail";
 import { useSession } from "next-auth/react";
@@ -47,7 +20,6 @@ export default function ChatListBox() {
 	const redirect = (id) => {
 		router.push(`/chat/${id}`);
 	};
-
 
 	const chatExists = (email) =>
 		chats?.find(

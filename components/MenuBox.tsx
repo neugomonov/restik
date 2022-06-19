@@ -124,28 +124,9 @@ export default function MenuBox() {
 	}
 
 	let stringifiedProducts = stringified.substring(2);
-	// const handleNew = async () => {
-	// };
 
 	const onSubmit = async (data: FormData) => {
 		console.log(data);
-		// console.log(name.value);
-		// console.log(address);
-		// console.log(city);
-		// console.log(company);
-		// console.log(email);
-		// console.log(floor);
-		// console.log(name);
-		// console.log(notes);
-		// console.log(payment);
-		// console.log(phone);
-		// console.log(postal);
-		// console.log(time);
-		// console.log(tip);
-
-		// console.log(data.get("email"));
-
-		// console.log(stringifiedProducts);
 		let disco = cart.total - cart.total * 0.3;
 		let currentTime = new Date().getTime() / 1000;
 		let timeOfDiscoEnd = 1661776053;

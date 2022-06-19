@@ -73,5 +73,3 @@ export default NextAuth({
 		},
 	},
 });
-
-// export { db };

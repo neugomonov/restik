@@ -1,57 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
-import Head from "next/head";
-import SidebarWithHeader from "./SidebarWithHeader";
-import MenuBox from "./MenuBox";
-import VideoBox from "./VideoBox";
-import NewsBox from "./NewsBox";
-import Cart from "./Cart";
-import LargeWithNewsletter from "./Footer";
-import {
-	Avatar,
-	Box,
-	Button,
-	ButtonGroup,
-	Flex,
-	Heading,
-	IconButton,
-	Image,
-	Input,
-	Stack,
-	HStack,
-	VStack,
-	Table,
-	TableCaption,
-	TableContainer,
-	Tag,
-	Tbody,
-	Td,
-	Text,
-	Tfoot,
-	Th,
-	Thead,
-	Tr,
-	useColorMode,
-	useColorModeValue,
-	Menu,
-	MenuButton,
-	MenuItem,
-	MenuList,
-	MenuDivider,
-	Editable,
-	EditablePreview,
-	EditableInput,
-} from "@chakra-ui/react";
-import { FiChevronDown } from "react-icons/fi";
-
-import info from "../lib/info";
-import { CgProfile } from "react-icons/cg";
+import { Button, Stack, useColorMode } from "@chakra-ui/react";
 import { AiFillPhone, AiOutlinePhone, AiTwotoneMail } from "react-icons/ai";
 import { MdPassword, MdPlace } from "react-icons/md";
-import { BiRename } from "react-icons/bi";
-import { ArrowBackIcon, EditIcon } from "@chakra-ui/icons";
-import { MdOutlineMessage, MdOutlineSend } from "react-icons/md";
 import { useSession } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, addDoc } from "@firebase/firestore";

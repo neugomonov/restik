@@ -7,7 +7,6 @@ import {
 	Menu,
 	MenuButton,
 	MenuDivider,
-	MenuGroup,
 	MenuItem,
 	MenuList,
 	Stack,
@@ -76,17 +75,13 @@ export default function LoginHeader() {
 	return (
 		<>
 			<Stack
-				// pt="1rem"
 				flex={{ base: 1, md: 0 }}
 				justify={"center"}
 				direction={"row"}
 				spacing={6}
 			>
 				<Button
-					// as="a"
-
 					variant="outline"
-					// href="/auth"
 					display={"inline-flex"}
 					fontSize={"sm"}
 					fontWeight={600}
