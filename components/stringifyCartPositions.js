@@ -94,6 +94,7 @@ export default function stringifyCartPositions() {
 					{
 						items: cart.items,
 						email: email,
+						phone: phone,
 					}
 				);
 				const result = await stripe.redirectToCheckout({

@@ -117,7 +117,9 @@ export default function LargeWithNewsletter() {
 						<Box>
 							<Logo color={useColorModeValue("gray.700", "white")} />
 						</Box>
-						<Text fontSize={"sm"}>Нижний Новгород, Рождественская, 1</Text>
+						<Text fontSize={"sm"}>
+							Нижний Новгород, 603001, Рождественская, 1
+						</Text>
 						<Text fontSize={"sm"}>
 							© 2022 {info.name ?? t("restaurantName")}. Все права защищены
 						</Text>

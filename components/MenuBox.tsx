@@ -186,6 +186,7 @@ export default function MenuBox() {
 			const checkoutSession = await axios.post("api/create-checkout-session", {
 				items: cart.items,
 				email: email,
+				phone: phone,
 			});
 			const result = await stripe?.redirectToCheckout({
 				sessionId: checkoutSession.data.id,
