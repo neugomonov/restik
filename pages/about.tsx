@@ -133,10 +133,6 @@ const Index: NextPage<unknown> = () => {
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
 	const deliveryHours = getDeliveryHours(new Date());
 
-	const onSubmit = (data: FormData) => {
-		console.log(data);
-	};
-
 	return (
 		<>
 			<Flex flexDirection="column" ml={{ base: "0", md: "60" }}>

@@ -133,10 +133,6 @@ export default function VideoBox() {
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
 	const deliveryHours = getDeliveryHours(new Date());
 
-	const onSubmit = (data: FormData) => {
-		console.log(data);
-	};
-
 	return (
 		<Box
 			transition=".3s ease"

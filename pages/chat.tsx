@@ -34,15 +34,6 @@ const Index: NextPage<unknown> = () => {
 	const chats = snapshot?.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 	const router = useRouter();
 
-	const redirect = (id: string) => {
-		router.push(`/chat/${id}`);
-	};
-
-	console.log("please");
-	console.log(snapshot);
-	console.log(chats);
-	console.log("thanks");
-
 	return (
 		<>
 			<Flex flexDirection="column" ml={{ base: "0", md: "60" }}>
