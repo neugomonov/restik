@@ -10,7 +10,7 @@
         "start": "next start",
         "styletest": "xo && stylelint './**/*.ts'",
         "deploy": "gh-pages -d build",
-        "test": "jest"
+        "test": "jest --transformIgnorePatterns -u"
     },
     "engines": {
         "node": "16.x"

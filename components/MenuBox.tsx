@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import NextImage from "next/image";
-import { useSession } from "next-auth/react";
 
 import {
 	Box,
@@ -78,7 +77,7 @@ type FormState = {
 	floor?: string;
 	time: string;
 	notes?: string;
-	payment: "cash" | "stripe";
+	payment: "Наличные" | "Онлайн";
 	tip?: string;
 };
 
@@ -89,7 +88,6 @@ const ProductImage = chakra(NextImage, {
 export default function MenuBox() {
 	const router = useRouter();
 	const [cart, setCart] = useRecoilState(_cart);
-	const { data: session } = useSession();
 	const toast = useToast();
 	const { register, handleSubmit, watch } = useForm<FormState>();
 	const { colorMode } = useColorMode();
@@ -107,7 +105,7 @@ export default function MenuBox() {
 	const [name, setName] = useState("");
 	const [notes, setNotes] = useState("");
 	const [payment, setPayment] = useState("");
-	const [phone, setPhone] = useState("");
+	let [phone, setPhone] = useState("");
 	const [postal, setPostal] = useState("");
 	const [time, setTime] = useState("");
 	const [tip, setTip] = useState("");
@@ -127,11 +125,14 @@ export default function MenuBox() {
 
 	const onSubmit = async (data: FormData) => {
 		console.log(data);
-		let disco = cart.total - cart.total * 0.3;
+		let disco = cart.total - cart.total * 0.1;
 		let currentTime = new Date().getTime() / 1000;
 		let timeOfDiscoEnd = 1661776053;
 		let total = 0;
-		currentTime < timeOfDiscoEnd ? (total = disco) : (total = cart.total);
+		currentTime < timeOfDiscoEnd && payment !== "Онлайн"
+			? (total = disco)
+			: (total = cart.total);
+		phone = "+7 " + phone;
 		const products = stringifiedProducts;
 		const timestamp = serverTimestamp();
 		const status = "Принят";
@@ -162,7 +163,7 @@ export default function MenuBox() {
 			duration: 3000,
 			isClosable: true,
 		});
-		if (payment == "stripe") {
+		if (payment == "Онлайн") {
 			const stripe = await stripePromise;
 			const checkoutSession = await axios.post("api/create-checkout-session", {
 				items: cart.items,
@@ -509,8 +510,8 @@ export default function MenuBox() {
 									placeholder={t("select")}
 									onChange={(event) => setPayment(event.currentTarget.value)}
 								>
-									<option value="cash">{t("cash")}</option>
-									<option value="stripe">Онлайн</option>
+									<option value="Наличные">{t("cash")}</option>
+									<option value="Онлайн">Онлайн</option>
 								</Select>
 							</FormControl>
 							<FormControl id="tip">
@@ -592,7 +593,7 @@ export default function MenuBox() {
 									cart.total == 0
 								}
 							>
-								{watch("payment") === "stripe" ? t("placeAndPay") : t("pay")}
+								{watch("payment") === "Онлайн" ? t("placeAndPay") : t("pay")}
 							</Button>
 						</Stack>
 					</Stack>

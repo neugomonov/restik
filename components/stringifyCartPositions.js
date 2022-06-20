@@ -43,11 +43,13 @@ export default function stringifyCartPositions() {
 	let address = "";
 	const handleNew = async () => {
 		if (session) {
-			let disco = cart.total - cart.total * 0.3;
+			let disco = cart.total - cart.total * 0.1;
 			let currentTime = new Date().getTime() / 1000;
 			let timeOfDiscoEnd = 1661776053;
 			let total = 0;
-			currentTime < timeOfDiscoEnd ? (total = disco) : (total = cart.total);
+			currentTime < timeOfDiscoEnd && payment.toLowerCase() !== "онлайн"
+				? (total = disco)
+				: (total = cart.total);
 			const products = stringifiedProducts;
 			session?.user?.phone
 				? (phone = session?.user?.phone)

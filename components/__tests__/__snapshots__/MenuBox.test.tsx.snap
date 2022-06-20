@@ -2307,6 +2307,7 @@ Array [
               id="name"
               name="name"
               onBlur={[Function]}
+              onChange={[Function]}
               onFocus={[Function]}
               placeholder="menu:namePlaceholder"
               readOnly={false}
@@ -2339,6 +2340,7 @@ Array [
               id="email"
               name="email"
               onBlur={[Function]}
+              onChange={[Function]}
               onFocus={[Function]}
               placeholder="ivanov_i@gmail.com"
               readOnly={false}
@@ -2379,6 +2381,7 @@ Array [
                 id="phone"
                 name="phone"
                 onBlur={[Function]}
+                onChange={[Function]}
                 onFocus={[Function]}
                 placeholder="777 123 45 67"
                 readOnly={false}
@@ -2404,6 +2407,7 @@ Array [
               id="company"
               name="company"
               onBlur={[Function]}
+              onChange={[Function]}
               onFocus={[Function]}
               placeholder="menu:companyPlaceholder"
               readOnly={false}
@@ -2445,6 +2449,7 @@ Array [
               id="address"
               name="address"
               onBlur={[Function]}
+              onChange={[Function]}
               onFocus={[Function]}
               placeholder="menu:addressPlaceholder"
               readOnly={false}
@@ -2477,6 +2482,7 @@ Array [
               id="postal"
               name="postal"
               onBlur={[Function]}
+              onChange={[Function]}
               onFocus={[Function]}
               placeholder="603001"
               readOnly={false}
@@ -2509,6 +2515,7 @@ Array [
               id="city"
               name="city"
               onBlur={[Function]}
+              onChange={[Function]}
               onFocus={[Function]}
               placeholder="menu:cityPlaceholder"
               readOnly={false}
@@ -2533,6 +2540,7 @@ Array [
               id="floor"
               name="floor"
               onBlur={[Function]}
+              onChange={[Function]}
               onFocus={[Function]}
               placeholder="5"
               readOnly={false}
@@ -2577,6 +2585,7 @@ Array [
                 id="time"
                 name="time"
                 onBlur={[Function]}
+                onChange={[Function]}
                 onFocus={[Function]}
                 readOnly={false}
                 required={true}
@@ -2592,64 +2601,64 @@ Array [
                   menu:asap
                 </option>
                 <option
-                  value="20:02"
+                  value="17:48"
                 >
-                  20:02
+                  17:48
                 </option>
                 <option
-                  value="21:02"
+                  value="18:48"
                 >
-                  21:02
+                  18:48
                 </option>
                 <option
-                  value="22:02"
+                  value="19:48"
                 >
-                  22:02
+                  19:48
                 </option>
                 <option
-                  value="23:02"
+                  value="20:48"
                 >
-                  23:02
+                  20:48
                 </option>
                 <option
-                  value="00:02"
+                  value="21:48"
                 >
-                  00:02
+                  21:48
                 </option>
                 <option
-                  value="01:02"
+                  value="22:48"
                 >
-                  01:02
+                  22:48
                 </option>
                 <option
-                  value="02:02"
+                  value="23:48"
                 >
-                  02:02
+                  23:48
                 </option>
                 <option
-                  value="03:02"
+                  value="00:48"
                 >
-                  03:02
+                  00:48
                 </option>
                 <option
-                  value="04:02"
+                  value="01:48"
                 >
-                  04:02
+                  01:48
                 </option>
                 <option
-                  value="05:02"
+                  value="02:48"
                 >
-                  05:02
+                  02:48
                 </option>
                 <option
-                  value="06:02"
+                  value="03:48"
                 >
-                  06:02
+                  03:48
                 </option>
                 <option
-                  value="07:02"
+                  value="04:48"
                 >
-                  07:02
+                  04:48
                 </option>
               </select>
               <div
@@ -2694,6 +2703,7 @@ Array [
               id="notes"
               name="notes"
               onBlur={[Function]}
+              onChange={[Function]}
               onFocus={[Function]}
               placeholder="menu:deliveryPlaceholder"
               readOnly={false}
@@ -2737,6 +2747,7 @@ Array [
                 id="payment"
                 name="payment"
                 onBlur={[Function]}
+                onChange={[Function]}
                 onFocus={[Function]}
                 readOnly={false}
                 required={true}
@@ -2747,12 +2758,12 @@ Array [
                   menu:select
                 </option>
                 <option
-                  value="cash"
+                  value="Наличные"
                 >
                   menu:cash
                 </option>
                 <option
-                  value="stripe"
+                  value="Онлайн"
                 >
                   Онлайн
                 </option>
@@ -2803,6 +2814,7 @@ Array [
                 id="tip"
                 name="tip"
                 onBlur={[Function]}
+                onChange={[Function]}
                 onFocus={[Function]}
                 readOnly={false}
                 required={false}
@@ -2936,6 +2948,7 @@ Array [
           </label>
           <button
             className="chakra-button css-5c2176"
+            disabled={true}
             type="submit"
           >
             menu:pay

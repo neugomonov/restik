@@ -89,21 +89,6 @@ const MenuItem = dynamic(
 	async () => (await import("@chakra-ui/react")).MenuItem
 );
 
-type FormState = {
-	name: string;
-	email: string;
-	phone: string;
-	company?: string;
-	address: string;
-	postal: string;
-	city: string;
-	floor?: string;
-	time: string;
-	notes?: string;
-	payment: "cash" | "stripe";
-	tip?: string;
-};
-
 const ProductImage = chakra(NextImage, {
 	shouldForwardProp: (prop) => ["width", "height", "src", "alt"].includes(prop),
 });
@@ -112,26 +97,7 @@ export default function VideoBox() {
 	const router = useRouter();
 
 	const [cart, setCart] = useRecoilState(_cart);
-	const { register, handleSubmit, watch } = useForm<FormState>();
 	const { colorMode } = useColorMode();
-	const toast = useToast();
-	const { isOpen, onOpen, onClose } = useDisclosure();
-	const btnRef = useRef();
-	const {
-		isOpen: isAlertOpen,
-		onOpen: onAlertOpen,
-		onClose: onAlertClose,
-	} = useDisclosure();
-	const {
-		isOpen: isMenuOpen,
-		onOpen: onMenuOpen,
-		onClose: onMenuClose,
-	} = useDisclosure();
-	const cancelRef = useRef();
-	const { t, lang } = useTranslation("home");
-
-	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
-	const deliveryHours = getDeliveryHours(new Date());
 
 	return (
 		<Box

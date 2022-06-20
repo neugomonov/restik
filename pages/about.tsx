@@ -90,21 +90,6 @@ const MenuItem = dynamic(
 	async () => (await import("@chakra-ui/react")).MenuItem
 );
 
-type FormState = {
-	name: string;
-	email: string;
-	phone: string;
-	company?: string;
-	address: string;
-	postal: string;
-	city: string;
-	floor?: string;
-	time: string;
-	notes?: string;
-	payment: "cash" | "stripe";
-	tip?: string;
-};
-
 const ProductImage = chakra(NextImage, {
 	shouldForwardProp: (prop) => ["width", "height", "src", "alt"].includes(prop),
 });
@@ -113,7 +98,6 @@ const Index: NextPage<unknown> = () => {
 	const router = useRouter();
 
 	const [cart, setCart] = useRecoilState(_cart);
-	const { register, handleSubmit, watch } = useForm<FormState>();
 	const { colorMode } = useColorMode();
 	const toast = useToast();
 	const { isOpen, onOpen, onClose } = useDisclosure();
