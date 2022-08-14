@@ -29,7 +29,6 @@ import { CgProfile } from "react-icons/cg";
 import { useSession } from "next-auth/react";
 
 const Index: NextPage<unknown> = () => {
-	const { t, lang } = useTranslation("home");
 	const { colorMode } = useColorMode();
 	const { data: session } = useSession();
 

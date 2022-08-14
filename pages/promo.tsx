@@ -33,12 +33,6 @@ const Index: NextPage<unknown> = () => {
 		shouldForwardProp: (prop) =>
 			["width", "height", "src", "alt"].includes(prop),
 	});
-	const UnorderedList = dynamic(
-		async () => (await import("@chakra-ui/react")).UnorderedList
-	);
-	const ListItem = dynamic(
-		async () => (await import("@chakra-ui/react")).ListItem
-	);
 
 	return (
 		<>

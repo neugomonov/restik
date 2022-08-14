@@ -1,8 +1,5 @@
 import React, { useRef } from "react";
 import { NextPage } from "next";
-import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
-import NextImage from "next/image";
 /*Импорт компонентов из предназначенной папки*/
 import SidebarWithHeader from "../components/SidebarWithHeader";
 import Cart from "../components/Cart";
@@ -14,147 +11,13 @@ import CallToActionWithIllustration from "../components/CallToActionWithIllustra
 import CallToActionWithAnnotation from "../components/CallToActionWithAnnotation";
 /*Импорт компонентов из предназначенной папки - конец*/
 
-import {
-	Center,
-	Box,
-	useColorMode,
-	Stack,
-	HStack,
-	Avatar,
-	AvatarBadge,
-	Heading,
-	SimpleGrid,
-	ButtonGroup,
-	Button,
-	useToast,
-	FormControl,
-	FormLabel,
-	InputGroup,
-	InputLeftAddon,
-	Input,
-	Select,
-	Textarea,
-	Checkbox,
-	Link,
-	Text,
-	Image,
-	IconButton,
-	useDisclosure,
-	Tag,
-	Divider,
-	chakra,
-	Flex,
-	AspectRatio,
-} from "@chakra-ui/react";
+import { Box, useColorMode, Flex } from "@chakra-ui/react";
 
 import { useRecoilState } from "recoil";
-import { useForm } from "react-hook-form";
-import useTranslation from "next-translate/useTranslation";
-import {
-	IoMdAdd,
-	IoMdCart,
-	IoMdTrash,
-	IoMdRemove,
-	IoMdCheckmarkCircle,
-} from "react-icons/io";
-import { HiOutlineTranslate } from "react-icons/hi";
-
-import info from "../lib/info";
-import menu from "../lib/menu";
 import { _cart } from "../lib/recoil-atoms";
-import { getDeliveryHours } from "../utils/get-delivery-hours";
-
-const Tooltip = dynamic(async () => (await import("@chakra-ui/react")).Tooltip);
-const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
-const DrawerBody = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerBody
-);
-const DrawerHeader = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerHeader
-);
-const DrawerFooter = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerFooter
-);
-const DrawerOverlay = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerOverlay
-);
-const DrawerContent = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerContent
-);
-const DrawerCloseButton = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerCloseButton
-);
-const Stat = dynamic(async () => (await import("@chakra-ui/react")).Stat);
-const StatLabel = dynamic(
-	async () => (await import("@chakra-ui/react")).StatLabel
-);
-const StatNumber = dynamic(
-	async () => (await import("@chakra-ui/react")).StatNumber
-);
-const StatHelpText = dynamic(
-	async () => (await import("@chakra-ui/react")).StatHelpText
-);
-const AlertDialog = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialog
-);
-const AlertDialogBody = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogBody
-);
-const AlertDialogHeader = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogHeader
-);
-const AlertDialogFooter = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogFooter
-);
-const AlertDialogContent = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogContent
-);
-const AlertDialogOverlay = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogOverlay
-);
-const UnorderedList = dynamic(
-	async () => (await import("@chakra-ui/react")).UnorderedList
-);
-const ListItem = dynamic(
-	async () => (await import("@chakra-ui/react")).ListItem
-);
-const Menu = dynamic(async () => (await import("@chakra-ui/react")).Menu);
-const MenuButton = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuButton
-);
-const MenuList = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuList
-);
-const MenuItem = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuItem
-);
-
-const ProductImage = chakra(NextImage, {
-	shouldForwardProp: (prop) => ["width", "height", "src", "alt"].includes(prop),
-});
 
 const Index: NextPage<unknown> = () => {
-	const router = useRouter();
-
-	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
-	const toast = useToast();
-	const { isOpen, onOpen, onClose } = useDisclosure();
-	const btnRef = useRef();
-	const {
-		isOpen: isAlertOpen,
-		onOpen: onAlertOpen,
-		onClose: onAlertClose,
-	} = useDisclosure();
-	const {
-		isOpen: isMenuOpen,
-		onOpen: onMenuOpen,
-		onClose: onMenuClose,
-	} = useDisclosure();
-	const cancelRef = useRef();
-
-	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
-	const deliveryHours = getDeliveryHours(new Date());
 
 	return (
 		<>

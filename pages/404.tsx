@@ -24,7 +24,6 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
 
 const Index: NextPage<unknown> = () => {
-	const { t, lang } = useTranslation("home");
 	const { colorMode } = useColorMode();
 	const router = useRouter();
 

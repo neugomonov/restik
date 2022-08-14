@@ -24,7 +24,6 @@ import { CgProfile } from "react-icons/cg";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 
 const Index: NextPage<unknown> = () => {
-	const { t, lang } = useTranslation("home");
 	const { colorMode } = useColorMode();
 	const router = useRouter();
 

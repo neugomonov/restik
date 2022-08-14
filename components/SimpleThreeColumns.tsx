@@ -8,7 +8,7 @@ import {
 	Flex,
 	Container,
 } from "@chakra-ui/react";
-import { FcAssistant, FcDonate, FcInTransit, FcLike } from "react-icons/fc";
+import { FcAssistant, FcInTransit, FcLike } from "react-icons/fc";
 
 interface FeatureProps {
 	title: string;

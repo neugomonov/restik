@@ -10,11 +10,6 @@ import {
 	Icon,
 	useColorModeValue,
 } from "@chakra-ui/react";
-import {
-	IoAnalyticsSharp,
-	IoLogoBitcoin,
-	IoSearchSharp,
-} from "react-icons/io5";
 import { BsPeople } from "react-icons/bs";
 import { BiDish } from "react-icons/bi";
 import { GiFruitBowl } from "react-icons/gi";

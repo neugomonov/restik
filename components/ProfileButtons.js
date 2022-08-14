@@ -48,8 +48,8 @@ export default function ProfileButtons() {
 	const handleEditPayment = async (id) => {
 		const payment = prompt("Наличные или Онлайн? 💸");
 		if (
-			payment.toLowerCase() == "наличные" ||
-			payment.toLowerCase() == "онлайн"
+			payment !== null &&
+			(payment.toLowerCase() == "наличные" || payment.toLowerCase() == "онлайн")
 		) {
 			const docRef = doc(db, "users", id);
 			const payload = { payment };

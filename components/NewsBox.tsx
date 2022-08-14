@@ -1,7 +1,5 @@
 import React, { useRef } from "react";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import NextImage from "next/image";
 
 import {
 	Box,
@@ -9,115 +7,22 @@ import {
 	Stack,
 	Heading,
 	Button,
-	useToast,
 	Text,
 	Image,
 	IconButton,
-	useDisclosure,
 	Tag,
-	chakra,
 } from "@chakra-ui/react";
-
-import { useRecoilState } from "recoil";
-import { useForm } from "react-hook-form";
-import useTranslation from "next-translate/useTranslation";
 
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
-import { getDeliveryHours } from "../utils/get-delivery-hours";
 
-import { BiMoviePlay, BiNews } from "react-icons/bi";
+import { BiNews } from "react-icons/bi";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-
-const Tooltip = dynamic(async () => (await import("@chakra-ui/react")).Tooltip);
-const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
-const DrawerBody = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerBody
-);
-const DrawerHeader = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerHeader
-);
-const DrawerFooter = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerFooter
-);
-const DrawerOverlay = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerOverlay
-);
-const DrawerContent = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerContent
-);
-const DrawerCloseButton = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerCloseButton
-);
-const Stat = dynamic(async () => (await import("@chakra-ui/react")).Stat);
-const StatLabel = dynamic(
-	async () => (await import("@chakra-ui/react")).StatLabel
-);
-const StatNumber = dynamic(
-	async () => (await import("@chakra-ui/react")).StatNumber
-);
-const StatHelpText = dynamic(
-	async () => (await import("@chakra-ui/react")).StatHelpText
-);
-const AlertDialog = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialog
-);
-const AlertDialogBody = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogBody
-);
-const AlertDialogHeader = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogHeader
-);
-const AlertDialogFooter = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogFooter
-);
-const AlertDialogContent = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogContent
-);
-const AlertDialogOverlay = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogOverlay
-);
-const UnorderedList = dynamic(
-	async () => (await import("@chakra-ui/react")).UnorderedList
-);
-const ListItem = dynamic(
-	async () => (await import("@chakra-ui/react")).ListItem
-);
-const Menu = dynamic(async () => (await import("@chakra-ui/react")).Menu);
-const MenuButton = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuButton
-);
-const MenuList = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuList
-);
-const MenuItem = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuItem
-);
-
-const ProductImage = chakra(NextImage, {
-	shouldForwardProp: (prop) => ["width", "height", "src", "alt"].includes(prop),
-});
 
 export default function NewsBox() {
 	const router = useRouter();
 
-	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
-	const toast = useToast();
-	const { isOpen, onOpen, onClose } = useDisclosure();
-	const btnRef = useRef();
-	const {
-		isOpen: isAlertOpen,
-		onOpen: onAlertOpen,
-		onClose: onAlertClose,
-	} = useDisclosure();
-	const {
-		isOpen: isMenuOpen,
-		onOpen: onMenuOpen,
-		onClose: onMenuClose,
-	} = useDisclosure();
-	const cancelRef = useRef();
-	const { t, lang } = useTranslation("home");
 
 	return (
 		<Box

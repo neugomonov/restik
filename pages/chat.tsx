@@ -1,13 +1,10 @@
 import React from "react";
 import { NextPage } from "next";
-import useTranslation from "next-translate/useTranslation";
 import SidebarWithHeader from "../components/SidebarWithHeader";
 import VideoBox from "../components/VideoBox";
 import NewsBox from "../components/NewsBox";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { collection, addDoc } from "@firebase/firestore";
 import {
 	Box,
 	Flex,
@@ -19,20 +16,11 @@ import {
 	useColorMode,
 } from "@chakra-ui/react";
 import info from "../lib/info";
-import { MdOutlineMessage, MdOutlineSend } from "react-icons/md";
-import { db } from "../firebase";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { MdOutlineMessage } from "react-icons/md";
 import ChatListBox from "../components/ChatListBox";
 
 const Index: NextPage<unknown> = () => {
-	const { data: session } = useSession();
-
-	const { t, lang } = useTranslation("home");
 	const { colorMode } = useColorMode();
-	const [snapshot] = useCollection(collection(db, "chats"));
-	const chats = snapshot?.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-	const router = useRouter();
 
 	return (
 		<>

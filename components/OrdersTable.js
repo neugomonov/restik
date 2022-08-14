@@ -108,12 +108,12 @@ export default function OrdersTable() {
 		...doc.data(),
 	}));
 
+	// TODO: Sort by date
 	return (
 		<>
 			<Button m={5} p={4} onClick={handleNew}>
 				Новый заказ 🍕
 			</Button>
-
 			<TableContainer>
 				<Table variant="striped" colorScheme="gray">
 					<TableCaption>Таблица заказов</TableCaption>
