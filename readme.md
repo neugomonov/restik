@@ -20,6 +20,7 @@
 
 ## Скриншоты
 
-![](screenshots/dark.png) ![](screenshots/light.png) ![](screenshots/cart.png)
+![](screenshots/flow.gif) 
+![](screenshots/menu.png) 
 
 <b> БУРГИР 🍔 </b>
