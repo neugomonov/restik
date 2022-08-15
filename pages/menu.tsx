@@ -7,9 +7,7 @@ import VideoBox from "../components/VideoBox";
 import NewsBox from "../components/NewsBox";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
-
 import { Box, useColorMode, Flex } from "@chakra-ui/react";
-
 import { useRecoilState } from "recoil";
 import { _cart } from "../lib/recoil-atoms";
 

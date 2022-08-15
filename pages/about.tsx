@@ -3,9 +3,7 @@ import { NextPage } from "next";
 import SidebarWithHeader from "../components/SidebarWithHeader";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
-
 import { Box, useColorMode, Flex } from "@chakra-ui/react";
-
 import { _cart } from "../lib/recoil-atoms";
 import SplitWithImage from "../components/SplitWithImage";
 import SimpleThreeColumns from "../components/SimpleThreeColumns";

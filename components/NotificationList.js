@@ -1,13 +1,10 @@
-import React, { ReactNode, useEffect, useState } from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
-import { useColorMode, MenuItem } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { MenuItem } from "@chakra-ui/react";
 import { db } from "../firebase";
-import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
-import { useCollection } from "react-firebase-hooks/firestore";
 import {
 	collection,
-	deleteDoc,
 	doc,
 	onSnapshot,
 	orderBy,
@@ -18,10 +15,6 @@ import {
 
 export default function NotificationList() {
 	const { data: session } = useSession();
-
-	const { t, lang } = useTranslation("home");
-	const { colorMode } = useColorMode();
-	const [snapshot] = useCollection(collection(db, "notifications"));
 
 	const [notifications, setNotifications] = useState([
 		{ name: "Loading...", id: "initial" },
@@ -47,10 +40,6 @@ export default function NotificationList() {
 		const docRef = doc(db, "notifications", id);
 		const payload = { read };
 		await updateDoc(docRef, payload);
-	};
-	const handleDelete = async (id) => {
-		const docRef = doc(db, "notifications", id);
-		await deleteDoc(docRef);
 	};
 	const router = useRouter();
 	const notificationList = () => {

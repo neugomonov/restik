@@ -19,12 +19,7 @@ import { IoRestaurantOutline } from "react-icons/io5";
 
 export default function PromoBox() {
 	const router = useRouter();
-
 	const { colorMode } = useColorMode();
-
-	const onSubmit = (data: FormData) => {
-		console.log(data);
-	};
 
 	return (
 		<Box

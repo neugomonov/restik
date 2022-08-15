@@ -299,7 +299,6 @@ export default function MenuBox() {
 									<Heading size="md">{item.name}</Heading>
 									<Text colorScheme={"gray"}>¼ / ½ kg</Text>
 								</Flex>
-								{/* создание позиции меню из сетки блюд*/}
 								<Text as="i" colorScheme={"gray"} fontSize=".8rem">
 									{item.ingredients.join(", ").length >= 30 ? (
 										<Tooltip
@@ -328,7 +327,6 @@ export default function MenuBox() {
 										item.ingredients.join(", ")
 									)}
 								</Text>
-								{/* создание позиции меню из сетки блюд - конец*/}
 
 								<ButtonGroup isAttached>
 									{item.variants.map((element) => (

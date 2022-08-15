@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from "react";
-import useTranslation from "next-translate/useTranslation";
 import { Button, Stack, useColorMode } from "@chakra-ui/react";
-import { AiFillPhone, AiOutlinePhone, AiTwotoneMail } from "react-icons/ai";
-import { MdPassword, MdPlace } from "react-icons/md";
+import { AiFillPhone } from "react-icons/ai";
+import { MdPlace } from "react-icons/md";
 import { useSession } from "next-auth/react";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { collection, addDoc } from "@firebase/firestore";
+import { collection } from "@firebase/firestore";
 import { db } from "../firebase";
-import { useRouter } from "next/router";
-import { doc, onSnapshot, setDoc, updateDoc } from "firebase/firestore";
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { IoCash } from "react-icons/io5";
 
 export default function ProfileButtons() {
 	const { data: session } = useSession();
 	const auth = getAuth();
-	const user = auth.currentUser;
-
-	const { t, lang } = useTranslation("home");
-	const { colorMode } = useColorMode();
-	const [snapshot] = useCollection(collection(db, "users"));
-	const router = useRouter();
 	const [users, setUsers] = useState([{ name: "Loading...", id: "initial" }]);
 	useEffect(
 		() =>

@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import NextImage from "next/image";
 import stringifyCartPositions from "./stringifyCartPositions";
 
 import {
@@ -17,11 +16,9 @@ import {
 	useDisclosure,
 	Tag,
 	Divider,
-	chakra,
 } from "@chakra-ui/react";
 
 import { useRecoilState } from "recoil";
-import { useForm } from "react-hook-form";
 import useTranslation from "next-translate/useTranslation";
 import {
 	IoMdAdd,
@@ -33,11 +30,7 @@ import {
 
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
-import { getDeliveryHours } from "../utils/get-delivery-hours";
 
-import { useSession } from "next-auth/react";
-
-const Tooltip = dynamic(async () => (await import("@chakra-ui/react")).Tooltip);
 const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
 const DrawerBody = dynamic(
 	async () => (await import("@chakra-ui/react")).DrawerBody
@@ -85,30 +78,9 @@ const AlertDialogContent = dynamic(
 const AlertDialogOverlay = dynamic(
 	async () => (await import("@chakra-ui/react")).AlertDialogOverlay
 );
-const UnorderedList = dynamic(
-	async () => (await import("@chakra-ui/react")).UnorderedList
-);
-const ListItem = dynamic(
-	async () => (await import("@chakra-ui/react")).ListItem
-);
-const Menu = dynamic(async () => (await import("@chakra-ui/react")).Menu);
-const MenuButton = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuButton
-);
-const MenuList = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuList
-);
-const MenuItem = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuItem
-);
-
-const ProductImage = chakra(NextImage, {
-	shouldForwardProp: (prop) => ["width", "height", "src", "alt"].includes(prop),
-});
 
 export default function MenuBox() {
 	const router = useRouter();
-	const { data: session } = useSession();
 
 	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
@@ -120,21 +92,11 @@ export default function MenuBox() {
 		onOpen: onAlertOpen,
 		onClose: onAlertClose,
 	} = useDisclosure();
-	const {
-		isOpen: isMenuOpen,
-		onOpen: onMenuOpen,
-		onClose: onMenuClose,
-	} = useDisclosure();
 	const cancelRef = useRef();
 	const { t, lang } = useTranslation("common");
-
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
-	const deliveryHours = getDeliveryHours(new Date());
-
-	const onSubmit = (data: FormData) => {
-		console.log(data);
-	};
 	let handleNew = stringifyCartPositions();
+
 	return (
 		<>
 			<IconButton

@@ -83,7 +83,7 @@ const ListHeader = ({ children }: { children: ReactNode }) => {
 };
 
 export default function LargeWithNewsletter() {
-	const { colorMode, toggleColorMode } = useColorMode();
+	const { colorMode } = useColorMode();
 	const { t, lang } = useTranslation("common");
 	const router = useRouter();
 

@@ -1,6 +1,5 @@
 import React from "react";
 import { NextPage } from "next";
-import useTranslation from "next-translate/useTranslation";
 import SidebarWithHeader from "../components/SidebarWithHeader";
 import VideoBox from "../components/VideoBox";
 import NewsBox from "../components/NewsBox";

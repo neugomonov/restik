@@ -11,7 +11,6 @@ import {
 	MenuList,
 	Stack,
 	Text,
-	useColorMode,
 	useColorModeValue,
 	VStack,
 } from "@chakra-ui/react";
@@ -19,8 +18,6 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import router from "next/router";
 import { FiChevronDown } from "react-icons/fi";
 export default function LoginHeader() {
-	const { colorMode } = useColorMode();
-
 	const { data: session } = useSession();
 	if (session) {
 		return (

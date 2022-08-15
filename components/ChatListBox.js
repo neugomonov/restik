@@ -1,8 +1,7 @@
 import React from "react";
-import useTranslation from "next-translate/useTranslation";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, addDoc } from "@firebase/firestore";
-import { Avatar, Button, Flex, Text, useColorMode } from "@chakra-ui/react";
+import { Avatar, Button, Flex, Text } from "@chakra-ui/react";
 import { db } from "../firebase";
 import getOtherEmail from "../utils/getOtherEmail";
 import { useSession } from "next-auth/react";
@@ -11,8 +10,6 @@ import { useRouter } from "next/router";
 export default function ChatListBox() {
 	const { data: session } = useSession();
 
-	const { t, lang } = useTranslation("home");
-	const { colorMode } = useColorMode();
 	const [snapshot] = useCollection(collection(db, "chats"));
 	const chats = snapshot?.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 	const router = useRouter();

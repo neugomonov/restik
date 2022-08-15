@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import useTranslation from "next-translate/useTranslation";
 import {
 	Button,
 	IconButton,
@@ -12,14 +11,12 @@ import {
 	Th,
 	Thead,
 	Tr,
-	useColorMode,
 } from "@chakra-ui/react";
-import { ArrowBackIcon, EditIcon } from "@chakra-ui/icons";
+import { EditIcon } from "@chakra-ui/icons";
 import { useSession } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, addDoc } from "@firebase/firestore";
 import { db } from "../firebase";
-import { useRouter } from "next/router";
 import {
 	doc,
 	onSnapshot,
@@ -31,14 +28,8 @@ import {
 export default function OrdersTable() {
 	const { data: session } = useSession();
 
-	const { t, lang } = useTranslation("home");
-	const { colorMode } = useColorMode();
-	const [snapshot] = useCollection(collection(db, "orders"));
-	const router = useRouter();
 	const [orders, setOrders] = useState([{ name: "Loading...", id: "initial" }]);
 	const [users, setUsers] = useState([{ name: "Loading...", id: "initial" }]);
-	const alovelaceDocumentRef = doc(db, "admins", "neugomonovv@gmail.com");
-	const usersCollectionRef = collection(db, "admins");
 
 	useEffect(
 		() =>

@@ -1,4 +1,4 @@
-import { useDisclosure, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import { loadStripe } from "@stripe/stripe-js";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
@@ -15,21 +15,9 @@ export default function stringifyCartPositions() {
 	const { data: session } = useSession();
 	const toast = useToast();
 	const router = useRouter();
-	const { isOpen, onOpen, onClose } = useDisclosure();
-	const {
-		isOpen: isAlertOpen,
-		onOpen: onAlertOpen,
-		onClose: onAlertClose,
-	} = useDisclosure();
-	const {
-		isOpen: isMenuOpen,
-		onOpen: onMenuOpen,
-		onClose: onMenuClose,
-	} = useDisclosure();
 
 	let stringified = "";
 	for (let index = 0; index < cart.items.length; ++index) {
-		let element = cart.items[index];
 		let csvString = cart.items[index].quantity
 			.toString()
 			.concat("x ", cart.items[index].name, " (", cart.items[index].type, ")");

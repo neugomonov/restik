@@ -24,7 +24,6 @@ import {
 import info from "../lib/info";
 import { IoRestaurantOutline } from "react-icons/io5";
 import promo from "../lib/promo";
-import dynamic from "next/dynamic";
 
 const Index: NextPage<unknown> = () => {
 	const { colorMode } = useColorMode();

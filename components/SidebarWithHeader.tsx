@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 import {
 	IconButton,
@@ -60,7 +60,6 @@ import {
 } from "firebase/firestore";
 
 const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
-
 const Logo = (props: any) => {
 	const { t, lang } = useTranslation("home");
 
@@ -140,12 +139,6 @@ interface SidebarProps extends BoxProps {
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 	const { colorMode, toggleColorMode } = useColorMode();
-	const linkColor = useColorModeValue("gray.600", "gray.200");
-	const linkHoverColor = useColorModeValue("gray.800", "white");
-	const popoverContentBgColor = useColorModeValue("white", "gray.800");
-
-	const router = useRouter();
-
 	const { data: session } = useSession();
 	const [notificationsCount, setNotificationsCount] = useState(0);
 
@@ -362,7 +355,6 @@ interface MobileProps extends FlexProps {
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 	const { colorMode, toggleColorMode } = useColorMode();
 	const { t, lang } = useTranslation("home");
-	const router = useRouter();
 	const { data: session } = useSession();
 	const [notificationsCount, setNotificationsCount] = useState(0);
 	useEffect(() => {

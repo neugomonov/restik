@@ -1,6 +1,5 @@
-import React, { useRef } from "react";
+import React from "react";
 import { NextPage } from "next";
-/*Импорт компонентов из предназначенной папки*/
 import SidebarWithHeader from "../components/SidebarWithHeader";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
@@ -9,11 +8,9 @@ import WithBackgroundImage from "../components/WithBackgroundImage";
 import SplitScreen from "../components/SplitScreen";
 import CallToActionWithIllustration from "../components/CallToActionWithIllustration";
 import CallToActionWithAnnotation from "../components/CallToActionWithAnnotation";
-/*Импорт компонентов из предназначенной папки - конец*/
 
 import { Box, useColorMode, Flex } from "@chakra-ui/react";
 
-import { useRecoilState } from "recoil";
 import { _cart } from "../lib/recoil-atoms";
 
 const Index: NextPage<unknown> = () => {
@@ -44,13 +41,11 @@ const Index: NextPage<unknown> = () => {
 						backdropFilter="auto"
 						backdropBlur="20px"
 					>
-						{/*Использование компонентов в разработке сайта*/}
 						<WithBackgroundImage />
 						<CallToActionWithVideo />
 						<SplitScreen />
 						<CallToActionWithIllustration />
 						<CallToActionWithAnnotation />
-						{/*Использование компонентов в разработке сайта - конец*/}
 					</Box>
 				</Flex>
 				<LargeWithNewsletter />
