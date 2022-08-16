@@ -1,19 +1,19 @@
 <p align="center">
-	<img src="public/images/chief.jpg" alt="Logo" width="200"/>
+	<img src="public/favicon.png" alt="Logo" width="200"/>
 	<br/>
 	<b>чифкиф</b>
 </div>
 
-## Информация
+## Information
 
-Рестик. рестикрестикрестикрестикрестикрестикрестикрестикрестикрестик Рестик.
+Restik. restikrestikrestikrestikrestikrestikrestikrestikrestikrestik Restik.
 
-## Скриншоты
+## Screenshots
 
 ![](screenshots/flow.gif) 
 ![](screenshots/menu.png) 
 
-## Использованные технологии
+## Tech Stack
 
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org/) 
