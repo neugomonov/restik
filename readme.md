@@ -1,14 +1,27 @@
-<p align="center">
+<div align="center">
+	<h1><a href="https://restik.vercel.app/">Restik</a></h1>
 	<img src="public/favicon.png" alt="Logo" width="200"/>
-	<br/>
-	<b>чифкиф</b>
+
+<h2>Information</h1>
+
+Restik is a restaurant app for ordering dishes and managing customers' orders.  
+
+<img src="screenshots/spin.gif" alt="Whoa" width="50"/>	
+<img src="screenshots/spin.gif" alt="Yankee" width="50"/>	
+<img src="screenshots/spin.gif" alt="With" width="50"/>
+<img src="screenshots/spin.gif" alt="No" width="50"/>
+<img src="screenshots/spin.gif" alt="Brim" width="50"/>	
+<img src="screenshots/spin.gif" alt="Let" width="50"/>
+<img src="screenshots/spin.gif" alt="Me" width="50"/>
+<img src="screenshots/spin.gif" alt="Go" width="50"/>	
+<img src="screenshots/spin.gif" alt="Around" width="50"/>
+<img src="screenshots/spin.gif" alt="This" width="50"/>
+<img src="screenshots/spin.gif" alt="Hat" width="50"/>
+<img src="screenshots/spin.gif" alt="Whoa" width="50"/>
+	
+<h2>Screenshots</h2>
+
 </div>
-
-## Information
-
-Restik. restikrestikrestikrestikrestikrestikrestikrestikrestikrestik Restik.
-
-## Screenshots
 
 ![](screenshots/flow.gif) 
 ![](screenshots/menu.png) 
