@@ -4,7 +4,7 @@
 
 <h2>Information</h1>
 
-Restik is a restaurant app for ordering dishes and managing customers' orders.  
+Restik is a restaurant app for ordering dishes and managing customers' orders.
 
 <img src="screenshots/spin.gif" alt="Whoa" width="50"/>	
 <img src="screenshots/spin.gif" alt="Yankee" width="50"/>	
@@ -23,13 +23,13 @@ Restik is a restaurant app for ordering dishes and managing customers' orders.
 
 </div>
 
-![flow](screenshots/flow.gif) 
-![menu](screenshots/menu.png) 
+![flow](screenshots/flow.gif)
+![menu](screenshots/menu.png)
 
 ## Tech Stack
 
 - [React](https://reactjs.org/)
-- [Next.js](https://nextjs.org/) 
+- [Next.js](https://nextjs.org/)
 - [Chakra UI](https://next.chakra-ui.com/)
 - [Recoil](https://recoiljs.org/)
 - [Apollo Client](https://www.apollographql.com/docs/react/)
