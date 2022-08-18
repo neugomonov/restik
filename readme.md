@@ -23,7 +23,7 @@ Restik is a restaurant app for ordering dishes and managing customers' orders.
 
 </div>
 
-![](screenshots/flow.gif) 
+![flow](screenshots/flow.gif) 
 ![](screenshots/menu.png) 
 
 ## Tech Stack
