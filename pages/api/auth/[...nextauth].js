@@ -43,17 +43,13 @@ export default NextAuth({
 		runTransaction,
 	}),
 
-	// Configure one or more authentication providers
 	providers: [
 		GoogleProvider({
 			clientId: process.env.GOOGLE_CLIENT_ID,
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 		}),
-
-		// ...add more providers here
 	],
 	secret: process.env.NEXTAUTH_SECRET,
-	// database: process.env.DATABASE_URL!,
 	callbacks: {
 		async session({ session, token, user }) {
 			console.log(
@@ -68,7 +64,6 @@ export default NextAuth({
 			session.user.address = user.address;
 			session.user.phone = user.phone;
 			session.user.payment = user.payment;
-
 			return session;
 		},
 	},

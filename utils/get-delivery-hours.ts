@@ -28,27 +28,27 @@ export const getDeliveryHours = (date: Date): string[] | undefined => {
 	let closes = parse(times.closes, "HH:mm", date);
 	let isHoliday = false;
 
-	// Если дата закрытия раньше даты открытия - прибавить к ней 1 день.
+	// If the closing date is earlier than the opening date, add 1 day to it. 🤯
 	if (isBefore(closes, opens)) {
 		closes = addDays(closes, 1);
 	}
 
-	// Является ли текущая дата одним из выходных.
+	// Is the current date one of the holidays.
 	for (const day of holidays) {
 		if (isToday(parse(day, "dd/MM", date))) {
 			isHoliday = true;
 		}
 	}
 
-	// Не разрешать заказы, если текущая дата не указана в расписании пиццерии.
+	// Do not allow orders at certain times.
 	// if ((!isWithinInterval(date, {start: opens, end: closes}) || isHoliday || times.opens === '0') && !isDevelopment) {
 	// 	return undefined;
 	// }
 
 	const suggestions = [];
 
-	// Показывать предложения каждый час.
-	// TODO: сделать каждые 30 минут.
+	// Show offers every hour.
+	// TODO: make it 30 minutes.
 	for (
 		let t = averageDelivery;
 		t <= (isDevelopment ? 12 : differenceInHours(closes, date));
