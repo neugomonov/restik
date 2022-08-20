@@ -1,7 +1,7 @@
 import info from "./info";
 
 const { types } = info;
-
+// TODO: these are not pizzas lol
 const translatedIngredients = new Map([
 	[
 		"OPENUP",
