@@ -67,7 +67,7 @@
         "graphql": "15.4.0",
         "jest-fetch-mock": "^3.0.3",
         "next": "^12.1.6",
-        "next-auth": "^4.3.4",
+        "next-auth": "^4.10.3",
         "next-translate": "1.0.1",
         "nextjs-progressbar": "^0.0.14",
         "nookies": "^2.5.2",
