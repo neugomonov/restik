@@ -30,7 +30,9 @@ export default function Chat() {
 
 	const getMessages = () =>
 		messages?.map((msg) => {
-			const sender = msg.sender === session?.user?.email;
+			const sender =
+				msg.sender ===
+				(session?.user?.email !== undefined ? session?.user?.email : "anonym");
 			return (
 				<Flex
 					key={Math.random()}

@@ -21,7 +21,8 @@ export default function ChatListBox() {
 	const chatExists = (email) =>
 		chats?.find(
 			(chat) =>
-				chat.users.includes(session?.user?.email) && chat.users.includes(email)
+				chat.users.includes(session?.user?.email || "anonym") &&
+				chat.users.includes(email)
 		);
 
 	const newChat = async () => {
@@ -33,28 +34,49 @@ export default function ChatListBox() {
 			input != ""
 		) {
 			await addDoc(collection(db, "chats"), {
-				users: [session?.user?.email, input],
+				users: [
+					session?.user?.email !== undefined ? session?.user?.email : "anonym",
+					input,
+				],
 			});
 		}
 	};
 
 	const chatList = () => {
-		return chats
-			?.filter((chat) => chat.users.includes(session?.user?.email))
-			.map((chat) => (
-				<Flex
-					key={Math.random()}
-					p={3}
-					align="center"
-					_hover={{ bg: "gray.100", cursor: "pointer" }}
-					onClick={() => redirect(chat.id)}
-				>
-					<Avatar src="" marginEnd={3} />
-					<Text fontSize={{ base: "xs", sm: "md" }}>
-						{getOtherEmail(chat.users, session?.user?.email)}
-					</Text>
-				</Flex>
-			));
+		return (
+			chats
+				?.filter((chat) => chat.users.includes(session?.user?.email))
+				.map((chat) => (
+					<Flex
+						key={Math.random()}
+						p={3}
+						align="center"
+						_hover={{ bg: "gray.100", cursor: "pointer" }}
+						onClick={() => redirect(chat.id)}
+					>
+						<Avatar src="" marginEnd={3} />
+						<Text fontSize={{ base: "xs", sm: "md" }}>
+							{getOtherEmail(chat.users, session?.user?.email)}
+						</Text>
+					</Flex>
+				)),
+			chats
+				?.filter((chat) => chat.users.includes("anonym"))
+				.map((chat) => (
+					<Flex
+						key={Math.random()}
+						p={3}
+						align="center"
+						_hover={{ bg: "gray.100", cursor: "pointer" }}
+						onClick={() => redirect(chat.id)}
+					>
+						<Avatar src="" marginEnd={3} />
+						<Text fontSize={{ base: "xs", sm: "md" }}>
+							{getOtherEmail(chat.users, "anonym")}
+						</Text>
+					</Flex>
+				))
+		);
 	};
 	return (
 		<>
