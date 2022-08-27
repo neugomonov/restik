@@ -12,23 +12,26 @@ export const PizzaSpinner = () => (
 	/>
 );
 
-export const PizzaContainer = forwardRef(({ children }, ref) => (
-	<Box
-		ref={ref}
-		className="pizza"
-		m="auto"
-		mt={["-20px", "-60px", "-120px"]}
-		mb={["-40px", "-140px", "-200px"]}
-		w={[280, 480, 640]}
-		h={[280, 480, 640]}
-		position="relative"
-	>
-		{children}
-	</Box>
-));
+export const PizzaContainer = forwardRef<HTMLDivElement>(
+	({ children }, ref) => (
+		<Box
+			ref={ref}
+			className="pizza"
+			m="auto"
+			mt={["-20px", "-60px", "-120px"]}
+			mb={["-40px", "-140px", "-200px"]}
+			w={[280, 480, 640]}
+			h={[280, 480, 640]}
+			position="relative"
+		>
+			{children}
+		</Box>
+	)
+);
 
 const Loader = () => {
 	return (
+		// @ts-expect-error
 		<PizzaContainer>
 			<PizzaSpinner />
 		</PizzaContainer>

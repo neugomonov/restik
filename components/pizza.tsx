@@ -4,14 +4,14 @@ import { OrbitControls } from "../vendor_mods/three/examples/jsm/controls/OrbitC
 import { loadGLTFModel } from "../lib/model";
 import { PizzaSpinner, PizzaContainer } from "./pizza-loader";
 
-function easeOutCirc(x) {
+function easeOutCirc(x: number) {
 	return Math.sqrt(1 - Math.pow(x - 1, 4));
 }
 
 const Pizza = () => {
-	const refContainer = useRef();
+	const refContainer = useRef<HTMLDivElement>();
 	const [loading, setLoading] = useState(true);
-	const [renderer, setRenderer] = useState();
+	const [renderer, setRenderer] = useState<any>();
 	const [_camera, setCamera] = useState();
 	const [target] = useState(new THREE.Vector3(0, 0.25, 0));
 	const [initialCameraPosition] = useState(
@@ -62,6 +62,7 @@ const Pizza = () => {
 			);
 			camera.position.copy(initialCameraPosition);
 			camera.lookAt(target);
+			// @ts-expect-error
 			setCamera(camera);
 
 			const ambientLight = new THREE.AmbientLight(0xcccccc, 1);
@@ -70,6 +71,7 @@ const Pizza = () => {
 			const controls = new OrbitControls(camera, renderer.domElement);
 			controls.autoRotate = true;
 			controls.target = target;
+			// @ts-expect-error
 			setControls(controls);
 
 			loadGLTFModel(scene, "/pizza.glb", {
@@ -79,7 +81,7 @@ const Pizza = () => {
 				animate();
 				setLoading(false);
 			});
-
+			// @ts-expect-error
 			let req = null;
 			let frame = 0;
 			const animate = () => {
@@ -106,6 +108,7 @@ const Pizza = () => {
 
 			return () => {
 				console.log("pizza unmounted");
+				// @ts-expect-error
 				cancelAnimationFrame(req);
 				renderer.dispose();
 			};
@@ -120,6 +123,7 @@ const Pizza = () => {
 	}, [renderer, handleWindowResize]);
 
 	return (
+		// @ts-expect-error
 		<PizzaContainer ref={refContainer}>
 			{loading && <PizzaSpinner />}
 		</PizzaContainer>
