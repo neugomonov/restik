@@ -14,13 +14,13 @@ export default function ChatListBox() {
 	const chats = snapshot?.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 	const router = useRouter();
 
-	const redirect = (id) => {
+	const redirect = (id: any) => {
 		router.push(`/chat/${id}`);
 	};
 
-	const chatExists = (email) =>
+	const chatExists = (email: any) =>
 		chats?.find(
-			(chat) =>
+			(chat: any) =>
 				chat.users.includes(session?.user?.email || "anonym") &&
 				chat.users.includes(email)
 		);
@@ -43,40 +43,24 @@ export default function ChatListBox() {
 	};
 
 	const chatList = () => {
-		return (
-			chats
-				?.filter((chat) => chat.users.includes(session?.user?.email))
-				.map((chat) => (
-					<Flex
-						key={Math.random()}
-						p={3}
-						align="center"
-						_hover={{ bg: "gray.100", cursor: "pointer" }}
-						onClick={() => redirect(chat.id)}
-					>
-						<Avatar src="" marginEnd={3} />
-						<Text fontSize={{ base: "xs", sm: "md" }}>
-							{getOtherEmail(chat.users, session?.user?.email)}
-						</Text>
-					</Flex>
-				)),
-			chats
-				?.filter((chat) => chat.users.includes("anonym"))
-				.map((chat) => (
-					<Flex
-						key={Math.random()}
-						p={3}
-						align="center"
-						_hover={{ bg: "gray.100", cursor: "pointer" }}
-						onClick={() => redirect(chat.id)}
-					>
-						<Avatar src="" marginEnd={3} />
-						<Text fontSize={{ base: "xs", sm: "md" }}>
-							{getOtherEmail(chat.users, "anonym")}
-						</Text>
-					</Flex>
-				))
-		);
+		return chats
+			?.filter((chat: any) =>
+				chat.users.includes(session?.user?.email || "anonym")
+			)
+			.map((chat: any) => (
+				<Flex
+					key={Math.random()}
+					p={3}
+					align="center"
+					_hover={{ bg: "gray.100", cursor: "pointer" }}
+					onClick={() => redirect(chat.id)}
+				>
+					<Avatar src="" marginEnd={3} />
+					<Text fontSize={{ base: "xs", sm: "md" }}>
+						{getOtherEmail(chat.users, session?.user?.email || "anonym")}
+					</Text>
+				</Flex>
+			));
 	};
 	return (
 		<>

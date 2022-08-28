@@ -8,11 +8,10 @@ import { db } from "../firebase";
 import { _cart } from "../lib/recoil-atoms";
 import axios from "axios";
 
-const stripePromise = loadStripe(process.env.stripe_public_key);
+const stripePromise = loadStripe(process.env.stripe_public_key!);
 
 export default function stringifyCartPositions() {
 	const [cart, setCart] = useRecoilState(_cart);
-	const { data: session } = useSession();
 	const toast = useToast();
 	const router = useRouter();
 
@@ -29,7 +28,7 @@ export default function stringifyCartPositions() {
 	let phone = "";
 	let payment = "";
 	let address = "";
-	const handleNew = async () => {
+	const handleNew = async (session: any) => {
 		if (session) {
 			let disco = cart.total - cart.total * 0.1;
 			let currentTime = new Date().getTime() / 1000;
@@ -41,13 +40,13 @@ export default function stringifyCartPositions() {
 			const products = stringifiedProducts;
 			session?.user?.phone
 				? (phone = session?.user?.phone)
-				: (phone = prompt("Введите ваш телефон 🤙"));
+				: (phone = prompt("Введите ваш телефон 🤙")!);
 			session?.user?.address
 				? (address = session?.user?.address)
-				: (address = prompt("Введите адрес доставки 🏠"));
+				: (address = prompt("Введите адрес доставки 🏠")!);
 			session?.user?.payment
 				? (payment = session?.user?.payment)
-				: (payment = prompt("Наличные или Онлайн? 💸"));
+				: (payment = prompt("Наличные или Онлайн? 💸")!);
 			const email = session?.user?.email;
 			const timestamp = serverTimestamp();
 			const status = "Принят";
@@ -80,7 +79,7 @@ export default function stringifyCartPositions() {
 						phone: phone,
 					}
 				);
-				const result = await stripe.redirectToCheckout({
+				const result = await stripe!.redirectToCheckout({
 					sessionId: checkoutSession.data.id,
 				});
 				if (result.error) {

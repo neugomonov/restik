@@ -28,14 +28,14 @@ export default function NotificationList() {
 			orderBy("timestamp", "desc")
 		);
 
-		onSnapshot(q, (snapshot) => {
+		onSnapshot(q, (snapshot: any) => {
 			setNotifications(
-				snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+				snapshot.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))
 			);
 		});
 	}, []);
 
-	const setRead = async (id) => {
+	const setRead = async (id: any) => {
 		const read = true;
 		const docRef = doc(db, "notifications", id);
 		const payload = { read };
@@ -43,7 +43,7 @@ export default function NotificationList() {
 	};
 	const router = useRouter();
 	const notificationList = () => {
-		return notifications.map((notification) => (
+		return notifications.map((notification: any) => (
 			<MenuItem
 				key={notification.id}
 				onClick={async () => {
