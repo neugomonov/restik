@@ -30,6 +30,7 @@ import {
 
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
+import { useSession } from "next-auth/react";
 
 const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
 const DrawerBody = dynamic(
@@ -81,6 +82,7 @@ const AlertDialogOverlay = dynamic(
 
 export default function MenuBox() {
 	const router = useRouter();
+	const { data: session } = useSession();
 
 	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
@@ -273,7 +275,7 @@ export default function MenuBox() {
 								mr={3}
 								onClick={async () => {
 									await onClose();
-									await handleNew();
+									await handleNew(session);
 								}}
 								disabled={cart.items.length === 0}
 							>

@@ -12,7 +12,6 @@ const stripePromise = loadStripe(process.env.stripe_public_key!);
 
 export default function stringifyCartPositions() {
 	const [cart, setCart] = useRecoilState(_cart);
-	const { data: session } = useSession();
 	const toast = useToast();
 	const router = useRouter();
 
