@@ -33,15 +33,19 @@ export default function OrdersTable() {
 
 	useEffect(
 		() =>
-			onSnapshot(collection(db, "orders"), (snapshot) =>
-				setOrders(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+			onSnapshot(collection(db, "orders"), (snapshot: any) =>
+				setOrders(
+					snapshot.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))
+				)
 			),
 		[]
 	);
 	useEffect(
 		() =>
-			onSnapshot(collection(db, "users"), (snapshot) =>
-				setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+			onSnapshot(collection(db, "users"), (snapshot: any) =>
+				setUsers(
+					snapshot.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))
+				)
 			),
 		[]
 	);
@@ -72,7 +76,7 @@ export default function OrdersTable() {
 		}
 	};
 
-	const handleEditStatus = async (id) => {
+	const handleEditStatus = async (id: any) => {
 		const status = prompt("Готовится/Доставляется/Выполнен? 🤔");
 		if (
 			status == "Готовится" ||
@@ -85,7 +89,7 @@ export default function OrdersTable() {
 			const payload = { status };
 			updateDoc(docRef, payload);
 			await addDoc(collection(db, `notifications`), {
-				recipient: docSnap.data().email,
+				recipient: docSnap.data()!.email,
 				text: "🍕 Ваш заказ " + status + "!",
 				timestamp: serverTimestamp(),
 				read: false,
@@ -120,32 +124,20 @@ export default function OrdersTable() {
 						</Tr>
 					</Thead>
 					<Tbody>
-						{session?.user?.role == "Админ"
-							? orders.map((order) => (
-									<Tr key={order.id}>
-										<Td>
-											{order.status}
-											<IconButton
-												size="sm"
-												icon={<EditIcon />}
-												onClick={() => handleEditStatus(order.id)}
-											/>
-										</Td>
-										<Td>{order.products}</Td>
-										<Td>{order.phone}</Td>
-										<Td>{order.address}</Td>
-										<Td>{order.payment}</Td>
-										<Td>{order.total}</Td>
-										<Td>{order.email}</Td>
-									</Tr>
-							  ))
-							: orders
-									?.filter((order) =>
-										order.email?.includes(session?.user?.email)
-									)
-									.map((order) => (
+						{
+							// @ts-expect-error
+							session?.user?.role == "Админ"
+								? orders.map((order: any) => (
 										<Tr key={order.id}>
-											<Td>{order.status}</Td>
+											<Td>
+												{order.status}
+												<IconButton
+													aria-label="Edit"
+													size="sm"
+													icon={<EditIcon />}
+													onClick={() => handleEditStatus(order.id)}
+												/>
+											</Td>
 											<Td>{order.products}</Td>
 											<Td>{order.phone}</Td>
 											<Td>{order.address}</Td>
@@ -153,7 +145,23 @@ export default function OrdersTable() {
 											<Td>{order.total}</Td>
 											<Td>{order.email}</Td>
 										</Tr>
-									))}
+								  ))
+								: orders
+										?.filter((order: any) =>
+											order.email?.includes(session?.user?.email)
+										)
+										.map((order: any) => (
+											<Tr key={order.id}>
+												<Td>{order.status}</Td>
+												<Td>{order.products}</Td>
+												<Td>{order.phone}</Td>
+												<Td>{order.address}</Td>
+												<Td>{order.payment}</Td>
+												<Td>{order.total}</Td>
+												<Td>{order.email}</Td>
+											</Tr>
+										))
+						}
 					</Tbody>
 					<Tfoot>
 						<Tr>
