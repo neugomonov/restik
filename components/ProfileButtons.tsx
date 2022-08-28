@@ -15,12 +15,14 @@ export default function ProfileButtons() {
 	const [users, setUsers] = useState([{ name: "Loading...", id: "initial" }]);
 	useEffect(
 		() =>
-			onSnapshot(collection(db, "users"), (snapshot) =>
-				setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+			onSnapshot(collection(db, "users"), (snapshot: any) =>
+				setUsers(
+					snapshot.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))
+				)
 			),
 		[]
 	);
-	const handleEditAddress = async (id) => {
+	const handleEditAddress = async (id: any) => {
 		const address = prompt("Введите адрес доставки 🏠");
 		if (address != null && address != "") {
 			const docRef = doc(db, "users", id);
@@ -28,7 +30,7 @@ export default function ProfileButtons() {
 			updateDoc(docRef, payload);
 		}
 	};
-	const handleEditPhone = async (id) => {
+	const handleEditPhone = async (id: any) => {
 		const phone = prompt("Введите ваш телефон 🤙");
 		if (phone != null && phone != "") {
 			const docRef = doc(db, "users", id);
@@ -36,7 +38,7 @@ export default function ProfileButtons() {
 			updateDoc(docRef, payload);
 		}
 	};
-	const handleEditPayment = async (id) => {
+	const handleEditPayment = async (id: any) => {
 		const payment = prompt("Наличные или Онлайн? 💸");
 		if (
 			payment !== null &&
@@ -52,8 +54,8 @@ export default function ProfileButtons() {
 		<>
 			<Stack direction={{ base: "column", xl: "row" }}>
 				{users
-					?.filter((user) => user.email?.includes(session?.user?.email))
-					.map((user) => (
+					?.filter((user: any) => user.email?.includes(session?.user?.email))
+					.map((user: any) => (
 						<Button
 							key={user.id}
 							size="md"
@@ -65,8 +67,8 @@ export default function ProfileButtons() {
 					))}
 
 				{users
-					?.filter((user) => user.email?.includes(session?.user?.email))
-					.map((user) => (
+					?.filter((user: any) => user.email?.includes(session?.user?.email))
+					.map((user: any) => (
 						<Button
 							key={user.id}
 							size="md"
@@ -77,8 +79,8 @@ export default function ProfileButtons() {
 						</Button>
 					))}
 				{users
-					?.filter((user) => user.email?.includes(session?.user?.email))
-					.map((user) => (
+					?.filter((user: any) => user.email?.includes(session?.user?.email))
+					.map((user: any) => (
 						<Button
 							key={user.id}
 							size="md"
