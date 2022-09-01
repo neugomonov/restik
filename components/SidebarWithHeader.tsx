@@ -187,6 +187,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
+	// TODO: Make the notifications' first appearance take place with no magical rerenders, for God's sake.
 
 	return (
 		<Box
@@ -402,7 +403,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
-
+	// TODO: 1. Take the popup to the front. 2. Make the sidemenu on mobile disappear after choosing a position. 3. Make the correct positions selector glow. 👮‍♀️
 	return (
 		<Flex
 			transition=".3s ease"
