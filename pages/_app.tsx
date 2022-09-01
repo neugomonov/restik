@@ -10,16 +10,23 @@ import { _cart, CartState } from "../lib/recoil-atoms";
 import StateSaver from "../components/state-saver";
 import info from "../lib/info";
 import NextNProgress from "nextjs-progressbar";
+import SidebarWithHeader from "../components/SidebarWithHeader";
 
 const client = new ApolloClient({
 	uri: process.env.SERVER_URL,
 	cache: new InMemoryCache(),
 });
 
+type ComponentWithPageLayout = AppProps & {
+	Component: AppProps["Component"] & {
+		PageLayout?: React.ComponentType;
+	};
+};
+
 const App = ({
 	Component,
 	pageProps: { session, ...pageProps },
-}: AppProps): JSX.Element => {
+}: ComponentWithPageLayout): JSX.Element => {
 	const [cart, setCart] = useState<CartState | undefined>(undefined);
 	useEffect(() => {
 		const previous = localStorage.getItem("cart");
@@ -77,7 +84,14 @@ const App = ({
 									options={{ showSpinner: false }}
 									color="#DD6B20"
 								/>
-								<Component {...pageProps} />
+								<SidebarWithHeader children />
+								{Component.PageLayout ? (
+									<Component.PageLayout>
+										<Component {...pageProps} />
+									</Component.PageLayout>
+								) : (
+									<Component {...pageProps} />
+								)}
 							</StateSaver>
 						</RecoilRoot>
 					)}
