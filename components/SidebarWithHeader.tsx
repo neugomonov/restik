@@ -294,7 +294,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				/>
 			</Stack>
 			{LinkItems.map((link) => (
-				<NavItem key={link.name} icon={link.icon} href={link.href}>
+				<NavItem
+					key={link.name}
+					icon={link.icon}
+					href={link.href}
+					onClose={onClose}
+				>
 					{link.name}
 				</NavItem>
 			))}
@@ -310,43 +315,47 @@ interface NavItemProps extends FlexProps {
 	icon: IconType;
 	href: string;
 	children: ReactText;
+	onClose: () => void;
 }
 
-const NavItem = ({ icon, href, children, ...rest }: NavItemProps) => {
+const NavItem = ({ onClose, icon, href, children, ...rest }: NavItemProps) => {
 	const router = useRouter();
 
 	return (
-		<Box style={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
-			<Flex
-				onClick={async () => {
-					await router.push(href, href, { locale: "ru" });
-				}}
-				transition="all 0.2s"
-				align="center"
-				p="4"
-				mx="4"
-				borderRadius="lg"
-				role="group"
-				cursor="pointer"
-				_hover={{
-					bg: useColorModeValue("orange.400", "yellow.400"),
-					color: useColorModeValue("white", "black"),
-				}}
-				{...rest}
-			>
-				{icon && (
-					<Icon
-						mr="4"
-						fontSize="16"
-						_groupHover={{
-							color: useColorModeValue("white", "black"),
-						}}
-						as={icon}
-					/>
-				)}
-				{children}
-			</Flex>
-		</Box>
+		<>
+			<Box style={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
+				<Flex
+					onClick={async () => {
+						await router.push(href, href, { locale: "ru" });
+						await onClose();
+					}}
+					transition="all 0.2s"
+					align="center"
+					p="4"
+					mx="4"
+					borderRadius="lg"
+					role="group"
+					cursor="pointer"
+					_hover={{
+						bg: useColorModeValue("orange.400", "yellow.400"),
+						color: useColorModeValue("white", "black"),
+					}}
+					{...rest}
+				>
+					{icon && (
+						<Icon
+							mr="4"
+							fontSize="16"
+							_groupHover={{
+								color: useColorModeValue("white", "black"),
+							}}
+							as={icon}
+						/>
+					)}
+					{children}
+				</Flex>
+			</Box>
+		</>
 	);
 };
 
@@ -403,7 +412,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
-	// TODO: 1. Take the popup to the front. 2. Make the sidemenu on mobile disappear after choosing a position. 3. Make the correct positions selector glow. 👮‍♀️
 	return (
 		<Flex
 			transition=".3s ease"

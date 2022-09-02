@@ -84,14 +84,14 @@ const App = ({
 									options={{ showSpinner: false }}
 									color="#DD6B20"
 								/>
-								<SidebarWithHeader children />
 								{Component.PageLayout ? (
 									<Component.PageLayout>
 										<Component {...pageProps} />
 									</Component.PageLayout>
 								) : (
 									<Component {...pageProps} />
-								)}
+									)}
+									<SidebarWithHeader children />
 							</StateSaver>
 						</RecoilRoot>
 					)}
