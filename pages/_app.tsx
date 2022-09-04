@@ -90,8 +90,8 @@ const App = ({
 									</Component.PageLayout>
 								) : (
 									<Component {...pageProps} />
-									)}
-									<SidebarWithHeader children />
+								)}
+								<SidebarWithHeader children />
 							</StateSaver>
 						</RecoilRoot>
 					)}
