@@ -1,7 +1,7 @@
 {
     "name": "restik",
     "homepage": "https://restik.vercel.app",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "habibi",
     "private": true,
     "scripts": {
