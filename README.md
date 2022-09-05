@@ -2,8 +2,6 @@
 	<h1><a href="https://restik.vercel.app/">Restik</a></h1>
 	<img src="public/favicon.png" alt="Logo" width="200"/>
 
-<h2>Information</h1>
-
 Restik is a restaurant app for ordering dishes and managing customers' orders.
 
 <img src="screenshots/spin.gif" alt="Whoa" width="50"/>	
@@ -40,4 +38,4 @@ Restik is a restaurant app for ordering dishes and managing customers' orders.
 - [Jest 🤡](https://jestjs.io/)
 - [Stripe 💵](https://stripe.com/)
 
-<b> БУРГИР 🍔 </b>
+<b> БУРГИР <a href="https://restik.vercel.app/">🍔</a></b>
