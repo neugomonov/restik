@@ -18,23 +18,25 @@ const translatedIngredients = new Map([
 		},
 	],
 	[
-		"Napoletana",
+		"Prize",
 		{ en: "Дарим пиццу за первый заказ!", ru: "Дарим пиццу за первый заказ! " },
 	],
-	["Calzone", { en: "Сувенир в подарок!", ru: "Сувенир в подарок!" }],
-	["Quattro-Formaggi", { en: "Пригласите друга!", ru: "Пригласите друга!" }],
-	["Caprese", { en: "Пицца на день рождения!", ru: "Пицца на день рождения!" }],
+	["Souvenir", { en: "Сувенир в подарок!", ru: "Сувенир в подарок!" }],
+	["Invite", { en: "Пригласите друга!", ru: "Пригласите друга!" }],
 	[
-		"Tarhun",
+		"Birthday",
+		{ en: "Пицца на день рождения!", ru: "Пицца на день рождения!" },
+	],
+	[
+		"FirstOrder",
 		{ en: "2 пиццы за первый заказ!", ru: "2 пиццы за первый заказ!" },
 	],
 	["FIRST1", { en: "Скидка 30% в пиццерии!", ru: "Скидка 30% в пиццерии!" }],
 	[
-		"Latte",
+		"MakeSet",
 		{ en: "Закажите сет всего за 795 ₽", ru: "Закажите сет всего за 795 ₽" },
 	],
 
-	["Cheese", { en: "Cheese", ru: "Сыр" }],
 	[
 		"1999",
 		{
@@ -56,13 +58,8 @@ const translatedIngredients = new Map([
 			ru: "Мы открылись! 🥳 Скидка 10% на всё с промокодом OPENUP!",
 		},
 	],
-	["Oregano", { en: "Oregano", ru: "Душица " }],
-	["Pepper", { en: "Pepper", ru: "Перец" }],
-	["Rice", { en: "Rice", ru: "Рис" }],
-	["Saffron", { en: "Saffron", ru: "Шафран" }],
-	["Turmeric", { en: "Turmeric", ru: "Куркума" }],
 	[
-		"Chicken",
+		"Tasty",
 		{
 			en: "За заказ доставки от 999 рублей дарим вкусные подарки!",
 			ru: "За заказ доставки от 999 рублей дарим вкусные подарки!",
@@ -100,14 +97,12 @@ const promo = (lang: "en" | "ru") => [
 		tastyFee: 0,
 	},
 	{
-		name: (
-			translatedIngredients.get("Napoletana") as { en: string; ru: string }
-		)[lang],
+		name: (translatedIngredients.get("Prize") as { en: string; ru: string })[
+			lang
+		],
 		image: "images/covers/promo/pizza-gift2.jpg",
 		ingredients: [
-			(translatedIngredients.get("Chicken") as { en: string; ru: string })[
-				lang
-			],
+			(translatedIngredients.get("Tasty") as { en: string; ru: string })[lang],
 		],
 		variants: [
 			{ type: types.small[lang], price: 210 },
@@ -116,14 +111,12 @@ const promo = (lang: "en" | "ru") => [
 		tastyFee: 0,
 	},
 	{
-		name: (translatedIngredients.get("Calzone") as { en: string; ru: string })[
+		name: (translatedIngredients.get("Souvenir") as { en: string; ru: string })[
 			lang
 		],
 		image: "images/covers/promo/souvenir.jpg",
 		ingredients: [
-			(translatedIngredients.get("Chicken") as { en: string; ru: string })[
-				lang
-			],
+			(translatedIngredients.get("Tasty") as { en: string; ru: string })[lang],
 		],
 		variants: [
 			{ type: types.small[lang], price: 200 },
@@ -133,16 +126,14 @@ const promo = (lang: "en" | "ru") => [
 	},
 	{
 		name: (
-			translatedIngredients.get("Quattro-Formaggi") as {
+			translatedIngredients.get("Invite") as {
 				en: string;
 				ru: string;
 			}
 		)[lang],
 		image: "images/covers/promo/friend.jpg",
 		ingredients: [
-			(translatedIngredients.get("Chicken") as { en: string; ru: string })[
-				lang
-			],
+			(translatedIngredients.get("Tasty") as { en: string; ru: string })[lang],
 		],
 		variants: [
 			{ type: types.small[lang], price: 210 },
@@ -151,14 +142,12 @@ const promo = (lang: "en" | "ru") => [
 		tastyFee: 0,
 	},
 	{
-		name: (translatedIngredients.get("Caprese") as { en: string; ru: string })[
+		name: (translatedIngredients.get("Birthday") as { en: string; ru: string })[
 			lang
 		],
 		image: "images/covers/promo/birth.jpg",
 		ingredients: [
-			(translatedIngredients.get("Chicken") as { en: string; ru: string })[
-				lang
-			],
+			(translatedIngredients.get("Tasty") as { en: string; ru: string })[lang],
 		],
 		variants: [
 			{ type: types.small[lang], price: 150 },
@@ -167,14 +156,12 @@ const promo = (lang: "en" | "ru") => [
 		tastyFee: 0,
 	},
 	{
-		name: (translatedIngredients.get("Tarhun") as { en: string; ru: string })[
-			lang
-		],
+		name: (
+			translatedIngredients.get("FirstOrder") as { en: string; ru: string }
+		)[lang],
 		image: "images/covers/promo/2000first.jpg",
 		ingredients: [
-			(translatedIngredients.get("Chicken") as { en: string; ru: string })[
-				lang
-			],
+			(translatedIngredients.get("Tasty") as { en: string; ru: string })[lang],
 		],
 		variants: [
 			{ type: types.small[lang], price: 60 },
@@ -200,14 +187,12 @@ const promo = (lang: "en" | "ru") => [
 		tastyFee: 0,
 	},
 	{
-		name: (translatedIngredients.get("Latte") as { en: string; ru: string })[
+		name: (translatedIngredients.get("MakeSet") as { en: string; ru: string })[
 			lang
 		],
 		image: "images/covers/promo/welcome.jpg",
 		ingredients: [
-			(translatedIngredients.get("Chicken") as { en: string; ru: string })[
-				lang
-			],
+			(translatedIngredients.get("Tasty") as { en: string; ru: string })[lang],
 		],
 		variants: [
 			{ type: types.small[lang], price: 150 },
