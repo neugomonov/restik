@@ -1,8 +1,8 @@
 import { GLTFLoader } from "../vendor_mods/three/examples/jsm/loaders/GLTFLoader.js";
 
 export function loadGLTFModel(
-	scene:any,
-	glbPath:any,
+	scene: any,
+	glbPath: any,
 	options = { receiveShadow: true, castShadow: true }
 ) {
 	const { receiveShadow, castShadow } = options;
@@ -11,7 +11,7 @@ export function loadGLTFModel(
 
 		loader.load(
 			glbPath,
-			(gltf:any) => {
+			(gltf: any) => {
 				const obj = gltf.scene;
 				obj.name = "pizza";
 				obj.position.y = 0;
@@ -20,7 +20,7 @@ export function loadGLTFModel(
 				obj.castShadow = castShadow;
 				scene.add(obj);
 
-				obj.traverse(function (child:any) {
+				obj.traverse(function (child: any) {
 					if (child.isMesh) {
 						child.castShadow = castShadow;
 						child.receiveShadow = receiveShadow;
