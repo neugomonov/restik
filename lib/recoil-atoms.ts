@@ -1,15 +1,15 @@
-import {atom} from 'recoil';
+import { atom } from "recoil";
 
 export interface CartState {
-	items: Array<{name: string; type: string; price: number; quantity: number}>;
+	items: Array<{ name: string; type: string; price: number; quantity: number }>;
 	total: number;
 }
 
 // Cart
 export const _cart = atom<CartState>({
-	key: 'theme',
+	key: "theme",
 	default: {
 		items: [],
-		total: 0
-	}
+		total: 0,
+	},
 });

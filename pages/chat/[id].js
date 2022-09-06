@@ -8,7 +8,7 @@ import {
 } from "react-firebase-hooks/firestore";
 import { collection, doc, orderBy, query } from "firebase/firestore";
 import { db } from "../../firebase";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { useSession } from "next-auth/react";
 import BottomBar from "../../components/BottomBar";
 import { IconButton, Image, Tag } from "@chakra-ui/react";
