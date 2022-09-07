@@ -27,7 +27,7 @@ function News() {
 		shouldForwardProp: (prop) =>
 			["width", "height", "src", "alt"].includes(prop),
 	});
-	// TODO: change the secondary side content from news to promo
+	// TODO: figure out the way to not to re-render the secondary component when not needed (useContext?)
 	return (
 		<>
 			<div
