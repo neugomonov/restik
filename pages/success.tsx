@@ -1,15 +1,12 @@
 import React from "react";
 import {
-	Box,
 	Button,
-	Flex,
 	Heading,
 	IconButton,
 	Image,
 	Stack,
 	Tag,
 	Text,
-	useColorMode,
 } from "@chakra-ui/react";
 import info from "../lib/info";
 import { useRouter } from "next/router";
@@ -18,7 +15,6 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import { WithSideContentLayout } from "../layouts/menu";
 
 function Success() {
-	const { colorMode } = useColorMode();
 	const router = useRouter();
 
 	return (

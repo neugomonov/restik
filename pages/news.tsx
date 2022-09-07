@@ -13,7 +13,6 @@ import {
 	Stack,
 	Tag,
 	Text,
-	useColorMode,
 } from "@chakra-ui/react";
 import info from "../lib/info";
 import { IoRestaurantOutline } from "react-icons/io5";
@@ -21,7 +20,6 @@ import news from "../lib/news";
 import { WithSideContentLayout } from "../layouts/menu";
 
 function News() {
-	const { colorMode } = useColorMode();
 	const { t, lang } = useTranslation("home");
 	const ProductImage = chakra(NextImage, {
 		shouldForwardProp: (prop) =>

@@ -1,15 +1,12 @@
 import React from "react";
 import {
-	Box,
 	Button,
-	Flex,
 	Heading,
 	IconButton,
 	Image,
 	Stack,
 	Tag,
 	Text,
-	useColorMode,
 } from "@chakra-ui/react";
 import info from "../lib/info";
 import { BiErrorAlt } from "react-icons/bi";
@@ -18,7 +15,6 @@ import { useRouter } from "next/router";
 import { WithSideContentLayout } from "../layouts/menu";
 
 function FourOFour() {
-	const { colorMode } = useColorMode();
 	const router = useRouter();
 
 	return (

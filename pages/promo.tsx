@@ -5,7 +5,6 @@ import NextImage from "next/image";
 import {
 	Box,
 	chakra,
-	Flex,
 	Heading,
 	IconButton,
 	Link,
@@ -13,7 +12,6 @@ import {
 	Stack,
 	Tag,
 	Text,
-	useColorMode,
 } from "@chakra-ui/react";
 import info from "../lib/info";
 import { IoRestaurantOutline } from "react-icons/io5";
@@ -21,7 +19,6 @@ import promo from "../lib/promo";
 import { WithSideContentLayout } from "../layouts/menu";
 
 function Promo() {
-	const { colorMode } = useColorMode();
 	const { t, lang } = useTranslation("home");
 	const ProductImage = chakra(NextImage, {
 		shouldForwardProp: (prop) =>
