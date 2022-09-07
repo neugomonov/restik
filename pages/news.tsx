@@ -5,7 +5,6 @@ import NextImage from "next/image";
 import {
 	Box,
 	chakra,
-	Flex,
 	Heading,
 	IconButton,
 	Link,
@@ -26,6 +25,7 @@ function News() {
 			["width", "height", "src", "alt"].includes(prop),
 	});
 	// TODO: figure out the way to not to re-render the secondary component when not needed (useContext?)
+	// TODO: Remove the hardcode 💀
 	return (
 		<>
 			<div
