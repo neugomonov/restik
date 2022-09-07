@@ -25,7 +25,7 @@ import { WithSideContentLayout } from "../layouts/menu";
 function Profile() {
 	const { colorMode } = useColorMode();
 	const { data: session } = useSession();
-
+	// TODO: there is a problem with the gif on narrow devices. Gotta fix.
 	return (
 		<>
 			<div
