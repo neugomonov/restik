@@ -1,22 +1,11 @@
 import React from "react";
-import {
-	Box,
-	Flex,
-	Heading,
-	IconButton,
-	Image,
-	Stack,
-	Tag,
-	useColorMode,
-} from "@chakra-ui/react";
+import { Box, Heading, IconButton, Image, Stack, Tag } from "@chakra-ui/react";
 import info from "../lib/info";
 import { MdOutlineMessage } from "react-icons/md";
 import ChatListBox from "../components/ChatListBox";
 import { WithSideContentLayout } from "../layouts/menu";
 
 function Chat() {
-	const { colorMode } = useColorMode();
-
 	return (
 		<>
 			<div

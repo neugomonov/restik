@@ -13,7 +13,6 @@ import {
 	Stack,
 	Tag,
 	Text,
-	useColorMode,
 } from "@chakra-ui/react";
 import info from "../lib/info";
 import { IoRestaurantOutline } from "react-icons/io5";
@@ -21,13 +20,12 @@ import news from "../lib/news";
 import { WithSideContentLayout } from "../layouts/menu";
 
 function News() {
-	const { colorMode } = useColorMode();
 	const { t, lang } = useTranslation("home");
 	const ProductImage = chakra(NextImage, {
 		shouldForwardProp: (prop) =>
 			["width", "height", "src", "alt"].includes(prop),
 	});
-	// TODO: change the secondary side content from news to promo
+	// TODO: figure out the way to not to re-render the secondary component when not needed (useContext?)
 	return (
 		<>
 			<div

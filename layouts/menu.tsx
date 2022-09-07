@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import VideoBox from "../components/VideoBox";
-import NewsBox from "../components/NewsBox";
+import PromoBox from "../components/PromoBox";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
 import { Box, useColorMode, Flex } from "@chakra-ui/react";
@@ -52,7 +52,7 @@ export function WithSideContentLayout({
 						margin=".5rem"
 					>
 						<VideoBox />
-						<NewsBox />
+						<PromoBox />
 					</Flex>
 				</Flex>
 				<LargeWithNewsletter />
