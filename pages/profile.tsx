@@ -16,7 +16,6 @@ import {
 	useColorModeValue,
 } from "@chakra-ui/react";
 import { FiChevronDown } from "react-icons/fi";
-
 import info from "../lib/info";
 import { CgProfile } from "react-icons/cg";
 import { useSession } from "next-auth/react";
