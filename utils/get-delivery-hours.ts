@@ -40,10 +40,7 @@ export const getDeliveryHours = (date: Date): string[] | undefined => {
 		}
 	}
 
-	// Do not allow orders at certain times.
-	// if ((!isWithinInterval(date, {start: opens, end: closes}) || isHoliday || times.opens === '0') && !isDevelopment) {
-	// 	return undefined;
-	// }
+	// TODO: Do not allow orders at certain times.
 
 	const suggestions = [];
 
