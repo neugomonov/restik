@@ -4,10 +4,9 @@ import WithBackgroundImage from "../components/WithBackgroundImage";
 import SplitScreen from "../components/SplitScreen";
 import CallToActionWithIllustration from "../components/CallToActionWithIllustration";
 import CallToActionWithAnnotation from "../components/CallToActionWithAnnotation";
+import { IndexLayout } from "../layouts";
 
 import { _cart } from "../lib/recoil-atoms";
-
-import { IndexLayout } from "../layouts";
 
 function Home() {
 	return (

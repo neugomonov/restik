@@ -1,7 +1,6 @@
 import React from "react";
 import useTranslation from "next-translate/useTranslation";
 import NextImage from "next/image";
-
 import {
 	Box,
 	chakra,
