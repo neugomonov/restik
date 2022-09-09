@@ -1,7 +1,6 @@
 import { useToast } from "@chakra-ui/react";
 import { loadStripe } from "@stripe/stripe-js";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { db } from "../firebase";

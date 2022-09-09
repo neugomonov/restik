@@ -6,8 +6,6 @@ import CallToActionWithIllustration from "../components/CallToActionWithIllustra
 import CallToActionWithAnnotation from "../components/CallToActionWithAnnotation";
 import { IndexLayout } from "../layouts";
 
-import { _cart } from "../lib/recoil-atoms";
-
 function Home() {
 	return (
 		<>
