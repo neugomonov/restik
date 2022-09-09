@@ -21,7 +21,6 @@ export default function NotificationList() {
 	]);
 	useEffect(() => {
 		if (!session?.user || !session?.user?.email) return;
-
 		const q = query(
 			collection(db, `notifications`),
 			where("recipient", "==", session?.user?.email),
@@ -33,14 +32,8 @@ export default function NotificationList() {
 				snapshot.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))
 			);
 		});
-	}, []);
-
-	const setRead = async (id: any) => {
-		const read = true;
-		const docRef = doc(db, "notifications", id);
-		const payload = { read };
-		await updateDoc(docRef, payload);
-	};
+	});
+	// TODO: set status read true to the pressed notification
 	const router = useRouter();
 	const notificationList = () => {
 		return notifications.map((notification: any) => (
