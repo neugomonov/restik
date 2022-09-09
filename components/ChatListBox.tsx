@@ -6,7 +6,7 @@ import { db } from "../firebase";
 import getOtherEmail from "../utils/getOtherEmail";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-
+// TODO: add email validation
 export default function ChatListBox() {
 	const { data: session } = useSession();
 
