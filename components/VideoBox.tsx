@@ -11,7 +11,6 @@ import {
 } from "@chakra-ui/react";
 
 import info from "../lib/info";
-import { _cart } from "../lib/recoil-atoms";
 import { BiMoviePlay } from "react-icons/bi";
 
 export default function VideoBox() {

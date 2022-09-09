@@ -1,5 +1,4 @@
 import React from "react";
-import { _cart } from "../lib/recoil-atoms";
 import SplitWithImage from "../components/SplitWithImage";
 import SimpleThreeColumns from "../components/SimpleThreeColumns";
 import GridListWithHeading from "../components/GridListWithHeading";
