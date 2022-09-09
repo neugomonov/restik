@@ -48,7 +48,6 @@ export default function NotificationList() {
 				key={notification.id}
 				onClick={async () => {
 					await router.push("/profile", "/profile", { locale: "ru" });
-					setRead(notification.id);
 				}}
 			>
 				{notification.text}{" "}
