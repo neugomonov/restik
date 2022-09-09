@@ -14,8 +14,6 @@ import {
 } from "@chakra-ui/react";
 
 import info from "../lib/info";
-import { _cart } from "../lib/recoil-atoms";
-
 import { BiNews } from "react-icons/bi";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
