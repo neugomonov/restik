@@ -11,7 +11,7 @@ import StateSaver from "../components/state-saver";
 import info from "../lib/info";
 import NextNProgress from "nextjs-progressbar";
 import SidebarWithHeader from "../components/SidebarWithHeader";
-
+// TODO: probably need to add an fps counter to decide whether to display blur or not, or as a much simpler but requiring action from the visitor solution - a button in the sidebar to switch the blur 🤦‍♂️
 const client = new ApolloClient({
 	uri: process.env.SERVER_URL,
 	cache: new InMemoryCache(),
