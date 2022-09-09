@@ -16,6 +16,7 @@ import { WithSideContentLayout } from "../../layouts/menu";
 import info from "../../lib/info";
 import { MdOutlineMessage } from "react-icons/md";
 
+// TODO: add protection rules for the private chats
 function Chat() {
 	const router = useRouter();
 	const { id } = router.query;
