@@ -1,4 +1,4 @@
-import {PrismaClient} from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -7,5 +7,5 @@ export interface Context {
 }
 
 export function createContext(): Context {
-	return {prisma};
+	return { prisma };
 }
