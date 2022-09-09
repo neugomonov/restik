@@ -102,8 +102,8 @@ interface DateTimeFieldInterface {
 }
 
 type Mutation {
-  createCart(data: CartCreateInput!): Cart!
-  createOrder(data: OrderCreateInput!): Order!
+  createCart(data: CartCreateInput!): Cart
+  createOrder(data: OrderCreateInput!): Order
   deleteCart(where: CartWhereUniqueInput!): Cart
   deleteOrder(where: OrderWhereUniqueInput!): Order
 }

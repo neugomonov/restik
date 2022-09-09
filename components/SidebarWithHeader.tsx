@@ -158,8 +158,9 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				count();
 			};
 		}
+
 		getNotificationsCount();
-	}, []);
+	});
 	const deleteAll = async () => {
 		const qq = await query(
 			collection(db, "notifications"),
@@ -187,7 +188,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
-	// TODO: Make the notifications' first appearance take place with no magical rerenders, for God's sake.
 
 	return (
 		<Box
@@ -384,7 +384,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			};
 		}
 		getNotificationsCount();
-	}, []);
+	});
 	const deleteAll = async () => {
 		const qq = await query(
 			collection(db, "notifications"),

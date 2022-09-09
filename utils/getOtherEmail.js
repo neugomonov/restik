@@ -4,4 +4,4 @@ const getOtherEmail = (users, currentUser) => {
 
 export default getOtherEmail;
 
-// TODO: fix the chats list display for the receiver
+// TODO: fix the chats list display for the receiver (display the other email, not own)
