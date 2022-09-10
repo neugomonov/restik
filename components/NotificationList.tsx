@@ -32,8 +32,14 @@ export default function NotificationList() {
 				snapshot.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))
 			);
 		});
-	});
+	}, [session]);
 	// TODO: set status read true to the pressed notification
+	const setRead = async (id: any) => {
+		const read = true;
+		const docRef = doc(db, "notifications", id);
+		const payload = { read };
+		await updateDoc(docRef, payload);
+	};
 	const router = useRouter();
 	const notificationList = () => {
 		return notifications.map((notification: any) => (
@@ -41,6 +47,7 @@ export default function NotificationList() {
 				key={notification.id}
 				onClick={async () => {
 					await router.push("/profile", "/profile", { locale: "ru" });
+					setRead(notification.id);
 				}}
 			>
 				{notification.text}{" "}

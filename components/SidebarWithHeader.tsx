@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 import {
 	IconButton,
@@ -160,7 +160,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 		}
 
 		getNotificationsCount();
-	});
+	}, [session]);
 	const deleteAll = async () => {
 		const qq = await query(
 			collection(db, "notifications"),
@@ -267,15 +267,29 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
 						borderColor={useColorModeValue("gray.200", "gray.700")}
 					>
-						<Flex align="center" justify="space-around">
-							<Text alignSelf="center" as={Link} onClick={deleteAll}>
-								🧹 Очистить
-							</Text>
-							<Text alignSelf="center" as={Link} onClick={readAll}>
-								Прочитано ✉️
-							</Text>
-						</Flex>
-						<NotificationList />
+						{session ? (
+							<>
+								<Flex align="center" justify="space-around">
+									<Text alignSelf="center" as={Link} onClick={deleteAll}>
+										🧹 Очистить
+									</Text>
+									<Text alignSelf="center" as={Link} onClick={readAll}>
+										Прочитано ✉️
+									</Text>
+								</Flex>
+								<NotificationList />
+							</>
+						) : (
+							<Flex
+								align="center"
+								justify="space-around"
+								onClick={() => signIn()}
+							>
+								<Text alignSelf="center" as={Link}>
+									🔔 Войдите 🙋
+								</Text>
+							</Flex>
+						)}
 					</MenuList>
 				</Menu>
 
@@ -367,6 +381,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 	const { t, lang } = useTranslation("home");
 	const { data: session } = useSession();
 	const [notificationsCount, setNotificationsCount] = useState(0);
+
 	useEffect(() => {
 		async function getNotificationsCount() {
 			if (!session?.user || !session?.user?.email) return;
@@ -384,7 +399,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			};
 		}
 		getNotificationsCount();
-	});
+	}, [session]);
+
 	const deleteAll = async () => {
 		const qq = await query(
 			collection(db, "notifications"),
@@ -496,15 +512,29 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
 						borderColor={useColorModeValue("gray.200", "gray.700")}
 					>
-						<Flex align="center" justify="space-around">
-							<Text alignSelf="center" as={Link} onClick={deleteAll}>
-								🧹 Очистить
-							</Text>
-							<Text alignSelf="center" as={Link} onClick={readAll}>
-								Прочитано ✉️
-							</Text>
-						</Flex>
-						<NotificationList />
+						{session ? (
+							<>
+								<Flex align="center" justify="space-around">
+									<Text alignSelf="center" as={Link} onClick={deleteAll}>
+										🧹 Очистить
+									</Text>
+									<Text alignSelf="center" as={Link} onClick={readAll}>
+										Прочитано ✉️
+									</Text>
+								</Flex>
+								<NotificationList />
+							</>
+						) : (
+							<Flex
+								align="center"
+								justify="space-around"
+								onClick={() => signIn()}
+							>
+								<Text alignSelf="center" as={Link}>
+									🔔 Войдите 🙋
+								</Text>
+							</Flex>
+						)}
 					</MenuList>
 				</Menu>
 
