@@ -22,7 +22,6 @@ export default function stringifyCartPositions() {
 
 		stringified = stringified.concat(", ", csvString);
 	}
-
 	let stringifiedProducts = stringified.substring(2);
 	let phone = "";
 	let payment = "";
