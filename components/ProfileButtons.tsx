@@ -22,7 +22,7 @@ export default function ProfileButtons() {
 			),
 		[]
 	);
-	const handleEditAddress = async (id: any) => {
+	const handleEditAddress = async (id: string) => {
 		const address = prompt("Введите адрес доставки 🏠");
 		if (address != null && address != "") {
 			const docRef = doc(db, "users", id);
@@ -30,7 +30,7 @@ export default function ProfileButtons() {
 			updateDoc(docRef, payload);
 		}
 	};
-	const handleEditPhone = async (id: any) => {
+	const handleEditPhone = async (id: string) => {
 		const phone = prompt("Введите ваш телефон 🤙");
 		if (phone != null && phone != "") {
 			const docRef = doc(db, "users", id);
@@ -38,7 +38,7 @@ export default function ProfileButtons() {
 			updateDoc(docRef, payload);
 		}
 	};
-	const handleEditPayment = async (id: any) => {
+	const handleEditPayment = async (id: string) => {
 		const payment = prompt("Наличные или Онлайн? 💸");
 		if (
 			payment !== null &&
