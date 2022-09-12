@@ -28,81 +28,66 @@ export default function stringifyCartPositions() {
 	let payment = "";
 	let address = "";
 	const handleNew = async (session: any) => {
-		if (session) {
-			let disco = cart.total - cart.total * 0.1;
-			let currentTime = new Date().getTime() / 1000;
-			let timeOfDiscoEnd = 1661776053;
-			let total = 0;
-			currentTime < timeOfDiscoEnd && payment.toLowerCase() !== "онлайн"
-				? (total = disco)
-				: (total = cart.total);
-			const products = stringifiedProducts;
-			const phonePattern =
-				/^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/i;
-
-			if (
-				session?.user?.phone &&
-				session?.user?.address &&
-				session?.user?.payment
-			) {
-				phone = session?.user?.phone;
-				address = session?.user?.address;
-				payment = session?.user?.payment;
-				const email = session?.user?.email;
-				const timestamp = serverTimestamp();
-				const status = "Принят";
-				const collectionRef = collection(db, "orders");
-				const payload = {
-					products,
-					phone,
-					address,
-					payment,
-					total,
-					email,
-					timestamp,
-					status,
-				};
-				const docRef = await addDoc(collectionRef, payload);
-				setCart({ items: [], total: 0 });
-				toast({
-					title: "Заказ принят",
-					status: "success",
-					duration: 3000,
-					isClosable: true,
-				});
-				await addDoc(collection(db, `notifications`), {
-					recipient: email,
-					text: "🍕 Ваш заказ " + status + "!",
-					timestamp: timestamp,
-					read: false,
-				});
-				if (payment.toLowerCase() == "онлайн") {
-					const stripe = await stripePromise;
-					const checkoutSession = await axios.post(
-						"api/create-checkout-session",
-						{
-							items: cart.items,
-							email: email,
-							phone: phone,
-						}
-					);
-					const result = await stripe!.redirectToCheckout({
-						sessionId: checkoutSession.data.id,
-					});
-					if (result.error) {
-						alert(result.error.message);
+		let disco = cart.total - cart.total * 0.1;
+		let currentTime = new Date().getTime() / 1000;
+		let timeOfDiscoEnd = 1661776053;
+		let total = 0;
+		currentTime < timeOfDiscoEnd && payment.toLowerCase() !== "онлайн"
+			? (total = disco)
+			: (total = cart.total);
+		const products = stringifiedProducts;
+		if (
+			session?.user?.phone &&
+			session?.user?.address &&
+			session?.user?.payment
+		) {
+			phone = session?.user?.phone;
+			address = session?.user?.address;
+			payment = session?.user?.payment;
+			const email = session?.user?.email;
+			const timestamp = serverTimestamp();
+			const status = "Принят";
+			const collectionRef = collection(db, "orders");
+			const payload = {
+				products,
+				phone,
+				address,
+				payment,
+				total,
+				email,
+				timestamp,
+				status,
+			};
+			const docRef = await addDoc(collectionRef, payload);
+			setCart({ items: [], total: 0 });
+			toast({
+				title: "Заказ принят",
+				status: "success",
+				duration: 3000,
+				isClosable: true,
+			});
+			await addDoc(collection(db, `notifications`), {
+				recipient: email,
+				text: "🍕 Ваш заказ " + status + "!",
+				timestamp: timestamp,
+				read: false,
+			});
+			if (payment.toLowerCase() == "онлайн") {
+				const stripe = await stripePromise;
+				const checkoutSession = await axios.post(
+					"api/create-checkout-session",
+					{
+						items: cart.items,
+						email: email,
+						phone: phone,
 					}
+				);
+				const result = await stripe!.redirectToCheckout({
+					sessionId: checkoutSession.data.id,
+				});
+				if (result.error) {
+					alert(result.error.message);
 				}
-			} else {
-				await router.push("/menu", "/menu", {
-					locale: "ru",
-				});
-				toast({
-					title: "Отлично! Осталось заполнить данные заказа ниже...",
-					status: "info",
-					duration: 3000,
-					isClosable: true,
-				});
 			}
 		} else {
 			await router.push("/menu", "/menu", {
