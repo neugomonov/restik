@@ -33,8 +33,7 @@ export default function NotificationList() {
 			);
 		});
 	}, [session]);
-	// TODO: set status read true to the pressed notification
-	const setRead = async (id: any) => {
+	const setRead = async (id: string) => {
 		const read = true;
 		const docRef = doc(db, "notifications", id);
 		const payload = { read };
