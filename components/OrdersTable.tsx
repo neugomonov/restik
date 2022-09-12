@@ -76,7 +76,7 @@ export default function OrdersTable() {
 		}
 	};
 
-	const handleEditStatus = async (id: any) => {
+	const handleEditStatus = async (id: string) => {
 		const status = prompt("Готовится/Доставляется/Выполнен? 🤔");
 		if (
 			status == "Готовится" ||
