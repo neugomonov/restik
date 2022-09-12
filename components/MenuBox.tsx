@@ -155,34 +155,48 @@ export default function MenuBox() {
 			company,
 			city,
 		};
-		const docRef = await addDoc(collectionRef, payload);
-		setCart({ items: [], total: 0 });
-		toast({
-			title: "Заказ принят",
-			status: "success",
-			duration: 3000,
-			isClosable: true,
-		});
-		await addDoc(collection(db, `notifications`), {
-			recipient: email,
-			text: "🍕 Ваш заказ " + status + "!",
-			timestamp: timestamp,
-			read: false,
-		});
-
-		if (payment == "Онлайн") {
-			const stripe = await stripePromise;
-			const checkoutSession = await axios.post("api/create-checkout-session", {
-				items: cart.items,
-				email: email,
-				phone: phone,
+		const phonePattern =
+			/^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/i;
+		if (phonePattern.test(phone)) {
+			await addDoc(collectionRef, payload);
+			setCart({ items: [], total: 0 });
+			toast({
+				title: "Заказ принят",
+				status: "success",
+				duration: 3000,
+				isClosable: true,
 			});
-			const result = await stripe?.redirectToCheckout({
-				sessionId: checkoutSession.data.id,
-			})!;
-			if (result.error) {
-				alert(result.error.message);
+			await addDoc(collection(db, `notifications`), {
+				recipient: email,
+				text: "🍕 Ваш заказ " + status + "!",
+				timestamp: timestamp,
+				read: false,
+			});
+
+			if (payment == "Онлайн") {
+				const stripe = await stripePromise;
+				const checkoutSession = await axios.post(
+					"api/create-checkout-session",
+					{
+						items: cart.items,
+						email: email,
+						phone: phone,
+					}
+				);
+				const result = await stripe?.redirectToCheckout({
+					sessionId: checkoutSession.data.id,
+				})!;
+				if (result.error) {
+					alert(result.error.message);
+				}
 			}
+		} else {
+			toast({
+				title: "Пожалуйста, введите номер телефона корректно",
+				status: "warning",
+				duration: 3000,
+				isClosable: true,
+			});
 		}
 	};
 

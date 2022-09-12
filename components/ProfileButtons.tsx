@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Stack, useColorMode } from "@chakra-ui/react";
+import { Button, Stack, useToast } from "@chakra-ui/react";
 import { AiFillPhone } from "react-icons/ai";
 import { MdPlace } from "react-icons/md";
 import { useSession } from "next-auth/react";
@@ -11,6 +11,7 @@ import { IoCash } from "react-icons/io5";
 
 export default function ProfileButtons() {
 	const { data: session } = useSession();
+	const toast = useToast();
 	const auth = getAuth();
 	const [users, setUsers] = useState([{ name: "Loading...", id: "initial" }]);
 	useEffect(
@@ -32,10 +33,26 @@ export default function ProfileButtons() {
 	};
 	const handleEditPhone = async (id: string) => {
 		const phone = prompt("Введите ваш телефон 🤙");
-		if (phone != null && phone != "") {
+		const phonePattern =
+			/^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/i;
+
+		if (phonePattern.test(phone!)) {
 			const docRef = doc(db, "users", id);
 			const payload = { phone };
 			updateDoc(docRef, payload);
+			toast({
+				title: "Номер изменён",
+				status: "success",
+				duration: 3000,
+				isClosable: true,
+			});
+		} else {
+			toast({
+				title: "Пожалуйста, введите номер телефона корректно",
+				status: "warning",
+				duration: 3000,
+				isClosable: true,
+			});
 		}
 	};
 	const handleEditPayment = async (id: string) => {
