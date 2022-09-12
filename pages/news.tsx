@@ -13,9 +13,9 @@ import {
 	Text,
 } from "@chakra-ui/react";
 import info from "../lib/info";
-import { IoRestaurantOutline } from "react-icons/io5";
 import news from "../lib/news";
 import { WithSideContentLayout } from "../layouts/menu";
+import { BiNews } from "react-icons/bi";
 
 function News() {
 	const { t, lang } = useTranslation("home");
@@ -44,7 +44,7 @@ function News() {
 						Новости{" "}
 					</Tag>
 				)}
-				<IconButton aria-label="News" icon={<IoRestaurantOutline />} />
+				<IconButton aria-label="News" icon={<BiNews />} />
 			</div>
 			<Stack spacing={5}>
 				<SimpleGrid
