@@ -68,6 +68,12 @@ export default function stringifyCartPositions() {
 				duration: 3000,
 				isClosable: true,
 			});
+			await addDoc(collection(db, `notifications`), {
+				recipient: email,
+				text: "🍕 Ваш заказ " + status + "!",
+				timestamp: timestamp,
+				read: false,
+			});
 			if (payment.toLowerCase() == "онлайн") {
 				const stripe = await stripePromise;
 				const checkoutSession = await axios.post(
