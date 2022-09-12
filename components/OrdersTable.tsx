@@ -106,9 +106,14 @@ export default function OrdersTable() {
 	// TODO: Sort by date
 	return (
 		<>
-			<Button m={5} p={4} onClick={handleNew}>
-				Новый заказ 🍕
-			</Button>
+			{
+				// @ts-expect-error
+				session?.user?.role == "Админ" && (
+					<Button m={5} p={4} onClick={handleNew}>
+						Новый заказ 🍕
+					</Button>
+				)
+			}
 			<TableContainer>
 				<Table variant="striped" colorScheme="gray">
 					<TableCaption>Таблица заказов</TableCaption>
