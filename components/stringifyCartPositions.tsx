@@ -37,63 +37,80 @@ export default function stringifyCartPositions() {
 				? (total = disco)
 				: (total = cart.total);
 			const products = stringifiedProducts;
-			session?.user?.phone
-				? (phone = session?.user?.phone)
-				: (phone = prompt("Введите ваш телефон 🤙")!);
-			session?.user?.address
-				? (address = session?.user?.address)
-				: (address = prompt("Введите адрес доставки 🏠")!);
-			session?.user?.payment
-				? (payment = session?.user?.payment)
-				: (payment = prompt("Наличные или Онлайн? 💸")!);
-			const email = session?.user?.email;
-			const timestamp = serverTimestamp();
-			const status = "Принят";
-			const collectionRef = collection(db, "orders");
-			const payload = {
-				products,
-				phone,
-				address,
-				payment,
-				total,
-				email,
-				timestamp,
-				status,
-			};
-			const docRef = await addDoc(collectionRef, payload);
-			setCart({ items: [], total: 0 });
-			toast({
-				title: "Заказ принят",
-				status: "success",
-				duration: 3000,
-				isClosable: true,
-			});
-			await addDoc(collection(db, `notifications`), {
-				recipient: email,
-				text: "🍕 Ваш заказ " + status + "!",
-				timestamp: timestamp,
-				read: false,
-			});
-			if (payment.toLowerCase() == "онлайн") {
-				const stripe = await stripePromise;
-				const checkoutSession = await axios.post(
-					"api/create-checkout-session",
-					{
-						items: cart.items,
-						email: email,
-						phone: phone,
-					}
-				);
-				const result = await stripe!.redirectToCheckout({
-					sessionId: checkoutSession.data.id,
+
+			if (
+				session?.user?.phone &&
+				session?.user?.address &&
+				session?.user?.payment
+			) {
+				phone = session?.user?.phone;
+				address = session?.user?.address;
+				payment = session?.user?.payment;
+				const email = session?.user?.email;
+				const timestamp = serverTimestamp();
+				const status = "Принят";
+				const collectionRef = collection(db, "orders");
+				const payload = {
+					products,
+					phone,
+					address,
+					payment,
+					total,
+					email,
+					timestamp,
+					status,
+				};
+				const docRef = await addDoc(collectionRef, payload);
+				setCart({ items: [], total: 0 });
+				toast({
+					title: "Заказ принят",
+					status: "success",
+					duration: 3000,
+					isClosable: true,
 				});
-				if (result.error) {
-					alert(result.error.message);
+				await addDoc(collection(db, `notifications`), {
+					recipient: email,
+					text: "🍕 Ваш заказ " + status + "!",
+					timestamp: timestamp,
+					read: false,
+				});
+				if (payment.toLowerCase() == "онлайн") {
+					const stripe = await stripePromise;
+					const checkoutSession = await axios.post(
+						"api/create-checkout-session",
+						{
+							items: cart.items,
+							email: email,
+							phone: phone,
+						}
+					);
+					const result = await stripe!.redirectToCheckout({
+						sessionId: checkoutSession.data.id,
+					});
+					if (result.error) {
+						alert(result.error.message);
+					}
 				}
+			} else {
+				await router.push("/menu", "/menu", {
+					locale: "ru",
+				});
+				toast({
+					title: "Отлично! Осталось заполнить данные заказа ниже...",
+					status: "info",
+					duration: 3000,
+					isClosable: true,
+				});
 			}
 		} else {
 			await router.push("/menu", "/menu", {
 				locale: "ru",
+			});
+			toast({
+				title: "Отлично! Осталось заполнить данные заказа ниже...",
+				status: "info",
+				duration: 3000,
+				isClosable: true,
 			});
 		}
 	};
