@@ -138,7 +138,7 @@ export default function LargeWithNewsletter() {
 								<Link isExternal href="https://nextjs.org/">
 									<Image
 										src="/images/reactjs.svg"
-										alt="Nextjs"
+										alt="Reactjs"
 										draggable={false}
 										loading="lazy"
 										decoding="async"
@@ -154,7 +154,7 @@ export default function LargeWithNewsletter() {
 										decoding="async"
 										width="5rem"
 										filter="auto"
-										dropShadow="0px 0px 6px white"
+										dropShadow="0px 0px 6px black"
 									/>
 								</Link>
 							</HStack>
