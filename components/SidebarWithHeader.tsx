@@ -58,7 +58,8 @@ import {
 	deleteDoc,
 	updateDoc,
 } from "firebase/firestore";
-
+// TODO: probably need to add an fps counter to decide whether to display blur or not, or as a much simpler but requiring action from the visitor solution - a button in the sidebar to switch the blur 🤦‍♂️
+// TODO: Also move the translate button to the sidebar and arrange both below the notifications/theme buttons, but make the blur one first&smaller and the translate one - second&bigger
 const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
 const Logo = (props: any) => {
 	const { t, lang } = useTranslation("home");
