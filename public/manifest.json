@@ -1,6 +1,7 @@
 {
 	"name": "Пиццерия",
 	"short_name": "Пиццерия",
+	"description": "Restik is a restaurant app for ordering dishes and managing",
 	"icons": [
 		{
 			"src": "/icon-192x192.png",
@@ -24,6 +25,7 @@
 		}
 	],
 	"start_url": "/",
+	"scope": "/",
 	"display": "standalone",
 	"orientation": "portrait",
 	"background_color": "#000",
