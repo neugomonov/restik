@@ -19,4 +19,4 @@ const nextConfig = {
 	},
 };
 
-module.exports = withTranslate(withOptimizedImages(withPWA(nextConfig)));
+module.exports = withPWA(withTranslate(withOptimizedImages(nextConfig)));
