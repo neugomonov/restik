@@ -41,7 +41,7 @@ const App = ({
 			setCart({ items: [], total: 0 });
 		}
 	}, []);
-
+	// TODO: implement code splitting as dynamic imports, load modules asynchronously (await import, React.lazy) for a faster initial loading, shrink the initial  bundle size
 	return (
 		<SessionProvider session={session}>
 			<ApolloProvider client={client}>
