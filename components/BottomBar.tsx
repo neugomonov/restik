@@ -28,8 +28,6 @@ export default function BottomBar({ id, user }: { id: string; user: object }) {
 		}
 		setInput("");
 	};
-	//// console.log(typeof session?.user);
-	//// console.log(typeof "session?.user");
 	// * debugger;
 	return (
 		<FormControl p={3} onSubmit={sendMessage} as="form">
