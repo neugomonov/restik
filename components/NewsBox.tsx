@@ -63,6 +63,7 @@ export default function NewsBox() {
 				<Stack spacing={3}>
 					<Image
 						src="/images/covers/news/openup.jpg"
+						alt="open up news"
 						draggable={false}
 						loading="lazy"
 						decoding="async"

@@ -42,6 +42,7 @@ const App = ({
 		}
 	}, []);
 	// TODO: implement code splitting as dynamic imports, load modules asynchronously (await import, React.lazy) for a faster initial loading, shrink the initial  bundle size
+	// TODO: finally upgrade recoil
 	return (
 		<SessionProvider session={session}>
 			<ApolloProvider client={client}>

@@ -56,6 +56,7 @@ exports[`matches snapshot 1`] = `
       className="chakra-stack css-15duo8n"
     >
       <img
+        alt="open up news"
         className="chakra-image css-145mpb9"
         decoding="async"
         draggable={false}

@@ -49,7 +49,7 @@ function Success() {
 						borderRadius="full"
 						boxSize="50%"
 						src="images/success.gif"
-						alt="404"
+						alt="success gif"
 					/>{" "}
 					<Heading>Спасибо за заказ!</Heading>
 					<Text colorScheme={"gray"}>

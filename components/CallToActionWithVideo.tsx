@@ -144,7 +144,7 @@ export default function CallToActionWithVideo() {
 							transform={"translateX(-50%) translateY(-50%)"}
 						/>
 						<Image
-							alt={"Hero Image"}
+							alt={"Pizza Image"}
 							fit={"cover"}
 							align={"center"}
 							w={"100%"}
