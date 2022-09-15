@@ -61,6 +61,7 @@ export default function PromoBox() {
 				<Stack spacing={3}>
 					<Image
 						src="images/covers/promo/pizza399.jpg"
+						alt="pizza promo"
 						draggable={false}
 						loading="lazy"
 						decoding="async"

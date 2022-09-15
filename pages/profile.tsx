@@ -101,6 +101,7 @@ function Profile() {
 							</Heading>
 							<Image
 								src="https://images.squarespace-cdn.com/content/v1/529fb134e4b0dbf53fa8fa91/1519937177934-Y9HTRD1O0HTVDJECU42X/02_.gif"
+								alt="profile card gif"
 								draggable={false}
 								loading="lazy"
 								decoding="async"

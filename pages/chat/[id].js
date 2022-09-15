@@ -134,6 +134,7 @@ function Chat() {
 							</Heading>
 							<Image
 								src="/images/chat.gif"
+								alt="messages in the chat gif"
 								draggable={false}
 								loading="lazy"
 								decoding="async"
