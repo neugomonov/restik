@@ -124,7 +124,7 @@ export default function MenuBox() {
 	let stringifiedProducts = stringified.substring(2);
 
 	const onSubmit = async (data: FormData) => {
-		console.log(data);
+		//// console.log(data);
 		let disco = cart.total - cart.total * 0.1;
 		let currentTime = new Date().getTime() / 1000;
 		let timeOfDiscoEnd = 1661776053;

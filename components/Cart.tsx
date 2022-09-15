@@ -223,7 +223,7 @@ export default function MenuBox() {
 															],
 															total: previous.total + item.price,
 														}));
-														console.log(cart.items);
+														//// console.log(cart.items);
 													}}
 												/>
 											</ButtonGroup>
