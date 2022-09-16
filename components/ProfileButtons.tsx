@@ -63,6 +63,13 @@ export default function ProfileButtons() {
 			const docRef = doc(db, "users", id);
 			const payload = { payment };
 			updateDoc(docRef, payload);
+		} else {
+			toast({
+				title: "Пожалуйста, введите способ оплаты корректно",
+				status: "warning",
+				duration: 3000,
+				isClosable: true,
+			});
 		}
 	};
 
