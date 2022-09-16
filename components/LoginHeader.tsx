@@ -19,6 +19,14 @@ import router from "next/router";
 import { FiChevronDown } from "react-icons/fi";
 export default function LoginHeader() {
 	const { data: session } = useSession();
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
+
 	if (session) {
 		return (
 			<>
@@ -54,13 +62,7 @@ export default function LoginHeader() {
 							bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
 							borderColor={useColorModeValue("gray.200", "gray.700")}
 						>
-							<MenuItem
-								onClick={async () => {
-									await router.push("/profile", "/profile", { locale: "ru" });
-								}}
-							>
-								Профиль
-							</MenuItem>
+							<MenuItem onClick={handleClick("/profile")}>Профиль</MenuItem>
 							<MenuDivider />
 							<MenuItem onClick={() => signOut()}>Выйти</MenuItem>
 						</MenuList>

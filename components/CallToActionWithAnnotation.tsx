@@ -14,6 +14,13 @@ import { useRouter } from "next/router";
 
 export default function CallToActionWithAnnotation() {
 	const router = useRouter();
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 
 	return (
 		<>
@@ -62,11 +69,7 @@ export default function CallToActionWithAnnotation() {
 								bg: "orange.500",
 							}}
 							data-testid="button"
-							onClick={async () => {
-								await router.push("/menu", "/menu", {
-									locale: "ru",
-								});
-							}}
+							onClick={handleClick("/menu")}
 						>
 							К меню{" "}
 						</Button>
@@ -74,11 +77,7 @@ export default function CallToActionWithAnnotation() {
 							variant={"link"}
 							colorScheme={"orange"}
 							size={"sm"}
-							onClick={async () => {
-								await router.push("/promo", "/promo", {
-									locale: "ru",
-								});
-							}}
+							onClick={handleClick("/promo")}
 						>
 							Посмотреть акции{" "}
 						</Button>

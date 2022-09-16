@@ -22,6 +22,13 @@ export default function LoginSidebar() {
 	const { colorMode } = useColorMode();
 
 	const { data: session, status } = useSession();
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 
 	if (session) {
 		return (
@@ -77,13 +84,7 @@ export default function LoginSidebar() {
 							bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
 							borderColor={useColorModeValue("gray.200", "gray.700")}
 						>
-							<MenuItem
-								onClick={async () => {
-									await router.push("/profile", "/profile", { locale: "ru" });
-								}}
-							>
-								Профиль
-							</MenuItem>
+							<MenuItem onClick={handleClick("/profile")}>Профиль</MenuItem>
 							<MenuDivider />
 							<MenuItem onClick={() => signOut()}>Выйти</MenuItem>
 						</MenuList>

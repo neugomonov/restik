@@ -10,6 +10,13 @@ import { useRouter } from "next/router";
 
 export default function WithBackgroundImage() {
 	const router = useRouter();
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 
 	return (
 		<Flex
@@ -44,11 +51,7 @@ export default function WithBackgroundImage() {
 							bg={"orange.400"}
 							_hover={{ bg: "orange.500" }}
 							data-testid="button"
-							onClick={async () => {
-								await router.push("/menu", "/menu", {
-									locale: "ru",
-								});
-							}}
+							onClick={handleClick("/menu")}
 						>
 							К пиццам! 🍕
 						</Button>

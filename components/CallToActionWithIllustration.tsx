@@ -11,6 +11,13 @@ import { useRouter } from "next/router";
 
 export default function CallToActionWithIllustration() {
 	const router = useRouter();
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 
 	return (
 		<Container maxW={"5xl"}>
@@ -50,23 +57,11 @@ export default function CallToActionWithIllustration() {
 						colorScheme={"orange"}
 						bg={"orange.400"}
 						_hover={{ bg: "orange.500" }}
-						onClick={async () => {
-							await router.push("/news", "/news", {
-								locale: "ru",
-							});
-						}}
+						onClick={handleClick("/news")}
 					>
 						Посмотреть наши новости
 					</Button>
-					<Button
-						rounded={"full"}
-						px={6}
-						onClick={async () => {
-							await router.push("/about", "/about", {
-								locale: "ru",
-							});
-						}}
-					>
+					<Button rounded={"full"} px={6} onClick={handleClick("/about")}>
 						Наша кухня
 					</Button>
 				</Stack>

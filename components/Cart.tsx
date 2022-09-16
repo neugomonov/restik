@@ -98,6 +98,13 @@ export default function MenuBox() {
 	const { t, lang } = useTranslation("common");
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
 	let handleNew = stringifyCartPositions();
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 
 	return (
 		<>
@@ -244,11 +251,7 @@ export default function MenuBox() {
 										Давай, добавь{" "}
 										<Link
 											color={colorMode === "dark" ? "yellow.500" : "orange.600"}
-											onClick={async () => {
-												await router.push("/menu", "/menu", {
-													locale: "ru",
-												});
-											}}
+											onClick={handleClick("/menu")}
 										>
 											что-нибудь вкусненькое
 										</Link>

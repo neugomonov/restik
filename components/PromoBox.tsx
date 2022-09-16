@@ -19,6 +19,13 @@ import { IoRestaurantOutline } from "react-icons/io5";
 export default function PromoBox() {
 	const router = useRouter();
 	const { colorMode } = useColorMode();
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 
 	return (
 		<Box
@@ -80,11 +87,7 @@ export default function PromoBox() {
 						rightIcon={<ArrowForwardIcon />}
 						colorScheme="orange"
 						variant="outline"
-						onClick={async () => {
-							await router.push("/promo", "/promo", {
-								locale: "ru",
-							});
-						}}
+						onClick={handleClick("/promo")}
 					>
 						Акции
 					</Button>

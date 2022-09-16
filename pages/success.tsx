@@ -16,6 +16,13 @@ import { WithSideContentLayout } from "../layouts/menu";
 
 function Success() {
 	const router = useRouter();
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 
 	return (
 		<>
@@ -59,9 +66,7 @@ function Success() {
 					<Button
 						leftIcon={<CgProfile />}
 						colorScheme="orange"
-						onClick={async () => {
-							await router.push("/profile", "/profile", { locale: "ru" });
-						}}
+						onClick={handleClick("/profile")}
 					>
 						Профиль
 					</Button>
