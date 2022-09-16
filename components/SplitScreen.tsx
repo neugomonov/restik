@@ -11,6 +11,13 @@ import { useRouter } from "next/router";
 
 export default function SplitScreen() {
 	const router = useRouter();
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 
 	return (
 		<Stack direction={{ base: "column", lg: "row" }}>
@@ -48,11 +55,7 @@ export default function SplitScreen() {
 							colorScheme={"orange"}
 							bg={"orange.400"}
 							_hover={{ bg: "orange.500" }}
-							onClick={async () => {
-								await router.push("/promo", "/promo", {
-									locale: "ru",
-								});
-							}}
+							onClick={handleClick("/promo")}
 						>
 							Посмотреть наши акции{" "}
 						</Button>

@@ -30,6 +30,13 @@ const Feature = ({ heading, text }: FeatureProps) => {
 
 export default function gridListWithCTA() {
 	const router = useRouter();
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 
 	return (
 		<Box as={Container} maxW="7xl" mt={14} p={4}>
@@ -49,11 +56,7 @@ export default function gridListWithCTA() {
 						<Button
 							colorScheme="orange"
 							size="md"
-							onClick={async () => {
-								await router.push("/chat", "/chat", {
-									locale: "ru",
-								});
-							}}
+							onClick={handleClick("/chat")}
 						>
 							Чат
 						</Button>

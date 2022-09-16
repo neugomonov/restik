@@ -17,6 +17,13 @@ import { useRouter } from "next/router";
 
 export default function CallToActionWithVideo() {
 	const router = useRouter();
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 
 	return (
 		<Container maxW={"5xl"}>
@@ -77,11 +84,7 @@ export default function CallToActionWithVideo() {
 							colorScheme={"orange"}
 							bg={"orange.400"}
 							_hover={{ bg: "orange.500" }}
-							onClick={async () => {
-								await router.push("/menu", "/menu", {
-									locale: "ru",
-								});
-							}}
+							onClick={handleClick("/menu")}
 						>
 							Посмотреть меню
 						</Button>

@@ -86,7 +86,13 @@ export default function LargeWithNewsletter() {
 	const { colorMode } = useColorMode();
 	const { t, lang } = useTranslation("common");
 	const router = useRouter();
-
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 	return (
 		<Box
 			transition=".3s ease"
@@ -162,51 +168,11 @@ export default function LargeWithNewsletter() {
 					</Stack>
 					<Stack align={"flex-start"}>
 						<ListHeader>Компания</ListHeader>
-						<Link
-							onClick={async () => {
-								await router.push("/about", "/about", {
-									locale: "ru",
-								});
-							}}
-						>
-							Наша кухня
-						</Link>
-						<Link
-							onClick={async () => {
-								await router.push("/news", "/news", {
-									locale: "ru",
-								});
-							}}
-						>
-							Новости
-						</Link>
-						<Link
-							onClick={async () => {
-								await router.push("/chat", "/chat", {
-									locale: "ru",
-								});
-							}}
-						>
-							Чат
-						</Link>
-						<Link
-							onClick={async () => {
-								await router.push("/promo", "/promo", {
-									locale: "ru",
-								});
-							}}
-						>
-							Акции
-						</Link>
-						<Link
-							onClick={async () => {
-								await router.push("/menu", "/menu", {
-									locale: "ru",
-								});
-							}}
-						>
-							Меню
-						</Link>
+						<Link onClick={handleClick("/news")}>Наша кухня</Link>
+						<Link onClick={handleClick("/news")}>Новости</Link>
+						<Link onClick={handleClick("/chat")}>Чат</Link>
+						<Link onClick={handleClick("/promo")}>Акции</Link>
+						<Link onClick={handleClick("/menu")}>Меню</Link>
 					</Stack>
 					<Stack align={"flex-start"}>
 						<ListHeader>Поддержка</ListHeader>

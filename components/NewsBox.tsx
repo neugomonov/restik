@@ -21,6 +21,13 @@ export default function NewsBox() {
 	const router = useRouter();
 
 	const { colorMode } = useColorMode();
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 
 	return (
 		<Box
@@ -84,11 +91,7 @@ export default function NewsBox() {
 						colorScheme="orange"
 						variant="outline"
 						data-testid="button"
-						onClick={async () => {
-							await router.push("/news", "/news", {
-								locale: "ru",
-							});
-						}}
+						onClick={handleClick("/news")}
 					>
 						Новости
 					</Button>

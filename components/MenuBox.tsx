@@ -197,6 +197,13 @@ export default function MenuBox() {
 			});
 		}
 	};
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 
 	return (
 		<>
@@ -237,20 +244,8 @@ export default function MenuBox() {
 								: "rgba(255, 255, 255, 0.75)"
 						}
 					>
-						<MenuItem
-							onClick={async () => {
-								await router.push("/menu", "/en/menu", { locale: "en" });
-							}}
-						>
-							English
-						</MenuItem>
-						<MenuItem
-							onClick={async () => {
-								await router.push("/menu", "/ru/menu", { locale: "ru" });
-							}}
-						>
-							Русский
-						</MenuItem>
+						<MenuItem onClick={handleClick("/en/menu")}>English</MenuItem>
+						<MenuItem onClick={handleClick("/ru/menu")}>Русский</MenuItem>
 					</MenuList>
 				</Menu>
 			</div>
