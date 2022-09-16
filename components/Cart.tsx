@@ -105,7 +105,7 @@ export default function MenuBox() {
 			});
 		};
 	};
-
+	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...
 	return (
 		<>
 			<IconButton
