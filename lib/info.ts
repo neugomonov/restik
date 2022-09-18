@@ -38,7 +38,7 @@ const info = {
 		},
 	},
 	averageDelivery: 1,
-	holidays: ["28/09"],
+	holidays: ["17/09"],
 	types: {
 		small: {
 			en: "Small",
