@@ -17,11 +17,11 @@ export default function ChatListBox() {
 		router.push(`/chat/${id}`);
 	};
 
-	const chatExists = (email: any) =>
+	const chatExists = (email: string | null) =>
 		chats?.find(
-			(chat: any) =>
+			(chat: Record<string, string>) =>
 				chat.users.includes(session?.user?.email || "anonym") &&
-				chat.users.includes(email)
+				chat.users.includes(email!)
 		);
 
 	const newChat = async () => {
