@@ -41,7 +41,7 @@ export default function NotificationList() {
 	};
 	const router = useRouter();
 	const notificationList = () => {
-		return notifications.map((notification: any) => (
+		return notifications.map((notification: Record<string, string>) => (
 			<MenuItem
 				key={notification.id}
 				onClick={async () => {

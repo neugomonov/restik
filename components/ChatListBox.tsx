@@ -51,10 +51,10 @@ export default function ChatListBox() {
 
 	const chatList = () => {
 		return chats
-			?.filter((chat: any) =>
+			?.filter((chat: Record<string, string>) =>
 				chat.users.includes(session?.user?.email || "anonym")
 			)
-			.map((chat: any) => (
+			.map((chat: Record<string, string>) => (
 				<Flex
 					key={Math.random()}
 					p={3}

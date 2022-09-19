@@ -77,8 +77,10 @@ export default function ProfileButtons() {
 		<>
 			<Stack direction={{ base: "column", xl: "row" }}>
 				{users
-					?.filter((user: any) => user.email?.includes(session?.user?.email))
-					.map((user: any) => (
+					?.filter((user: Record<string, string>) =>
+						user.email?.includes(session?.user?.email!)
+					)
+					.map((user: Record<string, string>) => (
 						<Button
 							key={user.id}
 							size="md"
@@ -90,8 +92,10 @@ export default function ProfileButtons() {
 					))}
 
 				{users
-					?.filter((user: any) => user.email?.includes(session?.user?.email))
-					.map((user: any) => (
+					?.filter((user: Record<string, string>) =>
+						user.email?.includes(session?.user?.email!)
+					)
+					.map((user: Record<string, string>) => (
 						<Button
 							key={user.id}
 							size="md"
@@ -102,8 +106,10 @@ export default function ProfileButtons() {
 						</Button>
 					))}
 				{users
-					?.filter((user: any) => user.email?.includes(session?.user?.email))
-					.map((user: any) => (
+					?.filter((user: Record<string, string>) =>
+						user.email?.includes(session?.user?.email!)
+					)
+					.map((user: Record<string, string>) => (
 						<Button
 							key={user.id}
 							size="md"
