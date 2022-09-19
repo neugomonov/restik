@@ -1,7 +1,7 @@
 import React from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, addDoc } from "@firebase/firestore";
-import { Avatar, Button, Flex, Text } from "@chakra-ui/react";
+import { Avatar, Button, Flex, Text, useToast } from "@chakra-ui/react";
 import { db } from "../firebase";
 import getOtherEmail from "../utils/getOtherEmail";
 import { useSession } from "next-auth/react";
@@ -12,27 +12,26 @@ export default function ChatListBox() {
 	const [snapshot] = useCollection(collection(db, "chats"));
 	const chats = snapshot?.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 	const router = useRouter();
+	const toast = useToast();
 
 	const redirect = (id: string) => {
 		router.push(`/chat/${id}`);
 	};
 
-	const chatExists = (email: any) =>
+	const chatExists = (email: string) =>
 		chats?.find(
-			(chat: any) =>
+			(chat: Record<string, string>) =>
 				chat.users.includes(session?.user?.email || "anonym") &&
-				chat.users.includes(email)
+				chat.users.includes(email!)
 		);
 
 	const newChat = async () => {
 		const input = prompt("Введите email того, с кем вы хотите начать чат");
 		const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 		if (
-			!chatExists(input) &&
+			!chatExists(input!) &&
 			input != session?.user?.email &&
-			input != null &&
-			input != "" &&
-			emailPattern.test(input)
+			emailPattern.test(input!)
 		) {
 			await addDoc(collection(db, "chats"), {
 				users: [
@@ -40,15 +39,22 @@ export default function ChatListBox() {
 					input,
 				],
 			});
+		} else {
+			toast({
+				title: "Пожалуйста, введите email корректно",
+				status: "warning",
+				duration: 3000,
+				isClosable: true,
+			});
 		}
 	};
 
 	const chatList = () => {
 		return chats
-			?.filter((chat: any) =>
+			?.filter((chat: Record<string, string>) =>
 				chat.users.includes(session?.user?.email || "anonym")
 			)
-			.map((chat: any) => (
+			.map((chat: Record<string, string>) => (
 				<Flex
 					key={Math.random()}
 					p={3}

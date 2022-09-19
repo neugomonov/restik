@@ -132,7 +132,7 @@ export default function OrdersTable() {
 						{
 							// @ts-expect-error
 							session?.user?.role == "Админ"
-								? orders.map((order: any) => (
+								? orders.map((order: Record<string, string>) => (
 										<Tr key={order.id}>
 											<Td>
 												{order.status}
@@ -152,10 +152,10 @@ export default function OrdersTable() {
 										</Tr>
 								  ))
 								: orders
-										?.filter((order: any) =>
-											order.email?.includes(session?.user?.email)
+										?.filter((order: Record<string, string>) =>
+											order.email?.includes(session?.user?.email!)
 										)
-										.map((order: any) => (
+										.map((order: Record<string, string>) => (
 											<Tr key={order.id}>
 												<Td>{order.status}</Td>
 												<Td>{order.products}</Td>

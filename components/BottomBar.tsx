@@ -16,7 +16,7 @@ export default function BottomBar({ id, user }: { id: string; user: object }) {
 	const { data: session } = useSession();
 	const { colorMode } = useColorMode();
 
-	const sendMessage = async (e: any) => {
+	const sendMessage = async (e: React.FormEvent<HTMLDivElement>) => {
 		e.preventDefault();
 		if (input !== "") {
 			await addDoc(collection(db, `chats/${id}/messages`), {
