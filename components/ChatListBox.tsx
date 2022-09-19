@@ -17,7 +17,7 @@ export default function ChatListBox() {
 		router.push(`/chat/${id}`);
 	};
 
-	const chatExists = (email: string | null) =>
+	const chatExists = (email: string) =>
 		chats?.find(
 			(chat: Record<string, string>) =>
 				chat.users.includes(session?.user?.email || "anonym") &&
@@ -28,11 +28,9 @@ export default function ChatListBox() {
 		const input = prompt("Введите email того, с кем вы хотите начать чат");
 		const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 		if (
-			!chatExists(input) &&
+			!chatExists(input!) &&
 			input != session?.user?.email &&
-			input != null &&
-			input != "" &&
-			emailPattern.test(input)
+			emailPattern.test(input!)
 		) {
 			await addDoc(collection(db, "chats"), {
 				users: [
