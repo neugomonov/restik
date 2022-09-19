@@ -1,7 +1,7 @@
 import React from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, addDoc } from "@firebase/firestore";
-import { Avatar, Button, Flex, Text } from "@chakra-ui/react";
+import { Avatar, Button, Flex, Text, useToast } from "@chakra-ui/react";
 import { db } from "../firebase";
 import getOtherEmail from "../utils/getOtherEmail";
 import { useSession } from "next-auth/react";
@@ -12,6 +12,7 @@ export default function ChatListBox() {
 	const [snapshot] = useCollection(collection(db, "chats"));
 	const chats = snapshot?.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 	const router = useRouter();
+	const toast = useToast();
 
 	const redirect = (id: string) => {
 		router.push(`/chat/${id}`);
@@ -37,6 +38,13 @@ export default function ChatListBox() {
 					session?.user?.email !== undefined ? session?.user?.email : "anonym",
 					input,
 				],
+			});
+		} else {
+			toast({
+				title: "Пожалуйста, введите email корректно",
+				status: "warning",
+				duration: 3000,
+				isClosable: true,
 			});
 		}
 	};
