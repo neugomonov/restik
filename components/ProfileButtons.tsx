@@ -5,7 +5,7 @@ import { MdPlace } from "react-icons/md";
 import { useSession } from "next-auth/react";
 import { collection } from "@firebase/firestore";
 import { db } from "../firebase";
-import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { doc, DocumentData, onSnapshot, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { IoCash } from "react-icons/io5";
 
@@ -16,9 +16,12 @@ export default function ProfileButtons() {
 	const [users, setUsers] = useState([{ name: "Loading...", id: "initial" }]);
 	useEffect(
 		() =>
-			onSnapshot(collection(db, "users"), (snapshot: any) =>
+			onSnapshot(collection(db, "users"), (snapshot) =>
 				setUsers(
-					snapshot.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))
+					snapshot.docs.map((doc: DocumentData) => ({
+						...doc.data(),
+						id: doc.id,
+					}))
 				)
 			),
 		[]

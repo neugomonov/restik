@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil";
 import { db } from "../firebase";
 import { _cart } from "../lib/recoil-atoms";
 import axios from "axios";
+import { Session } from "next-auth/core/types";
 
 const stripePromise = loadStripe(process.env.stripe_public_key!);
 
@@ -26,6 +27,9 @@ export default function stringifyCartPositions() {
 	let phone = "";
 	let payment = "";
 	let address = "";
+	type customSession = Session & {
+		user: { phone: string; address: string; payment: string; email: string };
+	};
 	const handleNew = async (session: any) => {
 		let disco = cart.total - cart.total * 0.1;
 		let currentTime = new Date().getTime() / 1000;

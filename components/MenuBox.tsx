@@ -204,6 +204,19 @@ export default function MenuBox() {
 			});
 		};
 	};
+	type DescribableFunction = {
+		(value: string): void;
+	};
+
+	const handleForm = (setter: DescribableFunction) => {
+		return (
+			event: React.ChangeEvent<
+				HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+			>
+		) => {
+			setter(event.currentTarget.value);
+		};
+	};
 
 	return (
 		<>
@@ -391,7 +404,7 @@ export default function MenuBox() {
 									name="name"
 									type="text"
 									placeholder={t("namePlaceholder")}
-									onChange={(event) => setName(event.currentTarget.value)}
+									onChange={handleForm(setName)}
 								/>
 							</FormControl>
 							<FormControl isRequired id="email">
@@ -402,7 +415,7 @@ export default function MenuBox() {
 									name="email"
 									type="email"
 									placeholder="ivanov_i@gmail.com"
-									onChange={(event) => setEmail(event.currentTarget.value)}
+									onChange={handleForm(setEmail)}
 								/>
 							</FormControl>
 							<FormControl isRequired id="phone">
@@ -417,8 +430,8 @@ export default function MenuBox() {
 										isRequired
 										name="phone"
 										type="phone"
-										placeholder="777 123 45 67"
-										onChange={(event) => setPhone(event.currentTarget.value)}
+										placeholder="908 123 45 67"
+										onChange={handleForm(setPhone)}
 									/>
 								</InputGroup>
 							</FormControl>
@@ -429,7 +442,7 @@ export default function MenuBox() {
 									name="company"
 									type="text"
 									placeholder={t("companyPlaceholder")}
-									onChange={(event) => setCompany(event.currentTarget.value)}
+									onChange={handleForm(setCompany)}
 								/>
 							</FormControl>
 						</SimpleGrid>
@@ -443,7 +456,7 @@ export default function MenuBox() {
 									name="address"
 									type="text"
 									placeholder={t("addressPlaceholder")}
-									onChange={(event) => setAddress(event.currentTarget.value)}
+									onChange={handleForm(setAddress)}
 								/>
 							</FormControl>
 							<FormControl isRequired id="postal">
@@ -454,7 +467,7 @@ export default function MenuBox() {
 									name="postal"
 									type="text"
 									placeholder="603001"
-									onChange={(event) => setPostal(event.currentTarget.value)}
+									onChange={handleForm(setPostal)}
 								/>
 							</FormControl>
 							<FormControl isRequired id="city">
@@ -465,7 +478,7 @@ export default function MenuBox() {
 									name="city"
 									type="text"
 									placeholder={t("cityPlaceholder")}
-									onChange={(event) => setCity(event.currentTarget.value)}
+									onChange={handleForm(setCity)}
 								/>
 							</FormControl>
 							<FormControl id="floor">
@@ -475,7 +488,7 @@ export default function MenuBox() {
 									name="floor"
 									type="text"
 									placeholder="5"
-									onChange={(event) => setFloor(event.currentTarget.value)}
+									onChange={handleForm(setFloor)}
 								/>
 							</FormControl>
 						</SimpleGrid>
@@ -488,7 +501,7 @@ export default function MenuBox() {
 									isRequired
 									name="time"
 									placeholder={t("select")}
-									onChange={(event) => setTime(event.currentTarget.value)}
+									onChange={handleForm(setTime)}
 								>
 									{deliveryHours && deliveryHours.length > 0 && (
 										<option value="asap">{t("asap")}</option>
@@ -507,7 +520,7 @@ export default function MenuBox() {
 									name="notes"
 									resize="vertical"
 									placeholder={t("deliveryPlaceholder")}
-									onChange={(event) => setNotes(event.currentTarget.value)}
+									onChange={handleForm(setNotes)}
 								/>
 							</FormControl>
 						</SimpleGrid>
@@ -520,7 +533,7 @@ export default function MenuBox() {
 									isRequired
 									name="payment"
 									placeholder={t("select")}
-									onChange={(event) => setPayment(event.currentTarget.value)}
+									onChange={handleForm(setPayment)}
 								>
 									<option value="Наличные">{t("cash")}</option>
 									<option value="Онлайн">Онлайн</option>
@@ -532,7 +545,7 @@ export default function MenuBox() {
 									ref={register}
 									name="tip"
 									defaultValue="none"
-									onChange={(event) => setTip(event.currentTarget.value)}
+									onChange={handleForm(setTip)}
 								>
 									<option value="none">{t("tipNone")}</option>
 									<option

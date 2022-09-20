@@ -23,6 +23,7 @@ import {
 	updateDoc,
 	serverTimestamp,
 	getDoc,
+	DocumentData,
 } from "firebase/firestore";
 
 export default function OrdersTable() {
@@ -33,18 +34,24 @@ export default function OrdersTable() {
 
 	useEffect(
 		() =>
-			onSnapshot(collection(db, "orders"), (snapshot: any) =>
+			onSnapshot(collection(db, "orders"), (snapshot) =>
 				setOrders(
-					snapshot.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))
+					snapshot.docs.map((doc: DocumentData) => ({
+						...doc.data(),
+						id: doc.id,
+					}))
 				)
 			),
 		[]
 	);
 	useEffect(
 		() =>
-			onSnapshot(collection(db, "users"), (snapshot: any) =>
+			onSnapshot(collection(db, "users"), (snapshot) =>
 				setUsers(
-					snapshot.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))
+					snapshot.docs.map((doc: DocumentData) => ({
+						...doc.data(),
+						id: doc.id,
+					}))
 				)
 			),
 		[]

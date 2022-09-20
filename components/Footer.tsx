@@ -24,7 +24,7 @@ import info from "../lib/info";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 
-const Logo = (props: any) => {
+const Logo = (props: { color: string }) => {
 	const { t, lang } = useTranslation("menu");
 
 	return (
