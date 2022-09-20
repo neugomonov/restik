@@ -417,7 +417,7 @@ export default function MenuBox() {
 										isRequired
 										name="phone"
 										type="phone"
-										placeholder="777 123 45 67"
+										placeholder="908 123 45 67"
 										onChange={(event) => setPhone(event.currentTarget.value)}
 									/>
 								</InputGroup>
