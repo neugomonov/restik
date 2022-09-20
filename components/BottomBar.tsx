@@ -16,8 +16,8 @@ export default function BottomBar({ id, user }: { id: string; user: object }) {
 	const { data: session } = useSession();
 	const { colorMode } = useColorMode();
 
-	const sendMessage = async (e: React.FormEvent<HTMLDivElement>) => {
-		e.preventDefault();
+	const sendMessage = async (event: React.FormEvent<HTMLDivElement>) => {
+		event.preventDefault();
 		if (input !== "") {
 			await addDoc(collection(db, `chats/${id}/messages`), {
 				text: input,
@@ -40,7 +40,7 @@ export default function BottomBar({ id, user }: { id: string; user: object }) {
 						bg: "whiteAlpha.300",
 					}}
 					autoComplete="off"
-					onChange={(e) => setInput(e.target.value)}
+					onChange={(event) => setInput(event.target.value)}
 					value={input}
 				/>
 				<IconButton
