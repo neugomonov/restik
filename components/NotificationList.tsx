@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import {
 	collection,
 	doc,
+	DocumentData,
 	onSnapshot,
 	orderBy,
 	query,
@@ -27,9 +28,12 @@ export default function NotificationList() {
 			orderBy("timestamp", "desc")
 		);
 
-		onSnapshot(q, (snapshot: any) => {
+		onSnapshot(q, (snapshot) => {
 			setNotifications(
-				snapshot.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))
+				snapshot.docs.map((doc: DocumentData) => ({
+					...doc.data(),
+					id: doc.id,
+				}))
 			);
 		});
 	}, [session]);

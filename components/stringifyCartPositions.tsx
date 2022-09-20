@@ -26,7 +26,9 @@ export default function stringifyCartPositions() {
 	let phone = "";
 	let payment = "";
 	let address = "";
-	const handleNew = async (session: any) => {
+	const handleNew = async (session: {
+		user: { phone: string; address: string; payment: string; email: string };
+	}) => {
 		let disco = cart.total - cart.total * 0.1;
 		let currentTime = new Date().getTime() / 1000;
 		let timeOfDiscoEnd = 1661776053;
