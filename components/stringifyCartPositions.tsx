@@ -30,7 +30,7 @@ export default function stringifyCartPositions() {
 	type customSession = Session & {
 		user: { phone: string; address: string; payment: string; email: string };
 	};
-	const handleNew = async (session: customSession) => {
+	const handleNew = async (session: any) => {
 		let disco = cart.total - cart.total * 0.1;
 		let currentTime = new Date().getTime() / 1000;
 		let timeOfDiscoEnd = 1661776053;
