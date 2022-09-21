@@ -1,9 +1,8 @@
-import React from "react";
 import { Box, Heading, IconButton, Image, Stack, Tag } from "@chakra-ui/react";
-import info from "../lib/info";
 import { MdOutlineMessage } from "react-icons/md";
 import ChatListBox from "../components/ChatListBox";
 import { WithSideContentLayout } from "../layouts/menu";
+import info from "../lib/info";
 
 function Chat() {
 	return (

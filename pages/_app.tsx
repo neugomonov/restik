@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ChakraProvider } from "@chakra-ui/react";
+import { css, Global } from "@emotion/react";
+import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import NextNProgress from "nextjs-progressbar";
+import React, { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
-import { Global, css } from "@emotion/react";
-import { ChakraProvider } from "@chakra-ui/react";
-import { SessionProvider } from "next-auth/react";
-import { _cart, CartState } from "../lib/recoil-atoms";
+import SidebarWithHeader from "../components/SidebarWithHeader";
 import StateSaver from "../components/state-saver";
 import info from "../lib/info";
-import NextNProgress from "nextjs-progressbar";
-import SidebarWithHeader from "../components/SidebarWithHeader";
+import { CartState, _cart } from "../lib/recoil-atoms";
 const client = new ApolloClient({
 	uri: process.env.SERVER_URL,
 	cache: new InMemoryCache(),

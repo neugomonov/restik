@@ -1,6 +1,3 @@
-import React from "react";
-import OrdersTable from "../components/OrdersTable";
-import ProfileButtons from "../components/ProfileButtons";
 import {
 	Avatar,
 	Box,
@@ -9,17 +6,19 @@ import {
 	IconButton,
 	Image,
 	Stack,
-	VStack,
 	Tag,
 	Text,
 	useColorMode,
 	useColorModeValue,
+	VStack,
 } from "@chakra-ui/react";
-import { FiChevronDown } from "react-icons/fi";
-import info from "../lib/info";
-import { CgProfile } from "react-icons/cg";
 import { useSession } from "next-auth/react";
+import { CgProfile } from "react-icons/cg";
+import { FiChevronDown } from "react-icons/fi";
+import OrdersTable from "../components/OrdersTable";
+import ProfileButtons from "../components/ProfileButtons";
 import { WithSideContentLayout } from "../layouts/menu";
+import info from "../lib/info";
 
 function Profile() {
 	const { colorMode } = useColorMode();

@@ -1,4 +1,3 @@
-import React from "react";
 import MenuBox from "../components/MenuBox";
 import { WithSideContentLayout } from "../layouts/menu";
 

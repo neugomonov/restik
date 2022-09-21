@@ -1,6 +1,3 @@
-import React from "react";
-import useTranslation from "next-translate/useTranslation";
-import NextImage from "next/image";
 import {
 	Box,
 	chakra,
@@ -12,10 +9,12 @@ import {
 	Tag,
 	Text,
 } from "@chakra-ui/react";
-import info from "../lib/info";
+import useTranslation from "next-translate/useTranslation";
+import NextImage from "next/image";
 import { IoRestaurantOutline } from "react-icons/io5";
-import promo from "../lib/promo";
 import { WithSideContentLayout } from "../layouts/menu";
+import info from "../lib/info";
+import promo from "../lib/promo";
 
 function Promo() {
 	const { t, lang } = useTranslation("home");

@@ -1,9 +1,8 @@
-import React from "react";
-import CallToActionWithVideo from "../components/CallToActionWithVideo";
-import WithBackgroundImage from "../components/WithBackgroundImage";
-import SplitScreen from "../components/SplitScreen";
-import CallToActionWithIllustration from "../components/CallToActionWithIllustration";
 import CallToActionWithAnnotation from "../components/CallToActionWithAnnotation";
+import CallToActionWithIllustration from "../components/CallToActionWithIllustration";
+import CallToActionWithVideo from "../components/CallToActionWithVideo";
+import SplitScreen from "../components/SplitScreen";
+import WithBackgroundImage from "../components/WithBackgroundImage";
 import { IndexLayout } from "../layouts";
 
 function Home() {

@@ -1,4 +1,4 @@
-import React from "react";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 import {
 	Button,
 	Heading,
@@ -8,11 +8,10 @@ import {
 	Tag,
 	Text,
 } from "@chakra-ui/react";
-import info from "../lib/info";
-import { BiErrorAlt } from "react-icons/bi";
-import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
+import { BiErrorAlt } from "react-icons/bi";
 import { WithSideContentLayout } from "../layouts/menu";
+import info from "../lib/info";
 
 function FourOFour() {
 	const router = useRouter();

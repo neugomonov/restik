@@ -1,6 +1,3 @@
-import React from "react";
-import useTranslation from "next-translate/useTranslation";
-import NextImage from "next/image";
 import {
 	Box,
 	chakra,
@@ -12,10 +9,12 @@ import {
 	Tag,
 	Text,
 } from "@chakra-ui/react";
+import useTranslation from "next-translate/useTranslation";
+import NextImage from "next/image";
+import { BiNews } from "react-icons/bi";
+import { WithSideContentLayout } from "../layouts/menu";
 import info from "../lib/info";
 import news from "../lib/news";
-import { WithSideContentLayout } from "../layouts/menu";
-import { BiNews } from "react-icons/bi";
 
 function News() {
 	const { t, lang } = useTranslation("home");
