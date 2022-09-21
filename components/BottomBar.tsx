@@ -1,15 +1,15 @@
-import { useState } from "react";
 import {
 	FormControl,
+	HStack,
+	IconButton,
 	Input,
 	useColorMode,
-	IconButton,
-	HStack,
 } from "@chakra-ui/react";
-import { serverTimestamp, addDoc, collection } from "firebase/firestore";
-import { db } from "../firebase";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
 import { MdOutlineSend } from "react-icons/md";
+import { db } from "../firebase";
 
 export default function BottomBar({ id, user }: { id: string; user: object }) {
 	const [input, setInput] = useState("");

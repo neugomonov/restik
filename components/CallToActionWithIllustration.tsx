@@ -1,11 +1,11 @@
 import {
-	Flex,
+	Button,
 	Container,
+	Flex,
 	Heading,
+	Image,
 	Stack,
 	Text,
-	Button,
-	Image,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { EditIcon } from "@chakra-ui/icons";
 import {
 	Button,
 	IconButton,
@@ -12,19 +12,19 @@ import {
 	Thead,
 	Tr,
 } from "@chakra-ui/react";
-import { EditIcon } from "@chakra-ui/icons";
-import { useSession } from "next-auth/react";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { collection, addDoc } from "@firebase/firestore";
-import { db } from "../firebase";
+import { addDoc, collection } from "@firebase/firestore";
 import {
 	doc,
-	onSnapshot,
-	updateDoc,
-	serverTimestamp,
-	getDoc,
 	DocumentData,
+	getDoc,
+	onSnapshot,
+	serverTimestamp,
+	updateDoc,
 } from "firebase/firestore";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { db } from "../firebase";
 
 export default function OrdersTable() {
 	const { data: session } = useSession();

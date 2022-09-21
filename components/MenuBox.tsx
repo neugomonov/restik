@@ -1,52 +1,52 @@
 // TODO: decompose
 
-import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 import NextImage from "next/image";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 
 import {
-	Box,
-	useColorMode,
-	Stack,
 	Avatar,
 	AvatarBadge,
-	Heading,
-	SimpleGrid,
-	ButtonGroup,
+	Box,
 	Button,
+	ButtonGroup,
+	chakra,
+	Checkbox,
+	Divider,
+	Flex,
 	FormControl,
 	FormLabel,
+	Heading,
+	IconButton,
+	Input,
 	InputGroup,
 	InputLeftAddon,
-	Input,
-	Select,
-	Textarea,
-	Checkbox,
 	Link,
-	Text,
-	IconButton,
-	useDisclosure,
+	Select,
+	SimpleGrid,
+	Stack,
 	Tag,
-	Divider,
-	chakra,
-	Flex,
+	Text,
+	Textarea,
+	useColorMode,
+	useDisclosure,
 	useToast,
 } from "@chakra-ui/react";
 
-import { useRecoilState } from "recoil";
-import { useForm } from "react-hook-form";
-import useTranslation from "next-translate/useTranslation";
-import { IoMdAdd } from "react-icons/io";
-import { HiOutlineTranslate } from "react-icons/hi";
+import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import useTranslation from "next-translate/useTranslation";
+import { useForm } from "react-hook-form";
+import { HiOutlineTranslate } from "react-icons/hi";
+import { IoMdAdd } from "react-icons/io";
+import { useRecoilState } from "recoil";
+import { db } from "../firebase";
 import info from "../lib/info";
 import menu from "../lib/menu";
 import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "../firebase";
-import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(process.env.stripe_public_key!);
 

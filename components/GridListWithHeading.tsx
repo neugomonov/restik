@@ -1,15 +1,15 @@
+import { CheckIcon } from "@chakra-ui/icons";
 import {
 	Box,
 	Container,
 	Heading,
-	SimpleGrid,
-	Icon,
-	Text,
-	Stack,
 	HStack,
+	Icon,
+	SimpleGrid,
+	Stack,
+	Text,
 	VStack,
 } from "@chakra-ui/react";
-import { CheckIcon } from "@chakra-ui/icons";
 
 const features = Array.apply(null, Array(8)).map(function (x, i) {
 	return {

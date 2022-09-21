@@ -1,19 +1,19 @@
 import {
 	Container,
-	SimpleGrid,
-	Image,
 	Flex,
 	Heading,
-	Text,
+	Icon,
+	Image,
+	SimpleGrid,
 	Stack,
 	StackDivider,
-	Icon,
+	Text,
 	useColorModeValue,
 } from "@chakra-ui/react";
-import { BsPeople } from "react-icons/bs";
-import { BiDish } from "react-icons/bi";
-import { GiFruitBowl } from "react-icons/gi";
 import { ReactElement } from "react";
+import { BiDish } from "react-icons/bi";
+import { BsPeople } from "react-icons/bs";
+import { GiFruitBowl } from "react-icons/gi";
 
 interface FeatureProps {
 	text: string;

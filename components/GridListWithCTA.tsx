@@ -1,15 +1,14 @@
 import {
 	Box,
-	VStack,
 	Button,
-	Flex,
-	Divider,
 	chakra,
+	Container,
+	Divider,
+	Flex,
 	Grid,
 	GridItem,
-	Container,
+	VStack,
 } from "@chakra-ui/react";
-import {} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 interface FeatureProps {
