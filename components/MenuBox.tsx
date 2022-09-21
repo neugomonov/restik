@@ -112,11 +112,9 @@ export default function MenuBox() {
 	const [time, setTime] = useState("");
 	const [tip, setTip] = useState("");
 
-	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
 	const deliveryHours = getDeliveryHours(new Date());
 	let stringified = "";
 	for (let index = 0; index < cart.items.length; ++index) {
-		let element = cart.items[index];
 		let csvString = cart.items[index].quantity
 			.toString()
 			.concat("x ", cart.items[index].name, " (", cart.items[index].type, ")");
