@@ -27,9 +27,9 @@ export default function stringifyCartPositions() {
 	let phone = "";
 	let payment = "";
 	let address = "";
-	type customSession = Session & {
+	interface CustomSession extends Session {
 		user: { phone: string; address: string; payment: string; email: string };
-	};
+	}
 	const handleNew = async (session: any) => {
 		let disco = cart.total - cart.total * 0.1;
 		let currentTime = new Date().getTime() / 1000;
