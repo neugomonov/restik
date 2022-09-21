@@ -1,10 +1,10 @@
+import { Box, Flex, useColorMode } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import VideoBox from "../components/VideoBox";
-import PromoBox from "../components/PromoBox";
+import { useRecoilState } from "recoil";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
-import { Box, useColorMode, Flex } from "@chakra-ui/react";
-import { useRecoilState } from "recoil";
+import PromoBox from "../components/PromoBox";
+import VideoBox from "../components/VideoBox";
 import { _cart } from "../lib/recoil-atoms";
 
 export function WithSideContentLayout({

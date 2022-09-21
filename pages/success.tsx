@@ -1,4 +1,3 @@
-import React from "react";
 import {
 	Button,
 	Heading,
@@ -8,11 +7,11 @@ import {
 	Tag,
 	Text,
 } from "@chakra-ui/react";
-import info from "../lib/info";
 import { useRouter } from "next/router";
-import { CgProfile } from "react-icons/cg";
 import { AiOutlineCheckCircle } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
 import { WithSideContentLayout } from "../layouts/menu";
+import info from "../lib/info";
 
 function Success() {
 	const router = useRouter();
