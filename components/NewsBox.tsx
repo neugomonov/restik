@@ -1,21 +1,20 @@
-import React from "react";
 import { useRouter } from "next/router";
 
 import {
 	Box,
-	useColorMode,
-	Stack,
-	Heading,
 	Button,
-	Text,
-	Image,
+	Heading,
 	IconButton,
+	Image,
+	Stack,
 	Tag,
+	Text,
+	useColorMode,
 } from "@chakra-ui/react";
 
-import info from "../lib/info";
-import { BiNews } from "react-icons/bi";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
+import { BiNews } from "react-icons/bi";
+import info from "../lib/info";
 // TODO: remove the hardcode 💀
 export default function NewsBox() {
 	const router = useRouter();

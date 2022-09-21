@@ -1,17 +1,15 @@
-import React from "react";
-
 import {
+	AspectRatio,
 	Box,
-	useColorMode,
+	Flex,
 	Heading,
 	IconButton,
 	Tag,
-	Flex,
-	AspectRatio,
+	useColorMode,
 } from "@chakra-ui/react";
 
-import info from "../lib/info";
 import { BiMoviePlay } from "react-icons/bi";
+import info from "../lib/info";
 
 export default function VideoBox() {
 	const { colorMode } = useColorMode();

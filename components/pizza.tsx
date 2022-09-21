@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { OrbitControls } from "../vendor_mods/three/examples/jsm/controls/OrbitControls.js";
 import { loadGLTFModel } from "../lib/model";
-import { PizzaSpinner, PizzaContainer } from "./pizza-loader";
+import { OrbitControls } from "../vendor_mods/three/examples/jsm/controls/OrbitControls.js";
+import { PizzaContainer, PizzaSpinner } from "./pizza-loader";
 
 function easeOutCirc(x: number) {
 	return Math.sqrt(1 - Math.pow(x - 1, 4));

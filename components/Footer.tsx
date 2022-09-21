@@ -1,28 +1,28 @@
 import {
+	Avatar,
 	Box,
 	chakra,
 	Container,
+	Heading,
+	HStack,
+	IconButton,
+	Image,
+	Input,
 	Link,
 	SimpleGrid,
 	Stack,
 	Text,
-	VisuallyHidden,
-	Input,
-	IconButton,
-	useColorModeValue,
 	useColorMode,
-	Avatar,
-	Heading,
-	HStack,
-	Image,
+	useColorModeValue,
+	VisuallyHidden,
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
+import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
-import info from "../lib/info";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import info from "../lib/info";
 
 const Logo = (props: { color: string }) => {
 	const { t, lang } = useTranslation("menu");

@@ -1,10 +1,10 @@
 import {
-	Stack,
-	Flex,
 	Button,
+	Flex,
+	Stack,
 	Text,
-	VStack,
 	useBreakpointValue,
+	VStack,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 

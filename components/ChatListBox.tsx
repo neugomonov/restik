@@ -1,11 +1,10 @@
-import React from "react";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { collection, addDoc } from "@firebase/firestore";
 import { Avatar, Button, Flex, Text, useToast } from "@chakra-ui/react";
-import { db } from "../firebase";
-import getOtherEmail from "../utils/getOtherEmail";
+import { addDoc, collection } from "@firebase/firestore";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { db } from "../firebase";
+import getOtherEmail from "../utils/getOtherEmail";
 export default function ChatListBox() {
 	const { data: session } = useSession();
 

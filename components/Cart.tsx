@@ -1,38 +1,38 @@
 // TODO: decompose
 
-import React, { useRef } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import { useRef } from "react";
 import stringifyCartPositions from "./stringifyCartPositions";
 
 import {
-	useColorMode,
-	Stack,
-	Heading,
-	ButtonGroup,
 	Button,
-	useToast,
-	Link,
-	Text,
-	IconButton,
-	useDisclosure,
-	Tag,
+	ButtonGroup,
 	Divider,
+	Heading,
+	IconButton,
+	Link,
+	Stack,
+	Tag,
+	Text,
+	useColorMode,
+	useDisclosure,
+	useToast,
 } from "@chakra-ui/react";
 
-import { useRecoilState } from "recoil";
 import useTranslation from "next-translate/useTranslation";
 import {
 	IoMdAdd,
 	IoMdCart,
-	IoMdTrash,
-	IoMdRemove,
 	IoMdCheckmarkCircle,
+	IoMdRemove,
+	IoMdTrash,
 } from "react-icons/io";
+import { useRecoilState } from "recoil";
 
+import { useSession } from "next-auth/react";
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
-import { useSession } from "next-auth/react";
 
 const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
 const DrawerBody = dynamic(

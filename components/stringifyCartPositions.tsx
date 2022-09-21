@@ -1,12 +1,12 @@
 import { useToast } from "@chakra-ui/react";
 import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { Session } from "next-auth/core/types";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { db } from "../firebase";
 import { _cart } from "../lib/recoil-atoms";
-import axios from "axios";
-import { Session } from "next-auth/core/types";
 
 const stripePromise = loadStripe(process.env.stripe_public_key!);
 

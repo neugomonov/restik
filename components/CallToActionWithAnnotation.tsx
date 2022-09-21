@@ -1,15 +1,15 @@
-import Head from "next/head";
 import {
 	Box,
-	Heading,
-	Container,
-	Text,
 	Button,
-	Stack,
-	Icon,
-	useColorModeValue,
+	Container,
 	createIcon,
+	Heading,
+	Icon,
+	Stack,
+	Text,
+	useColorModeValue,
 } from "@chakra-ui/react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 
 export default function CallToActionWithAnnotation() {

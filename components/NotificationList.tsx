@@ -1,8 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
 import { MenuItem } from "@chakra-ui/react";
-import { db } from "../firebase";
-import { useRouter } from "next/router";
 import {
 	collection,
 	doc,
@@ -13,6 +9,10 @@ import {
 	updateDoc,
 	where,
 } from "firebase/firestore";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { db } from "../firebase";
 
 export default function NotificationList() {
 	const { data: session } = useSession();
