@@ -115,18 +115,18 @@ export default function MenuBox() {
 	const deliveryHours = getDeliveryHours(new Date());
 	let stringified = "";
 	for (let index = 0; index < cart.items.length; ++index) {
-		let csvString = cart.items[index].quantity
+		const csvString = cart.items[index].quantity
 			.toString()
 			.concat("x ", cart.items[index].name, " (", cart.items[index].type, ")");
 		stringified = stringified.concat(", ", csvString);
 	}
 
-	let stringifiedProducts = stringified.substring(2);
+	const stringifiedProducts = stringified.substring(2);
 
 	const onSubmit = async (data: FormData) => {
-		let disco = cart.total - cart.total * 0.1;
-		let currentTime = new Date().getTime() / 1000;
-		let timeOfDiscoEnd = 1661776053;
+		const disco = cart.total - cart.total * 0.1;
+		const currentTime = new Date().getTime() / 1000;
+		const timeOfDiscoEnd = 1661776053;
 		let total = 0;
 		currentTime < timeOfDiscoEnd && payment !== "Онлайн"
 			? (total = disco)
