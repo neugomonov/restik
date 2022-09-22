@@ -1,5 +1,5 @@
 const getOtherEmail = (users, currentUser) => {
-	return users?.filter((user) => user !== currentUser.email)[1];
+	return users?.filter((user) => user !== currentUser);
 };
 
 export default getOtherEmail;
