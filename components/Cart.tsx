@@ -99,7 +99,7 @@ export default function MenuBox() {
 	const cancelRef = useRef();
 	const { t, lang } = useTranslation("common");
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
-	let handleNew = stringifyCartPositions();
+	const handleNew = stringifyCartPositions();
 	const handleClick = (route: string) => {
 		return async () => {
 			await router.push(route, route, {
