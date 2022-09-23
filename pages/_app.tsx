@@ -64,6 +64,15 @@ const App = ({
 									will-change: transform;
 									z-index: -1;
 								}
+								*::-moz-selection {
+									/* Code for Firefox */
+									color: black;
+									background: #f39300;
+								}
+								*::selection {
+									color: black;
+									background: #f39300;
+								}
 							}
 						`}
 					/>
