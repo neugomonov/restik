@@ -1,5 +1,3 @@
-// TODO: decompose
-
 import dynamic from "next/dynamic";
 import NextImage from "next/image";
 import { useRouter } from "next/router";
