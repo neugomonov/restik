@@ -191,6 +191,7 @@ export default function OrderForm() {
 			setter(event.currentTarget.value);
 		};
 	};
+	// TODO: Make a function for the Math.round options, a dry one
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<Stack spacing={5}>
