@@ -1,5 +1,6 @@
 import { Avatar, Button, Flex, Text, useToast } from "@chakra-ui/react";
 import { addDoc, collection } from "@firebase/firestore";
+import { doc, getDocs, query, where } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -47,7 +48,22 @@ export default function ChatListBox() {
 			});
 		}
 	};
-
+	async function getOtherAvatar(chat: Record<string, string>) {
+		const usersDocument = await query(
+			collection(db, "users"),
+			where(
+				"email",
+				"==",
+				getOtherEmail(chat.users, session?.user?.email || "anonym")
+			)
+		);
+		const snapshot = await getDocs(usersDocument);
+		const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+		results.forEach(async (result) => {
+			const docRef = doc(db, "users", result.id);
+			return docRef;
+		});
+	}
 	const chatList = () => {
 		return chats
 			?.filter((chat: Record<string, string>) =>
