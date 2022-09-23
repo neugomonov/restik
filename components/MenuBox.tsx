@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import NextImage from "next/image";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
 
 import {
 	Avatar,
