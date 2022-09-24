@@ -31,8 +31,6 @@ import { useRecoilState } from "recoil";
 import { useSession } from "next-auth/react";
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
-import CartDrawerFooter from "./CartDrawerFooter";
-import CartDrawerBody from "./CartDrawerBody";
 
 const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
 const DrawerBody = dynamic(
@@ -88,7 +86,7 @@ interface CartPosition {
 	price: string;
 }
 
-export default function MenuBox() {
+export default function CartDrawerFooter() {
 	const router = useRouter();
 	const { data: session } = useSession();
 
@@ -174,62 +172,79 @@ export default function MenuBox() {
 	};
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...
 	return (
-		<>
-			<IconButton
-				isRound
-				colorScheme="orange"
-				aria-label={t("openCart")}
-				size="lg"
-				icon={
-					<Stack direction="row" spacing={2}>
-						<IoMdCart />
-						<Text>{t("cart")}</Text>
-						{cart.items.length > 0 && (
-							<Tag
-								borderRadius="full"
-								colorScheme="red"
-								variant="solid"
-								position="absolute"
-								top={items >= 10 ? -3 : -1}
-								right={-1}
-							>
-								{items >= 10 ? "10+" : items}
-							</Tag>
-						)}
-					</Stack>
-				}
-				position="fixed"
-				bottom={5}
-				right={5}
-				width="7rem"
-				boxShadow="rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"
-				onClick={onOpen}
-			/>
-			<Drawer
-				isOpen={isOpen}
-				placement="right"
-				// @ts-expect-error
-				finalFocusRef={btnRef}
-				scrollBehavior="inside"
-				onClose={onClose}
+		<DrawerFooter paddingBottom="1rem">
+			<Button
+				mr="2"
+				colorScheme="red"
+				variant="outline"
+				leftIcon={<IoMdTrash />}
+				disabled={cart.items.length === 0}
+				onClick={onAlertOpen}
 			>
-				<DrawerOverlay>
-					<DrawerContent
+				{t("purge")}
+			</Button>
+			<Button
+				leftIcon={<IoMdCheckmarkCircle />}
+				mr={3}
+				onClick={async () => {
+					await onClose();
+					await handleNew(session);
+				}}
+				disabled={cart.items.length === 0}
+			>
+				К заказу{" "}
+			</Button>
+			<AlertDialog
+				isOpen={isAlertOpen}
+				// @ts-expect-error
+				leastDestructiveRef={cancelRef}
+				onClose={onAlertClose}
+			>
+				<AlertDialogOverlay>
+					<AlertDialogContent
+						backdropFilter="auto"
 						backgroundColor={
 							colorMode === "dark"
 								? "rgba(6, 8, 13, 0.75)"
 								: "rgba(255, 255, 255, 0.75)"
 						}
-						backdropFilter="auto"
 						backdropBlur="20px"
 					>
-						<DrawerCloseButton />
-						<DrawerHeader>{t("cart")}</DrawerHeader>
-						<CartDrawerBody />
-						<CartDrawerFooter />
-					</DrawerContent>
-				</DrawerOverlay>
-			</Drawer>
-		</>
+						<AlertDialogHeader fontSize="lg" fontWeight="bold">
+							{t("purgeCart")}
+						</AlertDialogHeader>
+
+						<AlertDialogBody>{t("purgeCartMessage")}</AlertDialogBody>
+
+						<AlertDialogFooter>
+							<Button
+								// @ts-expect-error
+								ref={cancelRef}
+								onClick={onAlertClose}
+							>
+								{t("cancel")}
+							</Button>
+							<Button
+								colorScheme="red"
+								ml={3}
+								onClick={() => {
+									setCart({ items: [], total: 0 });
+									onAlertClose();
+
+									toast({
+										title: t("cartPurged"),
+										status: "success",
+										duration: 3000,
+										isClosable: true,
+									});
+								}}
+							>
+								{t("confirm")}
+							</Button>
+						</AlertDialogFooter>
+					</AlertDialogContent>
+				</AlertDialogOverlay>
+			</AlertDialog>
+		</DrawerFooter>
 	);
 }

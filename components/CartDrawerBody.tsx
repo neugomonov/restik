@@ -31,8 +31,6 @@ import { useRecoilState } from "recoil";
 import { useSession } from "next-auth/react";
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
-import CartDrawerFooter from "./CartDrawerFooter";
-import CartDrawerBody from "./CartDrawerBody";
 
 const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
 const DrawerBody = dynamic(
@@ -88,7 +86,7 @@ interface CartPosition {
 	price: string;
 }
 
-export default function MenuBox() {
+export default function CartDrawerBody() {
 	const router = useRouter();
 	const { data: session } = useSession();
 
@@ -174,62 +172,61 @@ export default function MenuBox() {
 	};
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...
 	return (
-		<>
-			<IconButton
-				isRound
-				colorScheme="orange"
-				aria-label={t("openCart")}
-				size="lg"
-				icon={
-					<Stack direction="row" spacing={2}>
-						<IoMdCart />
-						<Text>{t("cart")}</Text>
-						{cart.items.length > 0 && (
-							<Tag
-								borderRadius="full"
-								colorScheme="red"
-								variant="solid"
-								position="absolute"
-								top={items >= 10 ? -3 : -1}
-								right={-1}
-							>
-								{items >= 10 ? "10+" : items}
-							</Tag>
-						)}
-					</Stack>
-				}
-				position="fixed"
-				bottom={5}
-				right={5}
-				width="7rem"
-				boxShadow="rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"
-				onClick={onOpen}
-			/>
-			<Drawer
-				isOpen={isOpen}
-				placement="right"
-				// @ts-expect-error
-				finalFocusRef={btnRef}
-				scrollBehavior="inside"
-				onClose={onClose}
-			>
-				<DrawerOverlay>
-					<DrawerContent
-						backgroundColor={
-							colorMode === "dark"
-								? "rgba(6, 8, 13, 0.75)"
-								: "rgba(255, 255, 255, 0.75)"
-						}
-						backdropFilter="auto"
-						backdropBlur="20px"
-					>
-						<DrawerCloseButton />
-						<DrawerHeader>{t("cart")}</DrawerHeader>
-						<CartDrawerBody />
-						<CartDrawerFooter />
-					</DrawerContent>
-				</DrawerOverlay>
-			</Drawer>
-		</>
+		<DrawerBody>
+			{cart.items.length > 0 ? (
+				<Stack spacing={3}>
+					{cart.items.map((item) => (
+						<Stack
+							key={`${item.name}-${item.type}`}
+							direction="row"
+							alignItems="center"
+							justifyContent="space-between"
+						>
+							<Text as="b">
+								{item.quantity}x {item.name}
+							</Text>
+							<Text as="i">{item.type}</Text>
+							<Divider width="1rem" />
+							<ButtonGroup isAttached>
+								<IconButton
+									size="md"
+									aria-label={t("remove")}
+									icon={<IoMdRemove />}
+									onClick={handleRemovePositionClick(item)}
+								/>
+								<IconButton
+									size="md"
+									aria-label={t("add")}
+									icon={<IoMdAdd />}
+									onClick={handleAddPositionClick(item)}
+								/>
+							</ButtonGroup>
+						</Stack>
+					))}
+					<Divider />
+					<Stat textAlign="right">
+						<StatLabel>{t("grandTotal")}</StatLabel>
+						<StatNumber>
+							{cart.total} {info.currency}
+						</StatNumber>
+						<StatHelpText>{t("includesFreeDelivery")}</StatHelpText>
+					</Stat>
+				</Stack>
+			) : (
+				<Stack textAlign="center" marginTop="5rem">
+					<Heading size="md">{t("emptyCart")}</Heading>
+					<Text>
+						Давай, добавь{" "}
+						<Link
+							color={colorMode === "dark" ? "yellow.500" : "orange.600"}
+							onClick={handleClick("/menu")}
+						>
+							что-нибудь вкусненькое
+						</Link>
+						!
+					</Text>
+				</Stack>
+			)}
+		</DrawerBody>
 	);
 }
