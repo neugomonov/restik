@@ -81,6 +81,12 @@ const AlertDialogContent = dynamic(
 const AlertDialogOverlay = dynamic(
 	async () => (await import("@chakra-ui/react")).AlertDialogOverlay
 );
+interface CartPosition {
+	quantity: string;
+	name: string;
+	type: string;
+	price: string;
+}
 
 export default function MenuBox() {
 	const router = useRouter();
@@ -105,6 +111,65 @@ export default function MenuBox() {
 			await router.push(route, route, {
 				locale: "ru",
 			});
+		};
+	};
+	const handleRemovePositionClick = (item: {
+		quantity: number;
+		name: string;
+		type: string;
+		price: number;
+	}) => {
+		return () => {
+			if (item.quantity === 1) {
+				setCart((previous) => ({
+					items: previous.items.filter(
+						(element) =>
+							element.name !== item.name || element.type !== item.type
+					),
+					total: previous.total - item.price,
+				}));
+			} else {
+				setCart((previous) => ({
+					items: [
+						...previous.items.filter(
+							(element) =>
+								element.name !== item.name || element.type !== item.type
+						),
+						{
+							name: item.name,
+							type: item.type,
+							price: item.price,
+							quantity: item.quantity - 1,
+						},
+					],
+					total: previous.total - item.price,
+				}));
+			}
+		};
+	};
+
+	const handleAddPositionClick = (item: {
+		quantity: number;
+		name: string;
+		type: string;
+		price: number;
+	}) => {
+		return () => {
+			setCart((previous) => ({
+				items: [
+					...previous.items.filter(
+						(element) =>
+							element.name !== item.name || element.type !== item.type
+					),
+					{
+						name: item.name,
+						type: item.type,
+						price: item.price,
+						quantity: item.quantity + 1,
+					},
+				],
+				total: previous.total + item.price,
+			}));
 		};
 	};
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...
@@ -181,58 +246,13 @@ export default function MenuBox() {
 													size="md"
 													aria-label={t("remove")}
 													icon={<IoMdRemove />}
-													onClick={() => {
-														if (item.quantity === 1) {
-															setCart((previous) => ({
-																items: previous.items.filter(
-																	(element) =>
-																		element.name !== item.name ||
-																		element.type !== item.type
-																),
-																total: previous.total - item.price,
-															}));
-														} else {
-															setCart((previous) => ({
-																items: [
-																	...previous.items.filter(
-																		(element) =>
-																			element.name !== item.name ||
-																			element.type !== item.type
-																	),
-																	{
-																		name: item.name,
-																		type: item.type,
-																		price: item.price,
-																		quantity: item.quantity - 1,
-																	},
-																],
-																total: previous.total - item.price,
-															}));
-														}
-													}}
+													onClick={handleRemovePositionClick(item)}
 												/>
 												<IconButton
 													size="md"
 													aria-label={t("add")}
 													icon={<IoMdAdd />}
-													onClick={() => {
-														setCart((previous) => ({
-															items: [
-																...previous.items.filter(
-																	(element) =>
-																		element.name !== item.name ||
-																		element.type !== item.type
-																),
-																{
-																	name: item.name,
-																	type: item.type,
-																	price: item.price,
-																	quantity: item.quantity + 1,
-																},
-															],
-															total: previous.total + item.price,
-														}));
-													}}
+													onClick={handleAddPositionClick(item)}
 												/>
 											</ButtonGroup>
 										</Stack>
