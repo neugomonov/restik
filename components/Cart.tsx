@@ -4,12 +4,7 @@ import { useRef } from "react";
 import stringifyCartPositions from "./stringifyCartPositions";
 
 import {
-	Button,
-	ButtonGroup,
-	Divider,
-	Heading,
 	IconButton,
-	Link,
 	Stack,
 	Tag,
 	Text,
@@ -19,20 +14,13 @@ import {
 } from "@chakra-ui/react";
 
 import useTranslation from "next-translate/useTranslation";
-import {
-	IoMdAdd,
-	IoMdCart,
-	IoMdCheckmarkCircle,
-	IoMdRemove,
-	IoMdTrash,
-} from "react-icons/io";
+import { IoMdCart } from "react-icons/io";
 import { useRecoilState } from "recoil";
 
 import { useSession } from "next-auth/react";
-import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
-import CartDrawerFooter from "./CartDrawerFooter";
 import CartDrawerBody from "./CartDrawerBody";
+import CartDrawerFooter from "./CartDrawerFooter";
 
 const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
 const DrawerBody = dynamic(
