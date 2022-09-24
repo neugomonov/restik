@@ -1,5 +1,3 @@
-// TODO: decompose
-
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useRef } from "react";
