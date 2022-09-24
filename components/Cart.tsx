@@ -33,6 +33,8 @@ import { useRecoilState } from "recoil";
 import { useSession } from "next-auth/react";
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
+import CartDrawerFooter from "./CartDrawerFooter";
+import CartDrawerBody from "./CartDrawerBody";
 
 const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
 const DrawerBody = dynamic(
@@ -225,138 +227,8 @@ export default function MenuBox() {
 					>
 						<DrawerCloseButton />
 						<DrawerHeader>{t("cart")}</DrawerHeader>
-
-						<DrawerBody>
-							{cart.items.length > 0 ? (
-								<Stack spacing={3}>
-									{cart.items.map((item) => (
-										<Stack
-											key={`${item.name}-${item.type}`}
-											direction="row"
-											alignItems="center"
-											justifyContent="space-between"
-										>
-											<Text as="b">
-												{item.quantity}x {item.name}
-											</Text>
-											<Text as="i">{item.type}</Text>
-											<Divider width="1rem" />
-											<ButtonGroup isAttached>
-												<IconButton
-													size="md"
-													aria-label={t("remove")}
-													icon={<IoMdRemove />}
-													onClick={handleRemovePositionClick(item)}
-												/>
-												<IconButton
-													size="md"
-													aria-label={t("add")}
-													icon={<IoMdAdd />}
-													onClick={handleAddPositionClick(item)}
-												/>
-											</ButtonGroup>
-										</Stack>
-									))}
-									<Divider />
-									<Stat textAlign="right">
-										<StatLabel>{t("grandTotal")}</StatLabel>
-										<StatNumber>
-											{cart.total} {info.currency}
-										</StatNumber>
-										<StatHelpText>{t("includesFreeDelivery")}</StatHelpText>
-									</Stat>
-								</Stack>
-							) : (
-								<Stack textAlign="center" marginTop="5rem">
-									<Heading size="md">{t("emptyCart")}</Heading>
-									<Text>
-										Давай, добавь{" "}
-										<Link
-											color={colorMode === "dark" ? "yellow.500" : "orange.600"}
-											onClick={handleClick("/menu")}
-										>
-											что-нибудь вкусненькое
-										</Link>
-										!
-									</Text>
-								</Stack>
-							)}
-						</DrawerBody>
-
-						<DrawerFooter paddingBottom="1rem">
-							<Button
-								mr="2"
-								colorScheme="red"
-								variant="outline"
-								leftIcon={<IoMdTrash />}
-								disabled={cart.items.length === 0}
-								onClick={onAlertOpen}
-							>
-								{t("purge")}
-							</Button>
-							<Button
-								leftIcon={<IoMdCheckmarkCircle />}
-								mr={3}
-								onClick={async () => {
-									await onClose();
-									await handleNew(session);
-								}}
-								disabled={cart.items.length === 0}
-							>
-								К заказу{" "}
-							</Button>
-							<AlertDialog
-								isOpen={isAlertOpen}
-								// @ts-expect-error
-								leastDestructiveRef={cancelRef}
-								onClose={onAlertClose}
-							>
-								<AlertDialogOverlay>
-									<AlertDialogContent
-										backdropFilter="auto"
-										backgroundColor={
-											colorMode === "dark"
-												? "rgba(6, 8, 13, 0.75)"
-												: "rgba(255, 255, 255, 0.75)"
-										}
-										backdropBlur="20px"
-									>
-										<AlertDialogHeader fontSize="lg" fontWeight="bold">
-											{t("purgeCart")}
-										</AlertDialogHeader>
-
-										<AlertDialogBody>{t("purgeCartMessage")}</AlertDialogBody>
-
-										<AlertDialogFooter>
-											<Button
-												// @ts-expect-error
-												ref={cancelRef}
-												onClick={onAlertClose}
-											>
-												{t("cancel")}
-											</Button>
-											<Button
-												colorScheme="red"
-												ml={3}
-												onClick={() => {
-													setCart({ items: [], total: 0 });
-													onAlertClose();
-
-													toast({
-														title: t("cartPurged"),
-														status: "success",
-														duration: 3000,
-														isClosable: true,
-													});
-												}}
-											>
-												{t("confirm")}
-											</Button>
-										</AlertDialogFooter>
-									</AlertDialogContent>
-								</AlertDialogOverlay>
-							</AlertDialog>
-						</DrawerFooter>
+						<CartDrawerBody />
+						<CartDrawerFooter />
 					</DrawerContent>
 				</DrawerOverlay>
 			</Drawer>
