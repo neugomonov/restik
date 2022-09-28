@@ -11,7 +11,7 @@ import { useState } from "react";
 import { MdOutlineSend } from "react-icons/md";
 import { db } from "../firebase";
 
-export default function BottomBar({ id, user }: { id: string; user: object }) {
+export default function BottomBar({ id }: { id: string }) {
 	const [input, setInput] = useState("");
 	const { data: session } = useSession();
 	const { colorMode } = useColorMode();
