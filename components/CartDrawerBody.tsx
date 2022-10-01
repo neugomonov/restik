@@ -1,7 +1,5 @@
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { useRef } from "react";
-import stringifyCartPositions from "./stringifyCartPositions";
 
 import {
 	ButtonGroup,
@@ -12,36 +10,17 @@ import {
 	Stack,
 	Text,
 	useColorMode,
-	useDisclosure,
-	useToast,
 } from "@chakra-ui/react";
 
 import useTranslation from "next-translate/useTranslation";
 import { IoMdAdd, IoMdRemove } from "react-icons/io";
 import { useRecoilState } from "recoil";
 
-import { useSession } from "next-auth/react";
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
 
-const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
 const DrawerBody = dynamic(
 	async () => (await import("@chakra-ui/react")).DrawerBody
-);
-const DrawerHeader = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerHeader
-);
-const DrawerFooter = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerFooter
-);
-const DrawerOverlay = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerOverlay
-);
-const DrawerContent = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerContent
-);
-const DrawerCloseButton = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerCloseButton
 );
 const Stat = dynamic(async () => (await import("@chakra-ui/react")).Stat);
 const StatLabel = dynamic(
@@ -53,49 +32,13 @@ const StatNumber = dynamic(
 const StatHelpText = dynamic(
 	async () => (await import("@chakra-ui/react")).StatHelpText
 );
-const AlertDialog = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialog
-);
-const AlertDialogBody = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogBody
-);
-const AlertDialogHeader = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogHeader
-);
-const AlertDialogFooter = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogFooter
-);
-const AlertDialogContent = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogContent
-);
-const AlertDialogOverlay = dynamic(
-	async () => (await import("@chakra-ui/react")).AlertDialogOverlay
-);
-interface CartPosition {
-	quantity: string;
-	name: string;
-	type: string;
-	price: string;
-}
 
 export default function CartDrawerBody() {
 	const router = useRouter();
-	const { data: session } = useSession();
 
 	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
-	const toast = useToast();
-	const { isOpen, onOpen, onClose } = useDisclosure();
-	const btnRef = useRef();
-	const {
-		isOpen: isAlertOpen,
-		onOpen: onAlertOpen,
-		onClose: onAlertClose,
-	} = useDisclosure();
-	const cancelRef = useRef();
-	const { t, lang } = useTranslation("common");
-	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
-	const handleNew = stringifyCartPositions();
+	const { t } = useTranslation("common");
 	const handleClick = (route: string) => {
 		return async () => {
 			await router.push(route, route, {
