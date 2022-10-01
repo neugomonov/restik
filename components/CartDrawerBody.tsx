@@ -10,14 +10,12 @@ import {
 	Stack,
 	Text,
 	useColorMode,
-	useDisclosure,
 } from "@chakra-ui/react";
 
 import useTranslation from "next-translate/useTranslation";
 import { IoMdAdd, IoMdRemove } from "react-icons/io";
 import { useRecoilState } from "recoil";
 
-import { useSession } from "next-auth/react";
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
 
@@ -37,16 +35,9 @@ const StatHelpText = dynamic(
 
 export default function CartDrawerBody() {
 	const router = useRouter();
-	const { data: session } = useSession();
 
 	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
-	const { isOpen, onOpen, onClose } = useDisclosure();
-	const {
-		isOpen: isAlertOpen,
-		onOpen: onAlertOpen,
-		onClose: onAlertClose,
-	} = useDisclosure();
 	const { t } = useTranslation("common");
 	const handleClick = (route: string) => {
 		return async () => {

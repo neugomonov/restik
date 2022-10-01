@@ -99,9 +99,7 @@ export default function CartDrawerFooter() {
 						<AlertDialogHeader fontSize="lg" fontWeight="bold">
 							{t("purgeCart")}
 						</AlertDialogHeader>
-
 						<AlertDialogBody>{t("purgeCartMessage")}</AlertDialogBody>
-
 						<AlertDialogFooter>
 							<Button
 								// @ts-expect-error

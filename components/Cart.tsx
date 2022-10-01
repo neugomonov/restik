@@ -15,7 +15,6 @@ import useTranslation from "next-translate/useTranslation";
 import { IoMdCart } from "react-icons/io";
 import { useRecoilState } from "recoil";
 
-import { useSession } from "next-auth/react";
 import { _cart } from "../lib/recoil-atoms";
 import CartDrawerBody from "./CartDrawerBody";
 import CartDrawerFooter from "./CartDrawerFooter";
@@ -36,17 +35,10 @@ const DrawerCloseButton = dynamic(
 
 export default function MenuBox() {
 	const router = useRouter();
-	const { data: session } = useSession();
-
 	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const btnRef = useRef();
-	const {
-		isOpen: isAlertOpen,
-		onOpen: onAlertOpen,
-		onClose: onAlertClose,
-	} = useDisclosure();
 	const { t, lang } = useTranslation("common");
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
 
