@@ -83,7 +83,7 @@ export default function PromoBox() {
 							/>
 							<Text colorScheme={"gray"}>03.04.2022</Text>
 
-							<Heading mr="1%"> {item.name}</Heading>
+							<Heading mr="1%">{item.name}</Heading>
 							<Text colorScheme={"gray"}>{item.ingredients.join(", ")}</Text>
 							<Button
 								rightIcon={<ArrowForwardIcon />}

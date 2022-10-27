@@ -65,11 +65,13 @@ export default function NewsBox() {
 				)}
 				<IconButton aria-label="News" icon={<BiNews />} />
 			</div>
+			{news(lang as "en" | "ru")
+				.map((item) => (
 			<Box padding="1rem">
 				<Stack spacing={3}>
 					<Image
-						src="/images/covers/news/openup.jpg"
-						alt="open up news"
+								src={`/${item.image}`}
+								alt={`${t("photoOf")} ${item.name}`}
 						draggable={false}
 						loading="lazy"
 						decoding="async"
@@ -80,11 +82,8 @@ export default function NewsBox() {
 					/>
 					<Text colorScheme={"gray"}>03.04.2022</Text>
 
-					<Heading mr="1%">Мы открылись! 🎉 </Heading>
-					<Text colorScheme={"gray"}>
-						Заказывайте домой, ешьте у нас, следите за нашими новостями, будет
-						много интересного. И вкусного! 🍕
-					</Text>
+							<Heading mr="1%">{item.name}</Heading>
+							<Text colorScheme={"gray"}>{item.ingredients.join(", ")}</Text>
 					<Button
 						rightIcon={<ArrowForwardIcon />}
 						colorScheme="orange"
@@ -96,6 +95,8 @@ export default function NewsBox() {
 					</Button>
 				</Stack>
 			</Box>
+				))
+				.at(Math.random() * (-1 - 9 + 1) + 9)}
 		</Box>
 	);
 }
