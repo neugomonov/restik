@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
+import NewsBox from "../components/NewsBox";
 import PromoBox from "../components/PromoBox";
 import VideoBox from "../components/VideoBox";
 import { _cart } from "../lib/recoil-atoms";
@@ -52,7 +53,7 @@ export function WithSideContentLayout({
 						margin=".5rem"
 					>
 						<VideoBox />
-						<PromoBox />
+						{Math.random() < 0.5 ? <PromoBox /> : <NewsBox />}
 					</Flex>
 				</Flex>
 				<LargeWithNewsletter />
