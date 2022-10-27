@@ -15,8 +15,13 @@ import {
 import info from "../lib/info";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { IoRestaurantOutline } from "react-icons/io5";
+import news from "../lib/news";
+import useTranslation from "next-translate/useTranslation";
+import promo from "../lib/promo";
 
 export default function PromoBox() {
+	const { t, lang } = useTranslation("home");
+
 	const router = useRouter();
 	const { colorMode } = useColorMode();
 	const handleClick = (route: string) => {
@@ -64,35 +69,37 @@ export default function PromoBox() {
 				)}
 				<IconButton aria-label="Promo" icon={<IoRestaurantOutline />} />
 			</div>
-			<Box padding="1rem">
-				<Stack spacing={3}>
-					<Image
-						src="images/covers/promo/pizza399.jpg"
-						alt="pizza promo"
-						draggable={false}
-						loading="lazy"
-						decoding="async"
-						width="auto"
-						height={150}
-						objectFit="cover"
-						borderRadius="md"
-					/>
-					<Text colorScheme={"gray"}>03.04.2022</Text>
+			{promo(lang as "en" | "ru")
+				.map((item) => (
+					<Box padding="1rem">
+						<Stack spacing={3}>
+							<Image
+								src={`/${item.image}`}
+								alt={`${t("photoOf")} ${item.name}`}
+								draggable={false}
+								loading="lazy"
+								decoding="async"
+								width="auto"
+								height={150}
+								objectFit="cover"
+								borderRadius="md"
+							/>
+							<Text colorScheme={"gray"}>03.04.2022</Text>
 
-					<Heading mr="1%">Приходите за выгодой в пиццерию! </Heading>
-					<Text colorScheme={"gray"}>
-						За заказ доставки от 999 рублей дарим вкусные подарки!
-					</Text>
-					<Button
-						rightIcon={<ArrowForwardIcon />}
-						colorScheme="orange"
-						variant="outline"
-						onClick={handleClick("/promo")}
-					>
-						Акции
-					</Button>
-				</Stack>
-			</Box>
+							<Heading mr="1%"> {item.name}</Heading>
+							<Text colorScheme={"gray"}>{item.ingredients.join(", ")}</Text>
+							<Button
+								rightIcon={<ArrowForwardIcon />}
+								colorScheme="orange"
+								variant="outline"
+								onClick={handleClick("/promo")}
+							>
+								Акции
+							</Button>
+						</Stack>
+					</Box>
+				))
+				.at(Math.random() * (-1 - 9 + 1) + 9)}
 		</Box>
 	);
 }
