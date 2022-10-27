@@ -1,8 +1,7 @@
-import React from "react";
-import SplitWithImage from "../components/SplitWithImage";
-import SimpleThreeColumns from "../components/SimpleThreeColumns";
-import GridListWithHeading from "../components/GridListWithHeading";
 import GridListWithCTA from "../components/GridListWithCTA";
+import GridListWithHeading from "../components/GridListWithHeading";
+import SimpleThreeColumns from "../components/SimpleThreeColumns";
+import SplitWithImage from "../components/SplitWithImage";
 import { IndexLayout } from "../layouts";
 
 function About() {

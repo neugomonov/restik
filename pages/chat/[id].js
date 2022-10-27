@@ -50,6 +50,9 @@ function Chat() {
 
 	return (
 		<>
+			<Head>
+				<title>Пиццерия ⸻ Чат 💬</title>
+			</Head>
 			<div
 				style={{
 					display: "flex",
@@ -87,42 +90,31 @@ function Chat() {
 							minW={{ base: "auto", xl: "50%" }}
 						>
 							<Flex direction="column" sx={{ scrollbarWidth: "none" }} flex={1}>
-								<Flex h="85vh">
-									<Head>
-										<title>Пиццерия ⸻ Чат 💬</title>
-									</Head>
-
-									<Flex flex={1} direction="column">
-										<Flex
-											flex={1}
-											direction="column"
-											pt={4}
-											mx={5}
-											maxH="85vh"
-											overflowY="auto"
-											css={{
-												"&::-webkit-scrollbar": {
-													width: "4px",
-												},
-												"&::-webkit-scrollbar-track": {
-													width: "6px",
-												},
-												"&::-webkit-scrollbar-thumb": {
-													background: "rgba(6, 8, 13, 0.25)",
-													borderRadius: "24px",
-												},
-											}}
-										>
-											{getMessages()}
-										</Flex>
-										<BottomBar id={id} user={session?.user} />
-									</Flex>
+								<Flex
+									flex={1}
+									direction="column"
+									pt={4}
+									mx={5}
+									maxH="80vh"
+									minH="80vh"
+									overflowY="auto"
+									css={{
+										"&::-webkit-scrollbar": {
+											width: "4px",
+										},
+										"&::-webkit-scrollbar-track": {
+											width: "6px",
+										},
+										"&::-webkit-scrollbar-thumb": {
+											background: "rgba(6, 8, 13, 0.25)",
+											borderRadius: "24px",
+										},
+									}}
+								>
+									{getMessages()}
 								</Flex>
+								<BottomBar id={id} user={session?.user} />
 							</Flex>
-							<Stack spacing={3}>
-								<Flex height="65vh"></Flex>
-								<Stack direction={"row"}></Stack>
-							</Stack>
 						</Box>
 						<Stack
 							direction="column"
