@@ -15,7 +15,8 @@ import {
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { BiNews } from "react-icons/bi";
 import info from "../lib/info";
-// TODO: remove the hardcode 💀
+import news from "../lib/news";
+
 export default function NewsBox() {
 	const router = useRouter();
 
