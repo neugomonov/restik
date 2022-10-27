@@ -1,22 +1,19 @@
-import React from "react";
-import { useRouter } from "next/router";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import {
 	Box,
-	useColorMode,
-	Stack,
-	Heading,
 	Button,
-	Text,
-	Image,
+	Heading,
 	IconButton,
+	Image,
+	Stack,
 	Tag,
+	Text,
+	useColorMode,
 } from "@chakra-ui/react";
-
-import info from "../lib/info";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { IoRestaurantOutline } from "react-icons/io5";
-import news from "../lib/news";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
+import { IoRestaurantOutline } from "react-icons/io5";
+import info from "../lib/info";
 import promo from "../lib/promo";
 
 export default function PromoBox() {
