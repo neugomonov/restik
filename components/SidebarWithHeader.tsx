@@ -319,7 +319,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				</NavItem>
 			))}
 
-			<Flex mt="10rem">
+			<Flex mt="15rem">
 				<Pizza />
 			</Flex>
 		</Box>
