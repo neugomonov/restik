@@ -1,5 +1,4 @@
-import { useRouter } from "next/router";
-
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import {
 	Box,
 	Button,
@@ -11,14 +10,15 @@ import {
 	Text,
 	useColorMode,
 } from "@chakra-ui/react";
-
-import { ArrowForwardIcon } from "@chakra-ui/icons";
+import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 import { BiNews } from "react-icons/bi";
 import info from "../lib/info";
-// TODO: remove the hardcode 💀
+import news from "../lib/news";
+
 export default function NewsBox() {
 	const router = useRouter();
-
+	const { t, lang } = useTranslation("home");
 	const { colorMode } = useColorMode();
 	const handleClick = (route: string) => {
 		return async () => {
@@ -65,37 +65,38 @@ export default function NewsBox() {
 				)}
 				<IconButton aria-label="News" icon={<BiNews />} />
 			</div>
-			<Box padding="1rem">
-				<Stack spacing={3}>
-					<Image
-						src="/images/covers/news/openup.jpg"
-						alt="open up news"
-						draggable={false}
-						loading="lazy"
-						decoding="async"
-						width="auto"
-						height={150}
-						objectFit="cover"
-						borderRadius="md"
-					/>
-					<Text colorScheme={"gray"}>03.04.2022</Text>
+			{news(lang as "en" | "ru")
+				.map((item) => (
+					<Box padding="1rem">
+						<Stack spacing={3}>
+							<Image
+								src={`/${item.image}`}
+								alt={`${t("photoOf")} ${item.name}`}
+								draggable={false}
+								loading="lazy"
+								decoding="async"
+								width="auto"
+								height={150}
+								objectFit="cover"
+								borderRadius="md"
+							/>
+							<Text colorScheme={"gray"}>03.04.2022</Text>
 
-					<Heading mr="1%">Мы открылись! 🎉 </Heading>
-					<Text colorScheme={"gray"}>
-						Заказывайте домой, ешьте у нас, следите за нашими новостями, будет
-						много интересного. И вкусного! 🍕
-					</Text>
-					<Button
-						rightIcon={<ArrowForwardIcon />}
-						colorScheme="orange"
-						variant="outline"
-						data-testid="button"
-						onClick={handleClick("/news")}
-					>
-						Новости
-					</Button>
-				</Stack>
-			</Box>
+							<Heading mr="1%">{item.name}</Heading>
+							<Text colorScheme={"gray"}>{item.ingredients.join(", ")}</Text>
+							<Button
+								rightIcon={<ArrowForwardIcon />}
+								colorScheme="orange"
+								variant="outline"
+								data-testid="button"
+								onClick={handleClick("/news")}
+							>
+								Новости
+							</Button>
+						</Stack>
+					</Box>
+				))
+				.at(Math.random() * (-1 - 9 + 1) + 9)}
 		</Box>
 	);
 }
