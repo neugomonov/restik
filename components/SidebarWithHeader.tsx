@@ -317,7 +317,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				direction="row"
 				spacing={1}
 				p="1rem"
-				display={{ base: "none", md: "flex" }}
 				mb="2"
 			>
 				<Button onClick={handleTheme}>Toggle blur</Button>
