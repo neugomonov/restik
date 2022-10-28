@@ -1,7 +1,3 @@
-import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
-import { useRef } from "react";
-
 import {
 	IconButton,
 	Stack,
@@ -10,14 +6,16 @@ import {
 	useColorMode,
 	useDisclosure,
 } from "@chakra-ui/react";
-
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { useContext, useRef } from "react";
 import { IoMdCart } from "react-icons/io";
 import { useRecoilState } from "recoil";
-
 import { _cart } from "../lib/recoil-atoms";
 import CartDrawerBody from "./CartDrawerBody";
 import CartDrawerFooter from "./CartDrawerFooter";
+import { ThemeContext } from "./ThemeContext";
 
 const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
 const DrawerHeader = dynamic(
