@@ -6,6 +6,7 @@ import { ThemeContext } from "../components/ThemeContext";
 
 export function IndexLayout({ children }: { children: React.ReactNode }) {
 	const { colorMode } = useColorMode();
+	// @ts-expect-error
 	const { darkMode } = useContext(ThemeContext);
 
 	return (

@@ -29,6 +29,7 @@ export default function NewsBox() {
 			});
 		};
 	};
+	// @ts-expect-error
 	const { darkMode } = useContext(ThemeContext);
 
 	return (

@@ -18,6 +18,7 @@ export function WithSideContentLayout({
 	const router = useRouter();
 	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
+	// @ts-expect-error
 	const { darkMode } = useContext(ThemeContext);
 
 	return (

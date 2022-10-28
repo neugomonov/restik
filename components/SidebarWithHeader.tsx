@@ -96,6 +96,7 @@ export default function SidebarWithHeader({
 	children: ReactNode;
 }) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	// @ts-expect-error
 	const { darkMode } = useContext(ThemeContext);
 
 	return (
@@ -187,6 +188,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
+	// @ts-expect-error
 	const { darkMode, setDarkMode } = useContext(ThemeContext);
 	const handleTheme = () => {
 		setDarkMode(!darkMode);
@@ -441,6 +443,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
+	// @ts-expect-error
 	const { darkMode } = useContext(ThemeContext);
 
 	return (

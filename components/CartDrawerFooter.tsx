@@ -53,6 +53,7 @@ export default function CartDrawerFooter() {
 	const cancelRef = useRef();
 	const { t } = useTranslation("common");
 	const handleNew = stringifyCartPositions();
+	// @ts-expect-error
 	const { darkMode } = useContext(ThemeContext);
 
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...

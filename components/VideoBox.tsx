@@ -14,6 +14,7 @@ import { ThemeContext } from "./ThemeContext";
 
 export default function VideoBox() {
 	const { colorMode } = useColorMode();
+	// @ts-expect-error
 	const { darkMode } = useContext(ThemeContext);
 
 	return (

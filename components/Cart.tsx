@@ -39,6 +39,7 @@ export default function MenuBox() {
 	const btnRef = useRef();
 	const { t, lang } = useTranslation("common");
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
+	// @ts-expect-error
 	const { darkMode } = useContext(ThemeContext);
 
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...

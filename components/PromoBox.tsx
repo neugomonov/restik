@@ -30,6 +30,7 @@ export default function PromoBox() {
 			});
 		};
 	};
+	// @ts-expect-error
 	const { darkMode } = useContext(ThemeContext);
 
 	return (

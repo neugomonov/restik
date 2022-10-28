@@ -44,6 +44,7 @@ const App = ({
 			setCart({ items: [], total: 0 });
 		}
 	}, []);
+	// @ts-expect-error
 	const { darkMode } = useContext(ThemeContext);
 
 	// TODO: implement code splitting as dynamic imports, load modules asynchronously (await import, React.lazy) for a faster initial loading, shrink the initial  bundle size

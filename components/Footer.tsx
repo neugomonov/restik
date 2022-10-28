@@ -93,6 +93,7 @@ export default function LargeWithNewsletter() {
 			});
 		};
 	};
+	// @ts-expect-error
 	const { darkMode } = useContext(ThemeContext);
 
 	return (
