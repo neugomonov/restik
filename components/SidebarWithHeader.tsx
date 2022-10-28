@@ -188,6 +188,10 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 		});
 	};
 	const { darkMode, setDarkMode } = useContext(ThemeContext);
+	const handleTheme = () => {
+		setDarkMode(!darkMode);
+		console.log(darkMode);
+	};
 
 	return (
 		<Box
@@ -306,6 +310,15 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 					aria-label={"Change Color Theme"}
 					onClick={toggleColorMode}
 				/>
+			</Stack>
+			<Stack
+				direction="row"
+				spacing={1}
+				p="1rem"
+				display={{ base: "none", md: "flex" }}
+				mb="2"
+			>
+				<Button onClick={handleTheme}>Toggle blur</Button>
 			</Stack>
 			{LinkItems.map((link) => (
 				<NavItem
