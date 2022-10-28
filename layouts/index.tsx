@@ -6,6 +6,7 @@ import { ThemeContext } from "../components/ThemeContext";
 
 export function IndexLayout({ children }: { children: React.ReactNode }) {
 	const { colorMode } = useColorMode();
+	const { darkMode } = useContext(ThemeContext);
 
 	return (
 		<>
@@ -30,7 +31,7 @@ export function IndexLayout({ children }: { children: React.ReactNode }) {
 						}
 						position="relative"
 						backdropFilter="auto"
-						backdropBlur="20px"
+						backdropBlur={darkMode ? "20px" : "0px"}
 					>
 						{children}
 					</Box>

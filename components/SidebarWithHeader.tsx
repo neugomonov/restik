@@ -96,6 +96,7 @@ export default function SidebarWithHeader({
 	children: ReactNode;
 }) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const { darkMode } = useContext(ThemeContext);
 
 	return (
 		<Box>
@@ -119,7 +120,7 @@ export default function SidebarWithHeader({
 							"rgba(6, 8, 13, 0)"
 						)}
 						backdropFilter="auto"
-						backdropBlur="20px"
+						backdropBlur={darkMode ? "20px" : "0px"}
 					>
 						<SidebarContent onClose={onClose} />
 					</DrawerContent>
@@ -186,6 +187,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
+	const { darkMode, setDarkMode } = useContext(ThemeContext);
 
 	return (
 		<Box
@@ -201,7 +203,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			top="0"
 			h="full"
 			backdropFilter="auto"
-			backdropBlur="20px"
+			backdropBlur={darkMode ? "20px" : "0px"}
 			overflowY="auto"
 			overflowX="hidden"
 			css={{
@@ -426,6 +428,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
+	const { darkMode } = useContext(ThemeContext);
+
 	return (
 		<Flex
 			transition=".3s ease"
@@ -442,7 +446,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			borderBottomColor={useColorModeValue("gray.200", "gray.700")}
 			justifyContent={{ base: "space-between", md: "flex-end" }}
 			backdropFilter="auto"
-			backdropBlur="20px"
+			backdropBlur={darkMode ? "20px" : "0px"}
 			as="header"
 			position="fixed"
 			top="0"

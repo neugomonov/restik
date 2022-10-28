@@ -53,6 +53,7 @@ export default function CartDrawerFooter() {
 	const cancelRef = useRef();
 	const { t } = useTranslation("common");
 	const handleNew = stringifyCartPositions();
+	const { darkMode } = useContext(ThemeContext);
 
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...
 	return (
@@ -92,7 +93,7 @@ export default function CartDrawerFooter() {
 								? "rgba(6, 8, 13, 0.75)"
 								: "rgba(255, 255, 255, 0.75)"
 						}
-						backdropBlur="20px"
+						backdropBlur={darkMode ? "20px" : "0px"}
 					>
 						<AlertDialogHeader fontSize="lg" fontWeight="bold">
 							{t("purgeCart")}

@@ -93,6 +93,8 @@ export default function LargeWithNewsletter() {
 			});
 		};
 	};
+	const { darkMode } = useContext(ThemeContext);
+
 	return (
 		<Box
 			transition=".3s ease"
@@ -108,7 +110,7 @@ export default function LargeWithNewsletter() {
 			}
 			position="relative"
 			backdropFilter="auto"
-			backdropBlur="20px"
+			backdropBlur={darkMode ? "20px" : "0px"}
 			color={useColorModeValue("gray.700", "gray.200")}
 		>
 			<Container as={Stack} maxW={"6xl"} py={10}>

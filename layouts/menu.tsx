@@ -18,6 +18,7 @@ export function WithSideContentLayout({
 	const router = useRouter();
 	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
+	const { darkMode } = useContext(ThemeContext);
 
 	return (
 		<>
@@ -42,7 +43,7 @@ export function WithSideContentLayout({
 						}
 						position="relative"
 						backdropFilter="auto"
-						backdropBlur="20px"
+						backdropBlur={darkMode ? "20px" : "0px"}
 					>
 						{children}
 					</Box>

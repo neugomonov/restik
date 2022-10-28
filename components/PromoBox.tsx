@@ -30,6 +30,7 @@ export default function PromoBox() {
 			});
 		};
 	};
+	const { darkMode } = useContext(ThemeContext);
 
 	return (
 		<Box
@@ -47,7 +48,7 @@ export default function PromoBox() {
 			position="sticky"
 			top="100%"
 			backdropFilter="auto"
-			backdropBlur="20px"
+			backdropBlur={darkMode ? "20px" : "0px"}
 		>
 			<div
 				style={{

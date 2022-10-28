@@ -29,6 +29,7 @@ export default function NewsBox() {
 			});
 		};
 	};
+	const { darkMode } = useContext(ThemeContext);
 
 	return (
 		<Box
@@ -46,7 +47,7 @@ export default function NewsBox() {
 			position="sticky"
 			top="100%"
 			backdropFilter="auto"
-			backdropBlur="20px"
+			backdropBlur={darkMode ? "20px" : "0px"}
 		>
 			<div
 				style={{
