@@ -15,6 +15,7 @@ import {
 	Link,
 	Menu,
 	MenuButton,
+	MenuItem,
 	MenuList,
 	Stack,
 	Tag,
@@ -41,6 +42,8 @@ import { ReactNode, ReactText, useContext, useEffect, useState } from "react";
 import { IconType } from "react-icons";
 import { BiNews } from "react-icons/bi";
 import { FiBell, FiHome, FiMenu } from "react-icons/fi";
+import { HiOutlineTranslate } from "react-icons/hi";
+import { ImMagicWand } from "react-icons/im";
 import { IoPizzaOutline, IoRestaurantOutline } from "react-icons/io5";
 import {
 	MdKitchen,
@@ -194,6 +197,20 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 		setDarkMode(!darkMode);
 		console.log(darkMode);
 	};
+	const {
+		isOpen: isMenuOpen,
+		onOpen: onMenuOpen,
+		onClose: onMenuClose,
+	} = useDisclosure();
+	const router = useRouter();
+
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route, {
+				locale: "ru",
+			});
+		};
+	};
 
 	return (
 		<Box
@@ -236,9 +253,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			<Stack
 				direction="row"
 				spacing={1}
-				p="1rem"
+				p="1rem 1rem 0 1rem"
 				display={{ base: "none", md: "flex" }}
-				mb="2"
 			>
 				<Menu>
 					<Button
@@ -315,12 +331,49 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			</Stack>
 			<Stack
 				direction="row"
+				justifyContent="space-between"
 				spacing={1}
 				p="1rem"
-				display={{ base: "none", md: "flex" }}
 				mb="2"
 			>
-				<Button onClick={handleTheme}>Toggle blur</Button>
+				<IconButton
+					size={"lg"}
+					icon={<ImMagicWand />}
+					variant="ghost"
+					aria-label={"Toggle Blur"}
+					onClick={handleTheme}
+				/>
+				<Menu
+					isLazy
+					isOpen={isMenuOpen}
+					placement="left-end"
+					onOpen={onMenuOpen}
+					onClose={onMenuClose}
+				>
+					<Button
+						as={MenuButton}
+						p="2"
+						align="center"
+						justify="center"
+						size="lg"
+						variant="ghost"
+						aria-label="Change language"
+						rightIcon={
+							<Stack direction="row" spacing={2}>
+								<HiOutlineTranslate />{" "}
+							</Stack>
+						}
+					>
+						Translate
+					</Button>
+					<MenuList
+						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
+						borderColor={useColorModeValue("gray.200", "gray.700")}
+					>
+						<MenuItem onClick={handleClick("/en/menu")}>English</MenuItem>
+						<MenuItem onClick={handleClick("/ru/menu")}>Русский</MenuItem>
+					</MenuList>
+				</Menu>
 			</Stack>
 			{LinkItems.map((link) => (
 				<NavItem
