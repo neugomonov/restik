@@ -12,6 +12,8 @@ import StateSaver from "../components/state-saver";
 import { ThemeContext, ThemeProvider } from "../components/ThemeContext";
 import info from "../lib/info";
 import { CartState, _cart } from "../lib/recoil-atoms";
+// ! Error: `emotion-theming` has been removed and all its exports were moved to `@emotion/react` package. Please import them like this `import { useTheme, ThemeProvider, withTheme } from '@emotion/react'`.
+
 const client = new ApolloClient({
 	uri: process.env.SERVER_URL,
 	cache: new InMemoryCache(),
