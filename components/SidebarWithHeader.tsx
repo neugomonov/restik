@@ -319,6 +319,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				p="1rem"
 				mb="2"
 			>
+				<IconButton
+					size={"lg"}
+					icon={<ImMagicWand />}
+					variant="ghost"
+					aria-label={"Toggle Blur"}
+					onClick={handleTheme}
+				/>
 				<Button onClick={handleTheme}>Toggle blur</Button>
 			</Stack>
 			{LinkItems.map((link) => (
