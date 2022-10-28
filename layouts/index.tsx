@@ -1,9 +1,13 @@
 import { Box, Flex, useColorMode } from "@chakra-ui/react";
+import { useContext } from "react";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
+import { ThemeContext } from "../components/ThemeContext";
 
 export function IndexLayout({ children }: { children: React.ReactNode }) {
 	const { colorMode } = useColorMode();
+	// @ts-expect-error
+	const { darkMode } = useContext(ThemeContext);
 
 	return (
 		<>
@@ -28,7 +32,7 @@ export function IndexLayout({ children }: { children: React.ReactNode }) {
 						}
 						position="relative"
 						backdropFilter="auto"
-						backdropBlur="20px"
+						backdropBlur={darkMode ? "20px" : "0px"}
 					>
 						{children}
 					</Box>

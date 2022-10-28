@@ -1,10 +1,12 @@
 import { Box, Flex, useColorMode } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { useContext } from "react";
 import { useRecoilState } from "recoil";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
 import NewsBox from "../components/NewsBox";
 import PromoBox from "../components/PromoBox";
+import { ThemeContext } from "../components/ThemeContext";
 import VideoBox from "../components/VideoBox";
 import { _cart } from "../lib/recoil-atoms";
 
@@ -16,6 +18,8 @@ export function WithSideContentLayout({
 	const router = useRouter();
 	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
+	// @ts-expect-error
+	const { darkMode } = useContext(ThemeContext);
 
 	return (
 		<>
@@ -40,7 +44,7 @@ export function WithSideContentLayout({
 						}
 						position="relative"
 						backdropFilter="auto"
-						backdropBlur="20px"
+						backdropBlur={darkMode ? "20px" : "0px"}
 					>
 						{children}
 					</Box>

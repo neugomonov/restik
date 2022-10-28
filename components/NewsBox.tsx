@@ -12,9 +12,11 @@ import {
 } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import { useContext } from "react";
 import { BiNews } from "react-icons/bi";
 import info from "../lib/info";
 import news from "../lib/news";
+import { ThemeContext } from "./ThemeContext";
 
 export default function NewsBox() {
 	const router = useRouter();
@@ -27,6 +29,8 @@ export default function NewsBox() {
 			});
 		};
 	};
+	// @ts-expect-error
+	const { darkMode } = useContext(ThemeContext);
 
 	return (
 		<Box
@@ -44,7 +48,7 @@ export default function NewsBox() {
 			position="sticky"
 			top="100%"
 			backdropFilter="auto"
-			backdropBlur="20px"
+			backdropBlur={darkMode ? "20px" : "0px"}
 		>
 			<div
 				style={{

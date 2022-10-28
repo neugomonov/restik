@@ -1,21 +1,19 @@
-import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
-import { useRef } from "react";
-import stringifyCartPositions from "./stringifyCartPositions";
-
 import {
 	Button,
 	useColorMode,
 	useDisclosure,
 	useToast,
 } from "@chakra-ui/react";
-
+import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { useContext, useRef } from "react";
 import { IoMdCheckmarkCircle, IoMdTrash } from "react-icons/io";
 import { useRecoilState } from "recoil";
-
-import { useSession } from "next-auth/react";
 import { _cart } from "../lib/recoil-atoms";
+import stringifyCartPositions from "./stringifyCartPositions";
+import { ThemeContext } from "./ThemeContext";
 
 const DrawerFooter = dynamic(
 	async () => (await import("@chakra-ui/react")).DrawerFooter
@@ -55,6 +53,8 @@ export default function CartDrawerFooter() {
 	const cancelRef = useRef();
 	const { t } = useTranslation("common");
 	const handleNew = stringifyCartPositions();
+	// @ts-expect-error
+	const { darkMode } = useContext(ThemeContext);
 
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...
 	return (
@@ -94,7 +94,7 @@ export default function CartDrawerFooter() {
 								? "rgba(6, 8, 13, 0.75)"
 								: "rgba(255, 255, 255, 0.75)"
 						}
-						backdropBlur="20px"
+						backdropBlur={darkMode ? "20px" : "0px"}
 					>
 						<AlertDialogHeader fontSize="lg" fontWeight="bold">
 							{t("purgeCart")}

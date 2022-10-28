@@ -1,6 +1,3 @@
-import { signIn, useSession } from "next-auth/react";
-import { ReactNode, useEffect, useState } from "react";
-
 import {
 	Avatar,
 	BoxProps,
@@ -26,20 +23,6 @@ import {
 	useColorModeValue,
 	useDisclosure,
 } from "@chakra-ui/react";
-import dynamic from "next/dynamic";
-import { FiBell, FiHome, FiMenu } from "react-icons/fi";
-import { IoPizzaOutline, IoRestaurantOutline } from "react-icons/io5";
-import { db } from "../firebase";
-
-import {
-	MdKitchen,
-	MdOutlineDarkMode,
-	MdOutlineLightMode,
-	MdOutlineMessage,
-} from "react-icons/md";
-import info from "../lib/info";
-import Pizza from "./pizza";
-
 import {
 	collection,
 	deleteDoc,
@@ -50,14 +33,28 @@ import {
 	updateDoc,
 	where,
 } from "firebase/firestore";
+import { signIn, useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { ReactText } from "react";
+import { ReactNode, ReactText, useContext, useEffect, useState } from "react";
 import { IconType } from "react-icons";
 import { BiNews } from "react-icons/bi";
+import { FiBell, FiHome, FiMenu } from "react-icons/fi";
+import { IoPizzaOutline, IoRestaurantOutline } from "react-icons/io5";
+import {
+	MdKitchen,
+	MdOutlineDarkMode,
+	MdOutlineLightMode,
+	MdOutlineMessage,
+} from "react-icons/md";
+import { db } from "../firebase";
+import info from "../lib/info";
 import LoginHeader from "./LoginHeader";
 import LoginSidebar from "./LoginSidebar";
 import NotificationList from "./NotificationList";
+import Pizza from "./pizza";
+import { ThemeContext } from "./ThemeContext";
 // TODO: probably need to add an fps counter to decide whether to display blur or not, or as a much simpler but requiring action from the visitor solution - a button in the sidebar to switch the blur 🤦‍♂️
 // TODO: Also move the translate button to the sidebar and arrange both below the notifications/theme buttons, but make the blur one first&smaller and the translate one - second&bigger
 const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
@@ -99,6 +96,8 @@ export default function SidebarWithHeader({
 	children: ReactNode;
 }) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	// @ts-expect-error
+	const { darkMode } = useContext(ThemeContext);
 
 	return (
 		<Box>
@@ -122,7 +121,7 @@ export default function SidebarWithHeader({
 							"rgba(6, 8, 13, 0)"
 						)}
 						backdropFilter="auto"
-						backdropBlur="20px"
+						backdropBlur={darkMode ? "20px" : "0px"}
 					>
 						<SidebarContent onClose={onClose} />
 					</DrawerContent>
@@ -189,6 +188,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
+	// @ts-expect-error
+	const { darkMode, setDarkMode } = useContext(ThemeContext);
+	const handleTheme = () => {
+		setDarkMode(!darkMode);
+		console.log(darkMode);
+	};
 
 	return (
 		<Box
@@ -204,7 +209,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			top="0"
 			h="full"
 			backdropFilter="auto"
-			backdropBlur="20px"
+			backdropBlur={darkMode ? "20px" : "0px"}
 			overflowY="auto"
 			overflowX="hidden"
 			css={{
@@ -307,6 +312,15 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 					aria-label={"Change Color Theme"}
 					onClick={toggleColorMode}
 				/>
+			</Stack>
+			<Stack
+				direction="row"
+				spacing={1}
+				p="1rem"
+				display={{ base: "none", md: "flex" }}
+				mb="2"
+			>
+				<Button onClick={handleTheme}>Toggle blur</Button>
 			</Stack>
 			{LinkItems.map((link) => (
 				<NavItem
@@ -429,6 +443,9 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
+	// @ts-expect-error
+	const { darkMode } = useContext(ThemeContext);
+
 	return (
 		<Flex
 			transition=".3s ease"
@@ -445,7 +462,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			borderBottomColor={useColorModeValue("gray.200", "gray.700")}
 			justifyContent={{ base: "space-between", md: "flex-end" }}
 			backdropFilter="auto"
-			backdropBlur="20px"
+			backdropBlur={darkMode ? "20px" : "0px"}
 			as="header"
 			position="fixed"
 			top="0"

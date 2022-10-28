@@ -16,13 +16,13 @@ import {
 	useColorModeValue,
 	VisuallyHidden,
 } from "@chakra-ui/react";
-import { ReactNode } from "react";
-import { BiMailSend } from "react-icons/bi";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import { ReactNode, useContext } from "react";
+import { BiMailSend } from "react-icons/bi";
+import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import info from "../lib/info";
+import { ThemeContext } from "./ThemeContext";
 
 const Logo = (props: { color: string }) => {
 	const { t, lang } = useTranslation("menu");
@@ -93,6 +93,9 @@ export default function LargeWithNewsletter() {
 			});
 		};
 	};
+	// @ts-expect-error
+	const { darkMode } = useContext(ThemeContext);
+
 	return (
 		<Box
 			transition=".3s ease"
@@ -108,7 +111,7 @@ export default function LargeWithNewsletter() {
 			}
 			position="relative"
 			backdropFilter="auto"
-			backdropBlur="20px"
+			backdropBlur={darkMode ? "20px" : "0px"}
 			color={useColorModeValue("gray.700", "gray.200")}
 		>
 			<Container as={Stack} maxW={"6xl"} py={10}>

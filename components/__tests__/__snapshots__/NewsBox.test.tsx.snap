@@ -2,7 +2,7 @@
 
 exports[`matches snapshot 1`] = `
 <div
-  className="css-16ng1kq"
+  className="css-1oetkfu"
 >
   <div
     style={
@@ -56,12 +56,12 @@ exports[`matches snapshot 1`] = `
       className="chakra-stack css-15duo8n"
     >
       <img
-        alt="open up news"
+        alt="home:photoOf undefined"
         className="chakra-image css-145mpb9"
         decoding="async"
         draggable={false}
         loading="lazy"
-        src="/images/covers/news/openup.jpg"
+        src="/images/covers/news/logo.jpg"
       />
       <p
         className="chakra-text css-0"
@@ -70,13 +70,11 @@ exports[`matches snapshot 1`] = `
       </p>
       <h2
         className="chakra-heading css-1xuv852"
-      >
-        Мы открылись! 🎉 
-      </h2>
+      />
       <p
         className="chakra-text css-0"
       >
-        Заказывайте домой, ешьте у нас, следите за нашими новостями, будет много интересного. И вкусного! 🍕
+        
       </p>
       <button
         className="chakra-button css-5c2176"

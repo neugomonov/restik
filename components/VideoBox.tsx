@@ -7,12 +7,15 @@ import {
 	Tag,
 	useColorMode,
 } from "@chakra-ui/react";
-
+import { useContext } from "react";
 import { BiMoviePlay } from "react-icons/bi";
 import info from "../lib/info";
+import { ThemeContext } from "./ThemeContext";
 
 export default function VideoBox() {
 	const { colorMode } = useColorMode();
+	// @ts-expect-error
+	const { darkMode } = useContext(ThemeContext);
 
 	return (
 		<Box
@@ -31,7 +34,7 @@ export default function VideoBox() {
 			mb=".5rem"
 			top=".5rem"
 			backdropFilter="auto"
-			backdropBlur="20px"
+			backdropBlur={darkMode ? "20px" : "0px"}
 		>
 			<div
 				style={{
