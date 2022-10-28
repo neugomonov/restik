@@ -5,10 +5,11 @@ import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import NextNProgress from "nextjs-progressbar";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
 import SidebarWithHeader from "../components/SidebarWithHeader";
 import StateSaver from "../components/state-saver";
+import { ThemeContext, ThemeProvider } from "../components/ThemeContext";
 import info from "../lib/info";
 import { CartState, _cart } from "../lib/recoil-atoms";
 const client = new ApolloClient({

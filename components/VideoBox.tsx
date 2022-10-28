@@ -7,9 +7,10 @@ import {
 	Tag,
 	useColorMode,
 } from "@chakra-ui/react";
-
+import { useContext } from "react";
 import { BiMoviePlay } from "react-icons/bi";
 import info from "../lib/info";
+import { ThemeContext } from "./ThemeContext";
 
 export default function VideoBox() {
 	const { colorMode } = useColorMode();

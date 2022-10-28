@@ -16,13 +16,13 @@ import {
 	useColorModeValue,
 	VisuallyHidden,
 } from "@chakra-ui/react";
-import { ReactNode } from "react";
-import { BiMailSend } from "react-icons/bi";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import { ReactNode, useContext } from "react";
+import { BiMailSend } from "react-icons/bi";
+import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import info from "../lib/info";
+import { ThemeContext } from "./ThemeContext";
 
 const Logo = (props: { color: string }) => {
 	const { t, lang } = useTranslation("menu");

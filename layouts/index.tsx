@@ -1,6 +1,8 @@
 import { Box, Flex, useColorMode } from "@chakra-ui/react";
+import { useContext } from "react";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
+import { ThemeContext } from "../components/ThemeContext";
 
 export function IndexLayout({ children }: { children: React.ReactNode }) {
 	const { colorMode } = useColorMode();

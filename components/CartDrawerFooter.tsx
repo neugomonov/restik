@@ -1,21 +1,19 @@
-import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
-import { useRef } from "react";
-import stringifyCartPositions from "./stringifyCartPositions";
-
 import {
 	Button,
 	useColorMode,
 	useDisclosure,
 	useToast,
 } from "@chakra-ui/react";
-
+import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { useContext, useRef } from "react";
 import { IoMdCheckmarkCircle, IoMdTrash } from "react-icons/io";
 import { useRecoilState } from "recoil";
-
-import { useSession } from "next-auth/react";
 import { _cart } from "../lib/recoil-atoms";
+import stringifyCartPositions from "./stringifyCartPositions";
+import { ThemeContext } from "./ThemeContext";
 
 const DrawerFooter = dynamic(
 	async () => (await import("@chakra-ui/react")).DrawerFooter

@@ -12,9 +12,11 @@ import {
 } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import { useContext } from "react";
 import { IoRestaurantOutline } from "react-icons/io5";
 import info from "../lib/info";
 import promo from "../lib/promo";
+import { ThemeContext } from "./ThemeContext";
 
 export default function PromoBox() {
 	const { t, lang } = useTranslation("home");

@@ -12,9 +12,11 @@ import {
 } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import { useContext } from "react";
 import { BiNews } from "react-icons/bi";
 import info from "../lib/info";
 import news from "../lib/news";
+import { ThemeContext } from "./ThemeContext";
 
 export default function NewsBox() {
 	const router = useRouter();

@@ -1,6 +1,3 @@
-import { signIn, useSession } from "next-auth/react";
-import { ReactNode, useEffect, useState } from "react";
-
 import {
 	Avatar,
 	BoxProps,
@@ -26,20 +23,6 @@ import {
 	useColorModeValue,
 	useDisclosure,
 } from "@chakra-ui/react";
-import dynamic from "next/dynamic";
-import { FiBell, FiHome, FiMenu } from "react-icons/fi";
-import { IoPizzaOutline, IoRestaurantOutline } from "react-icons/io5";
-import { db } from "../firebase";
-
-import {
-	MdKitchen,
-	MdOutlineDarkMode,
-	MdOutlineLightMode,
-	MdOutlineMessage,
-} from "react-icons/md";
-import info from "../lib/info";
-import Pizza from "./pizza";
-
 import {
 	collection,
 	deleteDoc,
@@ -50,14 +33,28 @@ import {
 	updateDoc,
 	where,
 } from "firebase/firestore";
+import { signIn, useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { ReactText } from "react";
+import { ReactNode, ReactText, useContext, useEffect, useState } from "react";
 import { IconType } from "react-icons";
 import { BiNews } from "react-icons/bi";
+import { FiBell, FiHome, FiMenu } from "react-icons/fi";
+import { IoPizzaOutline, IoRestaurantOutline } from "react-icons/io5";
+import {
+	MdKitchen,
+	MdOutlineDarkMode,
+	MdOutlineLightMode,
+	MdOutlineMessage,
+} from "react-icons/md";
+import { db } from "../firebase";
+import info from "../lib/info";
 import LoginHeader from "./LoginHeader";
 import LoginSidebar from "./LoginSidebar";
 import NotificationList from "./NotificationList";
+import Pizza from "./pizza";
+import { ThemeContext } from "./ThemeContext";
 // TODO: probably need to add an fps counter to decide whether to display blur or not, or as a much simpler but requiring action from the visitor solution - a button in the sidebar to switch the blur 🤦‍♂️
 // TODO: Also move the translate button to the sidebar and arrange both below the notifications/theme buttons, but make the blur one first&smaller and the translate one - second&bigger
 const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
