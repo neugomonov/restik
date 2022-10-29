@@ -128,7 +128,7 @@ export default function MenuBox() {
 				<Menu
 					isLazy
 					isOpen={isMenuOpen}
-					placement="left-end"
+					placement="auto"
 					onOpen={onMenuOpen}
 					onClose={onMenuClose}
 				>
