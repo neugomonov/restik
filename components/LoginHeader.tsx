@@ -62,9 +62,9 @@ export default function LoginHeader() {
 							bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
 							borderColor={useColorModeValue("gray.200", "gray.700")}
 						>
-							<MenuItem onClick={handleClick("/profile")}>Профиль</MenuItem>
+							<MenuItem onClick={handleClick("/profile")}>👤 Профиль</MenuItem>
 							<MenuDivider />
-							<MenuItem onClick={() => signOut()}>Выйти</MenuItem>
+							<MenuItem onClick={() => signOut()}>🚪 Выйти</MenuItem>
 						</MenuList>
 					</Menu>
 				</Flex>

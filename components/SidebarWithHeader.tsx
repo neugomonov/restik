@@ -333,7 +333,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				direction="row"
 				justifyContent="space-between"
 				spacing={1}
-				p="1rem"
+				p="0 1rem"
 				mb="2"
 			>
 				<IconButton
@@ -346,13 +346,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				<Menu
 					isLazy
 					isOpen={isMenuOpen}
-					placement="left-end"
+					placement="auto"
 					onOpen={onMenuOpen}
 					onClose={onMenuClose}
 				>
 					<Button
 						as={MenuButton}
-						p="2"
+						p="3"
 						align="center"
 						justify="center"
 						size="lg"
@@ -364,7 +364,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 							</Stack>
 						}
 					>
-						Translate
+						Перевод
 					</Button>
 					<MenuList
 						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
@@ -386,7 +386,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				</NavItem>
 			))}
 
-			<Flex mt="15rem">
+			<Flex mt="13rem">
 				<Pizza />
 			</Flex>
 		</Box>
