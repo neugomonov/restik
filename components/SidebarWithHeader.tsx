@@ -195,7 +195,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 	const { darkMode, setDarkMode } = useContext(ThemeContext);
 	const handleTheme = () => {
 		setDarkMode(!darkMode);
-		console.log(darkMode);
 	};
 	const {
 		isOpen: isMenuOpen,
