@@ -6,7 +6,7 @@ import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
 import NewsBox from "../components/NewsBox";
 import PromoBox from "../components/PromoBox";
-import { ThemeContext } from "../components/ThemeContext";
+import { BlurContext } from "../components/BlurContext";
 import VideoBox from "../components/VideoBox";
 import { _cart } from "../lib/recoil-atoms";
 
@@ -19,7 +19,7 @@ export function WithSideContentLayout({
 	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
 	// @ts-expect-error
-	const { darkMode } = useContext(ThemeContext);
+	const { blurMode } = useContext(BlurContext);
 
 	return (
 		<>
@@ -43,8 +43,8 @@ export function WithSideContentLayout({
 								: "rgba(255, 255, 255, 0.75)"
 						}
 						position="relative"
-						backdropFilter="auto"
-						backdropBlur={darkMode ? "20px" : "0px"}
+						backdropFilter={blurMode ? "auto" : "none"}
+						backdropBlur="20px"
 					>
 						{children}
 					</Box>

@@ -9,7 +9,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
 import SidebarWithHeader from "../components/SidebarWithHeader";
 import StateSaver from "../components/state-saver";
-import { ThemeContext, ThemeProvider } from "../components/ThemeContext";
+import { BlurContext, BlurProvider } from "../components/BlurContext";
 import info from "../lib/info";
 import { CartState, _cart } from "../lib/recoil-atoms";
 // ! Error: `emotion-theming` has been removed and all its exports were moved to `@emotion/react` package. Please import them like this `import { useTheme, ThemeProvider, withTheme } from '@emotion/react'`.
@@ -45,17 +45,16 @@ const App = ({
 		}
 	}, []);
 	// @ts-expect-error
-	const { darkMode } = useContext(ThemeContext);
+	const { blurMode } = useContext(BlurContext);
 
 	// TODO: implement code splitting as dynamic imports, load modules asynchronously (await import, React.lazy) for a faster initial loading, shrink the initial  bundle size
 	return (
 		<SessionProvider session={session}>
 			<ApolloProvider client={client}>
-				<ThemeProvider>
+				<BlurProvider>
 					<ChakraProvider>
 						<Global
 							styles={css`
-								${darkMode ? `* {backdropBlur: 0 !important}` : ``}
 								body {
 									position: relative;
 									&::before {
@@ -112,7 +111,7 @@ const App = ({
 							</RecoilRoot>
 						)}
 					</ChakraProvider>
-				</ThemeProvider>
+				</BlurProvider>
 			</ApolloProvider>
 		</SessionProvider>
 	);

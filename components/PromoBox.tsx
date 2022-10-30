@@ -16,7 +16,7 @@ import { useContext } from "react";
 import { IoRestaurantOutline } from "react-icons/io5";
 import info from "../lib/info";
 import promo from "../lib/promo";
-import { ThemeContext } from "./ThemeContext";
+import { BlurContext } from "./BlurContext";
 
 export default function PromoBox() {
 	const { t, lang } = useTranslation("home");
@@ -31,7 +31,7 @@ export default function PromoBox() {
 		};
 	};
 	// @ts-expect-error
-	const { darkMode } = useContext(ThemeContext);
+	const { blurMode } = useContext(BlurContext);
 
 	return (
 		<Box
@@ -48,8 +48,8 @@ export default function PromoBox() {
 			}
 			position="sticky"
 			top="100%"
-			backdropFilter="auto"
-			backdropBlur={darkMode ? "20px" : "0px"}
+			backdropFilter={blurMode ? "auto" : "none"}
+			backdropBlur="20px"
 		>
 			<div
 				style={{

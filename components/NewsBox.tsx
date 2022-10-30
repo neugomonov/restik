@@ -16,7 +16,7 @@ import { useContext } from "react";
 import { BiNews } from "react-icons/bi";
 import info from "../lib/info";
 import news from "../lib/news";
-import { ThemeContext } from "./ThemeContext";
+import { BlurContext } from "./BlurContext";
 
 export default function NewsBox() {
 	const router = useRouter();
@@ -30,7 +30,7 @@ export default function NewsBox() {
 		};
 	};
 	// @ts-expect-error
-	const { darkMode } = useContext(ThemeContext);
+	const { blurMode } = useContext(BlurContext);
 
 	return (
 		<Box
@@ -47,8 +47,8 @@ export default function NewsBox() {
 			}
 			position="sticky"
 			top="100%"
-			backdropFilter="auto"
-			backdropBlur={darkMode ? "20px" : "0px"}
+			backdropFilter={blurMode ? "auto" : "none"}
+			backdropBlur="20px"
 		>
 			<div
 				style={{
