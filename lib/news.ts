@@ -68,6 +68,7 @@ const news = (lang: "en" | "ru") => [
 				translatedIngredients.get("ToBeContinued") as { en: string; ru: string }
 			)[lang],
 		],
+		date: "10.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 280 },
 			{ type: types.large[lang], price: 380 },
@@ -84,6 +85,7 @@ const news = (lang: "en" | "ru") => [
 				translatedIngredients.get("ToBeContinued") as { en: string; ru: string }
 			)[lang],
 		],
+		date: "08.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 200 },
 			{ type: types.large[lang], price: 380 },
@@ -103,6 +105,7 @@ const news = (lang: "en" | "ru") => [
 				translatedIngredients.get("ToBeContinued") as { en: string; ru: string }
 			)[lang],
 		],
+		date: "08.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 210 },
 			{ type: types.large[lang], price: 390 },
@@ -119,6 +122,7 @@ const news = (lang: "en" | "ru") => [
 				translatedIngredients.get("ToBeContinued") as { en: string; ru: string }
 			)[lang],
 		],
+		date: "07.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 120 },
 			{ type: types.large[lang], price: 200 },
@@ -135,6 +139,7 @@ const news = (lang: "en" | "ru") => [
 				translatedIngredients.get("ToBeContinued") as { en: string; ru: string }
 			)[lang],
 		],
+		date: "07.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 150 },
 			{ type: types.large[lang], price: 270 },
@@ -151,6 +156,7 @@ const news = (lang: "en" | "ru") => [
 				translatedIngredients.get("ToBeContinued") as { en: string; ru: string }
 			)[lang],
 		],
+		date: "05.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 210 },
 			{ type: types.large[lang], price: 390 },
@@ -167,6 +173,7 @@ const news = (lang: "en" | "ru") => [
 				translatedIngredients.get("ToBeContinued") as { en: string; ru: string }
 			)[lang],
 		],
+		date: "04.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 60 },
 			{ type: types.large[lang], price: 100 },
@@ -186,6 +193,7 @@ const news = (lang: "en" | "ru") => [
 				translatedIngredients.get("ToBeContinued") as { en: string; ru: string }
 			)[lang],
 		],
+		date: "03.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 70 },
 			{ type: types.large[lang], price: 120 },
@@ -202,6 +210,7 @@ const news = (lang: "en" | "ru") => [
 				translatedIngredients.get("ToBeContinued") as { en: string; ru: string }
 			)[lang],
 		],
+		date: "03.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 150 },
 			{ type: types.large[lang], price: 250 },
