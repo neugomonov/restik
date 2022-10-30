@@ -32,6 +32,7 @@ import menu from "../lib/menu";
 import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
 import OrderForm from "./OrderForm";
+import { IoPizzaOutline } from "react-icons/io5";
 
 const stripePromise = loadStripe(process.env.stripe_public_key!);
 
@@ -125,30 +126,7 @@ export default function MenuBox() {
 						Меню{" "}
 					</Tag>
 				)}
-				<Menu
-					isLazy
-					isOpen={isMenuOpen}
-					placement="auto"
-					onOpen={onMenuOpen}
-					onClose={onMenuClose}
-				>
-					<MenuButton
-						as={IconButton}
-						aria-label="Change language"
-						icon={<HiOutlineTranslate />}
-						onClick={onMenuOpen}
-					/>
-					<MenuList
-						backgroundColor={
-							colorMode === "dark"
-								? "rgba(50, 50, 50, 0.75)"
-								: "rgba(255, 255, 255, 0.75)"
-						}
-					>
-						<MenuItem onClick={handleClick("/en/menu")}>English</MenuItem>
-						<MenuItem onClick={handleClick("/ru/menu")}>Русский</MenuItem>
-					</MenuList>
-				</Menu>
+				<IconButton aria-label="Pizza" icon={<IoPizzaOutline />} />
 			</div>
 			<Stack spacing={5}>
 				<Stack alignItems="center" spacing={3}>

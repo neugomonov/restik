@@ -73,7 +73,7 @@ function Promo() {
 										objectFit="cover"
 										borderRadius="md"
 									/>
-									<Text colorScheme={"gray"}>03.04.2022</Text>
+									<Text colorScheme={"gray"}>{item.date}</Text>
 
 									<Heading size="md" mr="1%">
 										{item.name}

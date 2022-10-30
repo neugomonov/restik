@@ -75,6 +75,7 @@ const promo = (lang: "en" | "ru") => [
 		ingredients: [
 			(translatedIngredients.get("10") as { en: string; ru: string })[lang],
 		],
+		date: "10.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 280 },
 			{ type: types.large[lang], price: 380 },
@@ -89,6 +90,7 @@ const promo = (lang: "en" | "ru") => [
 		ingredients: [
 			(translatedIngredients.get("1999") as { en: string; ru: string })[lang],
 		],
+		date: "08.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 120 },
 			{ type: types.large[lang], price: 200 },
@@ -103,6 +105,7 @@ const promo = (lang: "en" | "ru") => [
 		ingredients: [
 			(translatedIngredients.get("Tasty") as { en: string; ru: string })[lang],
 		],
+		date: "08.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 210 },
 			{ type: types.large[lang], price: 390 },
@@ -117,6 +120,7 @@ const promo = (lang: "en" | "ru") => [
 		ingredients: [
 			(translatedIngredients.get("Tasty") as { en: string; ru: string })[lang],
 		],
+		date: "07.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 200 },
 			{ type: types.large[lang], price: 380 },
@@ -134,6 +138,7 @@ const promo = (lang: "en" | "ru") => [
 		ingredients: [
 			(translatedIngredients.get("Tasty") as { en: string; ru: string })[lang],
 		],
+		date: "07.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 210 },
 			{ type: types.large[lang], price: 390 },
@@ -148,6 +153,7 @@ const promo = (lang: "en" | "ru") => [
 		ingredients: [
 			(translatedIngredients.get("Tasty") as { en: string; ru: string })[lang],
 		],
+		date: "04.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 150 },
 			{ type: types.large[lang], price: 270 },
@@ -162,6 +168,7 @@ const promo = (lang: "en" | "ru") => [
 		ingredients: [
 			(translatedIngredients.get("Tasty") as { en: string; ru: string })[lang],
 		],
+		date: "04.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 60 },
 			{ type: types.large[lang], price: 100 },
@@ -179,6 +186,7 @@ const promo = (lang: "en" | "ru") => [
 		ingredients: [
 			(translatedIngredients.get("30") as { en: string; ru: string })[lang],
 		],
+		date: "03.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 70 },
 			{ type: types.large[lang], price: 120 },
@@ -193,6 +201,7 @@ const promo = (lang: "en" | "ru") => [
 		ingredients: [
 			(translatedIngredients.get("Tasty") as { en: string; ru: string })[lang],
 		],
+		date: "03.04.2022",
 		variants: [
 			{ type: types.small[lang], price: 150 },
 			{ type: types.large[lang], price: 250 },

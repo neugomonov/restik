@@ -22,8 +22,7 @@ function News() {
 		shouldForwardProp: (prop) =>
 			["width", "height", "src", "alt"].includes(prop),
 	});
-	// TODO: figure out the way to not to re-render the secondary component when not needed (useContext?)
-	// TODO: Remove the hardcode 💀
+	// TODO: figure out the way to not to re-render the secondary component when not needed
 	return (
 		<>
 			<div
@@ -73,7 +72,7 @@ function News() {
 										objectFit="cover"
 										borderRadius="md"
 									/>
-									<Text colorScheme={"gray"}>03.04.2022</Text>
+									<Text colorScheme={"gray"}>{item.date}</Text>
 
 									<Heading size="md" mr="1%">
 										{item.name}
