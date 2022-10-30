@@ -22,8 +22,7 @@ function News() {
 		shouldForwardProp: (prop) =>
 			["width", "height", "src", "alt"].includes(prop),
 	});
-	// TODO: figure out the way to not to re-render the secondary component when not needed (useContext?)
-	// TODO: Remove the hardcode 💀
+	// TODO: figure out the way to not to re-render the secondary component when not needed
 	return (
 		<>
 			<div
