@@ -13,7 +13,7 @@ import { IoMdCheckmarkCircle, IoMdTrash } from "react-icons/io";
 import { useRecoilState } from "recoil";
 import { _cart } from "../lib/recoil-atoms";
 import stringifyCartPositions from "./stringifyCartPositions";
-import { ThemeContext } from "./ThemeContext";
+import { BlurContext } from "./BlurContext";
 
 const DrawerFooter = dynamic(
 	async () => (await import("@chakra-ui/react")).DrawerFooter
@@ -54,7 +54,7 @@ export default function CartDrawerFooter() {
 	const { t } = useTranslation("common");
 	const handleNew = stringifyCartPositions();
 	// @ts-expect-error
-	const { darkMode } = useContext(ThemeContext);
+	const { blurMode } = useContext(BlurContext);
 
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...
 	return (
@@ -88,13 +88,13 @@ export default function CartDrawerFooter() {
 			>
 				<AlertDialogOverlay>
 					<AlertDialogContent
-						backdropFilter="auto"
+						backdropFilter={blurMode ? "auto" : "none"}
 						backgroundColor={
 							colorMode === "dark"
 								? "rgba(6, 8, 13, 0.75)"
 								: "rgba(255, 255, 255, 0.75)"
 						}
-						backdropBlur={darkMode ? "20px" : "0px"}
+						backdropBlur="20px"
 					>
 						<AlertDialogHeader fontSize="lg" fontWeight="bold">
 							{t("purgeCart")}

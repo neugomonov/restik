@@ -10,12 +10,12 @@ import {
 import { useContext } from "react";
 import { BiMoviePlay } from "react-icons/bi";
 import info from "../lib/info";
-import { ThemeContext } from "./ThemeContext";
+import { BlurContext } from "./BlurContext";
 
 export default function VideoBox() {
 	const { colorMode } = useColorMode();
 	// @ts-expect-error
-	const { darkMode } = useContext(ThemeContext);
+	const { blurMode } = useContext(BlurContext);
 
 	return (
 		<Box
@@ -33,8 +33,8 @@ export default function VideoBox() {
 			position="sticky"
 			mb=".5rem"
 			top=".5rem"
-			backdropFilter="auto"
-			backdropBlur={darkMode ? "20px" : "0px"}
+			backdropFilter={blurMode ? "auto" : "none"}
+			backdropBlur="20px"
 		>
 			<div
 				style={{

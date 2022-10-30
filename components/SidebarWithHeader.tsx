@@ -57,7 +57,7 @@ import LoginHeader from "./LoginHeader";
 import LoginSidebar from "./LoginSidebar";
 import NotificationList from "./NotificationList";
 import Pizza from "./pizza";
-import { ThemeContext } from "./ThemeContext";
+import { BlurContext } from "./BlurContext";
 // TODO: probably need to add an fps counter to decide whether to display blur or not, or as a much simpler but requiring action from the visitor solution - a button in the sidebar to switch the blur 🤦‍♂️
 // TODO: Also move the translate button to the sidebar and arrange both below the notifications/theme buttons, but make the blur one first&smaller and the translate one - second&bigger
 const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
@@ -100,7 +100,7 @@ export default function SidebarWithHeader({
 }) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	// @ts-expect-error
-	const { darkMode } = useContext(ThemeContext);
+	const { blurMode } = useContext(BlurContext);
 
 	return (
 		<Box>
@@ -123,8 +123,8 @@ export default function SidebarWithHeader({
 							"rgba(255, 255, 255, 0)",
 							"rgba(6, 8, 13, 0)"
 						)}
-						backdropFilter="auto"
-						backdropBlur={darkMode ? "20px" : "0px"}
+						backdropFilter={blurMode ? "auto" : "none"}
+						backdropBlur="20px"
 					>
 						<SidebarContent onClose={onClose} />
 					</DrawerContent>
@@ -192,9 +192,9 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 		});
 	};
 	// @ts-expect-error
-	const { darkMode, setDarkMode } = useContext(ThemeContext);
+	const { blurMode, setBlurMode } = useContext(BlurContext);
 	const handleTheme = () => {
-		setDarkMode(!darkMode);
+		setBlurMode(!blurMode);
 	};
 	const {
 		isOpen: isMenuOpen,
@@ -224,8 +224,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			pos="fixed"
 			top="0"
 			h="full"
-			backdropFilter="auto"
-			backdropBlur={darkMode ? "20px" : "0px"}
+			backdropFilter={blurMode ? "auto" : "none"}
+			backdropBlur="20px"
 			overflowY="auto"
 			overflowX="hidden"
 			css={{
@@ -496,7 +496,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 		});
 	};
 	// @ts-expect-error
-	const { darkMode } = useContext(ThemeContext);
+	const { blurMode } = useContext(BlurContext);
 
 	return (
 		<Flex
@@ -513,8 +513,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			borderBottomWidth="1px"
 			borderBottomColor={useColorModeValue("gray.200", "gray.700")}
 			justifyContent={{ base: "space-between", md: "flex-end" }}
-			backdropFilter="auto"
-			backdropBlur={darkMode ? "20px" : "0px"}
+			backdropFilter={blurMode ? "auto" : "none"}
+			backdropBlur="20px"
 			as="header"
 			position="fixed"
 			top="0"

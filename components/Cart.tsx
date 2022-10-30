@@ -15,7 +15,7 @@ import { useRecoilState } from "recoil";
 import { _cart } from "../lib/recoil-atoms";
 import CartDrawerBody from "./CartDrawerBody";
 import CartDrawerFooter from "./CartDrawerFooter";
-import { ThemeContext } from "./ThemeContext";
+import { BlurContext } from "./BlurContext";
 
 const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
 const DrawerHeader = dynamic(
@@ -40,7 +40,7 @@ export default function MenuBox() {
 	const { t, lang } = useTranslation("common");
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
 	// @ts-expect-error
-	const { darkMode } = useContext(ThemeContext);
+	const { blurMode } = useContext(BlurContext);
 
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...
 	return (
@@ -90,8 +90,8 @@ export default function MenuBox() {
 								? "rgba(6, 8, 13, 0.75)"
 								: "rgba(255, 255, 255, 0.75)"
 						}
-						backdropFilter="auto"
-						backdropBlur={darkMode ? "20px" : "0px"}
+						backdropFilter={blurMode ? "auto" : "none"}
+						backdropBlur="20px"
 					>
 						<DrawerCloseButton />
 						<DrawerHeader>{t("cart")}</DrawerHeader>

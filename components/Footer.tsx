@@ -22,7 +22,7 @@ import { ReactNode, useContext } from "react";
 import { BiMailSend } from "react-icons/bi";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import info from "../lib/info";
-import { ThemeContext } from "./ThemeContext";
+import { BlurContext } from "./BlurContext";
 
 const Logo = (props: { color: string }) => {
 	const { t, lang } = useTranslation("menu");
@@ -94,7 +94,7 @@ export default function LargeWithNewsletter() {
 		};
 	};
 	// @ts-expect-error
-	const { darkMode } = useContext(ThemeContext);
+	const { blurMode } = useContext(BlurContext);
 
 	return (
 		<Box
@@ -110,8 +110,8 @@ export default function LargeWithNewsletter() {
 					: "rgba(255, 255, 255, 0.75)"
 			}
 			position="relative"
-			backdropFilter="auto"
-			backdropBlur={darkMode ? "20px" : "0px"}
+			backdropFilter={blurMode ? "auto" : "none"}
+			backdropBlur="20px"
 			color={useColorModeValue("gray.700", "gray.200")}
 		>
 			<Container as={Stack} maxW={"6xl"} py={10}>
