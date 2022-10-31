@@ -2,7 +2,7 @@
 
 exports[`matches snapshot 1`] = `
 <div
-  className="css-1oetkfu"
+  className="css-1bgj2oo"
 >
   <div
     style={
@@ -66,7 +66,7 @@ exports[`matches snapshot 1`] = `
       <p
         className="chakra-text css-0"
       >
-        03.04.2022
+        04.04.2022
       </p>
       <h2
         className="chakra-heading css-1xuv852"
