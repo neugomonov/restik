@@ -48,8 +48,6 @@ export default function WithBackgroundImage() {
 						<Button
 							colorScheme={"orange"}
 							rounded={"full"}
-							bg={"orange.400"}
-							_hover={{ bg: "orange.500" }}
 							data-testid="button"
 							onClick={handleClick("/menu")}
 						>

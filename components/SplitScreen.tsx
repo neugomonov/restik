@@ -53,8 +53,6 @@ export default function SplitScreen() {
 						<Button
 							rounded={"full"}
 							colorScheme={"orange"}
-							bg={"orange.400"}
-							_hover={{ bg: "orange.500" }}
 							onClick={handleClick("/promo")}
 						>
 							Посмотреть наши акции{" "}

@@ -82,8 +82,6 @@ export default function CallToActionWithVideo() {
 							fontWeight={"normal"}
 							px={6}
 							colorScheme={"orange"}
-							bg={"orange.400"}
-							_hover={{ bg: "orange.500" }}
 							onClick={handleClick("/menu")}
 						>
 							Посмотреть меню
