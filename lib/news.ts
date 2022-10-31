@@ -5,53 +5,53 @@ const translatedIngredients = new Map([
 	[
 		"Courier",
 		{
-			en: "Отследи курьера в нашем приложении!",
+			en: "Track the courier in our application!",
 			ru: "Отследи курьера в нашем приложении!",
 		},
 	],
 	[
 		"Year",
 		{
-			en: "Зимние предложения 2022 в пиццерии!",
-			ru: "Зимние предложения 2022 в пиццерии!",
+			en: "Winter offers 2022 in Pizzeria!",
+			ru: "Зимние предложения 2022 в Пиццерии!",
 		},
 	],
 	[
 		"Geo",
 		{
-			en: "Вы можете заказать доставку по геопозиции!",
+			en: "You can order delivery by geolocation!",
 			ru: "Вы можете заказать доставку по геопозиции! ",
 		},
 	],
 	[
 		"Pay",
 		{
-			en: "Как оплатить заказ в пиццерии?",
-			ru: "Как оплатить заказ в пиццерии?",
+			en: "How to pay for an order at Pizzeria?",
+			ru: "Как оплатить заказ в Пиццерии?",
 		},
 	],
 	[
 		"Lottery",
 		{
-			en: "Итоги большого новогоднего розыгрыша!",
+			en: "Results of the big New Year's draw!",
 			ru: "Итоги большого новогоднего розыгрыша!",
 		},
 	],
 	[
 		"Code",
 		{
-			en: "Пиццерия проводит IT CODE 2.0!",
+			en: "Pizzeria conducts IT CODE 2.0!",
 			ru: "Пиццерия проводит IT CODE 2.0!",
 		},
 	],
-	["Logo", { en: "Конкурс на  логотип", ru: "Конкурс на  логотип" }],
-	["LotteryEnd", { en: "Итоги лотереи", ru: "Итоги лотереи" }],
-	["Opened", { en: "Мы открылись! 🎉", ru: "Мы открылись! 🎉" }],
+	["Logo", { en: "Logo Contest", ru: "Конкурс на  логотип" }],
+	["LotteryEnd", { en: "Lottery results", ru: "Итоги лотереи" }],
+	["Opened", { en: "We have opened! 🎉", ru: "Мы открылись! 🎉" }],
 
 	[
 		"ToBeContinued",
 		{
-			en: "Заказывайте домой, ешьте у нас, следите за нашими новостями, будет много интересного...",
+			en: "Order home, eat with us, follow our news, there will be a lot of interesting things...",
 			ru: "Заказывайте домой, ешьте у нас, следите за нашими новостями, будет много интересного...",
 		},
 	],
@@ -73,7 +73,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 280 },
 			{ type: types.large[lang], price: 380 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Pay") as { en: string; ru: string })[
@@ -90,7 +89,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 200 },
 			{ type: types.large[lang], price: 380 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (
@@ -110,7 +108,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 210 },
 			{ type: types.large[lang], price: 390 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Year") as { en: string; ru: string })[
@@ -127,7 +124,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 120 },
 			{ type: types.large[lang], price: 200 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Code") as { en: string; ru: string })[
@@ -144,7 +140,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 150 },
 			{ type: types.large[lang], price: 270 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Geo") as { en: string; ru: string })[
@@ -161,7 +156,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 210 },
 			{ type: types.large[lang], price: 390 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Logo") as { en: string; ru: string })[
@@ -178,7 +172,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 60 },
 			{ type: types.large[lang], price: 100 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (
@@ -198,7 +191,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 70 },
 			{ type: types.large[lang], price: 120 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Opened") as { en: string; ru: string })[
@@ -215,7 +207,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 150 },
 			{ type: types.large[lang], price: 250 },
 		],
-		tastyFee: 0,
 	},
 ];
 
