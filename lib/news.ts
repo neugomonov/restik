@@ -73,7 +73,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 280 },
 			{ type: types.large[lang], price: 380 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Pay") as { en: string; ru: string })[
@@ -90,7 +89,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 200 },
 			{ type: types.large[lang], price: 380 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (
@@ -110,7 +108,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 210 },
 			{ type: types.large[lang], price: 390 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Year") as { en: string; ru: string })[
@@ -127,7 +124,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 120 },
 			{ type: types.large[lang], price: 200 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Code") as { en: string; ru: string })[
@@ -144,7 +140,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 150 },
 			{ type: types.large[lang], price: 270 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Geo") as { en: string; ru: string })[
@@ -161,7 +156,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 210 },
 			{ type: types.large[lang], price: 390 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Logo") as { en: string; ru: string })[
@@ -178,7 +172,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 60 },
 			{ type: types.large[lang], price: 100 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (
@@ -198,7 +191,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 70 },
 			{ type: types.large[lang], price: 120 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Opened") as { en: string; ru: string })[
@@ -215,7 +207,6 @@ const news = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 150 },
 			{ type: types.large[lang], price: 250 },
 		],
-		tastyFee: 0,
 	},
 ];
 

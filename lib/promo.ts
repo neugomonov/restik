@@ -80,7 +80,6 @@ const promo = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 280 },
 			{ type: types.large[lang], price: 380 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (
@@ -95,7 +94,6 @@ const promo = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 120 },
 			{ type: types.large[lang], price: 200 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Prize") as { en: string; ru: string })[
@@ -110,7 +108,6 @@ const promo = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 210 },
 			{ type: types.large[lang], price: 390 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Souvenir") as { en: string; ru: string })[
@@ -125,7 +122,6 @@ const promo = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 200 },
 			{ type: types.large[lang], price: 380 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (
@@ -143,7 +139,6 @@ const promo = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 210 },
 			{ type: types.large[lang], price: 390 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("Birthday") as { en: string; ru: string })[
@@ -158,7 +153,6 @@ const promo = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 150 },
 			{ type: types.large[lang], price: 270 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (
@@ -173,7 +167,6 @@ const promo = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 60 },
 			{ type: types.large[lang], price: 100 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (
@@ -191,7 +184,6 @@ const promo = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 70 },
 			{ type: types.large[lang], price: 120 },
 		],
-		tastyFee: 0,
 	},
 	{
 		name: (translatedIngredients.get("MakeSet") as { en: string; ru: string })[
@@ -206,7 +198,6 @@ const promo = (lang: "en" | "ru") => [
 			{ type: types.small[lang], price: 150 },
 			{ type: types.large[lang], price: 250 },
 		],
-		tastyFee: 0,
 	},
 ];
 
