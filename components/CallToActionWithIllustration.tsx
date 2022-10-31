@@ -55,8 +55,6 @@ export default function CallToActionWithIllustration() {
 						rounded={"full"}
 						px={6}
 						colorScheme={"orange"}
-						bg={"orange.400"}
-						_hover={{ bg: "orange.500" }}
 						onClick={handleClick("/news")}
 					>
 						Посмотреть наши новости

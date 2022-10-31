@@ -74,7 +74,7 @@ export default function ChatListBox() {
 					key={Math.random()}
 					p={3}
 					align="center"
-					_hover={{ bg: "gray.100", cursor: "pointer" }}
+					_hover={{ bg: "orange.400", textColor: "black", cursor: "pointer" }}
 					onClick={() => redirect(chat.id)}
 				>
 					<Avatar src="" marginEnd={3} />

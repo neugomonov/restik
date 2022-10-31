@@ -62,12 +62,8 @@ export default function CallToActionWithAnnotation() {
 					>
 						<Button
 							colorScheme={"orange"}
-							bg={"orange.400"}
 							rounded={"full"}
 							px={6}
-							_hover={{
-								bg: "orange.500",
-							}}
 							data-testid="button"
 							onClick={handleClick("/menu")}
 						>
