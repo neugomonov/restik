@@ -10,12 +10,15 @@ import {
 import { useContext } from "react";
 import { BiMoviePlay } from "react-icons/bi";
 import info from "../lib/info";
+import index from "../lib/index";
 import { BlurContext } from "./BlurContext";
+import useTranslation from "next-translate/useTranslation";
 
 export default function VideoBox() {
 	const { colorMode } = useColorMode();
 	// @ts-expect-error
 	const { blurMode } = useContext(BlurContext);
+	const { t, lang } = useTranslation("menu");
 
 	return (
 		<Box
@@ -50,7 +53,7 @@ export default function VideoBox() {
 						variant="solid"
 						mb="1rem"
 					>
-						Видео{" "}
+						{info.video[lang as "en" | "ru"]}
 					</Tag>
 				)}
 				<IconButton aria-label="Videos" icon={<BiMoviePlay />} />
@@ -64,7 +67,7 @@ export default function VideoBox() {
 			</AspectRatio>
 			<Flex my="5" justifyContent="center">
 				<Heading as="h3" size="md" maxW="61%" textAlign="center">
-					Как мы делаем нашу пиццу такой вкусной
+					{index.videoCapture[lang as "en" | "ru"]}{" "}
 				</Heading>
 			</Flex>
 		</Box>
