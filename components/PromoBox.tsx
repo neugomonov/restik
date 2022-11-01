@@ -65,7 +65,7 @@ export default function PromoBox() {
 						variant="solid"
 						mb="1rem"
 					>
-						Акции{" "}
+						{info.promo[lang as "en" | "ru"]}
 					</Tag>
 				)}
 				<IconButton aria-label="Promo" icon={<IoRestaurantOutline />} />
@@ -95,7 +95,7 @@ export default function PromoBox() {
 								variant="outline"
 								onClick={handleClick("/promo")}
 							>
-								Акции
+								{info.promo[lang as "en" | "ru"]}
 							</Button>
 						</Stack>
 					</Box>

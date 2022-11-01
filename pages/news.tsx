@@ -39,7 +39,7 @@ function News() {
 						variant="solid"
 						mb="1rem"
 					>
-						Новости{" "}
+						{info.news[lang as "en" | "ru"]}
 					</Tag>
 				)}
 				<IconButton aria-label="News" icon={<BiNews />} />

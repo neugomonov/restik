@@ -39,7 +39,7 @@ function Promo() {
 						variant="solid"
 						mb="1rem"
 					>
-						Акции{" "}
+						{info.promo[lang as "en" | "ru"]}
 					</Tag>
 				)}
 				<IconButton aria-label="Promo" icon={<IoRestaurantOutline />} />

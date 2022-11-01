@@ -1,8 +1,24 @@
 const info = {
 	name: "Пиццерия",
+	title: {
+		en: "Pizzeria",
+		ru: "Пиццерия",
+	},
 	description: {
 		en: "Your favorite pizzeria! We offer fresh and tasty food and low prices.",
 		ru: "Ваша любимая пиццерия! Мы предлагаем свежую и вкусную еду и низкие цены.",
+	},
+	notifications: {
+		en: "Notifications",
+		ru: "Оповещения",
+	},
+	translate: {
+		en: "Translate",
+		ru: "Перевод",
+	},
+	menu: {
+		en: "Menu",
+		ru: "Меню",
 	},
 	video: {
 		en: "Video",
@@ -18,7 +34,6 @@ const info = {
 	},
 	currency: "₽",
 	callingCode: "+7",
-
 	schedule: {
 		0: {
 			opens: "12:00",

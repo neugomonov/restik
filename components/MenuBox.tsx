@@ -123,7 +123,7 @@ export default function MenuBox() {
 						variant="solid"
 						mb="1rem"
 					>
-						Меню{" "}
+						{info.menu[lang as "en" | "ru"]}
 					</Tag>
 				)}
 				<IconButton aria-label="Pizza" icon={<IoPizzaOutline />} />
@@ -156,7 +156,9 @@ export default function MenuBox() {
 							/>
 						</Tooltip>
 					</Avatar>
-					<Heading>{info.name ?? t("restaurantName")}</Heading>
+					<Heading>
+						{info.title[lang as "en" | "ru"] ?? t("restaurantName")}
+					</Heading>
 					<Text colorScheme={"gray"}>
 						{info.description[lang as "en" | "ru"] ??
 							t("restaurantDescription")}

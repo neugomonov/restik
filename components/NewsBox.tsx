@@ -64,7 +64,7 @@ export default function NewsBox() {
 						variant="solid"
 						mb="1rem"
 					>
-						Новости{" "}
+						{info.news[lang as "en" | "ru"]}
 					</Tag>
 				)}
 				<IconButton aria-label="News" icon={<BiNews />} />
@@ -95,7 +95,7 @@ export default function NewsBox() {
 								data-testid="button"
 								onClick={handleClick("/news")}
 							>
-								Новости
+								{info.news[lang as "en" | "ru"]}
 							</Button>
 						</Stack>
 					</Box>
