@@ -208,6 +208,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			});
 		};
 	};
+	const { t, lang } = useTranslation("menu");
 
 	return (
 		<Box
@@ -280,7 +281,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 							</Stack>
 						}
 					>
-						Оповещения
+						{info.notifications[lang as "en" | "ru"]}
 					</Button>
 					<MenuList
 						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
@@ -361,7 +362,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 							</Stack>
 						}
 					>
-						Перевод
+						{info.translate[lang as "en" | "ru"]}
 					</Button>
 					<MenuList
 						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
