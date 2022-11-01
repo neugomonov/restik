@@ -4,6 +4,11 @@ const info = {
 		en: "Your favorite pizzeria! We offer fresh and tasty food and low prices.",
 		ru: "Ваша любимая пиццерия! Мы предлагаем свежую и вкусную еду и низкие цены.",
 	},
+	video: {
+		en: "Video",
+		ru: "Видео",
+	},
+	news: {
 	currency: "₽",
 	callingCode: "+7",
 
