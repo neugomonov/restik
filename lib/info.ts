@@ -9,6 +9,13 @@ const info = {
 		ru: "Видео",
 	},
 	news: {
+		en: "News",
+		ru: "Новости",
+	},
+	promo: {
+		en: "Promo",
+		ru: "Акции",
+	},
 	currency: "₽",
 	callingCode: "+7",
 
