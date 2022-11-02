@@ -36,7 +36,7 @@ const Logo = (props: { color: string }) => {
 				draggable={false}
 			/>
 			<Heading as="h3" size="lg">
-				{info.name ?? t("restaurantName")}
+				{info.title[lang as "en" | "ru"] ?? t("restaurantName")}
 			</Heading>
 		</Stack>
 	);
@@ -123,13 +123,15 @@ export default function LargeWithNewsletter() {
 						<Box>
 							<Logo color={useColorModeValue("gray.700", "white")} />
 						</Box>
+						<Text fontSize={"sm"}>{info.address[lang as "en" | "ru"]}</Text>
 						<Text fontSize={"sm"}>
-							Нижний Новгород, 603001, Рождественская, 1
+							{"© " +
+								new Date().getFullYear() +
+								" " +
+								(info.title[lang as "en" | "ru"] ?? t("restaurantName")) +
+								". " +
+								t("rightsReserved")}
 						</Text>
-						<Text fontSize={"sm"}>
-							© 2022 {info.name ?? t("restaurantName")}. Все права защищены
-						</Text>
-
 						<Stack direction={"row"} spacing={6}>
 							<SocialButton label={"Twitter"} href={"https://twitter.com"}>
 								<FaTwitter />
@@ -170,32 +172,32 @@ export default function LargeWithNewsletter() {
 						</Stack>
 					</Stack>
 					<Stack align={"flex-start"}>
-						<ListHeader>Компания</ListHeader>
-						<Link onClick={handleClick("/news")}>Наша кухня</Link>
-						<Link onClick={handleClick("/news")}>Новости</Link>
-						<Link onClick={handleClick("/chat")}>Чат</Link>
-						<Link onClick={handleClick("/promo")}>Акции</Link>
-						<Link onClick={handleClick("/menu")}>Меню</Link>
+						<ListHeader>{t("companyFooter")}</ListHeader>
+						<Link onClick={handleClick("/about")}>{t("about")}</Link>
+						<Link onClick={handleClick("/news")}>{t("news")}</Link>
+						<Link onClick={handleClick("/chat")}>{t("chat")}</Link>
+						<Link onClick={handleClick("/promo")}>{t("promo")}</Link>
+						<Link onClick={handleClick("/menu")}>{t("menu")}</Link>
 					</Stack>
 					<Stack align={"flex-start"}>
-						<ListHeader>Поддержка</ListHeader>
+						<ListHeader>{t("support")}</ListHeader>
 						<Link href={"https://en.wikipedia.org/wiki/Terms_of_service"}>
-							Условия обслуживания
+							{t("tos")}
 						</Link>
 						<Link
 							href={"https://en.wikipedia.org/wiki/Wikipedia:Legal_disclaimer"}
 						>
-							Юридическая информация
+							{t("legal")}
 						</Link>
 						<Link href={"https://foundation.wikimedia.org/wiki/Privacy_policy"}>
-							Политика конфиденциальности
+							{t("privacyFooter")}
 						</Link>
 					</Stack>
 					<Stack align={"flex-start"}>
-						<ListHeader>Узнавайте о выгодных предложениях первыми</ListHeader>
+						<ListHeader>{t("emailNotifications")}</ListHeader>
 						<Stack direction={"row"}>
 							<Input
-								placeholder={"Ваша почта"}
+								placeholder={t("emailNotificationsPlaceholder")}
 								bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
 								border={0}
 								_focus={{

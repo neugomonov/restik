@@ -151,14 +151,14 @@ export default function CartDrawerBody() {
 				<Stack textAlign="center" marginTop="5rem">
 					<Heading size="md">{t("emptyCart")}</Heading>
 					<Text>
-						Давай, добавь{" "}
+						{t("emptyCartMessage1")}
 						<Link
 							color={colorMode === "dark" ? "yellow.500" : "orange.600"}
 							onClick={handleClick("/menu")}
 						>
-							что-нибудь вкусненькое
+							{t("emptyCartMessage2")}
 						</Link>
-						!
+						{t("emptyCartMessage3")}
 					</Text>
 				</Stack>
 			)}
