@@ -10,6 +10,7 @@ import {
 	Text,
 	useColorMode,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { useContext } from "react";
@@ -60,6 +61,9 @@ export default function PromoBox() {
 			>
 				{info.isDevelopment && (
 					<Tag
+						as={motion.div}
+						cursor="pointer"
+						drag
 						textTransform="uppercase"
 						colorScheme="orange"
 						variant="solid"

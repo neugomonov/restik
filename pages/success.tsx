@@ -7,6 +7,7 @@ import {
 	Tag,
 	Text,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
@@ -34,6 +35,9 @@ function Success() {
 			>
 				{info.isDevelopment && (
 					<Tag
+						as={motion.div}
+						cursor="pointer"
+						drag
 						textTransform="uppercase"
 						colorScheme="orange"
 						variant="solid"

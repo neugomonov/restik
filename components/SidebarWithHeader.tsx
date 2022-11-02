@@ -2,6 +2,7 @@ import {
 	Avatar,
 	BoxProps,
 	Button,
+	chakra,
 	CloseButton,
 	Drawer,
 	DrawerContent,
@@ -17,6 +18,7 @@ import {
 	MenuButton,
 	MenuItem,
 	MenuList,
+	shouldForwardProp,
 	Stack,
 	Tag,
 	Text,
@@ -58,20 +60,45 @@ import LoginSidebar from "./LoginSidebar";
 import NotificationList from "./NotificationList";
 import Pizza from "./pizza";
 import { BlurContext } from "./BlurContext";
+import { isValidMotionProp, motion } from "framer-motion";
 const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
 const Logo = (props: { color: string }) => {
 	const { t, lang } = useTranslation("home");
+	const [rotate, setRotate] = useState(false);
+	const ChakraBox = chakra(motion.div, {
+		/**
+		 * Allow motion props and non-Chakra props to be forwarded.
+		 */
+		shouldForwardProp: (prop) =>
+			isValidMotionProp(prop) || shouldForwardProp(prop),
+	});
 
 	return (
-		<Stack direction="row" alignItems="center" spacing={3}>
-			<Avatar
-				name={info.name}
-				src="/images/chief.jpg"
-				size="md"
-				draggable={false}
-			/>
+		<Stack
+			as={motion.div}
+			cursor="pointer"
+			drag
+			direction="row"
+			alignItems="center"
+			spacing={3}
+		>
+			<ChakraBox
+				animate={{ rotate: rotate ? 360 : 0 }}
+				// @ts-expect-error
+				transition={{ type: "spring", duration: 0.5 }}
+				onClick={() => {
+					setRotate(!rotate);
+				}}
+			>
+				<Avatar
+					name={info.name}
+					src="/images/chief.jpg"
+					size="md"
+					draggable={false}
+				/>
+			</ChakraBox>
 			<Heading as="h4" size="md">
-				{info.name ?? t("restaurantName")}
+				{info.title[lang as "en" | "ru"] ?? t("restaurantName")}
 			</Heading>
 		</Stack>
 	);

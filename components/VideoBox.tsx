@@ -13,6 +13,7 @@ import info from "../lib/info";
 import index from "../lib/index";
 import { BlurContext } from "./BlurContext";
 import useTranslation from "next-translate/useTranslation";
+import { motion } from "framer-motion";
 
 export default function VideoBox() {
 	const { colorMode } = useColorMode();
@@ -48,6 +49,9 @@ export default function VideoBox() {
 			>
 				{info.isDevelopment && (
 					<Tag
+						as={motion.div}
+						cursor="pointer"
+						drag
 						textTransform="uppercase"
 						colorScheme="orange"
 						variant="solid"

@@ -12,6 +12,7 @@ import {
 	useColorModeValue,
 	VStack,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import { CgProfile } from "react-icons/cg";
 import { FiChevronDown } from "react-icons/fi";
@@ -35,6 +36,9 @@ function Profile() {
 			>
 				{info.isDevelopment && (
 					<Tag
+						as={motion.div}
+						cursor="pointer"
+						drag
 						textTransform="uppercase"
 						colorScheme="orange"
 						variant="solid"

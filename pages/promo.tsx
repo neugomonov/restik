@@ -9,6 +9,7 @@ import {
 	Tag,
 	Text,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import NextImage from "next/image";
 import { IoRestaurantOutline } from "react-icons/io5";
@@ -34,6 +35,9 @@ function Promo() {
 			>
 				{info.isDevelopment && (
 					<Tag
+						as={motion.div}
+						cursor="pointer"
+						drag
 						textTransform="uppercase"
 						colorScheme="orange"
 						variant="solid"
