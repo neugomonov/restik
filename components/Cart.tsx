@@ -13,9 +13,9 @@ import { useContext, useRef } from "react";
 import { IoMdCart } from "react-icons/io";
 import { useRecoilState } from "recoil";
 import { _cart } from "../lib/recoil-atoms";
+import { BlurContext } from "./BlurContext";
 import CartDrawerBody from "./CartDrawerBody";
 import CartDrawerFooter from "./CartDrawerFooter";
-import { BlurContext } from "./BlurContext";
 
 const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
 const DrawerHeader = dynamic(
