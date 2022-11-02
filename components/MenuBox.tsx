@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import NextImage from "next/image";
 import { useRouter } from "next/router";
-
+import { motion } from "framer-motion";
 import {
 	Avatar,
 	AvatarBadge,
@@ -118,6 +118,9 @@ export default function MenuBox() {
 			>
 				{info.isDevelopment && (
 					<Tag
+						as={motion.div}
+						cursor="pointer"
+						drag
 						textTransform="uppercase"
 						colorScheme="orange"
 						variant="solid"
@@ -126,39 +129,47 @@ export default function MenuBox() {
 						{info.menu[lang as "en" | "ru"]}
 					</Tag>
 				)}
-				<IconButton aria-label="Pizza" icon={<IoPizzaOutline />} />
+				<IconButton
+					as={motion.div}
+					cursor="pointer"
+					drag
+					aria-label="Pizza"
+					icon={<IoPizzaOutline />}
+				/>
 			</div>
 			<Stack spacing={5}>
 				<Stack alignItems="center" spacing={3}>
-					<Avatar
-						name={info.name}
-						src="/images/chief.jpg"
-						size="2xl"
-						draggable={false}
-					>
-						<Tooltip
-							hasArrow
-							label={
-								deliveryHours && deliveryHours.length > 0
-									? t("open")
-									: t("closed")
-							}
-							aria-label={t("tooltip")}
-							placement="right"
+					<Stack alignItems="center" as={motion.div} cursor="pointer" drag>
+						<Avatar
+							name={info.name}
+							src="/images/chief.jpg"
+							size="2xl"
+							draggable={false}
 						>
-							<AvatarBadge
-								boxSize="2.8rem"
-								bg={
+							<Tooltip
+								hasArrow
+								label={
 									deliveryHours && deliveryHours.length > 0
-										? "green.500"
-										: "red.500"
+										? t("open")
+										: t("closed")
 								}
-							/>
-						</Tooltip>
-					</Avatar>
-					<Heading>
-						{info.title[lang as "en" | "ru"] ?? t("restaurantName")}
-					</Heading>
+								aria-label={t("tooltip")}
+								placement="right"
+							>
+								<AvatarBadge
+									boxSize="2.8rem"
+									bg={
+										deliveryHours && deliveryHours.length > 0
+											? "green.500"
+											: "red.500"
+									}
+								/>
+							</Tooltip>
+						</Avatar>
+						<Heading>
+							{info.title[lang as "en" | "ru"] ?? t("restaurantName")}
+						</Heading>
+					</Stack>
 					<Text colorScheme={"gray"}>
 						{info.description[lang as "en" | "ru"] ??
 							t("restaurantDescription")}

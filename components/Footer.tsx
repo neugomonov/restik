@@ -16,6 +16,7 @@ import {
 	useColorModeValue,
 	VisuallyHidden,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { ReactNode, useContext } from "react";
@@ -28,7 +29,14 @@ const Logo = (props: { color: string }) => {
 	const { t, lang } = useTranslation("menu");
 
 	return (
-		<Stack direction="row" alignItems="center" spacing={3}>
+		<Stack
+			as={motion.div}
+			cursor="pointer"
+			drag
+			direction="row"
+			alignItems="center"
+			spacing={3}
+		>
 			<Avatar
 				name={info.name}
 				src="/images/chief.jpg"

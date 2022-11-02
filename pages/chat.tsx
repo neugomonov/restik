@@ -1,4 +1,5 @@
 import { Box, Heading, IconButton, Image, Stack, Tag } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { MdOutlineMessage } from "react-icons/md";
 import ChatListBox from "../components/ChatListBox";
 import { WithSideContentLayout } from "../layouts/menu";
@@ -16,6 +17,9 @@ function Chat() {
 			>
 				{info.isDevelopment && (
 					<Tag
+						as={motion.div}
+						cursor="pointer"
+						drag
 						textTransform="uppercase"
 						colorScheme="orange"
 						variant="solid"

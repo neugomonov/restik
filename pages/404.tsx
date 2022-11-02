@@ -8,6 +8,7 @@ import {
 	Tag,
 	Text,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { BiErrorAlt } from "react-icons/bi";
 import { WithSideContentLayout } from "../layouts/menu";
@@ -27,6 +28,9 @@ function FourOFour() {
 			>
 				{info.isDevelopment && (
 					<Tag
+						as={motion.div}
+						cursor="pointer"
+						drag
 						textTransform="uppercase"
 						colorScheme="orange"
 						variant="solid"

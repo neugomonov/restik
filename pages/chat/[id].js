@@ -15,6 +15,7 @@ import { IconButton, Image, Tag } from "@chakra-ui/react";
 import { WithSideContentLayout } from "../../layouts/menu";
 import info from "../../lib/info";
 import { MdOutlineMessage } from "react-icons/md";
+import { motion } from "framer-motion";
 
 // TODO: add protection rules for the private chats
 function Chat() {
@@ -62,6 +63,9 @@ function Chat() {
 			>
 				{info.isDevelopment && (
 					<Tag
+						as={motion.div}
+						cursor="pointer"
+						drag
 						textTransform="uppercase"
 						colorScheme="orange"
 						variant="solid"
