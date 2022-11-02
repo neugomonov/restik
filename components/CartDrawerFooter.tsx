@@ -78,7 +78,7 @@ export default function CartDrawerFooter() {
 				}}
 				disabled={cart.items.length === 0}
 			>
-				К заказу{" "}
+				{t("proceed")}
 			</Button>
 			<AlertDialog
 				isOpen={isAlertOpen}
@@ -114,7 +114,6 @@ export default function CartDrawerFooter() {
 								onClick={() => {
 									setCart({ items: [], total: 0 });
 									onAlertClose();
-
 									toast({
 										title: t("cartPurged"),
 										status: "success",

@@ -8,6 +8,10 @@ const info = {
 		en: "Your favorite pizzeria! We offer fresh and tasty food and low prices.",
 		ru: "Ваша любимая пиццерия! Мы предлагаем свежую и вкусную еду и низкие цены.",
 	},
+	address: {
+		en: "Nizhny Novgorod, 603001, Rozhdestvenskaya st., 1",
+		ru: "Нижний Новгород, 603001, Рождественская, 1",
+	},
 	notifications: {
 		en: "Notifications",
 		ru: "Оповещения",
