@@ -16,6 +16,7 @@ import {
 	VStack,
 } from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
+import useTranslation from "next-translate/useTranslation";
 import router from "next/router";
 import { FiChevronDown } from "react-icons/fi";
 export default function LoginSidebar() {
@@ -29,6 +30,7 @@ export default function LoginSidebar() {
 			});
 		};
 	};
+	const { t, lang } = useTranslation("common");
 
 	if (session) {
 		return (
@@ -112,7 +114,7 @@ export default function LoginSidebar() {
 					onClick={() => signIn()}
 					data-testid="button"
 				>
-					Войти
+					{t("signIn")}
 				</Button>
 			</Stack>
 		</>

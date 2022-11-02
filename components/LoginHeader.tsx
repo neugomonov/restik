@@ -15,6 +15,7 @@ import {
 	VStack,
 } from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
+import useTranslation from "next-translate/useTranslation";
 import router from "next/router";
 import { FiChevronDown } from "react-icons/fi";
 export default function LoginHeader() {
@@ -26,6 +27,7 @@ export default function LoginHeader() {
 			});
 		};
 	};
+	const { t, lang } = useTranslation("common");
 
 	if (session) {
 		return (
@@ -88,7 +90,7 @@ export default function LoginHeader() {
 					onClick={() => signIn()}
 					data-testid="button"
 				>
-					Войти
+					{t("signIn")}
 				</Button>
 			</Stack>
 		</>
