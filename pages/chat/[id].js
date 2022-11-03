@@ -8,7 +8,7 @@ import {
 } from "react-firebase-hooks/firestore";
 import { collection, doc, orderBy, query } from "firebase/firestore";
 import { db } from "../../firebase";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import BottomBar from "../../components/BottomBar";
 import { IconButton, Image, Tag } from "@chakra-ui/react";
@@ -16,6 +16,8 @@ import { WithSideContentLayout } from "../../layouts/menu";
 import info from "../../lib/info";
 import { MdOutlineMessage } from "react-icons/md";
 import { motion } from "framer-motion";
+import index from "../../lib";
+import useTranslation from "next-translate/useTranslation";
 
 // TODO: add protection rules for the private chats
 function Chat() {
@@ -48,6 +50,8 @@ function Chat() {
 				</Flex>
 			);
 		});
+	const { lang } = useTranslation("index");
+	const [move2, setMove2] = useState(false);
 
 	return (
 		<>
@@ -66,6 +70,16 @@ function Chat() {
 						as={motion.div}
 						cursor="pointer"
 						drag
+						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+						whileDrag={{ scale: 1.2, rotate: 10 }}
+						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+						whileTap={{
+							scale: 0.9,
+						}}
+						whileHover={{
+							scale: 1.2,
+							transition: { type: "spring", bounce: 0.8, duration: 1 },
+						}}
 						textTransform="uppercase"
 						colorScheme="orange"
 						variant="solid"
@@ -115,6 +129,24 @@ function Chat() {
 										},
 									}}
 								>
+									<Stack
+										direction={"row"}
+										alignItems="top"
+										justifyContent="space-around"
+									>
+										<motion.div
+											style={{
+												fontSize: "40px",
+											}}
+											drag="y"
+											animate={{ x: move2 ? 10 : -10 }}
+											transition={{ type: "spring", bounce: 0.8, duration: 1 }}
+											whileHover={{ scale: 2 }}
+											onClick={() => setMove2(!move2)}
+										>
+											📧
+										</motion.div>
+									</Stack>
 									{getMessages()}
 								</Flex>
 								<BottomBar id={id} user={session?.user} />
@@ -125,9 +157,7 @@ function Chat() {
 							pl={{ base: "none", xl: "10%" }}
 							spacing={5}
 						>
-							<Heading size="lg">
-								Задавайте вопросы в чат с Пиццерией, и мы обязательно ответим!
-							</Heading>
+							<Heading size="lg">{index.chat[lang]} </Heading>
 							<Image
 								src="/images/chat.gif"
 								alt="messages in the chat gif"
