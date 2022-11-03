@@ -36,6 +36,10 @@ const info = {
 		en: "Promo",
 		ru: "Акции",
 	},
+	chat: {
+		en: "Chat",
+		ru: "Чат",
+	},
 	currency: "₽",
 	callingCode: "+7",
 	schedule: {
