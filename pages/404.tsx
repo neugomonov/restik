@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { BiErrorAlt } from "react-icons/bi";
 import { WithSideContentLayout } from "../layouts/menu";
 import info from "../lib/info";
@@ -31,6 +32,16 @@ function FourOFour() {
 						as={motion.div}
 						cursor="pointer"
 						drag
+						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+						whileDrag={{ scale: 1.2, rotate: 10 }}
+						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+						whileTap={{
+							scale: 0.9,
+						}}
+						whileHover={{
+							scale: 1.2,
+							transition: { type: "spring", bounce: 0.8, duration: 1 },
+						}}
 						textTransform="uppercase"
 						colorScheme="orange"
 						variant="solid"
@@ -54,7 +65,27 @@ function FourOFour() {
 						src="images/404.webp"
 						alt="404"
 					/>{" "}
-					<Heading>Страница не найдена 🤔</Heading>
+					<motion.div
+						animate={{
+							rotate: [0, -45, -45, 0],
+							scale: [1, 1.2, 1.2, 1],
+							transition: { repeat: Infinity, duration: 1 },
+						}}
+						drag
+						dragConstraints={{ top: -100, left: -100, right: 100, bottom: 100 }}
+						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+						whileTap={{
+							scale: 0.9,
+						}}
+						whileHover={{
+							scale: 1.2,
+							transition: { type: "spring", bounce: 0.8, duration: 1 },
+						}}
+						style={{ fontSize: "100px", cursor: "pointer" }}
+					>
+						🤔
+					</motion.div>
+					<Heading>Страница не найдена </Heading>{" "}
 					<Text colorScheme={"gray"}>
 						Такой страницы не существует. Что-то здесь не так. Лучше вернуться
 						назад.
