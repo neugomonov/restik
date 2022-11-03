@@ -15,6 +15,7 @@ import {
 	useColorModeValue,
 	VStack,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { signIn, signOut, useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import router from "next/router";
@@ -36,13 +37,29 @@ export default function LoginSidebar() {
 		return (
 			<>
 				<Flex
+					cursor="pointer"
 					alignItems={"center"}
 					justifyContent={"center"}
 					display={{ base: "none", md: "flex" }}
 					mx="2"
 				>
 					<Menu>
-						<MenuButton _focus={{ boxShadow: "none" }}>
+						<MenuButton
+							_focus={{ boxShadow: "none" }}
+							as={motion.div}
+							cursor="pointer"
+							drag
+							dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+							whileDrag={{ scale: 1.2, rotate: 10 }}
+							dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+							whileTap={{
+								scale: 0.9,
+							}}
+							whileHover={{
+								scale: 1.2,
+								transition: { type: "spring", bounce: 0.8, duration: 1 },
+							}}
+						>
 							<Box
 								p={4}
 								alignItems={"center"}
@@ -104,18 +121,34 @@ export default function LoginSidebar() {
 				direction={"row"}
 				spacing={6}
 			>
-				<Button
-					size="lg"
-					variant="outline"
-					display={{ base: "none", md: "inline-flex" }}
-					fontSize={"sm"}
-					fontWeight={600}
-					colorScheme={"orange"}
-					onClick={() => signIn()}
-					data-testid="button"
+				<Box
+					as={motion.div}
+					cursor="pointer"
+					drag
+					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+					whileDrag={{ scale: 1.2, rotate: 10 }}
+					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+					whileTap={{
+						scale: 0.9,
+					}}
+					whileHover={{
+						scale: 1.2,
+						transition: { type: "spring", bounce: 0.8, duration: 1 },
+					}}
 				>
-					{t("signIn")}
-				</Button>
+					<Button
+						size="lg"
+						variant="outline"
+						display={{ base: "none", md: "inline-flex" }}
+						fontSize={"sm"}
+						fontWeight={600}
+						colorScheme={"orange"}
+						onClick={() => signIn()}
+						data-testid="button"
+					>
+						{t("signIn")}
+					</Button>
+				</Box>
 			</Stack>
 		</>
 	);

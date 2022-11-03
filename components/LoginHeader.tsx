@@ -14,6 +14,7 @@ import {
 	useColorModeValue,
 	VStack,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { signIn, signOut, useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import router from "next/router";
@@ -32,7 +33,22 @@ export default function LoginHeader() {
 	if (session) {
 		return (
 			<>
-				<Flex alignItems={"center"}>
+				<Flex
+					alignItems={"center"}
+					as={motion.div}
+					cursor="pointer"
+					drag
+					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+					whileDrag={{ scale: 1.2, rotate: 10 }}
+					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+					whileTap={{
+						scale: 0.9,
+					}}
+					whileHover={{
+						scale: 1.2,
+						transition: { type: "spring", bounce: 0.8, duration: 1 },
+					}}
+				>
 					<Menu>
 						<MenuButton
 							py={2}
@@ -80,6 +96,19 @@ export default function LoginHeader() {
 				justify={"center"}
 				direction={"row"}
 				spacing={6}
+				as={motion.div}
+				cursor="pointer"
+				drag
+				dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+				whileDrag={{ scale: 1.2, rotate: 10 }}
+				dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+				whileTap={{
+					scale: 0.9,
+				}}
+				whileHover={{
+					scale: 1.2,
+					transition: { type: "spring", bounce: 0.8, duration: 1 },
+				}}
 			>
 				<Button
 					variant="outline"
