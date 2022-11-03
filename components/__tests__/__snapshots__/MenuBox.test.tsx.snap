@@ -11,26 +11,26 @@ Array [
       }
     }
   >
-    <span
-      className="css-124qy5l"
-    >
-      Меню
-       
-    </span>
+    <div
+      className="css-tqfu5u"
+      draggable={false}
+      style={
+        Object {
+          "WebkitTouchCallout": "none",
+          "WebkitUserSelect": "none",
+          "touchAction": "none",
+          "userSelect": "none",
+        }
+      }
+    />
     <button
-      aria-controls="menu-list-18"
-      aria-expanded={false}
-      aria-haspopup="menu"
-      aria-label="Change language"
-      className="chakra-button chakra-menu__menu-button css-198bfjk"
-      id="menu-button-18"
-      onClick={[Function]}
-      onKeyDown={[Function]}
+      aria-label="Pizza"
+      className="chakra-button css-198bfjk"
       type="button"
     >
       <svg
         aria-hidden={true}
-        fill="none"
+        fill="currentColor"
         focusable={false}
         height="1em"
         stroke="currentColor"
@@ -40,46 +40,39 @@ Array [
             "color": undefined,
           }
         }
-        viewBox="0 0 24 24"
+        viewBox="0 0 512 512"
         width="1em"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
+          d="M404.76 123.08C358.37 104.18 309.69 96 256 96s-106.1 9-148.9 26.68c-8.08 3.3-15.26 9-10.07 19.5C101.24 150.71 203 375 241.66 455a15.94 15.94 0 0028.72 0l144.05-312.22c3.19-6.9.9-15.4-9.67-19.7z"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="32"
+        />
+        <path
+          d="M436.38 82.68C384.31 62.08 320.17 48 256 48S128.65 60.78 75.48 82.08C70.79 84 62 88.43 64.41 95.88L74.09 120c4 8.2 8.67 8.2 15.06 8.2 1.79 0 4.29-1 7.28-2.18A442.46 442.46 0 01256 96c56.76 0 114.91 12 159.6 30 3.59 1.4 5.59 2.18 7.28 2.18 6.58 0 10.38 2.19 15-8.1L447.65 96c2.01-6-4.99-10.82-11.27-13.32z"
+          fill="none"
+          strokeMiterlimit="10"
+          strokeWidth="32"
+        />
+        <circle
+          cx="192"
+          cy="192"
+          r="32"
+        />
+        <circle
+          cx="320"
+          cy="208"
+          r="32"
+        />
+        <circle
+          cx="256"
+          cy="320"
+          r="32"
         />
       </svg>
     </button>
-    <div
-      className="css-0"
-      style={
-        Object {
-          "inset": "0 auto auto 0",
-          "minWidth": "max-content",
-          "position": "absolute",
-          "visibility": "hidden",
-        }
-      }
-    >
-      <div
-        aria-orientation="vertical"
-        className="chakra-menu__menu-list css-12r7kuq"
-        id="menu-list-18"
-        onKeyDown={[Function]}
-        role="menu"
-        style={
-          Object {
-            "opacity": 0,
-            "transform": "scale(0.8) translateZ(0)",
-            "transformOrigin": "var(--popper-transform-origin)",
-            "visibility": "hidden",
-          }
-        }
-        tabIndex={-1}
-      />
-    </div>
   </div>,
   <div
     className="chakra-stack css-137fd6w"
@@ -87,31 +80,45 @@ Array [
     <div
       className="chakra-stack css-1m032t"
     >
-      <span
-        className="chakra-avatar css-1ruhx4w"
+      <div
+        className="chakra-stack css-3ljnc5"
         draggable={false}
+        style={
+          Object {
+            "WebkitTouchCallout": "none",
+            "WebkitUserSelect": "none",
+            "touchAction": "none",
+            "userSelect": "none",
+          }
+        }
       >
         <div
-          aria-label="Пиццерия"
-          className="chakra-avatar__initials css-0"
-          role="img"
+          className="chakra-avatar css-1ruhx4w"
+          draggable={false}
+          style={Object {}}
         >
-          П
+          <div
+            aria-label="Пиццерия"
+            className="chakra-avatar__initials css-0"
+            role="img"
+          >
+            П
+          </div>
+          <div
+            className="chakra-avatar__badge css-hxpkvu"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+          />
         </div>
-        <div
-          className="chakra-avatar__badge css-hxpkvu"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-        />
-      </span>
-      <h2
-        className="chakra-heading css-0"
-      >
-        Пиццерия
-      </h2>
+        <h2
+          className="chakra-heading css-0"
+        >
+          menu:restaurantName
+        </h2>
+      </div>
       <p
         className="chakra-text css-0"
       >
@@ -263,8 +270,17 @@ Array [
             , 
           </i>
           <div
-            className="chakra-button__group css-1ayoy1w"
+            className="chakra-button__group css-1nvxw77"
+            draggable={false}
             role="group"
+            style={
+              Object {
+                "WebkitTouchCallout": "none",
+                "WebkitUserSelect": "none",
+                "touchAction": "none",
+                "userSelect": "none",
+              }
+            }
           >
             <button
               className="chakra-button css-zlpei0"
@@ -501,8 +517,17 @@ Array [
             , , 
           </i>
           <div
-            className="chakra-button__group css-1ayoy1w"
+            className="chakra-button__group css-1nvxw77"
+            draggable={false}
             role="group"
+            style={
+              Object {
+                "WebkitTouchCallout": "none",
+                "WebkitUserSelect": "none",
+                "touchAction": "none",
+                "userSelect": "none",
+              }
+            }
           >
             <button
               className="chakra-button css-zlpei0"
@@ -739,8 +764,17 @@ Array [
             , , , 
           </i>
           <div
-            className="chakra-button__group css-1ayoy1w"
+            className="chakra-button__group css-1nvxw77"
+            draggable={false}
             role="group"
+            style={
+              Object {
+                "WebkitTouchCallout": "none",
+                "WebkitUserSelect": "none",
+                "touchAction": "none",
+                "userSelect": "none",
+              }
+            }
           >
             <button
               className="chakra-button css-zlpei0"
@@ -977,8 +1011,17 @@ Array [
             , , , , 
           </i>
           <div
-            className="chakra-button__group css-1ayoy1w"
+            className="chakra-button__group css-1nvxw77"
+            draggable={false}
             role="group"
+            style={
+              Object {
+                "WebkitTouchCallout": "none",
+                "WebkitUserSelect": "none",
+                "touchAction": "none",
+                "userSelect": "none",
+              }
+            }
           >
             <button
               className="chakra-button css-zlpei0"
@@ -1215,8 +1258,17 @@ Array [
             , , , 
           </i>
           <div
-            className="chakra-button__group css-1ayoy1w"
+            className="chakra-button__group css-1nvxw77"
+            draggable={false}
             role="group"
+            style={
+              Object {
+                "WebkitTouchCallout": "none",
+                "WebkitUserSelect": "none",
+                "touchAction": "none",
+                "userSelect": "none",
+              }
+            }
           >
             <button
               className="chakra-button css-zlpei0"
@@ -1453,8 +1505,17 @@ Array [
             , , , 
           </i>
           <div
-            className="chakra-button__group css-1ayoy1w"
+            className="chakra-button__group css-1nvxw77"
+            draggable={false}
             role="group"
+            style={
+              Object {
+                "WebkitTouchCallout": "none",
+                "WebkitUserSelect": "none",
+                "touchAction": "none",
+                "userSelect": "none",
+              }
+            }
           >
             <button
               className="chakra-button css-zlpei0"
@@ -1691,8 +1752,17 @@ Array [
             
           </i>
           <div
-            className="chakra-button__group css-1ayoy1w"
+            className="chakra-button__group css-1nvxw77"
+            draggable={false}
             role="group"
+            style={
+              Object {
+                "WebkitTouchCallout": "none",
+                "WebkitUserSelect": "none",
+                "touchAction": "none",
+                "userSelect": "none",
+              }
+            }
           >
             <button
               className="chakra-button css-zlpei0"
@@ -1929,8 +1999,17 @@ Array [
             
           </i>
           <div
-            className="chakra-button__group css-1ayoy1w"
+            className="chakra-button__group css-1nvxw77"
+            draggable={false}
             role="group"
+            style={
+              Object {
+                "WebkitTouchCallout": "none",
+                "WebkitUserSelect": "none",
+                "touchAction": "none",
+                "userSelect": "none",
+              }
+            }
           >
             <button
               className="chakra-button css-zlpei0"
@@ -2167,8 +2246,17 @@ Array [
             
           </i>
           <div
-            className="chakra-button__group css-1ayoy1w"
+            className="chakra-button__group css-1nvxw77"
+            draggable={false}
             role="group"
+            style={
+              Object {
+                "WebkitTouchCallout": "none",
+                "WebkitUserSelect": "none",
+                "touchAction": "none",
+                "userSelect": "none",
+              }
+            }
           >
             <button
               className="chakra-button css-zlpei0"
@@ -2601,64 +2689,64 @@ Array [
                   menu:asap
                 </option>
                 <option
-                  value="20:27"
+                  value="00:45"
                 >
-                  20:27
+                  00:45
                 </option>
                 <option
-                  value="21:27"
+                  value="01:45"
                 >
-                  21:27
+                  01:45
                 </option>
                 <option
-                  value="22:27"
+                  value="02:45"
                 >
-                  22:27
+                  02:45
                 </option>
                 <option
-                  value="23:27"
+                  value="03:45"
                 >
-                  23:27
+                  03:45
                 </option>
                 <option
-                  value="00:27"
+                  value="04:45"
                 >
-                  00:27
+                  04:45
                 </option>
                 <option
-                  value="01:27"
+                  value="05:45"
                 >
-                  01:27
+                  05:45
                 </option>
                 <option
-                  value="02:27"
+                  value="06:45"
                 >
-                  02:27
+                  06:45
                 </option>
                 <option
-                  value="03:27"
+                  value="07:45"
                 >
-                  03:27
+                  07:45
                 </option>
                 <option
-                  value="04:27"
+                  value="08:45"
                 >
-                  04:27
+                  08:45
                 </option>
                 <option
-                  value="05:27"
+                  value="09:45"
                 >
-                  05:27
+                  09:45
                 </option>
                 <option
-                  value="06:27"
+                  value="10:45"
                 >
-                  06:27
+                  10:45
                 </option>
                 <option
-                  value="07:27"
+                  value="11:45"
                 >
-                  07:27
+                  11:45
                 </option>
               </select>
               <div
@@ -2947,11 +3035,24 @@ Array [
             </span>
           </label>
           <button
-            className="chakra-button css-5c2176"
-            disabled={true}
-            type="submit"
+            className="css-0"
+            draggable={false}
+            style={
+              Object {
+                "WebkitTouchCallout": "none",
+                "WebkitUserSelect": "none",
+                "touchAction": "none",
+                "userSelect": "none",
+              }
+            }
           >
-            menu:pay
+            <button
+              className="chakra-button css-uxt1e8"
+              disabled={true}
+              type="submit"
+            >
+              menu:pay
+            </button>
           </button>
         </div>
       </div>

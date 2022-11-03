@@ -2,7 +2,16 @@
 
 exports[`matches snapshot 1`] = `
 <div
-  className="chakra-stack css-1a0gyh4"
+  className="chakra-stack css-txa9om"
+  draggable={false}
+  style={
+    Object {
+      "WebkitTouchCallout": "none",
+      "WebkitUserSelect": "none",
+      "touchAction": "none",
+      "userSelect": "none",
+    }
+  }
 >
   <button
     className="chakra-button css-18xb7k4"
@@ -10,7 +19,7 @@ exports[`matches snapshot 1`] = `
     onClick={[Function]}
     type="button"
   >
-    Войти
+    common:signIn
   </button>
 </div>
 `;
