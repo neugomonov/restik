@@ -4,10 +4,13 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 import {
+	Box,
 	Button,
 	chakra,
 	Checkbox,
+	Container,
 	Divider,
+	Flex,
 	FormControl,
 	FormLabel,
 	Heading,
@@ -33,6 +36,7 @@ import { db } from "../firebase";
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
+import { motion } from "framer-motion";
 
 const stripePromise = loadStripe(process.env.stripe_public_key!);
 
@@ -404,15 +408,31 @@ export default function OrderForm() {
 						</Link>
 						.
 					</Checkbox>
-					<Button
-						type="submit"
-						colorScheme="orange"
-						isDisabled={
-							!deliveryHours || deliveryHours.length === 0 || cart.total == 0
-						}
+					<Box
+						as={motion.button}
+						drag
+						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+						whileDrag={{ scale: 0.99 }}
+						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+						whileTap={{
+							scale: 0.99,
+						}}
+						whileHover={{
+							scale: 1.01,
+							transition: { type: "spring", bounce: 0.8, duration: 1 },
+						}}
 					>
-						{watch("payment") === "Онлайн" ? t("placeAndPay") : t("pay")}
-					</Button>
+						<Button
+							width="100%"
+							type="submit"
+							colorScheme="orange"
+							isDisabled={
+								!deliveryHours || deliveryHours.length === 0 || cart.total == 0
+							}
+						>
+							{watch("payment") === "Онлайн" ? t("placeAndPay") : t("pay")}
+						</Button>
+					</Box>
 				</Stack>
 			</Stack>
 		</form>
