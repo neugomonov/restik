@@ -28,7 +28,7 @@ exports[`matches snapshot 1`] = `
       className="chakra-stack css-85m0tt"
     >
       <button
-        className="chakra-button css-1rsbjv0"
+        className="chakra-button css-jn5lb1"
         data-testid="button"
         onClick={[Function]}
         type="button"

@@ -13,12 +13,18 @@ exports[`matches snapshot 1`] = `
       }
     }
   >
-    <span
-      className="css-124qy5l"
-    >
-      Новости
-       
-    </span>
+    <div
+      className="css-tqfu5u"
+      draggable={false}
+      style={
+        Object {
+          "WebkitTouchCallout": "none",
+          "WebkitUserSelect": "none",
+          "touchAction": "none",
+          "userSelect": "none",
+        }
+      }
+    />
     <button
       aria-label="News"
       className="chakra-button css-198bfjk"
@@ -61,12 +67,12 @@ exports[`matches snapshot 1`] = `
         decoding="async"
         draggable={false}
         loading="lazy"
-        src="/images/covers/news/logo.jpg"
+        src="/images/covers/news/openup.jpg"
       />
       <p
         className="chakra-text css-0"
       >
-        04.04.2022
+        03.04.2022
       </p>
       <h2
         className="chakra-heading css-1xuv852"
@@ -82,7 +88,6 @@ exports[`matches snapshot 1`] = `
         onClick={[Function]}
         type="button"
       >
-        Новости
         <span
           className="chakra-button__icon css-1hzyiq5"
         >
