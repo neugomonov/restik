@@ -1,4 +1,5 @@
 import {
+	Box,
 	Button,
 	useColorMode,
 	useDisclosure,
@@ -14,6 +15,7 @@ import { useRecoilState } from "recoil";
 import { _cart } from "../lib/recoil-atoms";
 import stringifyCartPositions from "./stringifyCartPositions";
 import { BlurContext } from "./BlurContext";
+import { motion } from "framer-motion";
 
 const DrawerFooter = dynamic(
 	async () => (await import("@chakra-ui/react")).DrawerFooter
@@ -59,27 +61,59 @@ export default function CartDrawerFooter() {
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...
 	return (
 		<DrawerFooter paddingBottom="1rem">
-			<Button
-				mr="2"
-				colorScheme="red"
-				variant="outline"
-				leftIcon={<IoMdTrash />}
-				disabled={cart.items.length === 0}
-				onClick={onAlertOpen}
-			>
-				{t("purge")}
-			</Button>
-			<Button
-				leftIcon={<IoMdCheckmarkCircle />}
-				mr={3}
-				onClick={async () => {
-					await onClose();
-					await handleNew(session);
+			<Box
+				as={motion.div}
+				cursor="pointer"
+				drag
+				dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+				whileDrag={{ scale: 1.2, rotate: 10 }}
+				dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+				whileTap={{
+					scale: 0.9,
 				}}
-				disabled={cart.items.length === 0}
+				whileHover={{
+					scale: 1.2,
+					transition: { type: "spring", bounce: 0.8, duration: 1 },
+				}}
 			>
-				{t("proceed")}
-			</Button>
+				<Button
+					mr="2"
+					colorScheme="red"
+					variant="outline"
+					leftIcon={<IoMdTrash />}
+					disabled={cart.items.length === 0}
+					onClick={onAlertOpen}
+				>
+					{t("purge")}
+				</Button>
+			</Box>
+			<Box
+				as={motion.div}
+				cursor="pointer"
+				drag
+				dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+				whileDrag={{ scale: 1.2, rotate: 10 }}
+				dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+				whileTap={{
+					scale: 0.9,
+				}}
+				whileHover={{
+					scale: 1.2,
+					transition: { type: "spring", bounce: 0.8, duration: 1 },
+				}}
+			>
+				<Button
+					leftIcon={<IoMdCheckmarkCircle />}
+					mr={3}
+					onClick={async () => {
+						await onClose();
+						await handleNew(session);
+					}}
+					disabled={cart.items.length === 0}
+				>
+					{t("proceed")}
+				</Button>
+			</Box>
 			<AlertDialog
 				isOpen={isAlertOpen}
 				// @ts-expect-error
@@ -101,29 +135,61 @@ export default function CartDrawerFooter() {
 						</AlertDialogHeader>
 						<AlertDialogBody>{t("purgeCartMessage")}</AlertDialogBody>
 						<AlertDialogFooter>
-							<Button
-								// @ts-expect-error
-								ref={cancelRef}
-								onClick={onAlertClose}
-							>
-								{t("cancel")}
-							</Button>
-							<Button
-								colorScheme="red"
-								ml={3}
-								onClick={() => {
-									setCart({ items: [], total: 0 });
-									onAlertClose();
-									toast({
-										title: t("cartPurged"),
-										status: "success",
-										duration: 3000,
-										isClosable: true,
-									});
+							<Box
+								as={motion.div}
+								cursor="pointer"
+								drag
+								dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+								whileDrag={{ scale: 1.2, rotate: 10 }}
+								dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+								whileTap={{
+									scale: 0.9,
+								}}
+								whileHover={{
+									scale: 1.2,
+									transition: { type: "spring", bounce: 0.8, duration: 1 },
 								}}
 							>
-								{t("confirm")}
-							</Button>
+								<Button
+									// @ts-expect-error
+									ref={cancelRef}
+									onClick={onAlertClose}
+								>
+									{t("cancel")}
+								</Button>
+							</Box>
+							<Box
+								as={motion.div}
+								cursor="pointer"
+								drag
+								dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+								whileDrag={{ scale: 1.2, rotate: 10 }}
+								dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+								whileTap={{
+									scale: 0.9,
+								}}
+								whileHover={{
+									scale: 1.2,
+									transition: { type: "spring", bounce: 0.8, duration: 1 },
+								}}
+							>
+								<Button
+									colorScheme="red"
+									ml={3}
+									onClick={() => {
+										setCart({ items: [], total: 0 });
+										onAlertClose();
+										toast({
+											title: t("cartPurged"),
+											status: "success",
+											duration: 3000,
+											isClosable: true,
+										});
+									}}
+								>
+									{t("confirm")}
+								</Button>
+							</Box>
 						</AlertDialogFooter>
 					</AlertDialogContent>
 				</AlertDialogOverlay>

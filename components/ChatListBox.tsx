@@ -1,6 +1,7 @@
 import { Avatar, Button, Flex, Text, useToast } from "@chakra-ui/react";
 import { addDoc, collection } from "@firebase/firestore";
 import { doc, getDocs, query, where } from "firebase/firestore";
+import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -71,11 +72,28 @@ export default function ChatListBox() {
 			)
 			.map((chat: Record<string, string>) => (
 				<Flex
+					as={motion.div}
+					cursor="pointer"
+					drag
+					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+					whileDrag={{ scale: 1.2, rotate: 10 }}
+					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+					whileTap={{
+						scale: 0.9,
+					}}
+					whileHover={{
+						scale: 1.1,
+						transition: { type: "spring", bounce: 0.8, duration: 1 },
+					}}
 					key={Math.random()}
 					p={3}
 					align="center"
 					_hover={{ bg: "orange.400", textColor: "black", cursor: "pointer" }}
 					onClick={() => redirect(chat.id)}
+					transition="background-color 0.2s"
+					mx="4"
+					borderRadius="lg"
+					role="group"
 				>
 					<Avatar src="" marginEnd={3} />
 					<Text fontSize={{ base: "xs", sm: "md" }}>
