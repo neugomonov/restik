@@ -19,7 +19,7 @@ it("renders button correctly", () => {
 			<LoginSidebar />
 		</SessionProvider>
 	);
-	expect(getByTestId("button")).toHaveTextContent("Войти");
+	expect(getByTestId("button")).toHaveTextContent("common:signIn");
 });
 it("allows me to log in", () => {
 	const { getByTestId } = render(
@@ -28,7 +28,7 @@ it("allows me to log in", () => {
 		</SessionProvider>
 	);
 	userEvent.click(screen.getByTestId("button"));
-	expect(getByTestId("button")).toHaveTextContent("Войти");
+	expect(getByTestId("button")).toHaveTextContent("common:signIn");
 });
 it("matches snapshot", () => {
 	const tree = renderer
