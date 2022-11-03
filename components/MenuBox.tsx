@@ -121,6 +121,16 @@ export default function MenuBox() {
 						as={motion.div}
 						cursor="pointer"
 						drag
+						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+						whileDrag={{ scale: 1.2, rotate: 45 }}
+						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+						whileTap={{
+							scale: 0.9,
+						}}
+						whileHover={{
+							scale: 1.2,
+							transition: { type: "spring", bounce: 0.8, duration: 1 },
+						}}
 						textTransform="uppercase"
 						colorScheme="orange"
 						variant="solid"
@@ -129,18 +139,28 @@ export default function MenuBox() {
 						{info.menu[lang as "en" | "ru"]}
 					</Tag>
 				)}
-				<IconButton
-					as={motion.div}
-					cursor="pointer"
-					drag
-					aria-label="Pizza"
-					icon={<IoPizzaOutline />}
-				/>
+				<IconButton aria-label="Pizza" icon={<IoPizzaOutline />} />
 			</div>
 			<Stack spacing={5}>
 				<Stack alignItems="center" spacing={3}>
-					<Stack alignItems="center" as={motion.div} cursor="pointer" drag>
+					<Stack
+						alignItems="center"
+						as={motion.div}
+						cursor="pointer"
+						drag
+						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+						whileDrag={{ scale: 1.2, rotate: -10 }}
+						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+					>
 						<Avatar
+							as={motion.div}
+							whileTap={{
+								scale: 0.9,
+							}}
+							whileHover={{
+								scale: 1.2,
+								transition: { type: "spring", bounce: 0.8, duration: 1 },
+							}}
 							name={info.name}
 							src="/images/chief.jpg"
 							size="2xl"
@@ -234,7 +254,22 @@ export default function MenuBox() {
 									)}
 								</Text>
 
-								<ButtonGroup isAttached>
+								<ButtonGroup
+									isAttached
+									as={motion.div}
+									cursor="pointer"
+									drag
+									dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+									whileDrag={{ scale: 0.9, rotate: 10 }}
+									dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+									whileTap={{
+										scale: 0.9,
+									}}
+									whileHover={{
+										scale: 1.05,
+										transition: { type: "spring", bounce: 0.8, duration: 1 },
+									}}
+								>
 									{item.variants.map((element) => (
 										<Button
 											key={element.type}

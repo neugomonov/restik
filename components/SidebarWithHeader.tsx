@@ -78,25 +78,28 @@ const Logo = (props: { color: string }) => {
 			as={motion.div}
 			cursor="pointer"
 			drag
+			dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+			whileDrag={{ scale: 1.2, rotate: 10 }}
+			dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
 			direction="row"
 			alignItems="center"
 			spacing={3}
 		>
-			<ChakraBox
-				animate={{ rotate: rotate ? 360 : 0 }}
-				// @ts-expect-error
-				transition={{ type: "spring", duration: 0.5 }}
-				onClick={() => {
-					setRotate(!rotate);
+			<Avatar
+				as={motion.div}
+				name={info.name}
+				src="/images/chief.jpg"
+				size="md"
+				draggable={false}
+				whileTap={{
+					scale: 0.9,
 				}}
-			>
-				<Avatar
-					name={info.name}
-					src="/images/chief.jpg"
-					size="md"
-					draggable={false}
-				/>
-			</ChakraBox>
+				whileHover={{
+					scale: 1.2,
+					rotate: 360,
+					transition: { type: "spring", bounce: 0.8, duration: 1 },
+				}}
+			/>
 			<Heading as="h4" size="md">
 				{info.title[lang as "en" | "ru"] ?? t("restaurantName")}
 			</Heading>
@@ -110,12 +113,12 @@ interface LinkItemProps {
 	href: string;
 }
 const LinkItems: Array<LinkItemProps> = [
-	{ name: "Главная", icon: FiHome, href: "/ru" },
-	{ name: "Меню", icon: IoPizzaOutline, href: "/menu" },
-	{ name: "Акции", icon: IoRestaurantOutline, href: "/promo" },
-	{ name: "Чат", icon: MdOutlineMessage, href: "/chat" },
-	{ name: "Новости", icon: BiNews, href: "/news" },
-	{ name: "Наша кухня", icon: MdKitchen, href: "/about" },
+	{ name: "Главная", icon: FiHome, href: `/chat` },
+	{ name: "Меню", icon: IoPizzaOutline, href: `/menu` },
+	{ name: "Акции", icon: IoRestaurantOutline, href: `/promo` },
+	{ name: "Чат", icon: MdOutlineMessage, href: `/chat` },
+	{ name: "Новости", icon: BiNews, href: `/news` },
+	{ name: "Наша кухня", icon: MdKitchen, href: `/about` },
 ];
 
 export default function SidebarWithHeader({
@@ -218,7 +221,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 	};
 	// @ts-expect-error
 	const { blurMode, setBlurMode } = useContext(BlurContext);
-	const handleTheme = () => {
+	const handleBlur = () => {
 		setBlurMode(!blurMode);
 	};
 	const {
@@ -282,34 +285,50 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				display={{ base: "none", md: "flex" }}
 			>
 				<Menu>
-					<Button
-						as={MenuButton}
-						p="2"
-						align="center"
-						justify="center"
-						size="lg"
-						variant="ghost"
-						aria-label="open menu"
-						leftIcon={
-							<Stack direction="row" spacing={2}>
-								<FiBell />{" "}
-								{notificationsCount > 0 && (
-									<Tag
-										borderRadius="full"
-										colorScheme="red"
-										variant="solid"
-										position="absolute"
-										top={notificationsCount >= 10 ? -3 : -1}
-										left={-1}
-									>
-										{notificationsCount >= 10 ? "10+" : notificationsCount}
-									</Tag>
-								)}
-							</Stack>
-						}
+					<Box
+						as={motion.div}
+						cursor="pointer"
+						drag
+						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+						whileDrag={{ scale: 0.9, rotate: 10 }}
+						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+						whileTap={{
+							scale: 0.9,
+						}}
+						whileHover={{
+							scale: 1.1,
+							transition: { type: "spring", bounce: 0.8, duration: 1 },
+						}}
 					>
-						{info.notifications[lang as "en" | "ru"]}
-					</Button>
+						<Button
+							as={MenuButton}
+							p="2"
+							align="center"
+							justify="center"
+							size="lg"
+							variant="ghost"
+							aria-label="open menu"
+							leftIcon={
+								<Stack direction="row" spacing={2}>
+									<FiBell />{" "}
+									{notificationsCount > 0 && (
+										<Tag
+											borderRadius="full"
+											colorScheme="red"
+											variant="solid"
+											position="absolute"
+											top={notificationsCount >= 10 ? -3 : -1}
+											left={-1}
+										>
+											{notificationsCount >= 10 ? "10+" : notificationsCount}
+										</Tag>
+									)}
+								</Stack>
+							}
+						>
+							{info.notifications[lang as "en" | "ru"]}
+						</Button>
+					</Box>
 					<MenuList
 						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
 						borderColor={useColorModeValue("gray.200", "gray.700")}
@@ -339,20 +358,35 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 						)}
 					</MenuList>
 				</Menu>
-
-				<IconButton
-					size={"lg"}
-					icon={
-						colorMode === "light" ? (
-							<MdOutlineLightMode />
-						) : (
-							<MdOutlineDarkMode />
-						)
-					}
-					variant="ghost"
-					aria-label={"Change Color Theme"}
-					onClick={toggleColorMode}
-				/>
+				<Box
+					as={motion.div}
+					cursor="pointer"
+					drag
+					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+					whileDrag={{ scale: 0.9, rotate: 10 }}
+					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+					whileTap={{
+						scale: 0.9,
+					}}
+					whileHover={{
+						scale: 1.2,
+						transition: { type: "spring", bounce: 0.8, duration: 1 },
+					}}
+				>
+					<IconButton
+						size={"lg"}
+						icon={
+							colorMode === "light" ? (
+								<MdOutlineLightMode />
+							) : (
+								<MdOutlineDarkMode />
+							)
+						}
+						variant="ghost"
+						aria-label={"Change Color Theme"}
+						onClick={toggleColorMode}
+					/>
+				</Box>
 			</Stack>
 			<Stack
 				direction="row"
@@ -361,13 +395,29 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				p="0 1rem"
 				mb="2"
 			>
-				<IconButton
-					size={"lg"}
-					icon={<ImMagicWand />}
-					variant="ghost"
-					aria-label={"Toggle Blur"}
-					onClick={handleTheme}
-				/>
+				<Box
+					as={motion.div}
+					cursor="pointer"
+					drag
+					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+					whileDrag={{ scale: 0.9, rotate: 10 }}
+					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+					whileTap={{
+						scale: 0.9,
+					}}
+					whileHover={{
+						scale: 1.2,
+						transition: { type: "spring", bounce: 0.8, duration: 1 },
+					}}
+				>
+					<IconButton
+						size={"lg"}
+						icon={<ImMagicWand />}
+						variant="ghost"
+						aria-label={"Toggle Blur"}
+						onClick={handleBlur}
+					/>
+				</Box>
 				<Menu
 					isLazy
 					isOpen={isMenuOpen}
@@ -375,22 +425,38 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 					onOpen={onMenuOpen}
 					onClose={onMenuClose}
 				>
-					<Button
-						as={MenuButton}
-						p="3"
-						align="center"
-						justify="center"
-						size="lg"
-						variant="ghost"
-						aria-label="Change language"
-						rightIcon={
-							<Stack direction="row" spacing={2}>
-								<HiOutlineTranslate />{" "}
-							</Stack>
-						}
+					<Box
+						as={motion.div}
+						cursor="pointer"
+						drag
+						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+						whileDrag={{ scale: 0.9, rotate: 10 }}
+						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+						whileTap={{
+							scale: 0.9,
+						}}
+						whileHover={{
+							scale: 1.1,
+							transition: { type: "spring", bounce: 0.8, duration: 1 },
+						}}
 					>
-						{info.translate[lang as "en" | "ru"]}
-					</Button>
+						<Button
+							as={MenuButton}
+							p="3"
+							align="center"
+							justify="center"
+							size="lg"
+							variant="ghost"
+							aria-label="Change language"
+							rightIcon={
+								<Stack direction="row" spacing={2}>
+									<HiOutlineTranslate />{" "}
+								</Stack>
+							}
+						>
+							{info.translate[lang as "en" | "ru"]}
+						</Button>
+					</Box>
 					<MenuList
 						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
 						borderColor={useColorModeValue("gray.200", "gray.700")}
@@ -432,17 +498,29 @@ const NavItem = ({ onClose, icon, href, children, ...rest }: NavItemProps) => {
 		<>
 			<Box style={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
 				<Flex
+					as={motion.div}
+					cursor="pointer"
+					drag
+					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+					whileDrag={{ scale: 0.9, rotate: 10 }}
+					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+					whileTap={{
+						scale: 0.9,
+					}}
+					whileHover={{
+						scale: 1.1,
+						transition: { type: "spring", bounce: 0.8 },
+					}}
 					onClick={async () => {
 						await router.push(href, href, { locale: "ru" });
 						await onClose();
 					}}
-					transition="all 0.2s"
+					transition="background-color 0.2s"
 					align="center"
 					p="4"
 					mx="4"
 					borderRadius="lg"
 					role="group"
-					cursor="pointer"
 					_hover={{
 						bg: useColorModeValue("orange.400", "yellow.400"),
 						color: useColorModeValue("white", "black"),
@@ -547,14 +625,29 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			w="100%"
 			{...rest}
 		>
-			<IconButton
-				display={{ base: "flex", md: "none" }}
-				onClick={onOpen}
-				variant="outline"
-				aria-label="open menu"
-				icon={<FiMenu />}
-			/>
-
+			<Box
+				as={motion.div}
+				cursor="pointer"
+				drag
+				dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+				whileDrag={{ scale: 1.2, rotate: 10 }}
+				dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+				whileTap={{
+					scale: 0.9,
+				}}
+				whileHover={{
+					scale: 1.2,
+					transition: { type: "spring", bounce: 0.8, duration: 1 },
+				}}
+			>
+				<IconButton
+					display={{ base: "flex", md: "none" }}
+					onClick={onOpen}
+					variant="outline"
+					aria-label="open menu"
+					icon={<FiMenu />}
+				/>
+			</Box>
 			<Text
 				display={{ base: "flex", md: "none" }}
 				fontSize="2xl"
@@ -564,76 +657,107 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			</Text>
 
 			<HStack spacing={{ base: "0", md: "6" }}>
-				<IconButton
-					size={"lg"}
-					icon={
-						colorMode === "light" ? (
-							<MdOutlineLightMode />
-						) : (
-							<MdOutlineDarkMode />
-						)
-					}
-					variant="ghost"
-					aria-label={"Change Color Theme"}
-					onClick={toggleColorMode}
-				/>
-				<Menu>
+				<Box
+					as={motion.div}
+					cursor="pointer"
+					drag
+					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+					whileDrag={{ scale: 1.2, rotate: 10 }}
+					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+					whileTap={{
+						scale: 0.9,
+					}}
+					whileHover={{
+						scale: 1.2,
+						transition: { type: "spring", bounce: 0.8, duration: 1 },
+					}}
+				>
 					<IconButton
-						as={MenuButton}
-						p="4"
-						align="center"
-						justify="center"
-						size="lg"
-						variant="ghost"
-						aria-label="open menu"
+						size={"lg"}
 						icon={
-							<Stack direction="row" spacing={2}>
-								<FiBell />{" "}
-								{notificationsCount > 0 && (
-									<Tag
-										borderRadius="full"
-										colorScheme="red"
-										variant="solid"
-										position="absolute"
-										top={notificationsCount >= 10 ? -3 : -1}
-										left={-1}
-									>
-										{notificationsCount >= 10 ? "10+" : notificationsCount}
-									</Tag>
-								)}
-							</Stack>
+							colorMode === "light" ? (
+								<MdOutlineLightMode />
+							) : (
+								<MdOutlineDarkMode />
+							)
 						}
+						variant="ghost"
+						aria-label={"Change Color Theme"}
+						onClick={toggleColorMode}
 					/>
-					<MenuList
-						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
-						borderColor={useColorModeValue("gray.200", "gray.700")}
-					>
-						{session ? (
-							<>
-								<Flex align="center" justify="space-around">
-									<Text alignSelf="center" as={Link} onClick={deleteAll}>
-										🧹 Очистить
-									</Text>
-									<Text alignSelf="center" as={Link} onClick={readAll}>
-										Прочитано ✉️
+				</Box>
+				<Box
+					as={motion.div}
+					cursor="pointer"
+					drag
+					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+					whileDrag={{ scale: 1.2, rotate: 10 }}
+					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+					whileTap={{
+						scale: 0.9,
+					}}
+					whileHover={{
+						scale: 1.2,
+						transition: { type: "spring", bounce: 0.8, duration: 1 },
+					}}
+				>
+					<Menu>
+						<IconButton
+							as={MenuButton}
+							p="4"
+							align="center"
+							justify="center"
+							size="lg"
+							variant="ghost"
+							aria-label="open menu"
+							icon={
+								<Stack direction="row" spacing={2}>
+									<FiBell />{" "}
+									{notificationsCount > 0 && (
+										<Tag
+											borderRadius="full"
+											colorScheme="red"
+											variant="solid"
+											position="absolute"
+											top={notificationsCount >= 10 ? -3 : -1}
+											left={-1}
+										>
+											{notificationsCount >= 10 ? "10+" : notificationsCount}
+										</Tag>
+									)}
+								</Stack>
+							}
+						/>
+						<MenuList
+							bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
+							borderColor={useColorModeValue("gray.200", "gray.700")}
+						>
+							{session ? (
+								<>
+									<Flex align="center" justify="space-around">
+										<Text alignSelf="center" as={Link} onClick={deleteAll}>
+											🧹 Очистить
+										</Text>
+										<Text alignSelf="center" as={Link} onClick={readAll}>
+											Прочитано ✉️
+										</Text>
+									</Flex>
+									<NotificationList />
+								</>
+							) : (
+								<Flex
+									align="center"
+									justify="space-around"
+									onClick={() => signIn()}
+								>
+									<Text alignSelf="center" as={Link}>
+										🔔 Войдите 🙋
 									</Text>
 								</Flex>
-								<NotificationList />
-							</>
-						) : (
-							<Flex
-								align="center"
-								justify="space-around"
-								onClick={() => signIn()}
-							>
-								<Text alignSelf="center" as={Link}>
-									🔔 Войдите 🙋
-								</Text>
-							</Flex>
-						)}
-					</MenuList>
-				</Menu>
-
+							)}
+						</MenuList>
+					</Menu>
+				</Box>
 				<LoginHeader />
 			</HStack>
 		</Flex>
