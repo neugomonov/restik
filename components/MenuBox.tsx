@@ -106,7 +106,7 @@ export default function MenuBox() {
 	type DescribableFunction = {
 		(value: string): void;
 	};
-
+	// TODO: Make a reusable extended Chakra's Button component with my regularly used motion.div features. Or a Box wrapper with the Button as {children}.
 	return (
 		<>
 			<div
