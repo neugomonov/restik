@@ -51,15 +51,10 @@ export default function CallToActionWithIllustration() {
 					обратили внимание.
 				</Text>
 				<Stack spacing={6} direction={{ base: "column", md: "row" }}>
-					<Button
-						rounded={"full"}
-						px={6}
-						colorScheme={"orange"}
-						onClick={handleClick("/news")}
-					>
+					<Button px={6} colorScheme={"orange"} onClick={handleClick("/news")}>
 						Посмотреть наши новости
 					</Button>
-					<Button rounded={"full"} px={6} onClick={handleClick("/about")}>
+					<Button px={6} onClick={handleClick("/about")}>
 						Наша кухня
 					</Button>
 				</Stack>

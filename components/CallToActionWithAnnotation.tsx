@@ -62,7 +62,6 @@ export default function CallToActionWithAnnotation() {
 					>
 						<Button
 							colorScheme={"orange"}
-							rounded={"full"}
 							px={6}
 							data-testid="button"
 							onClick={handleClick("/menu")}
