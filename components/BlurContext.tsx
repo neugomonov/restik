@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-
+// TODO: use local storage
 export const BlurContext = createContext(true);
 
 export const BlurProvider = (props: {
