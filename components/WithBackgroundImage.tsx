@@ -1,4 +1,5 @@
 import {
+	Box,
 	Button,
 	Flex,
 	Stack,
@@ -6,7 +7,10 @@ import {
 	useBreakpointValue,
 	VStack,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import index from "../lib";
 
 export default function WithBackgroundImage() {
 	const router = useRouter();
@@ -17,6 +21,7 @@ export default function WithBackgroundImage() {
 			});
 		};
 	};
+	const { t, lang } = useTranslation("index");
 
 	return (
 		<Flex
@@ -41,18 +46,39 @@ export default function WithBackgroundImage() {
 						lineHeight={1.2}
 						fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
 					>
-						Готовим вкуснейшую пиццу по лучшим традициям поваров рейтинга
-						Мишлена. Попробуйте!{" "}
+						{index.WithBackgroundImage[lang as "en" | "ru"]}
 					</Text>
 					<Stack direction={"row"}>
-						<Button
-							colorScheme={"orange"}
-							rounded={"full"}
-							data-testid="button"
-							onClick={handleClick("/menu")}
+						<Box
+							as={motion.div}
+							drag
+							dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+							whileDrag={{ scale: 1.2, rotate: 45 }}
+							dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+							whileTap={{
+								scale: 0.9,
+							}}
+							whileHover={{
+								scale: 1.2,
+								transition: { type: "spring", bounce: 0.8, duration: 1 },
+							}}
+							animate={{
+								scale: [1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1],
+								rotate: [0, 10, -10, 10, -10, 10, -10, 0],
+								transition: {
+									repeat: Infinity,
+									repeatDelay: 5,
+								},
+							}}
 						>
-							К пиццам! 🍕
-						</Button>
+							<Button
+								colorScheme={"orange"}
+								data-testid="button"
+								onClick={handleClick("/menu")}
+							>
+								{index.WithBackgroundImageButton[lang as "en" | "ru"]}
+							</Button>
+						</Box>
 					</Stack>
 				</Stack>
 			</VStack>
