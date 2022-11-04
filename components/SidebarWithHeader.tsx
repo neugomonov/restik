@@ -114,11 +114,11 @@ interface LinkItemProps {
 }
 const LinkItems: Array<LinkItemProps> = [
 	{ name: "Главная", icon: FiHome, href: `/` },
-	{ name: "Меню", icon: IoPizzaOutline, href: `/ru/menu` },
-	{ name: "Акции", icon: IoRestaurantOutline, href: `/ru/promo` },
-	{ name: "Чат", icon: MdOutlineMessage, href: `/ru/chat` },
-	{ name: "Новости", icon: BiNews, href: `/ru/news` },
-	{ name: "Наша кухня", icon: MdKitchen, href: `/ru/about` },
+	{ name: "Меню", icon: IoPizzaOutline, href: `/menu` },
+	{ name: "Акции", icon: IoRestaurantOutline, href: `/promo` },
+	{ name: "Чат", icon: MdOutlineMessage, href: `/chat` },
+	{ name: "Новости", icon: BiNews, href: `/news` },
+	{ name: "Наша кухня", icon: MdKitchen, href: `/about` },
 ];
 
 export default function SidebarWithHeader({
