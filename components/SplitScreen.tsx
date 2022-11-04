@@ -7,7 +7,9 @@ import {
 	Text,
 	useBreakpointValue,
 } from "@chakra-ui/react";
+import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import index from "../lib";
 
 export default function SplitScreen() {
 	const router = useRouter();
@@ -18,7 +20,7 @@ export default function SplitScreen() {
 			});
 		};
 	};
-
+	const { t, lang } = useTranslation("index");
 	return (
 		<Stack direction={{ base: "column", lg: "row" }}>
 			<Flex p={8} flex={1} align={"center"} justify={"center"}>
@@ -38,32 +40,26 @@ export default function SplitScreen() {
 								zIndex: -1,
 							}}
 						>
-							Мы во всех
+							{index.SplitScreen1[lang as "en" | "ru"]}
 						</Text>
 						<br />{" "}
 						<Text color={"orange.400"} as={"span"}>
-							соцсетях
+							{index.SplitScreen2[lang as "en" | "ru"]}
 						</Text>{" "}
 					</Heading>
 					<Text fontSize={{ base: "md", lg: "lg" }} colorScheme={"gray"}>
-						Там мы размещаем наши новые акции. Подписывайтесь и будьте в курсе
-						всех выгодных предложений нашей пиццерии!{" "}
+						{index.SplitScreen3[lang as "en" | "ru"]}
 					</Text>
 					<Stack direction={{ base: "column", md: "row" }} spacing={4}>
-						<Button
-							rounded={"full"}
-							colorScheme={"orange"}
-							onClick={handleClick("/promo")}
-						>
-							Посмотреть наши акции{" "}
+						<Button colorScheme={"orange"} onClick={handleClick("/promo")}>
+							{index.SplitScreenButton1[lang as "en" | "ru"]}
 						</Button>
 						<Button
-							rounded={"full"}
 							onClick={async () => {
 								await router.push("https://t.me/neugomonov_v");
 							}}
 						>
-							Наш Телеграм
+							{index.SplitScreenButton2[lang as "en" | "ru"]}
 						</Button>
 					</Stack>
 				</Stack>
