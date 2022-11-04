@@ -13,7 +13,9 @@ import {
 	Text,
 	useColorModeValue,
 } from "@chakra-ui/react";
+import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import index from "../lib";
 
 export default function CallToActionWithVideo() {
 	const router = useRouter();
@@ -24,6 +26,7 @@ export default function CallToActionWithVideo() {
 			});
 		};
 	};
+	const { t, lang } = useTranslation("index");
 
 	return (
 		<Container maxW={"5xl"}>
@@ -53,41 +56,30 @@ export default function CallToActionWithVideo() {
 								zIndex: -1,
 							}}
 						>
-							Готовим из{" "}
+							{index.CallToActionWithVideo1[lang as "en" | "ru"]}
 						</Text>
 						<br />
 						<Text as={"span"} color={"orange.400"}>
-							лучших ингредиентов
+							{index.CallToActionWithVideo2[lang as "en" | "ru"]}
 						</Text>
 					</Heading>
 					<Text colorScheme={"gray"} maxW={"3xl"}>
-						Высокое качество - вот что наша пиццерия ставит на первое место. Мы
-						выбираем лучшие продукты, лучшее оборудование и лучших специалистов!
-						Держать качество всегда на одинаково высоком уровне во всех наших
-						филиалах нам позволяет автоматизация многих процессов производства.
-						Так, например, мы используем тестопрессы, при помощи которых
-						достигается идеальная и равномерная толщина пиццы. А конвейерные
-						печи, которые стоят на нашей кухне, позволяют повару не беспокоиться
-						за качество пропекания - за это полностью отвечает автоматика.
-						Результат - всегда вкусная пицца, никаких подгоревших краев или
-						непропеченной сердцевины!
+						{index.CallToActionWithVideo3[lang as "en" | "ru"]}
 					</Text>
 					<Stack
 						spacing={{ base: 4, sm: 6 }}
 						direction={{ base: "column", lg: "row" }}
 					>
 						<Button
-							rounded={"full"}
 							size={"lg"}
 							fontWeight={"normal"}
 							px={6}
 							colorScheme={"orange"}
 							onClick={handleClick("/menu")}
 						>
-							Посмотреть меню
+							{index.CallToActionWithVideoButton1[lang as "en" | "ru"]}
 						</Button>
 						<Button
-							rounded={"full"}
 							size={"lg"}
 							fontWeight={"normal"}
 							px={6}
@@ -98,7 +90,7 @@ export default function CallToActionWithVideo() {
 								);
 							}}
 						>
-							Как мы готовим
+							{index.CallToActionWithVideoButton2[lang as "en" | "ru"]}
 						</Button>
 					</Stack>
 				</Stack>
