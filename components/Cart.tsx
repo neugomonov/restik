@@ -31,7 +31,7 @@ const DrawerCloseButton = dynamic(
 	async () => (await import("@chakra-ui/react")).DrawerCloseButton
 );
 
-export default function MenuBox() {
+export default function Cart() {
 	const router = useRouter();
 	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
