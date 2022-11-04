@@ -73,6 +73,7 @@ export default function WithBackgroundImage() {
 						>
 							<Button
 								colorScheme={"orange"}
+								size="lg"
 								data-testid="button"
 								onClick={handleClick("/menu")}
 							>

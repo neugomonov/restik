@@ -46,7 +46,6 @@ export default function Cart() {
 	return (
 		<>
 			<IconButton
-				isRound
 				colorScheme="orange"
 				aria-label={t("openCart")}
 				size="lg"
@@ -60,7 +59,7 @@ export default function Cart() {
 								colorScheme="red"
 								variant="solid"
 								position="absolute"
-								top={items >= 10 ? -3 : -1}
+								top={-3}
 								right={-1}
 							>
 								{items >= 10 ? "10+" : items}
