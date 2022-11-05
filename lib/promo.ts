@@ -24,7 +24,7 @@ const translatedIngredients = new Map([
 		},
 	],
 	["Souvenir", { en: "Souvenir as a gift!", ru: "Сувенир в подарок!" }],
-	["Invite", { en: "Invite a friend!", ru: "Пригласите друга!" }],
+	["Invite", { en: "Get a friend!", ru: "Пригласите друга!" }],
 	["Birthday", { en: "Birthday pizza!", ru: "Пицца на день рождения!" }],
 	[
 		"FirstOrder",
