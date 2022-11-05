@@ -9,7 +9,9 @@ import {
 	GridItem,
 	VStack,
 } from "@chakra-ui/react";
+import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import info from "../lib/info";
 
 interface FeatureProps {
 	heading: string;
@@ -36,6 +38,7 @@ export default function gridListWithCTA() {
 			});
 		};
 	};
+	const { t, lang } = useTranslation("info");
 
 	return (
 		<Box as={Container} maxW="7xl" mt={14} p={4}>
@@ -57,7 +60,7 @@ export default function gridListWithCTA() {
 							size="md"
 							onClick={handleClick("/chat")}
 						>
-							Чат
+							{info.chat[lang as "en" | "ru"]}
 						</Button>
 					</VStack>
 				</GridItem>
