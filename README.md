@@ -29,6 +29,7 @@ Restik is a restaurant app for ordering dishes and managing customers' orders.
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org/)
 - [Chakra UI](https://next.chakra-ui.com/)
+- [Framer Motion](https://www.framer.com/motion/)
 - [Recoil](https://recoiljs.org/)
 - [Apollo Client](https://www.apollographql.com/docs/react/)
 - [Prisma](https://prisma.io/)
