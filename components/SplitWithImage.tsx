@@ -10,10 +10,12 @@ import {
 	Text,
 	useColorModeValue,
 } from "@chakra-ui/react";
+import useTranslation from "next-translate/useTranslation";
 import { ReactElement } from "react";
 import { BiDish } from "react-icons/bi";
 import { BsPeople } from "react-icons/bs";
 import { GiFruitBowl } from "react-icons/gi";
+import index from "../lib";
 
 interface FeatureProps {
 	text: string;
@@ -40,6 +42,8 @@ const Feature = ({ text, icon, iconBg }: FeatureProps) => {
 };
 
 export default function SplitWithImage() {
+	const { t, lang } = useTranslation("index");
+
 	return (
 		<Container maxW={"5xl"} py={12}>
 			<SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
@@ -54,12 +58,11 @@ export default function SplitWithImage() {
 						alignSelf={"flex-start"}
 						rounded={"md"}
 					>
-						Наша команда
+						{index.SplitWithImage1[lang as "en" | "ru"]}
 					</Text>
-					<Heading>Пиццерия с репутацией</Heading>
+					<Heading> {index.SplitWithImage2[lang as "en" | "ru"]}</Heading>
 					<Text colorScheme={"gray"} fontSize={"lg"}>
-						Мы готовим отличную пиццу и будем рады рассказать вам, как именно мы
-						её делаем.{" "}
+						{index.SplitWithImage3[lang as "en" | "ru"]}
 					</Text>
 					<Stack
 						spacing={4}
@@ -72,17 +75,17 @@ export default function SplitWithImage() {
 						<Feature
 							icon={<Icon as={BsPeople} color={"yellow.500"} w={5} h={5} />}
 							iconBg={useColorModeValue("yellow.100", "yellow.900")}
-							text={"Команда отличных поваров"}
+							text={index.SplitWithImage4[lang as "en" | "ru"]}
 						/>
 						<Feature
 							icon={<Icon as={BiDish} color={"green.500"} w={5} h={5} />}
 							iconBg={useColorModeValue("green.100", "green.900")}
-							text={"Профессиональное оборудование"}
+							text={index.SplitWithImage5[lang as "en" | "ru"]}
 						/>
 						<Feature
 							icon={<Icon as={GiFruitBowl} color={"purple.500"} w={5} h={5} />}
 							iconBg={useColorModeValue("purple.100", "purple.900")}
-							text={"Качественные продукты"}
+							text={index.SplitWithImage6[lang as "en" | "ru"]}
 						/>
 					</Stack>
 				</Stack>

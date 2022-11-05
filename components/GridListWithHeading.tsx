@@ -10,23 +10,29 @@ import {
 	Text,
 	VStack,
 } from "@chakra-ui/react";
+import useTranslation from "next-translate/useTranslation";
+import index from "../lib";
 
 const features = Array.apply(null, Array(8)).map(function (x, i) {
 	return {
 		id: i,
-		title: "Мы ценим ваше мнение",
-		text: "Мы всегда советуемся с посетителями для составления меню тех блюд, которые вы любите больше всего.",
+		title: index.GridListWithHeading3,
+		text: index.GridListWithHeading4,
 	};
 });
 
 export default function GridListWithHeading() {
+	const { t, lang } = useTranslation("index");
+
 	return (
 		<Box p={4}>
 			<Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
-				<Heading fontSize={"3xl"}>Лучшая пиццерия Нижнего Новгорода</Heading>
+				<Heading fontSize={"3xl"}>
+					{" "}
+					{index.GridListWithHeading1[lang as "en" | "ru"]}
+				</Heading>
 				<Text colorScheme={"gray"} fontSize={"xl"}>
-					Мы всегда советуемся с посетителями для составления меню тех блюд,
-					которые вы любите больше всего.
+					{index.GridListWithHeading2[lang as "en" | "ru"]}
 				</Text>
 			</Stack>
 
@@ -38,8 +44,12 @@ export default function GridListWithHeading() {
 								<Icon as={CheckIcon} />
 							</Box>
 							<VStack align={"start"}>
-								<Text fontWeight={600}>{feature.title}</Text>
-								<Text colorScheme={"gray"}>{feature.text}</Text>
+								<Text fontWeight={600}>
+									{feature.title[lang as "en" | "ru"]}
+								</Text>
+								<Text colorScheme={"gray"}>
+									{feature.text[lang as "en" | "ru"]}
+								</Text>
 							</VStack>
 						</HStack>
 					))}

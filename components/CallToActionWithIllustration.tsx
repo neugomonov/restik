@@ -7,7 +7,9 @@ import {
 	Stack,
 	Text,
 } from "@chakra-ui/react";
+import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import index from "../lib";
 
 export default function CallToActionWithIllustration() {
 	const router = useRouter();
@@ -18,6 +20,7 @@ export default function CallToActionWithIllustration() {
 			});
 		};
 	};
+	const { t, lang } = useTranslation("index");
 
 	return (
 		<Container maxW={"5xl"}>
@@ -32,30 +35,22 @@ export default function CallToActionWithIllustration() {
 					fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
 					lineHeight={"110%"}
 				>
-					Готовим быстро
+					{index.CallToActionWithIllustration1[lang as "en" | "ru"]}
+
 					<Text as={"span"} color={"orange.400"}>
 						{" "}
-						и вкусно
+						{index.CallToActionWithIllustration2[lang as "en" | "ru"]}
 					</Text>
 				</Heading>
 				<Text colorScheme={"gray"} maxW={"3xl"}>
-					Использование современных компьютерных технологий - это, можно
-					сказать, наша фишка! Автоматизированная форма заказа есть у операторов
-					- она дает возможность максимально быстро и без ошибок оформить заказ.
-					Система упрощает также и работу поваров - у них есть планшеты, на
-					которые новые заказы приходят в течение нескольких секунд! Логисты
-					также работают в автоматизированной форме, для курьеров разработано
-					мобильное приложение, а для оформления заказов в зале - касса POS и
-					мобильный официант. Также в нашей пиццерии установлена электронная
-					система вызова официанта - Вам не нужно махать руками, чтобы на Вас
-					обратили внимание.
+					{index.CallToActionWithIllustration3[lang as "en" | "ru"]}
 				</Text>
 				<Stack spacing={6} direction={{ base: "column", md: "row" }}>
 					<Button px={6} colorScheme={"orange"} onClick={handleClick("/news")}>
-						Посмотреть наши новости
+						{index.CallToActionWithIllustrationButton1[lang as "en" | "ru"]}
 					</Button>
 					<Button px={6} onClick={handleClick("/about")}>
-						Наша кухня
+						{index.CallToActionWithIllustrationButton2[lang as "en" | "ru"]}
 					</Button>
 				</Stack>
 				<Flex w={"full"} justifyContent={"center"}>
