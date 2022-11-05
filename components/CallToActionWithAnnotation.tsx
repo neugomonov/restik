@@ -9,8 +9,10 @@ import {
 	Text,
 	useColorModeValue,
 } from "@chakra-ui/react";
+import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import index from "../lib";
 
 export default function CallToActionWithAnnotation() {
 	const router = useRouter();
@@ -21,6 +23,7 @@ export default function CallToActionWithAnnotation() {
 			});
 		};
 	};
+	const { t, lang } = useTranslation("index");
 
 	return (
 		<>
@@ -43,15 +46,15 @@ export default function CallToActionWithAnnotation() {
 						fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
 						lineHeight={"110%"}
 					>
-						Заказывайте домой
+						{index.CallToActionWithAnnotation1[lang as "en" | "ru"]}
+
 						<br />
 						<Text as={"span"} color={"orange.400"}>
-							или приходите к нам
+							{index.CallToActionWithAnnotation2[lang as "en" | "ru"]}
 						</Text>
 					</Heading>
 					<Text colorScheme={"gray"}>
-						Мы всегда будем рады видеть вас в нашем уютном месте, где всегда
-						веет ароматом вкуснейших итальянских блюд!{" "}
+						{index.CallToActionWithAnnotation3[lang as "en" | "ru"]}
 					</Text>
 					<Stack
 						direction={"column"}
@@ -66,7 +69,7 @@ export default function CallToActionWithAnnotation() {
 							data-testid="button"
 							onClick={handleClick("/menu")}
 						>
-							К меню{" "}
+							{index.CallToActionWithAnnotationButton1[lang as "en" | "ru"]}
 						</Button>
 						<Button
 							variant={"link"}
@@ -74,7 +77,7 @@ export default function CallToActionWithAnnotation() {
 							size={"sm"}
 							onClick={handleClick("/promo")}
 						>
-							Посмотреть акции{" "}
+							{index.CallToActionWithAnnotationButton2[lang as "en" | "ru"]}
 						</Button>
 						<Box display={{ base: "none", md: "flex" }}>
 							<Icon
@@ -93,7 +96,11 @@ export default function CallToActionWithAnnotation() {
 								top={"-15px"}
 								transform={"rotate(10deg)"}
 							>
-								Первый заказ - скидка 30%{" "}
+								{
+									index.CallToActionWithAnnotationButton1Postfix[
+										lang as "en" | "ru"
+									]
+								}
 							</Text>
 						</Box>
 					</Stack>

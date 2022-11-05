@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import index from "../lib";
 import info from "../lib/info";
 
 interface FeatureProps {
@@ -53,7 +54,7 @@ export default function gridListWithCTA() {
 				<GridItem colSpan={1}>
 					<VStack alignItems="flex-start" spacing="20px">
 						<chakra.h2 fontSize="3xl" fontWeight="700">
-							Вы всегда можете связаться с нами
+							{index.GridListWithCTA1[lang as "en" | "ru"]}
 						</chakra.h2>
 						<Button
 							colorScheme="orange"
@@ -66,10 +67,7 @@ export default function gridListWithCTA() {
 				</GridItem>
 				<GridItem>
 					<Flex>
-						<chakra.p>
-							Мы всегда советуемся с посетителями для составления меню тех блюд,
-							которые вы любите больше всего.
-						</chakra.p>
+						<chakra.p>{index.GridListWithCTA2[lang as "en" | "ru"]}</chakra.p>
 					</Flex>
 				</GridItem>
 			</Grid>
@@ -83,20 +81,20 @@ export default function gridListWithCTA() {
 				gap={{ base: "8", sm: "12", md: "16" }}
 			>
 				<Feature
-					heading={"Изысканный интерьер"}
-					text={"Вам будет приятно находиться у нас"}
+					heading={index.GridListWithCTA3[lang as "en" | "ru"]}
+					text={index.GridListWithCTA4[lang as "en" | "ru"]}
 				/>
 				<Feature
-					heading={"Талантливые шеф-повара"}
-					text={"Порадуем лучшими блюдами итальянской кухни"}
+					heading={index.GridListWithCTA5[lang as "en" | "ru"]}
+					text={index.GridListWithCTA6[lang as "en" | "ru"]}
 				/>
 				<Feature
-					heading={"Вежливый персонал"}
-					text={"Обеспечим вам качественное обслуживание"}
+					heading={index.GridListWithCTA7[lang as "en" | "ru"]}
+					text={index.GridListWithCTA8[lang as "en" | "ru"]}
 				/>
 				<Feature
-					heading={"Организация праздников"}
-					text={"Гарантируем вам отличный праздничный вечер"}
+					heading={index.GridListWithCTA9[lang as "en" | "ru"]}
+					text={index.GridListWithCTA10[lang as "en" | "ru"]}
 				/>
 			</Grid>
 		</Box>

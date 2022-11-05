@@ -32,12 +32,14 @@ export default function WithBackgroundImage() {
 			}
 			backgroundSize={"cover"}
 			backgroundPosition={"center center"}
+			borderRadius="2xl"
 		>
 			<VStack
 				w={"full"}
 				justify={"center"}
 				px={useBreakpointValue({ base: 4, md: 8 })}
 				bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
+				borderRadius="2xl"
 			>
 				<Stack maxW={"2xl"} align={"flex-start"} spacing={6}>
 					<Text
@@ -46,8 +48,19 @@ export default function WithBackgroundImage() {
 						lineHeight={1.2}
 						fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
 					>
-						{index.WithBackgroundImage[lang as "en" | "ru"]}
+						{index.WithBackgroundImage1[lang as "en" | "ru"]}
 					</Text>
+					<Text
+						as={"span"}
+						color={"orange.400"}
+						fontWeight={700}
+						lineHeight={0}
+						pb="1rem"
+						fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
+					>
+						{index.WithBackgroundImage2[lang as "en" | "ru"]}
+					</Text>
+
 					<Stack direction={"row"}>
 						<Box
 							as={motion.div}
