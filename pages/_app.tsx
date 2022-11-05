@@ -12,6 +12,7 @@ import StateSaver from "../components/state-saver";
 import { BlurContext, BlurProvider } from "../components/BlurContext";
 import info from "../lib/info";
 import { CartState, _cart } from "../lib/recoil-atoms";
+import useTranslation from "next-translate/useTranslation";
 
 const client = new ApolloClient({
 	uri: process.env.SERVER_URL,
@@ -45,7 +46,7 @@ const App = ({
 	}, []);
 	// @ts-expect-error
 	const { blurMode } = useContext(BlurContext);
-
+	const { t, lang } = useTranslation("info");
 	// TODO: implement code splitting as dynamic imports, load modules asynchronously (await import, React.lazy) for a faster initial loading, shrink the initial  bundle size
 	return (
 		<SessionProvider session={session}>
@@ -83,7 +84,7 @@ const App = ({
 							`}
 						/>
 						<Head>
-							<title>{info.name}</title>
+							<title>{info.title[lang as "en" | "ru"]}</title>
 						</Head>
 						{cart && (
 							<RecoilRoot

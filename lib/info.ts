@@ -20,6 +20,10 @@ const info = {
 		en: "Translate",
 		ru: "Перевод",
 	},
+	home: {
+		en: "Home",
+		ru: "Главная",
+	},
 	menu: {
 		en: "Menu",
 		ru: "Меню",
@@ -39,6 +43,10 @@ const info = {
 	chat: {
 		en: "Chat",
 		ru: "Чат",
+	},
+	kitchen: {
+		en: "Our Kitchen",
+		ru: "Наша кухня",
 	},
 	currency: "₽",
 	callingCode: "+7",

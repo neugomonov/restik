@@ -56,7 +56,9 @@ function Chat() {
 	return (
 		<>
 			<Head>
-				<title>Пиццерия ⸻ Чат 💬</title>
+				<title>
+					{info.title[lang]} ⸻ {info.chat[lang]} 💬
+				</title>
 			</Head>
 			<div
 				style={{
@@ -85,7 +87,7 @@ function Chat() {
 						variant="solid"
 						mb="1rem"
 					>
-						Чат{" "}
+						{info.chat[lang]}
 					</Tag>
 				)}{" "}
 				<Box

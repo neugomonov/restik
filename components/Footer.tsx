@@ -192,7 +192,7 @@ export default function LargeWithNewsletter() {
 					</Stack>
 					<Stack align={"flex-start"}>
 						<ListHeader>{t("companyFooter")}</ListHeader>
-						<Link onClick={handleClick("/about")}>{t("about")}</Link>
+						<Link onClick={handleClick("/about")}>{t("kitchen")}</Link>
 						<Link onClick={handleClick("/news")}>{t("news")}</Link>
 						<Link onClick={handleClick("/chat")}>{t("chat")}</Link>
 						<Link onClick={handleClick("/promo")}>{t("promo")}</Link>

@@ -108,17 +108,17 @@ const Logo = (props: { color: string }) => {
 };
 
 interface LinkItemProps {
-	name: string;
+	name: { en: string; ru: string };
 	icon: IconType;
 	href: string;
 }
 const LinkItems: Array<LinkItemProps> = [
-	{ name: "Главная", icon: FiHome, href: `/` },
-	{ name: "Меню", icon: IoPizzaOutline, href: `/menu` },
-	{ name: "Акции", icon: IoRestaurantOutline, href: `/promo` },
-	{ name: "Чат", icon: MdOutlineMessage, href: `/chat` },
-	{ name: "Новости", icon: BiNews, href: `/news` },
-	{ name: "Наша кухня", icon: MdKitchen, href: `/about` },
+	{ name: info.home, icon: FiHome, href: `/` },
+	{ name: info.menu, icon: IoPizzaOutline, href: `/menu` },
+	{ name: info.promo, icon: IoRestaurantOutline, href: `/promo` },
+	{ name: info.chat, icon: MdOutlineMessage, href: `/chat` },
+	{ name: info.news, icon: BiNews, href: `/news` },
+	{ name: info.kitchen, icon: MdKitchen, href: `/about` },
 ];
 
 export default function SidebarWithHeader({
@@ -468,12 +468,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			</Stack>
 			{LinkItems.map((link) => (
 				<NavItem
-					key={link.name}
+					key={link.name[lang as "en" | "ru"]}
 					icon={link.icon}
 					href={link.href}
 					onClose={onClose}
 				>
-					{link.name}
+					{link.name[lang as "en" | "ru"]}
 				</NavItem>
 			))}
 

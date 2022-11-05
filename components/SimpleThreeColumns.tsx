@@ -25,6 +25,7 @@ const Feature = ({ title, text, icon }: FeatureProps) => {
 				align={"center"}
 				justify={"center"}
 				color={"white"}
+				rounded={"full"}
 				bg={"gray.100"}
 				mb={1}
 			>
