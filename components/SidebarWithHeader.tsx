@@ -526,7 +526,7 @@ const NavItem = ({ onClose, icon, href, children, ...rest }: NavItemProps) => {
 					role="group"
 					_hover={{
 						bg: useColorModeValue("orange.400", "yellow.400"),
-						color: useColorModeValue("white", "black"),
+						color: "black",
 					}}
 					{...rest}
 				>
@@ -535,7 +535,7 @@ const NavItem = ({ onClose, icon, href, children, ...rest }: NavItemProps) => {
 							mr="4"
 							fontSize="16"
 							_groupHover={{
-								color: useColorModeValue("white", "black"),
+								color: "black",
 							}}
 							as={icon}
 						/>
