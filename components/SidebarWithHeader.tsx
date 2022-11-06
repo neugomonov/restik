@@ -13,7 +13,7 @@ import {
 	HStack,
 	Icon,
 	IconButton,
-	Link,
+	Link as ChakraLink,
 	Menu,
 	MenuButton,
 	MenuItem,
@@ -26,6 +26,8 @@ import {
 	useColorModeValue,
 	useDisclosure,
 } from "@chakra-ui/react";
+import Link from "next/link";
+
 import {
 	collection,
 	deleteDoc,
