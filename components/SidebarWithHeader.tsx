@@ -336,10 +336,10 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 						{session ? (
 							<>
 								<Flex align="center" justify="space-around">
-									<Text alignSelf="center" as={Link} onClick={deleteAll}>
+									<Text alignSelf="center" as={ChakraLink} onClick={deleteAll}>
 										🧹 {info.clear[lang as "en" | "ru"] ?? t("clear")}
 									</Text>
-									<Text alignSelf="center" as={Link} onClick={readAll}>
+									<Text alignSelf="center" as={ChakraLink} onClick={readAll}>
 										{info.read[lang as "en" | "ru"] ?? t("read")} ✉️
 									</Text>
 								</Flex>
@@ -351,7 +351,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 								justify="space-around"
 								onClick={() => signIn()}
 							>
-								<Text alignSelf="center" as={Link}>
+								<Text alignSelf="center" as={ChakraLink}>
 									🔔 {info.signIn[lang as "en" | "ru"] ?? t("signIn")} 🙋
 								</Text>
 							</Flex>
@@ -738,9 +738,14 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 							{session ? (
 								<>
 									<Flex align="center" justify="space-around">
+										<Text
+											alignSelf="center"
+											as={ChakraLink}
+											onClick={deleteAll}
+										>
 											🧹 {t("clear")}
 										</Text>
-										<Text alignSelf="center" as={Link} onClick={readAll}>
+										<Text alignSelf="center" as={ChakraLink} onClick={readAll}>
 											{t("read")} ✉️
 										</Text>
 									</Flex>
