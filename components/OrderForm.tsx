@@ -1,16 +1,9 @@
-import dynamic from "next/dynamic";
-import NextImage from "next/image";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-
 import {
 	Box,
 	Button,
 	chakra,
 	Checkbox,
-	Container,
 	Divider,
-	Flex,
 	FormControl,
 	FormLabel,
 	Heading,
@@ -25,18 +18,21 @@ import {
 	useColorMode,
 	useToast,
 } from "@chakra-ui/react";
-
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
+import NextImage from "next/image";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { db } from "../firebase";
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
-import { motion } from "framer-motion";
 
 const stripePromise = loadStripe(process.env.stripe_public_key!);
 
