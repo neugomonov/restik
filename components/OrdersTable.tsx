@@ -22,6 +22,7 @@ import {
 	updateDoc,
 } from "firebase/firestore";
 import { useSession } from "next-auth/react";
+import useTranslation from "next-translate/useTranslation";
 import { useEffect, useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
@@ -57,6 +58,7 @@ export default function OrdersTable() {
 		[]
 	);
 
+	const { t, lang } = useTranslation("common");
 	const handleNew = async () => {
 		const products = prompt("Введите что хотите заказать 🍕");
 		if (products != null && products != "") {
@@ -66,7 +68,7 @@ export default function OrdersTable() {
 			const total = prompt("Введите сумму оплаты 💵");
 			const email = prompt("Введите ваш email 📧");
 			const timestamp = serverTimestamp();
-			const status = "Принят";
+			const status = t("accepted");
 
 			const collectionRef = collection(db, "orders");
 			const payload = {
@@ -82,22 +84,25 @@ export default function OrdersTable() {
 			const docRef = await addDoc(collectionRef, payload);
 		}
 	};
-
 	const handleEditStatus = async (id: string) => {
-		const status = prompt("Готовится/Доставляется/Выполнен? 🤔");
+		const status = prompt(
+			"Готовится/in cooking/Доставляется/in delivery/Выполнен/completed? 🤔"
+		);
 		if (
 			status == "Готовится" ||
+			status == "in cooking" ||
 			status == "Доставляется" ||
-			status == "Выполнен"
+			status == "in delivery" ||
+			status == "Выполнен" ||
+			status == "completed"
 		) {
 			const docRef = doc(db, "orders", id);
 			const docSnap = await getDoc(docRef);
-
 			const payload = { status };
 			updateDoc(docRef, payload);
 			await addDoc(collection(db, `notifications`), {
 				recipient: docSnap.data()!.email,
-				text: "🍕 Ваш заказ " + status + "!",
+				text: t("yourOrder") + status + "!",
 				timestamp: serverTimestamp(),
 				read: false,
 			});
@@ -123,16 +128,16 @@ export default function OrdersTable() {
 			}
 			<TableContainer>
 				<Table variant="striped" colorScheme="gray">
-					<TableCaption>Таблица заказов</TableCaption>
+					<TableCaption>{t("OrdersTable1")}</TableCaption>
 					<Thead>
 						<Tr>
-							<Th>Статус</Th>
-							<Th>Состав</Th>
-							<Th>Телефон</Th>
-							<Th>Адрес</Th>
-							<Th>Вид оплаты</Th>
-							<Th>Сумма ₽</Th>
-							<Th>Почта</Th>
+							<Th>{t("OrdersTable2")}</Th>
+							<Th>{t("OrdersTable3")}</Th>
+							<Th>{t("OrdersTable4")}</Th>
+							<Th>{t("OrdersTable5")}</Th>
+							<Th>{t("OrdersTable6")}</Th>
+							<Th>{t("OrdersTable7")}</Th>
+							<Th>{t("OrdersTable8")}</Th>
 						</Tr>
 					</Thead>
 					<Tbody>
@@ -177,13 +182,13 @@ export default function OrdersTable() {
 					</Tbody>
 					<Tfoot>
 						<Tr>
-							<Th>Статус</Th>
-							<Th>Состав</Th>
-							<Th>Телефон</Th>
-							<Th>Адрес</Th>
-							<Th>Вид оплаты</Th>
-							<Th>Сумма ₽</Th>
-							<Th>Почта</Th>
+							<Th>{t("OrdersTable2")}</Th>
+							<Th>{t("OrdersTable3")}</Th>
+							<Th>{t("OrdersTable4")}</Th>
+							<Th>{t("OrdersTable5")}</Th>
+							<Th>{t("OrdersTable6")}</Th>
+							<Th>{t("OrdersTable7")}</Th>
+							<Th>{t("OrdersTable8")}</Th>
 						</Tr>
 					</Tfoot>
 				</Table>

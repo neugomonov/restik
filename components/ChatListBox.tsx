@@ -3,6 +3,7 @@ import { addDoc, collection } from "@firebase/firestore";
 import { doc, getDocs, query, where } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
+import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
@@ -25,9 +26,9 @@ export default function ChatListBox() {
 				chat.users.includes(session?.user?.email || "anonym") &&
 				chat.users.includes(email!)
 		);
-
+	const { t, lang } = useTranslation("common");
 	const newChat = async () => {
-		const input = prompt("Введите email того, с кем вы хотите начать чат");
+		const input = prompt(t("newChatMessage1"));
 		const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 		if (
 			!chatExists(input!) &&
@@ -42,7 +43,7 @@ export default function ChatListBox() {
 			});
 		} else {
 			toast({
-				title: "Пожалуйста, введите email корректно",
+				title: t("newChatMessage2"),
 				status: "warning",
 				duration: 3000,
 				isClosable: true,
@@ -105,7 +106,7 @@ export default function ChatListBox() {
 	return (
 		<>
 			<Button m={5} p={4} onClick={() => newChat()}>
-				Создать чат
+				{t("newChat")}
 			</Button>
 
 			<Flex direction="column" sx={{ scrollbarWidth: "none" }} flex={1}>

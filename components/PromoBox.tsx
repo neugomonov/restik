@@ -26,9 +26,7 @@ export default function PromoBox() {
 	const { colorMode } = useColorMode();
 	const handleClick = (route: string) => {
 		return async () => {
-			await router.push(route, route, {
-				locale: "ru",
-			});
+			await router.push(route, route);
 		};
 	};
 	// @ts-expect-error

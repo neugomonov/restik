@@ -107,9 +107,7 @@ export default function LargeWithNewsletter() {
 	const router = useRouter();
 	const handleClick = (route: string) => {
 		return async () => {
-			await router.push(route, route, {
-				locale: "ru",
-			});
+			await router.push(route, route);
 		};
 	};
 	// @ts-expect-error
