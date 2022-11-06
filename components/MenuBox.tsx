@@ -52,21 +52,6 @@ const MenuItem = dynamic(
 	async () => (await import("@chakra-ui/react")).MenuItem
 );
 
-type FormState = {
-	name: string;
-	email: string;
-	phone: string;
-	company?: string;
-	address: string;
-	postal: string;
-	city: string;
-	floor?: string;
-	time: string;
-	notes?: string;
-	payment: "Наличные" | "Онлайн";
-	tip?: string;
-};
-
 const ProductImage = chakra(NextImage, {
 	shouldForwardProp: (prop) => ["width", "height", "src", "alt"].includes(prop),
 });
