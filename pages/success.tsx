@@ -9,6 +9,7 @@ import {
 	Text,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
@@ -19,12 +20,10 @@ function Success() {
 	const router = useRouter();
 	const handleClick = (route: string) => {
 		return async () => {
-			await router.push(route, route, {
-				locale: "ru",
-			});
+			await router.push(route, route);
 		};
 	};
-
+	const { t, lang } = useTranslation("common");
 	return (
 		<>
 			<div
@@ -54,7 +53,7 @@ function Success() {
 						variant="solid"
 						mb="1rem"
 					>
-						Заказ{" "}
+						{info.order[lang as "en" | "ru"]}
 					</Tag>
 				)}{" "}
 				<Box
@@ -87,17 +86,14 @@ function Success() {
 						src="images/success.gif"
 						alt="success gif"
 					/>{" "}
-					<Heading>Спасибо за заказ!</Heading>
-					<Text colorScheme={"gray"}>
-						Заказ принят. В ожидании пиццы рекомендуем посетить свой профиль!
-						Там вы можете найти историю ваших заказов.
-					</Text>
+					<Heading>{t("successHeading")}</Heading>
+					<Text colorScheme={"gray"}>{t("successText")}</Text>
 					<Button
 						leftIcon={<CgProfile />}
 						colorScheme="orange"
 						onClick={handleClick("/profile")}
 					>
-						Профиль
+						{t("successButton")}
 					</Button>
 				</Stack>
 			</Stack>

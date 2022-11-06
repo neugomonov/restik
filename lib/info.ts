@@ -16,6 +16,12 @@ const info = {
 		en: "Notifications",
 		ru: "Оповещения",
 	},
+	clear: {
+		en: "Clear",
+		ru: "Очистить",
+	},
+	read: { en: "Read", ru: "Прочитано" },
+	signIn: { en: "Sign in", ru: "Войдите" },
 	translate: {
 		en: "Translate",
 		ru: "Перевод",
@@ -47,6 +53,10 @@ const info = {
 	kitchen: {
 		en: "Our Kitchen",
 		ru: "Наша кухня",
+	},
+	order: {
+		en: "Order",
+		ru: "Заказ",
 	},
 	currency: "₽",
 	callingCode: "+7",

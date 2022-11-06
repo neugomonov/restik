@@ -1,3 +1,5 @@
 {
-    "message": "This page cannot be found."
+    "heading": "This page cannot be found",
+    "text": "This page does not exist. Something is wrong here. Better go back.",
+    "button": "Back"
 }
