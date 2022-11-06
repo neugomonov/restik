@@ -163,7 +163,7 @@ export default function LargeWithNewsletter() {
 						<Stack spacing={3}>
 							<Text>{t("powered")}</Text>
 							<HStack direction="row" isInline={true} spacing={5}>
-								<Link isExternal href="https://nextjs.org/">
+								<Link isExternal href="https://reactjs.org/">
 									<Image
 										src="/images/reactjs.svg"
 										alt="Reactjs"
