@@ -1,6 +1,9 @@
 const withTranslate = require("next-translate");
 const withOptimizedImages = require("next-optimized-images");
 const withPWA = require("next-pwa")({ dest: "public" });
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+	enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig = {
 	reactStrictMode: true,
@@ -18,4 +21,6 @@ const nextConfig = {
 	},
 };
 
-module.exports = withPWA(withTranslate(withOptimizedImages(nextConfig)));
+module.exports = withBundleAnalyzer(
+	withPWA(withTranslate(withOptimizedImages(nextConfig)))
+);
