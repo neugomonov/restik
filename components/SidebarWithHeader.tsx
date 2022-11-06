@@ -13,7 +13,7 @@ import {
 	HStack,
 	Icon,
 	IconButton,
-	Link,
+	Link as ChakraLink,
 	Menu,
 	MenuButton,
 	MenuItem,
@@ -26,6 +26,8 @@ import {
 	useColorModeValue,
 	useDisclosure,
 } from "@chakra-ui/react";
+import Link from "next/link";
+
 import {
 	collection,
 	deleteDoc,
@@ -233,9 +235,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
 	const handleClick = (route: string) => {
 		return async () => {
-			await router.push(route, route, {
-				locale: "ru",
-			});
+			await router.push(route, route);
 		};
 	};
 	const { t, lang } = useTranslation("menu");
@@ -336,11 +336,11 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 						{session ? (
 							<>
 								<Flex align="center" justify="space-around">
-									<Text alignSelf="center" as={Link} onClick={deleteAll}>
-										🧹 Очистить
+									<Text alignSelf="center" as={ChakraLink} onClick={deleteAll}>
+										🧹 {info.clear[lang as "en" | "ru"] ?? t("clear")}
 									</Text>
-									<Text alignSelf="center" as={Link} onClick={readAll}>
-										Прочитано ✉️
+									<Text alignSelf="center" as={ChakraLink} onClick={readAll}>
+										{info.read[lang as "en" | "ru"] ?? t("read")} ✉️
 									</Text>
 								</Flex>
 								<NotificationList />
@@ -351,8 +351,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 								justify="space-around"
 								onClick={() => signIn()}
 							>
-								<Text alignSelf="center" as={Link}>
-									🔔 Войдите 🙋
+								<Text alignSelf="center" as={ChakraLink}>
+									🔔 {info.signIn[lang as "en" | "ru"] ?? t("signIn")} 🙋
 								</Text>
 							</Flex>
 						)}
@@ -461,8 +461,11 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
 						borderColor={useColorModeValue("gray.200", "gray.700")}
 					>
-						<MenuItem onClick={handleClick("/en/menu")}>English</MenuItem>
-						<MenuItem onClick={handleClick("/ru/menu")}>Русский</MenuItem>
+						{router.locales!.map((locale) => (
+							<Link key={locale} href={router.asPath} locale={locale}>
+								<MenuItem>{locale === "en" ? "English" : "Русский"}</MenuItem>
+							</Link>
+						))}
 					</MenuList>
 				</Menu>
 			</Stack>
@@ -512,7 +515,7 @@ const NavItem = ({ onClose, icon, href, children, ...rest }: NavItemProps) => {
 						transition: { type: "spring", bounce: 0.8 },
 					}}
 					onClick={async () => {
-						await router.push(href, href, { locale: "ru" });
+						await router.push(href, href);
 						await onClose();
 					}}
 					transition="background-color 0.2s"
@@ -735,11 +738,15 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 							{session ? (
 								<>
 									<Flex align="center" justify="space-around">
-										<Text alignSelf="center" as={Link} onClick={deleteAll}>
-											🧹 Очистить
+										<Text
+											alignSelf="center"
+											as={ChakraLink}
+											onClick={deleteAll}
+										>
+											🧹 {t("clear")}
 										</Text>
-										<Text alignSelf="center" as={Link} onClick={readAll}>
-											Прочитано ✉️
+										<Text alignSelf="center" as={ChakraLink} onClick={readAll}>
+											{t("read")} ✉️
 										</Text>
 									</Flex>
 									<NotificationList />
@@ -750,8 +757,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 									justify="space-around"
 									onClick={() => signIn()}
 								>
-									<Text alignSelf="center" as={Link}>
-										🔔 Войдите 🙋
+									<Text alignSelf="center" as={ChakraLink}>
+										🔔 {t("signIn")} 🙋
 									</Text>
 								</Flex>
 							)}

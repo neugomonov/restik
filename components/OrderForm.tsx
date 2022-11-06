@@ -69,7 +69,7 @@ type FormState = {
 	floor?: string;
 	time: string;
 	notes?: string;
-	payment: "Наличные" | "Онлайн";
+	payment: "Cash" | "Online";
 	tip?: string;
 };
 
@@ -113,13 +113,13 @@ export default function OrderForm() {
 		const currentTime = new Date().getTime() / 1000;
 		const timeOfDiscoEnd = 1661776053;
 		let total = 0;
-		currentTime < timeOfDiscoEnd && payment !== "Онлайн"
+		currentTime < timeOfDiscoEnd && payment !== "Online"
 			? (total = disco)
 			: (total = cart.total);
 		phone = "+7 " + phone;
 		const products = stringifiedProducts;
 		const timestamp = serverTimestamp();
-		const status = "Принят";
+		const status = t("accepted");
 		const collectionRef = collection(db, "orders");
 		const payload = {
 			products,
@@ -144,19 +144,19 @@ export default function OrderForm() {
 			await addDoc(collectionRef, payload);
 			setCart({ items: [], total: 0 });
 			toast({
-				title: "Заказ принят",
+				title: t("success"),
 				status: "success",
 				duration: 3000,
 				isClosable: true,
 			});
 			await addDoc(collection(db, `notifications`), {
 				recipient: email,
-				text: "🍕 Ваш заказ " + status + "!",
+				text: t("yourOrder") + status + "!",
 				timestamp: timestamp,
 				read: false,
 			});
 
-			if (payment == "Онлайн") {
+			if (payment == "Online") {
 				const stripe = await stripePromise;
 				const checkoutSession = await axios.post(
 					"api/create-checkout-session",
@@ -175,7 +175,7 @@ export default function OrderForm() {
 			}
 		} else {
 			toast({
-				title: "Пожалуйста, введите номер телефона корректно",
+				title: t("phoneWarning"),
 				status: "warning",
 				duration: 3000,
 				isClosable: true,
@@ -340,8 +340,8 @@ export default function OrderForm() {
 							placeholder={t("select")}
 							onChange={handleForm(setPayment)}
 						>
-							<option value="Наличные">{t("cash")}</option>
-							<option value="Онлайн">Онлайн</option>
+							<option value="Cash">{t("cash")}</option>
+							<option value="Online">{t("online")}</option>
 						</Select>
 					</FormControl>
 					<FormControl id="tip">
@@ -430,7 +430,7 @@ export default function OrderForm() {
 								!deliveryHours || deliveryHours.length === 0 || cart.total == 0
 							}
 						>
-							{watch("payment") === "Онлайн" ? t("placeAndPay") : t("pay")}
+							{watch("payment") === "Online" ? t("placeAndPay") : t("pay")}
 						</Button>
 					</Box>
 				</Stack>

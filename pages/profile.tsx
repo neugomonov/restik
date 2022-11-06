@@ -14,16 +14,19 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
+import useTranslation from "next-translate/useTranslation";
 import { CgProfile } from "react-icons/cg";
 import { FiChevronDown } from "react-icons/fi";
 import OrdersTable from "../components/OrdersTable";
 import ProfileButtons from "../components/ProfileButtons";
 import { WithSideContentLayout } from "../layouts/menu";
+import index from "../lib";
 import info from "../lib/info";
 
 function Profile() {
 	const { colorMode } = useColorMode();
 	const { data: session } = useSession();
+	const { t, lang } = useTranslation("info");
 	// TODO: there is a problem with the gif on narrow devices. Gotta fix.
 	return (
 		<>
@@ -125,7 +128,7 @@ function Profile() {
 							spacing={5}
 						>
 							<Heading size="lg">
-								Это ваш профиль. Здесь вы можете редактировать ваши данные.{" "}
+								{index.profileMessage[lang as "en" | "ru"]}
 							</Heading>
 							<Image
 								src="https://images.squarespace-cdn.com/content/v1/529fb134e4b0dbf53fa8fa91/1519937177934-Y9HTRD1O0HTVDJECU42X/02_.gif"

@@ -41,9 +41,7 @@ export default function CartDrawerBody() {
 	const { t } = useTranslation("common");
 	const handleClick = (route: string) => {
 		return async () => {
-			await router.push(route, route, {
-				locale: "ru",
-			});
+			await router.push(route, route);
 		};
 	};
 	const handleRemovePositionClick = (item: {

@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
+import useTranslation from "next-translate/useTranslation";
 import { useState } from "react";
 import { MdOutlineSend } from "react-icons/md";
 import { db } from "../firebase";
@@ -15,7 +16,7 @@ export default function BottomBar({ id }: { id: string }) {
 	const [input, setInput] = useState("");
 	const { data: session } = useSession();
 	const { colorMode } = useColorMode();
-
+	const { t, lang } = useTranslation("common");
 	const sendMessage = async (event: React.FormEvent<HTMLDivElement>) => {
 		event.preventDefault();
 		if (input !== "") {
@@ -33,7 +34,7 @@ export default function BottomBar({ id }: { id: string }) {
 		<FormControl p={3} onSubmit={sendMessage} as="form">
 			<HStack>
 				<Input
-					placeholder={"Ваше сообщение"}
+					placeholder={t("bottomBarPlaceholder")}
 					bg={colorMode === "dark" ? "whiteAlpha.100" : "blackAlpha.100"}
 					border={0}
 					_focus={{

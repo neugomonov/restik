@@ -8,6 +8,7 @@ import { db } from "../firebase";
 import { doc, DocumentData, onSnapshot, updateDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { IoCash } from "react-icons/io5";
+import useTranslation from "next-translate/useTranslation";
 
 export default function ProfileButtons() {
 	const { data: session } = useSession();
@@ -26,16 +27,23 @@ export default function ProfileButtons() {
 			),
 		[]
 	);
+	const { t, lang } = useTranslation("common");
 	const handleEditAddress = async (id: string) => {
-		const address = prompt("Введите адрес доставки 🏠");
+		const address = prompt(t("addressPrompt"));
 		if (address != null && address != "") {
 			const docRef = doc(db, "users", id);
 			const payload = { address };
 			updateDoc(docRef, payload);
+			toast({
+				title: t("addressToast"),
+				status: "success",
+				duration: 3000,
+				isClosable: true,
+			});
 		}
 	};
 	const handleEditPhone = async (id: string) => {
-		const phone = prompt("Введите ваш телефон 🤙");
+		const phone = prompt(t("phonePrompt"));
 		const phonePattern = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/i;
 
 		if (phonePattern.test(phone!)) {
@@ -43,32 +51,33 @@ export default function ProfileButtons() {
 			const payload = { phone };
 			updateDoc(docRef, payload);
 			toast({
-				title: "Номер изменён",
+				title: t("phoneToast"),
 				status: "success",
 				duration: 3000,
 				isClosable: true,
 			});
 		} else {
 			toast({
-				title: "Пожалуйста, введите номер телефона корректно",
+				title: t("phoneBadToast"),
 				status: "warning",
 				duration: 3000,
 				isClosable: true,
 			});
 		}
 	};
+	//// After all the code modifications this function is pretty much useless. Stating you preferred payment is useless, your phone, your address - everything. I'll let the buttons be for now, anyway. But I gotta make use of it all some day.
 	const handleEditPayment = async (id: string) => {
-		const payment = prompt("Наличные или Онлайн? 💸");
+		const payment = prompt("Cash / Online? 💸");
 		if (
 			payment !== null &&
-			(payment.toLowerCase() == "наличные" || payment.toLowerCase() == "онлайн")
+			(payment.toLowerCase() == "cash" || payment.toLowerCase() == "cash")
 		) {
 			const docRef = doc(db, "users", id);
 			const payload = { payment };
 			updateDoc(docRef, payload);
 		} else {
 			toast({
-				title: "Пожалуйста, введите способ оплаты корректно",
+				title: t("paymentToast"),
 				status: "warning",
 				duration: 3000,
 				isClosable: true,

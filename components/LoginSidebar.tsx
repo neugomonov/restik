@@ -26,9 +26,7 @@ export default function LoginSidebar() {
 	const { data: session, status } = useSession();
 	const handleClick = (route: string) => {
 		return async () => {
-			await router.push(route, route, {
-				locale: "ru",
-			});
+			await router.push(route, route);
 		};
 	};
 	const { t, lang } = useTranslation("common");

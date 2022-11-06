@@ -3,6 +3,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { Session } from "next-auth/core/types";
+import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { db } from "../firebase";
@@ -14,6 +15,7 @@ export default function stringifyCartPositions() {
 	const [cart, setCart] = useRecoilState(_cart);
 	const toast = useToast();
 	const router = useRouter();
+	const { t, lang } = useTranslation("menu");
 
 	let stringified = "";
 	for (let index = 0; index < cart.items.length; ++index) {
@@ -35,7 +37,7 @@ export default function stringifyCartPositions() {
 		const currentTime = new Date().getTime() / 1000;
 		const timeOfDiscoEnd = 1661776053;
 		let total = 0;
-		currentTime < timeOfDiscoEnd && payment.toLowerCase() !== "онлайн"
+		currentTime < timeOfDiscoEnd && payment.toLowerCase() !== "online"
 			? (total = disco)
 			: (total = cart.total);
 		const products = stringifiedProducts;
@@ -49,7 +51,7 @@ export default function stringifyCartPositions() {
 			payment = session?.user?.payment;
 			const email = session?.user?.email;
 			const timestamp = serverTimestamp();
-			const status = "Принят";
+			const status = t("accepted");
 			const collectionRef = collection(db, "orders");
 			const payload = {
 				products,
@@ -64,18 +66,18 @@ export default function stringifyCartPositions() {
 			const docRef = await addDoc(collectionRef, payload);
 			setCart({ items: [], total: 0 });
 			toast({
-				title: "Заказ принят",
+				title: t("success"),
 				status: "success",
 				duration: 3000,
 				isClosable: true,
 			});
 			await addDoc(collection(db, `notifications`), {
 				recipient: email,
-				text: "🍕 Ваш заказ " + status + "!",
+				text: t("yourOrder") + status + "!",
 				timestamp: timestamp,
 				read: false,
 			});
-			if (payment.toLowerCase() == "онлайн") {
+			if (payment.toLowerCase() == "online") {
 				const stripe = await stripePromise;
 				const checkoutSession = await axios.post(
 					"api/create-checkout-session",
@@ -93,11 +95,9 @@ export default function stringifyCartPositions() {
 				}
 			}
 		} else {
-			await router.push("/menu", "/menu", {
-				locale: "ru",
-			});
+			await router.push("/menu", "/menu");
 			toast({
-				title: "Отлично! Осталось заполнить данные заказа ниже...",
+				title: t("splendid"),
 				status: "info",
 				duration: 3000,
 				isClosable: true,

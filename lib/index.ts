@@ -4,7 +4,7 @@ const index = {
 		ru: "Как мы делаем нашу пиццу такой вкусной",
 	},
 	chat: {
-		en: "Ask questions in the chat with Pizzeria, and we'll answer right away!",
+		en: "Ask a question in the chat with Pizzeria, and we'll answer right away!",
 		ru: "Задавайте вопросы в чат с Пиццерией, и мы обязательно ответим!",
 	},
 	WithBackgroundImage1: {
@@ -161,6 +161,14 @@ const index = {
 	SimpleThreeColumns6: {
 		en: "We will deliver as quickly as possible. Or, if you prefer, a little later - you can order pizza right at the guests' arrival!",
 		ru: "Доставим как можно быстрее. Или, если хотите, чуть позже - вы можете заказать пиццу прямо к приезду гостей!",
+	},
+	chatSessionMessage: {
+		en: "For questions to Pizzeria, create a chat and enter our email - neugomonovv@gmail.com",
+		ru: "Для вопросов к Пиццерии создайте чат и введите наш email - neugomonovv@gmail.com",
+	},
+	profileMessage: {
+		en: "This is your profile. You can edit your details here.",
+		ru: "Это ваш профиль. Здесь вы можете редактировать ваши данные.",
 	},
 };
 

@@ -10,15 +10,15 @@ import {
 	Text,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { BiErrorAlt } from "react-icons/bi";
 import { WithSideContentLayout } from "../layouts/menu";
 import info from "../lib/info";
 
 function FourOFour() {
 	const router = useRouter();
-
+	const { t, lang } = useTranslation("404");
 	return (
 		<>
 			<div
@@ -101,11 +101,8 @@ function FourOFour() {
 					>
 						🤔
 					</motion.div>
-					<Heading>Страница не найдена </Heading>{" "}
-					<Text colorScheme={"gray"}>
-						Такой страницы не существует. Что-то здесь не так. Лучше вернуться
-						назад.
-					</Text>
+					<Heading>{t("heading")} </Heading>{" "}
+					<Text colorScheme={"gray"}>{t("text")} </Text>
 					<Button
 						leftIcon={<ArrowBackIcon />}
 						colorScheme="orange"
@@ -113,7 +110,7 @@ function FourOFour() {
 							await router.back();
 						}}
 					>
-						Назад
+						{t("button")}
 					</Button>
 				</Stack>
 			</Stack>

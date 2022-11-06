@@ -30,6 +30,11 @@
 	"paymentMethod": "Payment method",
 	"select": "Select...",
 	"cash": "Cash",
+	"online": "Online",
+	"success": "Order is placed",
+	"yourOrder": "🍕 Your order is ",
+	"accepted": "Accepted",
+	"phoneWarning": "Please enter the phone number correctly",
 	"tip": "Tip",
 	"tipNone": "None",
 	"iAgree": "I agree with",
@@ -53,5 +58,9 @@
 	"purgeCartMessage": "This action cannot be undone.",
 	"cancel": "Cancel",
 	"cartPurged": "Cart purged",
-	"confirm": "Confirm"
+	"confirm": "Confirm",
+	"clear": "Clear",
+	"read": "Read",
+	"signIn": "Sign in",
+	"splendid": "Splendid! All that's left to do now is to fill in the order details below..."
 }

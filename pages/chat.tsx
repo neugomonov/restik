@@ -92,8 +92,7 @@ function Chat() {
 						>
 							{session && (
 								<Heading size="md">
-									Для вопросов к Пиццерии создайте чат и введите наш email -
-									neugomonovv@gmail.com
+									{index.chatSessionMessage[lang as "en" | "ru"]}{" "}
 								</Heading>
 							)}
 							<Stack
