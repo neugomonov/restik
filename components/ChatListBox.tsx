@@ -1,4 +1,11 @@
-import { Avatar, Button, Flex, Text, useToast } from "@chakra-ui/react";
+import {
+	Avatar,
+	Button,
+	Flex,
+	Text,
+	useColorModeValue,
+	useToast,
+} from "@chakra-ui/react";
 import { addDoc, collection } from "@firebase/firestore";
 import { doc, getDocs, query, where } from "firebase/firestore";
 import { motion } from "framer-motion";
@@ -89,7 +96,10 @@ export default function ChatListBox() {
 					key={Math.random()}
 					p={3}
 					align="center"
-					_hover={{ bg: "orange.400", textColor: "black", cursor: "pointer" }}
+					_hover={{
+						bg: useColorModeValue("orange.400", "yellow.400"),
+						textColor: "black",
+					}}
 					onClick={() => redirect(chat.id)}
 					transition="background-color 0.2s"
 					mx="4"
@@ -105,7 +115,7 @@ export default function ChatListBox() {
 	};
 	return (
 		<>
-			<Button m={5} p={4} onClick={() => newChat()}>
+			<Button my={5} p={4} width="100%" onClick={() => newChat()}>
 				{t("newChat")}
 			</Button>
 
