@@ -5,6 +5,7 @@ import {
 	Stack,
 	Text,
 	useBreakpointValue,
+	useColorModeValue,
 	VStack,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
@@ -86,6 +87,10 @@ export default function WithBackgroundImage() {
 								colorScheme={"orange"}
 								size="lg"
 								data-testid="button"
+								boxShadow={useColorModeValue(
+									"xl",
+									"0 0 5px 1px #fff, 0 0 10px 7px #ECC94B, 0 0 20px 15px #ED8936"
+								)}
 								onClick={handleClick("/menu")}
 							>
 								{index.WithBackgroundImageButton[lang as "en" | "ru"]}

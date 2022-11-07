@@ -65,6 +65,10 @@ export default function CallToActionWithAnnotation() {
 							colorScheme={"orange"}
 							px={6}
 							data-testid="button"
+							boxShadow={useColorModeValue(
+								"xl",
+								"0 0 5px 1px #fff, 0 0 10px 7px #ECC94B, 0 0 20px 15px #ED8936"
+							)}
 							onClick={handleClick("/menu")}
 						>
 							{index.CallToActionWithAnnotationButton1[lang as "en" | "ru"]}
