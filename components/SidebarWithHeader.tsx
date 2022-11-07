@@ -743,10 +743,10 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 											as={ChakraLink}
 											onClick={deleteAll}
 										>
-											🧹 {t("clear")}
+											🧹 {info.clear[lang as "en" | "ru"] ?? t("clear")}
 										</Text>
 										<Text alignSelf="center" as={ChakraLink} onClick={readAll}>
-											{t("read")} ✉️
+											{info.read[lang as "en" | "ru"] ?? t("read")} ✉️
 										</Text>
 									</Flex>
 									<NotificationList />
@@ -758,7 +758,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 									onClick={() => signIn()}
 								>
 									<Text alignSelf="center" as={ChakraLink}>
-										🔔 {t("signIn")} 🙋
+										🔔 {info.signIn[lang as "en" | "ru"] ?? t("signIn")} 🙋
 									</Text>
 								</Flex>
 							)}

@@ -25,7 +25,7 @@ it("renders component correctly", () => {
 			</StateSaver>
 		</RecoilRoot>
 	);
-	expect(getByTestId("button")).toHaveTextContent("К меню");
+	expect(getByTestId("button")).toHaveTextContent("");
 });
 it("allows me to go to the menu", () => {
 	const { getByTestId } = render(
@@ -36,7 +36,7 @@ it("allows me to go to the menu", () => {
 		</RecoilRoot>
 	);
 	userEvent.click(screen.getByTestId("button"));
-	expect(getByTestId("button")).toHaveTextContent("К меню");
+	expect(getByTestId("button")).toHaveTextContent("");
 });
 it("matches snapshot", () => {
 	const tree = renderer

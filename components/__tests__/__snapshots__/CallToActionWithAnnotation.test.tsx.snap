@@ -10,40 +10,28 @@ exports[`matches snapshot 1`] = `
     <h2
       className="chakra-heading css-ezczds"
     >
-      Заказывайте домой
       <br />
       <span
         className="chakra-text css-1ibnddt"
-      >
-        или приходите к нам
-      </span>
+      />
     </h2>
     <p
       className="chakra-text css-0"
-    >
-      Мы всегда будем рады видеть вас в нашем уютном месте, где всегда веет ароматом вкуснейших итальянских блюд!
-       
-    </p>
+    />
     <div
       className="chakra-stack css-85m0tt"
     >
       <button
-        className="chakra-button css-jn5lb1"
+        className="chakra-button css-1hfqlbi"
         data-testid="button"
         onClick={[Function]}
         type="button"
-      >
-        К меню
-         
-      </button>
+      />
       <button
         className="chakra-button css-5c2176"
         onClick={[Function]}
         type="button"
-      >
-        Посмотреть акции
-         
-      </button>
+      />
       <div
         className="css-1t6irk0"
       >
@@ -61,10 +49,7 @@ exports[`matches snapshot 1`] = `
         </svg>
         <p
           className="chakra-text css-1ibb1cs"
-        >
-          Первый заказ - скидка 30%
-           
-        </p>
+        />
       </div>
     </div>
   </div>
