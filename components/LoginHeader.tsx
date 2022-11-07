@@ -1,6 +1,5 @@
 import {
 	Avatar,
-	Box,
 	Button,
 	Flex,
 	HStack,
@@ -10,15 +9,12 @@ import {
 	MenuItem,
 	MenuList,
 	Stack,
-	Text,
 	useColorModeValue,
-	VStack,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { signIn, signOut, useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import router from "next/router";
-import { FiChevronDown } from "react-icons/fi";
 export default function LoginHeader() {
 	const { data: session } = useSession();
 	const handleClick = (route: string) => {
@@ -55,23 +51,6 @@ export default function LoginHeader() {
 						>
 							<HStack>
 								<Avatar size={"sm"} src={session?.user?.image!} />
-								<VStack
-									display={{ base: "none", md: "flex" }}
-									alignItems="flex-start"
-									spacing="1px"
-									ml="2"
-								>
-									<Text fontSize="sm">{session?.user?.name}</Text>
-									<Text
-										fontSize="xs"
-										color={useColorModeValue("gray.600", "gray.300")}
-									>
-										{session?.user?.email!}
-									</Text>
-								</VStack>
-								<Box display={{ base: "none", md: "flex" }}>
-									<FiChevronDown />
-								</Box>
 							</HStack>
 						</MenuButton>
 						<MenuList
