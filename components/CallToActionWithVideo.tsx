@@ -11,7 +11,6 @@ import {
 	Image,
 	Stack,
 	Text,
-	useColorModeValue,
 } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
@@ -106,7 +105,7 @@ export default function CallToActionWithVideo() {
 						top={"-20%"}
 						left={0}
 						zIndex={-1}
-						color={useColorModeValue("orange.400", "orange.400")}
+						color={"orange.400"}
 					/>
 					<Box
 						position={"relative"}

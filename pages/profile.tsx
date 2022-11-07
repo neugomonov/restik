@@ -108,7 +108,7 @@ function Profile() {
 										<VStack alignItems="center" spacing="0" ml="2">
 											<Text fontSize="3xl">{session?.user?.name}</Text>
 											<Text
-												fontSize="xl"
+												fontSize="sm"
 												color={useColorModeValue("gray.600", "gray.300")}
 											>
 												{session?.user?.email!}
