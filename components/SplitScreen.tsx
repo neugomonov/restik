@@ -67,8 +67,8 @@ export default function SplitScreen() {
 					alt={"Login Image"}
 					rounded={"2xl"}
 					borderRadius="2xl"
-					height="300px"
-					width="1000px"
+					height="20rem"
+					width="100rem"
 					objectFit="cover"
 					src={
 						"https://images.notquitenigella.com/images/spaghetti-pizza/__spaghetti-pizza-recipe-2.jpg?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"

@@ -55,6 +55,8 @@ export default function CallToActionWithIllustration() {
 					<Image
 						alt="restaurant illustration"
 						borderRadius="2xl"
+						height="25rem"
+						width="100rem"
 						height="400px"
 						width="1000px"
 						objectFit="cover"

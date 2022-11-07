@@ -97,7 +97,7 @@ function FourOFour() {
 							scale: 1.2,
 							transition: { type: "spring", bounce: 0.8, duration: 1 },
 						}}
-						style={{ fontSize: "100px", cursor: "pointer" }}
+						style={{ fontSize: "6rem", cursor: "pointer" }}
 					>
 						🤔
 					</motion.div>

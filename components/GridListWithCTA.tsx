@@ -50,7 +50,7 @@ export default function gridListWithCTA() {
 				gap={4}
 			>
 				<GridItem colSpan={1}>
-					<VStack alignItems="flex-start" spacing="20px">
+					<VStack alignItems="flex-start" spacing="5">
 						<chakra.h2 fontSize="3xl" fontWeight="700">
 							{index.GridListWithCTA1[lang as "en" | "ru"]}
 						</chakra.h2>

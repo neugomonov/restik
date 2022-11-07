@@ -102,8 +102,8 @@ function Chat() {
 							>
 								<motion.div
 									style={{
-										fontSize: "40px",
-										marginTop: "-7px",
+										fontSize: "2.5rem",
+										marginTop: "-.45rem",
 									}}
 									drag
 									dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
@@ -121,7 +121,7 @@ function Chat() {
 								</motion.div>
 								<motion.div
 									style={{
-										fontSize: "40px",
+										fontSize: "2.5rem",
 									}}
 									drag
 									dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
@@ -139,8 +139,8 @@ function Chat() {
 								</motion.div>
 								<motion.div
 									style={{
-										fontSize: "40px",
-										marginTop: "-7px",
+										fontSize: "2.5rem",
+										marginTop: "-.45rem",
 									}}
 									drag
 									dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
