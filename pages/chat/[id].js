@@ -153,7 +153,8 @@ function Chat() {
 									>
 										<motion.div
 											style={{
-												fontSize: "40px",
+												fontSize: "2.5rem",
+												marginTop: "-1rem",
 											}}
 											drag="y"
 											animate={{ x: move2 ? 10 : -10 }}

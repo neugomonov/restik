@@ -55,8 +55,9 @@ export default function CallToActionWithIllustration() {
 					<Image
 						alt="restaurant illustration"
 						borderRadius="2xl"
-						height="400px"
-						width="1000px"
+						height="25rem"
+						width="100rem"
+						boxShadow={"2xl"}
 						objectFit="cover"
 						src="https://cdn.dribbble.com/users/5950507/screenshots/14543756/media/3cf8ea17f7e1a1b04c56e8b82f8b1a28.gif"
 					/>
