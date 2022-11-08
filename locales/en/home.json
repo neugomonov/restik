@@ -20,5 +20,8 @@
 	"purgeCartMessage": "This action cannot be undone.",
 	"cancel": "Cancel",
 	"cartPurged": "Cart purged",
-	"confirm": "Confirm"
+	"confirm": "Confirm",
+	"sampleHeading": "Heading",
+	"sampleText": "Text",
+	"sampleButton": "Button"
 }
