@@ -20,5 +20,8 @@
 	"purgeCartMessage": "Это действие не сможет быть отменено.",
 	"cancel": "Отмена",
 	"cartPurged": "Корзина очищена",
-	"confirm": "Подтвердить"
+	"confirm": "Подтвердить",
+	"sampleHeading": "Heading",
+	"sampleText": "Text",
+	"sampleButton": "Button"
 }
