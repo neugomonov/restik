@@ -40,7 +40,7 @@ export default function SplitScreen() {
 								zIndex: -1,
 							}}
 						>
-							{index.SplitScreen1[lang as "en" | "ru"]}
+							{index.SplitScreen1[lang as "en" | "ru"] ?? t("sampleHeading")}
 						</Text>
 						<br />{" "}
 						<Text color={"orange.400"} as={"span"}>
@@ -48,11 +48,12 @@ export default function SplitScreen() {
 						</Text>{" "}
 					</Heading>
 					<Text fontSize={{ base: "md", lg: "lg" }} colorScheme={"gray"}>
-						{index.SplitScreen3[lang as "en" | "ru"]}
+						{index.SplitScreen3[lang as "en" | "ru"] ?? t("sampleText")}
 					</Text>
 					<Stack direction={{ base: "column", md: "row" }} spacing={4}>
 						<Button colorScheme={"orange"} onClick={handleClick("/promo")}>
-							{index.SplitScreenButton1[lang as "en" | "ru"]}
+							{index.SplitScreenButton1[lang as "en" | "ru"] ??
+								t("sampleButton")}
 						</Button>
 						<Button
 							onClick={async () => {
