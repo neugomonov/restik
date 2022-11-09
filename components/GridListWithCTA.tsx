@@ -37,7 +37,7 @@ export default function gridListWithCTA() {
 			await router.push(route, route);
 		};
 	};
-	const { t, lang } = useTranslation("info");
+	const { t, lang } = useTranslation("common");
 
 	return (
 		<Box as={Container} maxW="7xl" mt={14} p={4}>
@@ -52,20 +52,23 @@ export default function gridListWithCTA() {
 				<GridItem colSpan={1}>
 					<VStack alignItems="flex-start" spacing="5">
 						<chakra.h2 fontSize="3xl" fontWeight="700">
-							{index.GridListWithCTA1[lang as "en" | "ru"]}
+							{index.GridListWithCTA1[lang as "en" | "ru"] ??
+								t("sampleHeading")}
 						</chakra.h2>
 						<Button
 							colorScheme="orange"
 							size="md"
 							onClick={handleClick("/chat")}
 						>
-							{info.chat[lang as "en" | "ru"]}
+							{info.chat[lang as "en" | "ru"] ?? t("sampleButton")}
 						</Button>
 					</VStack>
 				</GridItem>
 				<GridItem>
 					<Flex>
-						<chakra.p>{index.GridListWithCTA2[lang as "en" | "ru"]}</chakra.p>
+						<chakra.p>
+							{index.GridListWithCTA2[lang as "en" | "ru"] ?? t("sampleText")}
+						</chakra.p>
 					</Flex>
 				</GridItem>
 			</Grid>
@@ -79,20 +82,28 @@ export default function gridListWithCTA() {
 				gap={{ base: "8", sm: "12", md: "16" }}
 			>
 				<Feature
-					heading={index.GridListWithCTA3[lang as "en" | "ru"]}
-					text={index.GridListWithCTA4[lang as "en" | "ru"]}
+					heading={
+						index.GridListWithCTA3[lang as "en" | "ru"] ?? t("sampleHeading")
+					}
+					text={index.GridListWithCTA4[lang as "en" | "ru"] ?? t("sampleText")}
 				/>
 				<Feature
-					heading={index.GridListWithCTA5[lang as "en" | "ru"]}
-					text={index.GridListWithCTA6[lang as "en" | "ru"]}
+					heading={
+						index.GridListWithCTA5[lang as "en" | "ru"] ?? t("sampleHeading")
+					}
+					text={index.GridListWithCTA6[lang as "en" | "ru"] ?? t("sampleText")}
 				/>
 				<Feature
-					heading={index.GridListWithCTA7[lang as "en" | "ru"]}
-					text={index.GridListWithCTA8[lang as "en" | "ru"]}
+					heading={
+						index.GridListWithCTA7[lang as "en" | "ru"] ?? t("sampleHeading")
+					}
+					text={index.GridListWithCTA8[lang as "en" | "ru"] ?? t("sampleText")}
 				/>
 				<Feature
-					heading={index.GridListWithCTA9[lang as "en" | "ru"]}
-					text={index.GridListWithCTA10[lang as "en" | "ru"]}
+					heading={
+						index.GridListWithCTA9[lang as "en" | "ru"] ?? t("sampleHeading")
+					}
+					text={index.GridListWithCTA10[lang as "en" | "ru"] ?? t("sampleText")}
 				/>
 			</Grid>
 		</Box>
