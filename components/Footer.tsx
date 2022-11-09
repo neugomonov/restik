@@ -141,14 +141,13 @@ export default function LargeWithNewsletter() {
 						<Box>
 							<Logo color={useColorModeValue("gray.700", "white")} />
 						</Box>
-						<Text fontSize={"sm"}>{info.address[lang as "en" | "ru"]}</Text>
 						<Text fontSize={"sm"}>
-							{"© " +
-								new Date().getFullYear() +
-								" " +
-								(info.title[lang as "en" | "ru"] ?? t("restaurantName")) +
-								". " +
-								t("rightsReserved")}
+							{info.address[lang as "en" | "ru"] ?? t("sampleText")}{" "}
+						</Text>
+						<Text fontSize={"sm"}>
+							{`© ${new Date().getFullYear()} ${
+								info.title[lang as "en" | "ru"] ?? t("restaurantName")
+							}. ${t("rightsReserved")}`}
 						</Text>
 						<Stack direction={"row"} spacing={6}>
 							<SocialButton label={"Twitter"} href={"https://twitter.com"}>

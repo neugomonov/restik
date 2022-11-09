@@ -21,7 +21,7 @@ import { BlurContext } from "./BlurContext";
 
 export default function NewsBox() {
 	const router = useRouter();
-	const { t, lang } = useTranslation("home");
+	const { t, lang } = useTranslation("common");
 	const { colorMode } = useColorMode();
 	const handleClick = (route: string) => {
 		return async () => {
@@ -122,7 +122,7 @@ export default function NewsBox() {
 								data-testid="button"
 								onClick={handleClick("/news")}
 							>
-								{info.news[lang as "en" | "ru"]}
+								{info.news[lang as "en" | "ru"] ?? t("sampleButton")}
 							</Button>
 						</Stack>
 					</Box>

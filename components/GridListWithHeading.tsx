@@ -22,17 +22,18 @@ const features = Array.apply(null, Array(8)).map(function (x, i) {
 });
 
 export default function GridListWithHeading() {
-	const { t, lang } = useTranslation("index");
+	const { t, lang } = useTranslation("common");
 
 	return (
 		<Box p={4}>
 			<Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
 				<Heading fontSize={"3xl"}>
 					{" "}
-					{index.GridListWithHeading1[lang as "en" | "ru"]}
+					{index.GridListWithHeading1[lang as "en" | "ru"] ??
+						t("sampleHeading")}
 				</Heading>
 				<Text colorScheme={"gray"} fontSize={"xl"}>
-					{index.GridListWithHeading2[lang as "en" | "ru"]}
+					{index.GridListWithHeading2[lang as "en" | "ru"] ?? t("sampleText")}
 				</Text>
 			</Stack>
 
@@ -45,10 +46,10 @@ export default function GridListWithHeading() {
 							</Box>
 							<VStack align={"start"}>
 								<Text fontWeight={600}>
-									{feature.title[lang as "en" | "ru"]}
+									{feature.title[lang as "en" | "ru"] ?? t("sampleHeading")}
 								</Text>
 								<Text colorScheme={"gray"}>
-									{feature.text[lang as "en" | "ru"]}
+									{feature.text[lang as "en" | "ru"] ?? t("sampleText")}
 								</Text>
 							</VStack>
 						</HStack>
