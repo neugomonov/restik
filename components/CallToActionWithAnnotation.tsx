@@ -21,7 +21,7 @@ export default function CallToActionWithAnnotation() {
 			await router.push(route, route);
 		};
 	};
-	const { t, lang } = useTranslation("index");
+	const { t, lang } = useTranslation("home");
 
 	return (
 		<>
@@ -44,15 +44,18 @@ export default function CallToActionWithAnnotation() {
 						fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
 						lineHeight={"110%"}
 					>
-						{index.CallToActionWithAnnotation1[lang as "en" | "ru"]}
+						{index.CallToActionWithAnnotation1[lang as "en" | "ru"] ??
+							t("sampleHeading")}
 
 						<br />
 						<Text as={"span"} color={"orange.400"}>
-							{index.CallToActionWithAnnotation2[lang as "en" | "ru"]}
+							{index.CallToActionWithAnnotation2[lang as "en" | "ru"] ??
+								t("sampleHeading")}
 						</Text>
 					</Heading>
 					<Text colorScheme={"gray"}>
-						{index.CallToActionWithAnnotation3[lang as "en" | "ru"]}
+						{index.CallToActionWithAnnotation3[lang as "en" | "ru"] ??
+							t("sampleText")}
 					</Text>
 					<Stack
 						direction={"column"}
@@ -71,7 +74,8 @@ export default function CallToActionWithAnnotation() {
 							)}
 							onClick={handleClick("/menu")}
 						>
-							{index.CallToActionWithAnnotationButton1[lang as "en" | "ru"]}
+							{index.CallToActionWithAnnotationButton1[lang as "en" | "ru"] ??
+								t("sampleButton")}
 						</Button>
 						<Button
 							variant={"link"}
@@ -79,7 +83,8 @@ export default function CallToActionWithAnnotation() {
 							size={"sm"}
 							onClick={handleClick("/promo")}
 						>
-							{index.CallToActionWithAnnotationButton2[lang as "en" | "ru"]}
+							{index.CallToActionWithAnnotationButton2[lang as "en" | "ru"] ??
+								t("sampleButton")}
 						</Button>
 						<Box display={{ base: "none", md: "flex" }}>
 							<Icon
@@ -98,11 +103,9 @@ export default function CallToActionWithAnnotation() {
 								top={"-15px"}
 								transform={"rotate(10deg)"}
 							>
-								{
-									index.CallToActionWithAnnotationButton1Postfix[
-										lang as "en" | "ru"
-									]
-								}
+								{index.CallToActionWithAnnotationButton1Postfix[
+									lang as "en" | "ru"
+								] ?? t("sampleText")}
 							</Text>
 						</Box>
 					</Stack>

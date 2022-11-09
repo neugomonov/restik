@@ -18,7 +18,7 @@ export default function CallToActionWithIllustration() {
 			await router.push(route, route);
 		};
 	};
-	const { t, lang } = useTranslation("index");
+	const { t, lang } = useTranslation("home");
 
 	return (
 		<Container maxW={"5xl"}>
@@ -33,22 +33,27 @@ export default function CallToActionWithIllustration() {
 					fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
 					lineHeight={"110%"}
 				>
-					{index.CallToActionWithIllustration1[lang as "en" | "ru"]}
+					{index.CallToActionWithIllustration1[lang as "en" | "ru"] ??
+						t("sampleHeading")}
 
 					<Text as={"span"} color={"orange.400"}>
 						{" "}
-						{index.CallToActionWithIllustration2[lang as "en" | "ru"]}
+						{index.CallToActionWithIllustration2[lang as "en" | "ru"] ??
+							t("sampleHeading")}
 					</Text>
 				</Heading>
 				<Text colorScheme={"gray"} maxW={"3xl"}>
-					{index.CallToActionWithIllustration3[lang as "en" | "ru"]}
+					{index.CallToActionWithIllustration3[lang as "en" | "ru"] ??
+						t("sampleText")}
 				</Text>
 				<Stack spacing={6} direction={{ base: "column", md: "row" }}>
 					<Button px={6} colorScheme={"orange"} onClick={handleClick("/news")}>
-						{index.CallToActionWithIllustrationButton1[lang as "en" | "ru"]}
+						{index.CallToActionWithIllustrationButton1[lang as "en" | "ru"] ??
+							t("sampleButton")}
 					</Button>
 					<Button px={6} onClick={handleClick("/about")}>
-						{index.CallToActionWithIllustrationButton2[lang as "en" | "ru"]}
+						{index.CallToActionWithIllustrationButton2[lang as "en" | "ru"] ??
+							t("sampleButton")}
 					</Button>
 				</Stack>
 				<Flex w={"full"} justifyContent={"center"}>

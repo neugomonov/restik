@@ -23,7 +23,7 @@ export default function CallToActionWithVideo() {
 			await router.push(route, route);
 		};
 	};
-	const { t, lang } = useTranslation("index");
+	const { t, lang } = useTranslation("home");
 
 	return (
 		<Container maxW={"5xl"}>
@@ -53,15 +53,18 @@ export default function CallToActionWithVideo() {
 								zIndex: -1,
 							}}
 						>
-							{index.CallToActionWithVideo1[lang as "en" | "ru"]}
+							{index.CallToActionWithVideo1[lang as "en" | "ru"] ??
+								t("sampleHeading")}
 						</Text>
 						<br />
 						<Text as={"span"} color={"orange.400"}>
-							{index.CallToActionWithVideo2[lang as "en" | "ru"]}
+							{index.CallToActionWithVideo2[lang as "en" | "ru"] ??
+								t("sampleHeading")}
 						</Text>
 					</Heading>
 					<Text colorScheme={"gray"} maxW={"3xl"}>
-						{index.CallToActionWithVideo3[lang as "en" | "ru"]}
+						{index.CallToActionWithVideo3[lang as "en" | "ru"] ??
+							t("sampleText")}
 					</Text>
 					<Stack
 						spacing={{ base: 4, sm: 6 }}
@@ -74,7 +77,8 @@ export default function CallToActionWithVideo() {
 							colorScheme={"orange"}
 							onClick={handleClick("/menu")}
 						>
-							{index.CallToActionWithVideoButton1[lang as "en" | "ru"]}
+							{index.CallToActionWithVideoButton1[lang as "en" | "ru"] ??
+								t("sampleButton")}
 						</Button>
 						<Button
 							size={"lg"}
@@ -87,7 +91,8 @@ export default function CallToActionWithVideo() {
 								);
 							}}
 						>
-							{index.CallToActionWithVideoButton2[lang as "en" | "ru"]}
+							{index.CallToActionWithVideoButton2[lang as "en" | "ru"] ??
+								t("sampleButton")}
 						</Button>
 					</Stack>
 				</Stack>
