@@ -91,7 +91,10 @@
     "phoneBadToast": "Please enter a valid phone number",
     "paymentToast": "Please enter \"Cash\" or \"Online\" 🥺",
     "successHeading": "Thank you for your order!",
-    "successText": "Order is accepted. And while you are waiting for the pizza, we recommend visiting your profile! There you can find your order history. Check it out!",
+    "successText": "Order is accepted. And while you are waiting, we recommend visiting your profile! There you can find your order history. Check it out!",
     "successButton": "Profile",
-    "accepted": "accepted"
+    "accepted": "accepted",
+    "sampleHeading": "Heading",
+    "sampleText": "Text",
+    "sampleButton": "Button"
 }
