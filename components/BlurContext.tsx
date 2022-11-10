@@ -10,10 +10,6 @@ export const BlurProvider = (props: {
 	children: React.ReactNode;
 }) => {
 	const [blurMode, setBlurMode] = useState(true);
-	if (typeof window !== "undefined") {
-		console.log("I'm on the browser");
-		// 👉️ can use localStorage here
-	}
 
 	return (
 		// @ts-expect-error
