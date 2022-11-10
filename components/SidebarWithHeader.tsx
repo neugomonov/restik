@@ -2,6 +2,7 @@ import {
 	Avatar,
 	BoxProps,
 	Button,
+	chakra,
 	CloseButton,
 	Drawer,
 	DrawerContent,
@@ -17,6 +18,7 @@ import {
 	MenuButton,
 	MenuItem,
 	MenuList,
+	shouldForwardProp,
 	Stack,
 	Tag,
 	Text,
@@ -24,6 +26,8 @@ import {
 	useColorModeValue,
 	useDisclosure,
 } from "@chakra-ui/react";
+import Link from "next/link";
+
 import {
 	collection,
 	deleteDoc,
@@ -34,11 +38,9 @@ import {
 	updateDoc,
 	where,
 } from "firebase/firestore";
-import { motion } from "framer-motion";
 import { signIn, useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { ReactNode, ReactText, useContext, useEffect, useState } from "react";
 import { IconType } from "react-icons";
@@ -55,14 +57,23 @@ import {
 } from "react-icons/md";
 import { db } from "../firebase";
 import info from "../lib/info";
-import { BlurContext } from "./BlurContext";
 import LoginHeader from "./LoginHeader";
 import LoginSidebar from "./LoginSidebar";
 import NotificationList from "./NotificationList";
 import Pizza from "./pizza";
+import { BlurContext } from "./BlurContext";
+import { isValidMotionProp, motion } from "framer-motion";
 const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
 const Logo = (props: { color: string }) => {
 	const { t, lang } = useTranslation("home");
+	const [rotate, setRotate] = useState(false);
+	const ChakraBox = chakra(motion.div, {
+		/**
+		 * Allow motion props and non-Chakra props to be forwarded.
+		 */
+		shouldForwardProp: (prop) =>
+			isValidMotionProp(prop) || shouldForwardProp(prop),
+	});
 
 	return (
 		<Stack
@@ -149,6 +160,7 @@ export default function SidebarWithHeader({
 					</DrawerContent>
 				</DrawerOverlay>
 			</Drawer>
+			{/* mobilenav */}
 			<MobileNav onOpen={onOpen} />
 		</Box>
 	);
@@ -221,6 +233,11 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 	} = useDisclosure();
 	const router = useRouter();
 
+	const handleClick = (route: string) => {
+		return async () => {
+			await router.push(route, route);
+		};
+	};
 	const { t, lang } = useTranslation("menu");
 
 	return (
