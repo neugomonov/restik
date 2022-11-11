@@ -8,7 +8,6 @@ import Head from "next/head";
 import NextNProgress from "nextjs-progressbar";
 import React, { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
-import { BlurProvider } from "../components/BlurContext";
 import SidebarWithHeader from "../components/SidebarWithHeader";
 import StateSaver from "../components/state-saver";
 import info from "../lib/info";
@@ -61,72 +60,70 @@ const App = ({
 	return (
 		<SessionProvider session={session}>
 			<ApolloProvider client={client}>
-				<BlurProvider>
-					<ChakraProvider>
-						<Global
-							styles={css`
-								body {
-									position: relative;
-									&::before {
-										content: " ";
-										position: fixed;
-										width: 100%;
-										height: 100%;
-										top: 0;
-										left: 0;
-										background-color: black;
-										background: url("images/pizzabackground.jpg") no-repeat
-											center center;
-										background-size: cover;
-										will-change: transform;
-										z-index: -1;
-									}
-									*::-moz-selection {
-										/* Code for Firefox */
-										color: black;
-										background: #f39300;
-									}
-									*::selection {
-										color: black;
-										background: #f39300;
-									}
+				<ChakraProvider>
+					<Global
+						styles={css`
+							body {
+								position: relative;
+								&::before {
+									content: " ";
+									position: fixed;
+									width: 100%;
+									height: 100%;
+									top: 0;
+									left: 0;
+									background-color: black;
+									background: url("images/pizzabackground.jpg") no-repeat center
+										center;
+									background-size: cover;
+									will-change: transform;
+									z-index: -1;
 								}
-							`}
-						/>
-						<Head>
-							<title>{info.title[lang as "en" | "ru"]}</title>
-						</Head>
-						{cart && blurMode ? (
-							<RecoilRoot
-								initializeState={({ set }) => {
-									if (cart) {
-										set(_cart, cart);
-									}
-									if (blurMode) {
-										set(_blur, blurMode);
-									}
-								}}
-							>
-								<StateSaver>
-									<NextNProgress
-										options={{ showSpinner: false }}
-										color="#DD6B20"
-									/>
-									{Component.PageLayout ? (
-										<Component.PageLayout>
-											<Component {...pageProps} />
-										</Component.PageLayout>
-									) : (
+								*::-moz-selection {
+									/* Code for Firefox */
+									color: black;
+									background: #f39300;
+								}
+								*::selection {
+									color: black;
+									background: #f39300;
+								}
+							}
+						`}
+					/>
+					<Head>
+						<title>{info.title[lang as "en" | "ru"]}</title>
+					</Head>
+					{cart && blurMode ? (
+						<RecoilRoot
+							initializeState={({ set }) => {
+								if (cart) {
+									set(_cart, cart);
+								}
+								if (blurMode) {
+									set(_blur, blurMode);
+								}
+							}}
+						>
+							<StateSaver>
+								<NextNProgress
+									options={{ showSpinner: false }}
+									color="#DD6B20"
+								/>
+								{Component.PageLayout ? (
+									<Component.PageLayout>
 										<Component {...pageProps} />
-									)}
-									<SidebarWithHeader children />
-								</StateSaver>
-							</RecoilRoot>
-						) : (
-							<></>
-						)}
-					</ChakraProvider>
-				</BlurProvider>
+									</Component.PageLayout>
+								) : (
+									<Component {...pageProps} />
+								)}
+								<SidebarWithHeader children />
+							</StateSaver>
+						</RecoilRoot>
+					) : (
+						<></>
+					)}
+				</ChakraProvider>
 			</ApolloProvider>
 		</SessionProvider>
 	);

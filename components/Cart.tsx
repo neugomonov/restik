@@ -38,7 +38,7 @@ export default function Cart() {
 	const btnRef = useRef();
 	const { t, lang } = useTranslation("common");
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
-	const [blurMode, setBlurMode] = useRecoilState(_blur);
+	const [blurMode] = useRecoilState(_blur);
 
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...
 	return (

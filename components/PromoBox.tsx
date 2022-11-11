@@ -19,7 +19,6 @@ import { useRecoilState } from "recoil";
 import info from "../lib/info";
 import promo from "../lib/promo";
 import { _blur } from "../lib/recoil-atoms";
-import { BlurContext } from "./BlurContext";
 
 export default function PromoBox() {
 	const { t, lang } = useTranslation("common");
