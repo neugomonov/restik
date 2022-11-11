@@ -1,13 +1,12 @@
 import { Box, Flex, useColorMode } from "@chakra-ui/react";
-import { useContext } from "react";
+import { useRecoilState } from "recoil";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
-import { BlurContext } from "../components/BlurContext";
+import { _blur } from "../lib/recoil-atoms";
 
 export function IndexLayout({ children }: { children: React.ReactNode }) {
 	const { colorMode } = useColorMode();
-	// @ts-expect-error
-	const { blurMode } = useContext(BlurContext);
+	const [blurMode, setBlurMode] = useRecoilState(_blur);
 
 	return (
 		<>
@@ -31,7 +30,7 @@ export function IndexLayout({ children }: { children: React.ReactNode }) {
 								: "rgba(255, 255, 255, 0.75)"
 						}
 						position="relative"
-						backdropFilter={blurMode ? "auto" : "none"}
+						backdropFilter={blurMode.blur ? "auto" : "none"}
 						backdropBlur="20px"
 					>
 						{children}

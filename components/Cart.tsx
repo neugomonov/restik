@@ -9,11 +9,10 @@ import {
 import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import { IoMdCart } from "react-icons/io";
 import { useRecoilState } from "recoil";
-import { _cart } from "../lib/recoil-atoms";
-import { BlurContext } from "./BlurContext";
+import { _blur, _cart } from "../lib/recoil-atoms";
 import CartDrawerBody from "./CartDrawerBody";
 import CartDrawerFooter from "./CartDrawerFooter";
 
@@ -39,8 +38,7 @@ export default function Cart() {
 	const btnRef = useRef();
 	const { t, lang } = useTranslation("common");
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
-	// @ts-expect-error
-	const { blurMode } = useContext(BlurContext);
+	const [blurMode] = useRecoilState(_blur);
 
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...
 	return (
@@ -89,7 +87,7 @@ export default function Cart() {
 								? "rgba(6, 8, 13, 0.75)"
 								: "rgba(255, 255, 255, 0.75)"
 						}
-						backdropFilter={blurMode ? "auto" : "none"}
+						backdropFilter={blurMode.blur ? "auto" : "none"}
 						backdropBlur="20px"
 					>
 						<DrawerCloseButton />
