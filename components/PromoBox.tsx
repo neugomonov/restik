@@ -15,13 +15,12 @@ import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { IoRestaurantOutline } from "react-icons/io5";
-import { useRecoilState } from "recoil";
 import info from "../lib/info";
 import promo from "../lib/promo";
-import { _blur } from "../lib/recoil-atoms";
+import { BlurContext } from "./BlurContext";
 
 export default function PromoBox() {
-	const { t, lang } = useTranslation("common");
+	const { t, lang } = useTranslation("home");
 
 	const router = useRouter();
 	const { colorMode } = useColorMode();
@@ -30,7 +29,8 @@ export default function PromoBox() {
 			await router.push(route, route);
 		};
 	};
-	const [blurMode, setBlurMode] = useRecoilState(_blur);
+	// @ts-expect-error
+	const { blurMode } = useContext(BlurContext);
 
 	return (
 		<Box
@@ -47,7 +47,7 @@ export default function PromoBox() {
 			}
 			position="sticky"
 			top="100%"
-			backdropFilter={blurMode.blur ? "auto" : "none"}
+			backdropFilter={blurMode ? "auto" : "none"}
 			backdropBlur="20px"
 		>
 			<div
