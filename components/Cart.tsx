@@ -37,7 +37,7 @@ export default function Cart() {
 	const { colorMode } = useColorMode();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const btnRef = useRef();
-	const { t, lang } = useTranslation("common");
+	const { t } = useTranslation("common");
 	const items = cart.items.map((x) => x.quantity).reduce((a, b) => a + b, 0);
 	// @ts-expect-error
 	const { blurMode } = useContext(BlurContext);

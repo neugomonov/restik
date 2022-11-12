@@ -33,7 +33,7 @@ export default function ChatListBox() {
 				chat.users.includes(session?.user?.email || "anonym") &&
 				chat.users.includes(email!)
 		);
-	const { t, lang } = useTranslation("common");
+	const { t } = useTranslation("common");
 	const newChat = async () => {
 		const input = prompt(t("newChatMessage1"));
 		const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
