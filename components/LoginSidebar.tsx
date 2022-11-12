@@ -29,7 +29,7 @@ export default function LoginSidebar() {
 			await router.push(route, route);
 		};
 	};
-	const { t, lang } = useTranslation("common");
+	const { t } = useTranslation("common");
 
 	if (session) {
 		return (
