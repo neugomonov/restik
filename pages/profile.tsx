@@ -194,7 +194,7 @@ function Profile() {
 					</Stack>
 				) : (
 					<></>
-				)}
+				)}{" "}
 			</Stack>
 		</>
 	);

@@ -2,17 +2,17 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { ChakraProvider } from "@chakra-ui/react";
 import { css, Global } from "@emotion/react";
 import { SessionProvider } from "next-auth/react";
-import useTranslation from "next-translate/useTranslation";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import NextNProgress from "nextjs-progressbar";
-import React, { useEffect, useState } from "react";
-import { RecoilRoot, useRecoilState } from "recoil";
-import { BlurProvider } from "../components/BlurContext";
+import React, { useContext, useEffect, useState } from "react";
+import { RecoilRoot } from "recoil";
 import SidebarWithHeader from "../components/SidebarWithHeader";
 import StateSaver from "../components/state-saver";
+import { BlurContext, BlurProvider } from "../components/BlurContext";
 import info from "../lib/info";
-import { CartState, _blur, _cart } from "../lib/recoil-atoms";
+import { CartState, _cart } from "../lib/recoil-atoms";
+import useTranslation from "next-translate/useTranslation";
 
 const client = new ApolloClient({
 	uri: process.env.SERVER_URL,
@@ -44,7 +44,8 @@ const App = ({
 			setCart({ items: [], total: 0 });
 		}
 	}, []);
-	// const [blurMode, setBlurMode] = useRecoilState(_blur);
+	// @ts-expect-error
+	const { blurMode } = useContext(BlurContext);
 	const { t, lang } = useTranslation("common");
 	// TODO: implement code splitting as dynamic imports, load modules asynchronously (await import, React.lazy) for a faster initial loading, shrink the initial  bundle size
 	return (

@@ -1,12 +1,14 @@
 import { Box, Flex, useColorMode } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { useContext } from "react";
 import { useRecoilState } from "recoil";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
 import NewsBox from "../components/NewsBox";
 import PromoBox from "../components/PromoBox";
+import { BlurContext } from "../components/BlurContext";
 import VideoBox from "../components/VideoBox";
-import { _blur, _cart } from "../lib/recoil-atoms";
+import { _cart } from "../lib/recoil-atoms";
 
 export function WithSideContentLayout({
 	children,
@@ -16,7 +18,8 @@ export function WithSideContentLayout({
 	const router = useRouter();
 	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
-	const [blurMode, setBlurMode] = useRecoilState(_blur);
+	// @ts-expect-error
+	const { blurMode } = useContext(BlurContext);
 
 	return (
 		<>
@@ -40,7 +43,7 @@ export function WithSideContentLayout({
 								: "rgba(255, 255, 255, 0.75)"
 						}
 						position="relative"
-						backdropFilter={blurMode.blur ? "auto" : "none"}
+						backdropFilter={blurMode ? "auto" : "none"}
 						backdropBlur="20px"
 					>
 						{children}

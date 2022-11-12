@@ -13,11 +13,11 @@ import {
 import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import { useContext } from "react";
 import { BiNews } from "react-icons/bi";
-import { useRecoilState } from "recoil";
 import info from "../lib/info";
 import news from "../lib/news";
-import { _blur } from "../lib/recoil-atoms";
+import { BlurContext } from "./BlurContext";
 
 export default function NewsBox() {
 	const router = useRouter();
@@ -28,7 +28,8 @@ export default function NewsBox() {
 			await router.push(route, route);
 		};
 	};
-	const [blurMode, setBlurMode] = useRecoilState(_blur);
+	// @ts-expect-error
+	const { blurMode } = useContext(BlurContext);
 
 	return (
 		<Box
@@ -45,7 +46,7 @@ export default function NewsBox() {
 			}
 			position="sticky"
 			top="100%"
-			backdropFilter={blurMode.blur ? "auto" : "none"}
+			backdropFilter={blurMode ? "auto" : "none"}
 			backdropBlur="20px"
 		>
 			<div
