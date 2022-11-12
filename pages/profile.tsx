@@ -26,7 +26,7 @@ import info from "../lib/info";
 function Profile() {
 	const { colorMode } = useColorMode();
 	const { data: session } = useSession();
-	const { t, lang } = useTranslation("info");
+	const { t, lang } = useTranslation("common");
 	// TODO: there is a problem with the gif on narrow devices. Gotta fix.
 	return (
 		<>
@@ -57,7 +57,7 @@ function Profile() {
 						variant="solid"
 						mb="1rem"
 					>
-						Профиль{" "}
+						{t("profile")}
 					</Tag>
 				)}{" "}
 				<Box
