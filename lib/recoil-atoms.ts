@@ -4,12 +4,23 @@ export interface CartState {
 	items: Array<{ name: string; type: string; price: number; quantity: number }>;
 	total: number;
 }
+export interface BlurState {
+	blur: boolean;
+}
 
 // Cart
 export const _cart = atom<CartState>({
-	key: "theme",
+	key: "cart",
 	default: {
 		items: [],
 		total: 0,
+	},
+});
+
+// Not cart
+export const _blur = atom<BlurState>({
+	key: "blur",
+	default: {
+		blur: true,
 	},
 });

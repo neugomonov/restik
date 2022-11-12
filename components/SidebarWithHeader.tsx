@@ -40,7 +40,7 @@ import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ReactNode, ReactText, useContext, useEffect, useState } from "react";
+import { ReactNode, ReactText, useEffect, useState } from "react";
 import { IconType } from "react-icons";
 import { BiNews } from "react-icons/bi";
 import { FiBell, FiHome, FiMenu } from "react-icons/fi";
@@ -53,9 +53,10 @@ import {
 	MdOutlineLightMode,
 	MdOutlineMessage,
 } from "react-icons/md";
+import { useRecoilState } from "recoil";
 import { db } from "../firebase";
 import info from "../lib/info";
-import { BlurContext } from "./BlurContext";
+import { _blur } from "../lib/recoil-atoms";
 import LoginHeader from "./LoginHeader";
 import LoginSidebar from "./LoginSidebar";
 import NotificationList from "./NotificationList";
@@ -118,8 +119,7 @@ export default function SidebarWithHeader({
 	children: ReactNode;
 }) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	// @ts-expect-error
-	const { blurMode } = useContext(BlurContext);
+	const [blurMode, setBlurMode] = useRecoilState(_blur);
 
 	return (
 		<Box>
@@ -142,7 +142,7 @@ export default function SidebarWithHeader({
 							"rgba(255, 255, 255, 0)",
 							"rgba(6, 8, 13, 0)"
 						)}
-						backdropFilter={blurMode ? "auto" : "none"}
+						backdropFilter={blurMode.blur ? "auto" : "none"}
 						backdropBlur="20px"
 					>
 						<SidebarContent onClose={onClose} />
@@ -209,10 +209,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
-	// @ts-expect-error
-	const { blurMode, setBlurMode } = useContext(BlurContext);
+	const [blurMode, setBlurMode] = useRecoilState(_blur);
+
 	const handleBlur = () => {
-		setBlurMode(!blurMode);
+		setBlurMode((prevState) => ({
+			blur: !prevState.blur,
+		}));
 	};
 	const {
 		isOpen: isMenuOpen,
@@ -236,7 +238,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			pos="fixed"
 			top="0"
 			h="full"
-			backdropFilter={blurMode ? "auto" : "none"}
+			backdropFilter={blurMode.blur ? "auto" : "none"}
 			backdropBlur="20px"
 			overflowY="auto"
 			overflowX="hidden"
@@ -585,8 +587,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
-	// @ts-expect-error
-	const { blurMode } = useContext(BlurContext);
+	const [blurMode, setBlurMode] = useRecoilState(_blur);
 
 	return (
 		<Flex
@@ -603,7 +604,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			borderBottomWidth="1px"
 			borderBottomColor={useColorModeValue("gray.200", "gray.700")}
 			justifyContent={{ base: "space-between", md: "flex-end" }}
-			backdropFilter={blurMode ? "auto" : "none"}
+			backdropFilter={blurMode.blur ? "auto" : "none"}
 			backdropBlur="20px"
 			as="header"
 			position="fixed"
