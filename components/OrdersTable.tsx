@@ -18,8 +18,11 @@ import {
 	DocumentData,
 	getDoc,
 	onSnapshot,
+	orderBy,
+	query,
 	serverTimestamp,
 	updateDoc,
+	where,
 } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
@@ -31,32 +34,38 @@ export default function OrdersTable() {
 	const { data: session } = useSession();
 
 	const [orders, setOrders] = useState([{ name: "Loading...", id: "initial" }]);
-	const [users, setUsers] = useState([{ name: "Loading...", id: "initial" }]);
+	const [ordersAdmin, setOrdersAdmin] = useState([
+		{ name: "Loading...", id: "initial" },
+	]);
+	useEffect(() => {
+		if (!session?.user || !session?.user?.email) return;
+		const queryOrders = query(
+			collection(db, "orders"),
+			where("email", "==", session?.user?.email),
+			orderBy("timestamp", "desc")
+		);
+		onSnapshot(queryOrders, (snapshot) => {
+			setOrders(
+				snapshot.docs.map((doc: DocumentData) => ({
+					...doc.data(),
+					id: doc.id,
+				}))
+			);
+		});
 
-	useEffect(
-		() =>
-			onSnapshot(collection(db, "orders"), (snapshot) =>
-				setOrders(
-					snapshot.docs.map((doc: DocumentData) => ({
-						...doc.data(),
-						id: doc.id,
-					}))
-				)
-			),
-		[]
-	);
-	useEffect(
-		() =>
-			onSnapshot(collection(db, "users"), (snapshot) =>
-				setUsers(
-					snapshot.docs.map((doc: DocumentData) => ({
-						...doc.data(),
-						id: doc.id,
-					}))
-				)
-			),
-		[]
-	);
+		const queryAdmin = query(
+			collection(db, "orders"),
+			orderBy("timestamp", "desc")
+		);
+		onSnapshot(queryAdmin, (snapshot) => {
+			setOrdersAdmin(
+				snapshot.docs.map((doc: DocumentData) => ({
+					...doc.data(),
+					id: doc.id,
+				}))
+			);
+		});
+	}, [session]);
 
 	const { t, lang } = useTranslation("common");
 	const handleNew = async () => {
@@ -115,7 +124,6 @@ export default function OrdersTable() {
 		...doc.data(),
 	}));
 
-	// TODO: Sort by date
 	return (
 		<>
 			{
@@ -144,7 +152,7 @@ export default function OrdersTable() {
 						{
 							// @ts-expect-error
 							session?.user?.role == "Админ"
-								? orders.map((order: Record<string, string>) => (
+								? ordersAdmin.map((order: Record<string, string>) => (
 										<Tr key={order.id}>
 											<Td>
 												{order.status}
@@ -163,21 +171,17 @@ export default function OrdersTable() {
 											<Td>{order.email}</Td>
 										</Tr>
 								  ))
-								: orders
-										?.filter((order: Record<string, string>) =>
-											order.email?.includes(session?.user?.email!)
-										)
-										.map((order: Record<string, string>) => (
-											<Tr key={order.id}>
-												<Td>{order.status}</Td>
-												<Td>{order.products}</Td>
-												<Td>{order.phone}</Td>
-												<Td>{order.address}</Td>
-												<Td>{order.payment}</Td>
-												<Td>{order.total}</Td>
-												<Td>{order.email}</Td>
-											</Tr>
-										))
+								: orders.map((order: Record<string, string>) => (
+										<Tr key={order.id}>
+											<Td>{order.status}</Td>
+											<Td>{order.products}</Td>
+											<Td>{order.phone}</Td>
+											<Td>{order.address}</Td>
+											<Td>{order.payment}</Td>
+											<Td>{order.total}</Td>
+											<Td>{order.email}</Td>
+										</Tr>
+								  ))
 						}
 					</Tbody>
 					<Tfoot>
