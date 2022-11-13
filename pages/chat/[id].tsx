@@ -1,34 +1,32 @@
 import { Box, Flex, Heading, Stack, Text } from "@chakra-ui/layout";
-
+import { IconButton, Image, Tag } from "@chakra-ui/react";
+import { collection, doc, orderBy, query } from "firebase/firestore";
+import { motion } from "framer-motion";
+import { useSession } from "next-auth/react";
+import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useRef, useState } from "react";
 import {
 	useCollectionData,
-	useDocumentData,
+	useDocumentOnce,
 } from "react-firebase-hooks/firestore";
-import { collection, doc, orderBy, query } from "firebase/firestore";
-import { db } from "../../firebase";
-import { useRef, useState } from "react";
-import { useSession } from "next-auth/react";
-import BottomBar from "../../components/BottomBar";
-import { IconButton, Image, Tag } from "@chakra-ui/react";
-import { WithSideContentLayout } from "../../layouts/menu";
-import info from "../../lib/info";
 import { MdOutlineMessage } from "react-icons/md";
-import { motion } from "framer-motion";
+import SendBar from "../../components/SendBar";
+import { db } from "../../firebase";
+import { WithSideContentLayout } from "../../layouts/menu";
 import index from "../../lib";
-import useTranslation from "next-translate/useTranslation";
+import info from "../../lib/info";
 
 // TODO: add protection rules for the private chats
+
 function Chat() {
 	const router = useRouter();
 	const { id } = router.query;
 	const { data: session } = useSession();
-	const [chat] = useDocumentData(doc(db, "chats", id));
 	const q = query(collection(db, `chats/${id}/messages`), orderBy("timestamp"));
 	const [messages] = useCollectionData(q);
 	const bottomOfChat = useRef();
-
 	const getMessages = () =>
 		messages?.map((msg) => {
 			const sender =
@@ -57,7 +55,6 @@ function Chat() {
 		<>
 			<Head>
 				<title>
-					{info.title[lang]} ⸻ {info.chat[lang]} 💬
 				</title>
 			</Head>
 			<div
@@ -87,7 +84,6 @@ function Chat() {
 						variant="solid"
 						mb="1rem"
 					>
-						{info.chat[lang]}
 					</Tag>
 				)}{" "}
 				<Box
@@ -124,58 +120,12 @@ function Chat() {
 							height="90vh"
 							minW={{ base: "auto", xl: "50%" }}
 						>
-							<Flex direction="column" sx={{ scrollbarWidth: "none" }} flex={1}>
-								<Flex
-									flex={1}
-									direction="column"
-									pt={4}
-									mx={5}
-									maxH="80vh"
-									minH="80vh"
-									overflowY="auto"
-									css={{
-										"&::-webkit-scrollbar": {
-											width: "4px",
-										},
-										"&::-webkit-scrollbar-track": {
-											width: "6px",
-										},
-										"&::-webkit-scrollbar-thumb": {
-											background: "rgba(6, 8, 13, 0.25)",
-											borderRadius: "24px",
-										},
-									}}
-								>
-									<Stack
-										direction={"row"}
-										alignItems="top"
-										justifyContent="space-around"
-									>
-										<motion.div
-											style={{
-												fontSize: "2.5rem",
-												marginTop: "-1rem",
-											}}
-											drag="y"
-											animate={{ x: move2 ? 10 : -10 }}
-											transition={{ type: "spring", bounce: 0.8, duration: 1 }}
-											whileHover={{ scale: 2 }}
-											onClick={() => setMove2(!move2)}
-										>
-											📧
-										</motion.div>
-									</Stack>
-									{getMessages()}
-								</Flex>
-								<BottomBar id={id} user={session?.user} />
-							</Flex>
 						</Box>
 						<Stack
 							direction="column"
 							pl={{ base: "none", xl: "10%" }}
 							spacing={5}
 						>
-							<Heading size="lg">{index.chat[lang]} </Heading>
 							<Image
 								src="/images/chat.gif"
 								alt="messages in the chat gif"
