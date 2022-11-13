@@ -19,11 +19,12 @@ import {
 import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
-import { ReactNode, useContext } from "react";
+import { ReactNode } from "react";
 import { BiMailSend } from "react-icons/bi";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { useRecoilState } from "recoil";
 import info from "../lib/info";
-import { BlurContext } from "./BlurContext";
+import { _blur } from "../lib/recoil-atoms";
 
 const Logo = (props: { color: string }) => {
 	const { t, lang } = useTranslation("menu");
@@ -111,8 +112,7 @@ export default function LargeWithNewsletter() {
 			await router.push(route, route);
 		};
 	};
-	// @ts-expect-error
-	const { blurMode } = useContext(BlurContext);
+	const [blurMode, setBlurMode] = useRecoilState(_blur);
 
 	return (
 		<Box
@@ -128,7 +128,7 @@ export default function LargeWithNewsletter() {
 					: "rgba(255, 255, 255, 0.75)"
 			}
 			position="relative"
-			backdropFilter={blurMode ? "auto" : "none"}
+			backdropFilter={blurMode.blur ? "auto" : "none"}
 			backdropBlur="20px"
 			color={useColorModeValue("gray.700", "gray.200")}
 		>
