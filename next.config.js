@@ -3,7 +3,7 @@ const withOptimizedImages = require("next-optimized-images");
 const withPWA = require("next-pwa")({ dest: "public" });
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
 	enabled: process.env.ANALYZE === "true",
-});
+}); // I'm sowwy boondl⸻analoozeew 🥺🔫
 
 const nextConfig = {
 	reactStrictMode: true,
