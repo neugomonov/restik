@@ -24,6 +24,16 @@ function Chat() {
 	const router = useRouter();
 	const { id } = router.query;
 	const { data: session } = useSession();
+	// @ts-expect-error
+	const docRef = doc(db, "chats", id);
+	const [snapshot, loadingSnapshot] = useDocumentOnce(docRef);
+	console.log(snapshot?.data()?.users);
+	if (
+		!loadingSnapshot &&
+		!snapshot?.data()?.users.includes(session?.user?.email! || "anonym")
+	) {
+		router.replace("/chat");
+	}
 	const q = query(collection(db, `chats/${id}/messages`), orderBy("timestamp"));
 	const [messages] = useCollectionData(q);
 	const bottomOfChat = useRef();
