@@ -7,18 +7,17 @@ import {
 	Tag,
 	useColorMode,
 } from "@chakra-ui/react";
-import { useContext } from "react";
-import { BiMoviePlay } from "react-icons/bi";
-import info from "../lib/info";
-import index from "../lib/index";
-import { BlurContext } from "./BlurContext";
-import useTranslation from "next-translate/useTranslation";
 import { motion } from "framer-motion";
+import useTranslation from "next-translate/useTranslation";
+import { BiMoviePlay } from "react-icons/bi";
+import { useRecoilState } from "recoil";
+import index from "../lib/index";
+import info from "../lib/info";
+import { _blur } from "../lib/recoil-atoms";
 
 export default function VideoBox() {
 	const { colorMode } = useColorMode();
-	// @ts-expect-error
-	const { blurMode } = useContext(BlurContext);
+	const [blurMode, setBlurMode] = useRecoilState(_blur);
 	const { t, lang } = useTranslation("menu");
 
 	return (
@@ -37,7 +36,7 @@ export default function VideoBox() {
 			position="sticky"
 			mb=".5rem"
 			top=".5rem"
-			backdropFilter={blurMode ? "auto" : "none"}
+			backdropFilter={blurMode.blur ? "auto" : "none"}
 			backdropBlur="20px"
 		>
 			<div

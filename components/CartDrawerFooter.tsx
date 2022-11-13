@@ -5,17 +5,16 @@ import {
 	useDisclosure,
 	useToast,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import { IoMdCheckmarkCircle, IoMdTrash } from "react-icons/io";
 import { useRecoilState } from "recoil";
-import { _cart } from "../lib/recoil-atoms";
+import { _blur, _cart } from "../lib/recoil-atoms";
 import stringifyCartPositions from "./stringifyCartPositions";
-import { BlurContext } from "./BlurContext";
-import { motion } from "framer-motion";
 
 const DrawerFooter = dynamic(
 	async () => (await import("@chakra-ui/react")).DrawerFooter
@@ -55,8 +54,7 @@ export default function CartDrawerFooter() {
 	const cancelRef = useRef();
 	const { t } = useTranslation("common");
 	const handleNew = stringifyCartPositions();
-	// @ts-expect-error
-	const { blurMode } = useContext(BlurContext);
+	const [blurMode, setBlurMode] = useRecoilState(_blur);
 
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...
 	return (
@@ -122,7 +120,7 @@ export default function CartDrawerFooter() {
 			>
 				<AlertDialogOverlay>
 					<AlertDialogContent
-						backdropFilter={blurMode ? "auto" : "none"}
+						backdropFilter={blurMode.blur ? "auto" : "none"}
 						backgroundColor={
 							colorMode === "dark"
 								? "rgba(6, 8, 13, 0.75)"
