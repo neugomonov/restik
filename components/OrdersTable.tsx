@@ -124,7 +124,6 @@ export default function OrdersTable() {
 		...doc.data(),
 	}));
 
-	// TODO: Sort by date
 	return (
 		<>
 			{

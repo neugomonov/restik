@@ -18,8 +18,6 @@ import { WithSideContentLayout } from "../../layouts/menu";
 import index from "../../lib";
 import info from "../../lib/info";
 
-// TODO: add protection rules for the private chats
-
 function Chat() {
 	const router = useRouter();
 	const { id } = router.query;
