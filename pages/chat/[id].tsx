@@ -62,6 +62,8 @@ function Chat() {
 		<>
 			<Head>
 				<title>
+					{info.title[lang as "en" | "ru"]} ⸻ {info.chat[lang as "en" | "ru"]}{" "}
+					💬
 				</title>
 			</Head>
 			<div
@@ -91,6 +93,7 @@ function Chat() {
 						variant="solid"
 						mb="1rem"
 					>
+						{info.chat[lang as "en" | "ru"]}
 					</Tag>
 				)}{" "}
 				<Box
@@ -133,6 +136,7 @@ function Chat() {
 							pl={{ base: "none", xl: "10%" }}
 							spacing={5}
 						>
+							<Heading size="lg">{index.chat[lang as "en" | "ru"]} </Heading>
 							<Image
 								src="/images/chat.gif"
 								alt="messages in the chat gif"
