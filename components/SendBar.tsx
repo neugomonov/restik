@@ -12,7 +12,19 @@ import { useState } from "react";
 import { MdOutlineSend } from "react-icons/md";
 import { db } from "../firebase";
 
-export default function BottomBar({ id }: { id: string }) {
+export default function SendBar({
+	id,
+	user,
+}: {
+	id: string | string[] | undefined;
+	user:
+		| {
+				name?: string | null | undefined;
+				email?: string | null | undefined;
+				image?: string | null | undefined;
+		  }
+		| undefined;
+}) {
 	const [input, setInput] = useState("");
 	const { data: session } = useSession();
 	const { colorMode } = useColorMode();
