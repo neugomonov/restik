@@ -130,6 +130,66 @@ function Chat() {
 							height="90vh"
 							minW={{ base: "auto", xl: "50%" }}
 						>
+							{!loadingSnapshot &&
+							!snapshot
+								?.data()
+								?.users.includes(session?.user?.email! || "anonym") ? (
+								returnBack()
+							) : (
+								<Flex
+									direction="column"
+									sx={{ scrollbarWidth: "none" }}
+									flex={1}
+								>
+									<Flex
+										flex={1}
+										direction="column"
+										pt={4}
+										mx={5}
+										maxH="80vh"
+										minH="80vh"
+										overflowY="auto"
+										css={{
+											"&::-webkit-scrollbar": {
+												width: "4px",
+											},
+											"&::-webkit-scrollbar-track": {
+												width: "6px",
+											},
+											"&::-webkit-scrollbar-thumb": {
+												background: "rgba(6, 8, 13, 0.25)",
+												borderRadius: "24px",
+											},
+										}}
+									>
+										<Stack
+											direction={"row"}
+											alignItems="top"
+											justifyContent="space-around"
+										>
+											<motion.div
+												style={{
+													fontSize: "2.5rem",
+													marginTop: "-1rem",
+												}}
+												drag="y"
+												animate={{ x: move2 ? 10 : -10 }}
+												transition={{
+													type: "spring",
+													bounce: 0.8,
+													duration: 1,
+												}}
+												whileHover={{ scale: 2 }}
+												onClick={() => setMove2(!move2)}
+											>
+												📧
+											</motion.div>
+										</Stack>
+										{getMessages()}
+									</Flex>
+									<SendBar id={id} user={session?.user} />
+								</Flex>
+							)}
 						</Box>
 						<Stack
 							direction="column"
