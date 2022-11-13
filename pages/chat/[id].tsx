@@ -51,6 +51,10 @@ function Chat() {
 				</Flex>
 			);
 		});
+	const returnBack = () => {
+		router.replace("/chat");
+		return <></>;
+	};
 	const { lang } = useTranslation("index");
 	const [move2, setMove2] = useState(false);
 
