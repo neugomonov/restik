@@ -21,6 +21,4 @@ const nextConfig = {
 	},
 };
 
-module.exports = withBundleAnalyzer(
-	withPWA(withTranslate(withOptimizedImages(nextConfig)))
-);
+module.exports = withPWA(withTranslate(withOptimizedImages(nextConfig)));
