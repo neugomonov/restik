@@ -6,7 +6,7 @@ import { _blur } from "../lib/recoil-atoms";
 
 export function IndexLayout({ children }: { children: React.ReactNode }) {
 	const { colorMode } = useColorMode();
-	const [blurMode, setBlurMode] = useRecoilState(_blur);
+	const [blurMode] = useRecoilState(_blur);
 
 	return (
 		<>

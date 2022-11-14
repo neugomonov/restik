@@ -28,7 +28,7 @@ export default function NewsBox() {
 			await router.push(route, route);
 		};
 	};
-	const [blurMode, setBlurMode] = useRecoilState(_blur);
+	const [blurMode] = useRecoilState(_blur);
 
 	return (
 		<Box
