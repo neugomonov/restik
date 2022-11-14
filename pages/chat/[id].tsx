@@ -29,13 +29,13 @@ function Chat() {
 	const [messages] = useCollectionData(q);
 	const bottomOfChat = useRef();
 	const getMessages = () =>
-		messages?.map((msg) => {
+		messages?.map((message) => {
 			const sender =
-				msg.sender ===
+				message.sender ===
 				(session?.user?.email !== undefined ? session?.user?.email : "anonym");
 			return (
 				<Flex
-					key={Math.random()}
+					key={message.id}
 					alignSelf={sender ? "flex-end" : "flex-start"}
 					bg={sender ? "orange.100" : "green.100"}
 					color="black"
@@ -45,7 +45,7 @@ function Chat() {
 					p={3}
 					m={1}
 				>
-					<Text>{msg.text}</Text>
+					<Text>{message.text}</Text>
 				</Flex>
 			);
 		});

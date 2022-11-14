@@ -157,6 +157,7 @@ export default function OrdersTable() {
 											<Td>
 												{order.status}
 												<IconButton
+													my="-2"
 													aria-label="Edit"
 													size="sm"
 													icon={<EditIcon />}

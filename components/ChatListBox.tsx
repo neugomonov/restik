@@ -93,7 +93,7 @@ export default function ChatListBox() {
 						scale: 1.1,
 						transition: { type: "spring", bounce: 0.8, duration: 1 },
 					}}
-					key={Math.random()}
+					key={chat.id}
 					p={3}
 					align="center"
 					_hover={{
