@@ -1,20 +1,17 @@
 import { Box, Flex, useColorMode } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
 import NewsBox from "../components/NewsBox";
 import PromoBox from "../components/PromoBox";
 import VideoBox from "../components/VideoBox";
-import { _blur, _cart } from "../lib/recoil-atoms";
+import { _blur } from "../lib/recoil-atoms";
 
 export function WithSideContentLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
-	const router = useRouter();
-	const [cart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
 	const [blurMode] = useRecoilState(_blur);
 	return (
