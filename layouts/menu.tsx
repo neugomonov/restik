@@ -14,9 +14,9 @@ export function WithSideContentLayout({
 	children: React.ReactNode;
 }) {
 	const router = useRouter();
-	const [cart, setCart] = useRecoilState(_cart);
+	const [cart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
-	const [blurMode, setBlurMode] = useRecoilState(_blur);
+	const [blurMode] = useRecoilState(_blur);
 	return (
 		<>
 			<Flex flexDirection="column" ml={{ base: "0", md: "60" }}>

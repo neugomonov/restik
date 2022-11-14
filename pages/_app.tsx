@@ -55,7 +55,7 @@ const App = ({
 			setBlurMode({ blur: true });
 		}
 	}, []);
-	const { t, lang } = useTranslation("common");
+	const { lang } = useTranslation("common");
 	// TODO: implement code splitting as dynamic imports, load modules asynchronously (await import, React.lazy) for a faster initial loading, shrink the initial  bundle size
 	return (
 		<SessionProvider session={session}>

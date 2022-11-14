@@ -18,7 +18,6 @@ import useTranslation from "next-translate/useTranslation";
 import { CgProfile } from "react-icons/cg";
 import { FiChevronDown } from "react-icons/fi";
 import LoginHeader from "../components/LoginHeader";
-import LoginSidebar from "../components/LoginSidebar";
 import OrdersTable from "../components/OrdersTable";
 import ProfileButtons from "../components/ProfileButtons";
 import { WithSideContentLayout } from "../layouts/menu";

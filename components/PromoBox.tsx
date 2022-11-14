@@ -13,7 +13,6 @@ import {
 import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
-import { useContext } from "react";
 import { IoRestaurantOutline } from "react-icons/io5";
 import { useRecoilState } from "recoil";
 import info from "../lib/info";
@@ -30,7 +29,7 @@ export default function PromoBox() {
 			await router.push(route, route);
 		};
 	};
-	const [blurMode, setBlurMode] = useRecoilState(_blur);
+	const [blurMode] = useRecoilState(_blur);
 
 	return (
 		<Box

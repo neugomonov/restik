@@ -17,8 +17,8 @@ import { _blur } from "../lib/recoil-atoms";
 
 export default function VideoBox() {
 	const { colorMode } = useColorMode();
-	const [blurMode, setBlurMode] = useRecoilState(_blur);
-	const { t, lang } = useTranslation("menu");
+	const [blurMode] = useRecoilState(_blur);
+	const { lang } = useTranslation("menu");
 
 	return (
 		<Box

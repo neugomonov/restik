@@ -586,7 +586,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
-	const [blurMode, setBlurMode] = useRecoilState(_blur);
+	const [blurMode] = useRecoilState(_blur);
 
 	return (
 		<Flex
