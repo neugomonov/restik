@@ -182,7 +182,13 @@ export default function OrderForm() {
 		(value: string): void;
 	};
 
-	const handleForm = (setter: DescribableFunction) => {
+	const handleForm = (
+		setter: DescribableFunction
+	): ((
+		event: React.ChangeEvent<
+			HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+		>
+	) => void) => {
 		return (
 			event: React.ChangeEvent<
 				HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -191,6 +197,7 @@ export default function OrderForm() {
 			setter(event.currentTarget.value);
 		};
 	};
+
 	const tipCalculate = (multiplier: number): number => {
 		return (
 			Math.round(((cart.total / 100) * multiplier + Number.EPSILON) * 100) / 100
