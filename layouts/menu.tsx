@@ -18,7 +18,6 @@ export function WithSideContentLayout({
 	const { colorMode } = useColorMode();
 	const [blurMode] = useRecoilState(_blur);
 	const renderSideContent = useCallback(() => {
-		console.log("function 'renderSideContent' fired");
 		return Math.random() < 0.5 ? <PromoBox /> : <NewsBox />;
 	}, [router]);
 	return (

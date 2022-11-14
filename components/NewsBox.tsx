@@ -31,7 +31,6 @@ export default function NewsBox() {
 	};
 	const [blurMode] = useRecoilState(_blur);
 	const chooseSideNews = useCallback(() => {
-		console.log("function 'chooseSideNews' fired");
 		return Math.random() * (-1 - 9 + 1) + 9;
 	}, [router]);
 

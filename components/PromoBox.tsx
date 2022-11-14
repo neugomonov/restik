@@ -32,7 +32,6 @@ export default function PromoBox() {
 	};
 	const [blurMode] = useRecoilState(_blur);
 	const chooseSidePromo = useCallback(() => {
-		console.log("function 'chooseSidePromo' fired");
 		return Math.random() * (-1 - 9 + 1) + 9;
 	}, [router]);
 
