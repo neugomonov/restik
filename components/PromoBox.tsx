@@ -13,6 +13,7 @@ import {
 import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import { useCallback } from "react";
 import { IoRestaurantOutline } from "react-icons/io5";
 import { useRecoilState } from "recoil";
 import info from "../lib/info";
@@ -30,6 +31,10 @@ export default function PromoBox() {
 		};
 	};
 	const [blurMode] = useRecoilState(_blur);
+	const chooseSidePromo = useCallback(() => {
+		console.log("function 'chooseSidePromo' fired");
+		return Math.random() * (-1 - 9 + 1) + 9;
+	}, [router]);
 
 	return (
 		<Box
@@ -126,7 +131,7 @@ export default function PromoBox() {
 						</Stack>
 					</Box>
 				))
-				.at(Math.random() * (-1 - 9 + 1) + 9)}
+				.at(chooseSidePromo())}
 		</Box>
 	);
 }
