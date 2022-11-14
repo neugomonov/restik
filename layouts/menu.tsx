@@ -1,4 +1,6 @@
 import { Box, Flex, useColorMode } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import { useCallback, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
@@ -12,8 +14,12 @@ export function WithSideContentLayout({
 }: {
 	children: React.ReactNode;
 }) {
+	const router = useRouter();
 	const { colorMode } = useColorMode();
 	const [blurMode] = useRecoilState(_blur);
+	const renderSideContent = useCallback(() => {
+		return Math.random() < 0.5 ? <PromoBox /> : <NewsBox />;
+	}, [router]);
 	return (
 		<>
 			<Flex flexDirection="column" ml={{ base: "0", md: "60" }}>
@@ -50,7 +56,7 @@ export function WithSideContentLayout({
 						margin=".5rem"
 					>
 						<VideoBox />
-						{Math.random() < 0.5 ? <PromoBox /> : <NewsBox />}
+						{renderSideContent()}
 					</Flex>
 				</Flex>
 				<LargeWithNewsletter />

@@ -13,6 +13,7 @@ import {
 import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import { useCallback } from "react";
 import { BiNews } from "react-icons/bi";
 import { useRecoilState } from "recoil";
 import info from "../lib/info";
@@ -29,6 +30,9 @@ export default function NewsBox() {
 		};
 	};
 	const [blurMode] = useRecoilState(_blur);
+	const chooseSideNews = useCallback(() => {
+		return Math.random() * (-1 - 9 + 1) + 9;
+	}, [router]);
 
 	return (
 		<Box
@@ -126,7 +130,7 @@ export default function NewsBox() {
 						</Stack>
 					</Box>
 				))
-				.at(Math.random() * (-1 - 9 + 1) + 9)}
+				.at(chooseSideNews())}
 		</Box>
 	);
 }

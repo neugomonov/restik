@@ -191,7 +191,12 @@ export default function OrderForm() {
 			setter(event.currentTarget.value);
 		};
 	};
-	// TODO: Make a function for the Math.round options, a dry one
+	const tipCalculate = (multiplier: number): number => {
+		return (
+			Math.round(((cart.total / 100) * multiplier + Number.EPSILON) * 100) / 100
+		);
+	};
+
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<Stack spacing={5}>
@@ -349,38 +354,14 @@ export default function OrderForm() {
 							onChange={handleForm(setTip)}
 						>
 							<option value="none">{t("tipNone")}</option>
-							<option
-								value={`${
-									Math.round(((cart.total / 100) * 5 + Number.EPSILON) * 100) /
-									100
-								} ${info.currency}`}
-							>
-								5% (
-								{Math.round(((cart.total / 100) * 5 + Number.EPSILON) * 100) /
-									100}{" "}
-								{info.currency})
+							<option value={`${tipCalculate(5)} ${info.currency}`}>
+								5% ({tipCalculate(5)} {info.currency})
 							</option>
-							<option
-								value={`${
-									Math.round(((cart.total / 100) * 10 + Number.EPSILON) * 100) /
-									100
-								} ${info.currency}`}
-							>
-								10% (
-								{Math.round(((cart.total / 100) * 10 + Number.EPSILON) * 100) /
-									100}{" "}
-								{info.currency})
+							<option value={`${tipCalculate(10)} ${info.currency}`}>
+								10% ({tipCalculate(10)} {info.currency})
 							</option>
-							<option
-								value={`${
-									Math.round(((cart.total / 100) * 15 + Number.EPSILON) * 100) /
-									100
-								} ${info.currency}`}
-							>
-								15% (
-								{Math.round(((cart.total / 100) * 15 + Number.EPSILON) * 100) /
-									100}{" "}
-								{info.currency})
+							<option value={`${tipCalculate(15)} ${info.currency}`}>
+								15% ({tipCalculate(15)} {info.currency})
 							</option>
 						</Select>
 					</FormControl>
