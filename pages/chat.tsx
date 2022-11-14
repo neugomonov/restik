@@ -1,9 +1,11 @@
-import { Box, Heading, IconButton, Image, Stack, Tag } from "@chakra-ui/react";
+import { Box, Heading, IconButton, Image, Stack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import { MdOutlineMessage } from "react-icons/md";
 import ChatListBox from "../components/ChatListBox";
+import MotionBox from "../components/motion/MotionBox";
+import MotionTag from "../components/motion/MotionTag";
 import { WithSideContentLayout } from "../layouts/menu";
 import index from "../lib";
 import info from "../lib/info";
@@ -21,44 +23,11 @@ function Chat() {
 				}}
 			>
 				{info.isDevelopment && (
-					<Tag
-						as={motion.div}
-						cursor="pointer"
-						drag
-						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-						whileDrag={{ scale: 1.2, rotate: 10 }}
-						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-						whileTap={{
-							scale: 0.9,
-						}}
-						whileHover={{
-							scale: 1.2,
-							transition: { type: "spring", bounce: 0.8, duration: 1 },
-						}}
-						textTransform="uppercase"
-						colorScheme="orange"
-						variant="solid"
-						mb="1rem"
-					>
-						{info.chat[lang as "en" | "ru"] ?? t("chat")}
-					</Tag>
+					<MotionTag>{info.chat[lang as "en" | "ru"] ?? t("chat")}</MotionTag>
 				)}
-				<Box
-					as={motion.div}
-					drag
-					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-					whileDrag={{ scale: 1.2, rotate: -45 }}
-					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-					whileTap={{
-						scale: 0.9,
-					}}
-					whileHover={{
-						scale: 1.2,
-						transition: { type: "spring", bounce: 0.8, duration: 1 },
-					}}
-				>
+				<MotionBox>
 					<IconButton aria-label="Chat" icon={<MdOutlineMessage />} />
-				</Box>
+				</MotionBox>
 			</div>
 			<Stack spacing={5}>
 				<Stack

@@ -6,7 +6,6 @@ import {
 	IconButton,
 	Image,
 	Stack,
-	Tag,
 	Text,
 	useColorMode,
 	useColorModeValue,
@@ -18,6 +17,8 @@ import useTranslation from "next-translate/useTranslation";
 import { CgProfile } from "react-icons/cg";
 import { FiChevronDown } from "react-icons/fi";
 import LoginHeader from "../components/LoginHeader";
+import MotionBox from "../components/motion/MotionBox";
+import MotionTag from "../components/motion/MotionTag";
 import OrdersTable from "../components/OrdersTable";
 import ProfileButtons from "../components/ProfileButtons";
 import { WithSideContentLayout } from "../layouts/menu";
@@ -38,45 +39,10 @@ function Profile() {
 					justifyContent: "space-between",
 				}}
 			>
-				{info.isDevelopment && (
-					<Tag
-						as={motion.div}
-						cursor="pointer"
-						drag
-						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-						whileDrag={{ scale: 1.2, rotate: 10 }}
-						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-						whileTap={{
-							scale: 0.9,
-						}}
-						whileHover={{
-							scale: 1.2,
-							transition: { type: "spring", bounce: 0.8, duration: 1 },
-						}}
-						textTransform="uppercase"
-						colorScheme="orange"
-						variant="solid"
-						mb="1rem"
-					>
-						{t("profile")}
-					</Tag>
-				)}{" "}
-				<Box
-					as={motion.div}
-					drag
-					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-					whileDrag={{ scale: 1.2, rotate: -45 }}
-					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-					whileTap={{
-						scale: 0.9,
-					}}
-					whileHover={{
-						scale: 1.2,
-						transition: { type: "spring", bounce: 0.8, duration: 1 },
-					}}
-				>
+				{info.isDevelopment && <MotionTag>{t("profile")}</MotionTag>}{" "}
+				<MotionBox>
 					<IconButton aria-label="Profile" icon={<CgProfile />} />
-				</Box>
+				</MotionBox>
 			</div>
 			<Stack spacing={5}>
 				<Stack

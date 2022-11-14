@@ -4,16 +4,16 @@ import {
 	Flex,
 	Heading,
 	IconButton,
-	Tag,
 	useColorMode,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import { BiMoviePlay } from "react-icons/bi";
 import { useRecoilState } from "recoil";
 import index from "../lib/index";
 import info from "../lib/info";
 import { _blur } from "../lib/recoil-atoms";
+import MotionBox from "./motion/MotionBox";
+import MotionTag from "./motion/MotionTag";
 
 export default function VideoBox() {
 	const { colorMode } = useColorMode();
@@ -47,44 +47,11 @@ export default function VideoBox() {
 				}}
 			>
 				{info.isDevelopment && (
-					<Tag
-						as={motion.div}
-						cursor="pointer"
-						drag
-						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-						whileDrag={{ scale: 1.2, rotate: 10 }}
-						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-						whileTap={{
-							scale: 0.9,
-						}}
-						whileHover={{
-							scale: 1.2,
-							transition: { type: "spring", bounce: 0.8, duration: 1 },
-						}}
-						textTransform="uppercase"
-						colorScheme="orange"
-						variant="solid"
-						mb="1rem"
-					>
-						{info.video[lang as "en" | "ru"]}
-					</Tag>
+					<MotionTag>{info.video[lang as "en" | "ru"]}</MotionTag>
 				)}
-				<Box
-					as={motion.div}
-					drag
-					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-					whileDrag={{ scale: 1.2, rotate: -45 }}
-					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-					whileTap={{
-						scale: 0.9,
-					}}
-					whileHover={{
-						scale: 1.2,
-						transition: { type: "spring", bounce: 0.8, duration: 1 },
-					}}
-				>
+				<MotionBox>
 					<IconButton aria-label="Videos" icon={<BiMoviePlay />} />
-				</Box>
+				</MotionBox>
 			</div>
 			<AspectRatio maxW="560px" ratio={16 / 9} my="6" mx="auto">
 				<iframe

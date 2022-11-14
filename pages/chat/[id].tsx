@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Stack, Text } from "@chakra-ui/layout";
-import { IconButton, Image, Tag } from "@chakra-ui/react";
+import { IconButton, Image } from "@chakra-ui/react";
 import { collection, doc, orderBy, query } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
@@ -12,6 +12,8 @@ import {
 	useDocumentOnce,
 } from "react-firebase-hooks/firestore";
 import { MdOutlineMessage } from "react-icons/md";
+import MotionBox from "../../components/motion/MotionBox";
+import MotionTag from "../../components/motion/MotionTag";
 import SendBar from "../../components/SendBar";
 import { db } from "../../firebase";
 import { WithSideContentLayout } from "../../layouts/menu";
@@ -72,44 +74,11 @@ function Chat() {
 				}}
 			>
 				{info.isDevelopment && (
-					<Tag
-						as={motion.div}
-						cursor="pointer"
-						drag
-						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-						whileDrag={{ scale: 1.2, rotate: 10 }}
-						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-						whileTap={{
-							scale: 0.9,
-						}}
-						whileHover={{
-							scale: 1.2,
-							transition: { type: "spring", bounce: 0.8, duration: 1 },
-						}}
-						textTransform="uppercase"
-						colorScheme="orange"
-						variant="solid"
-						mb="1rem"
-					>
-						{info.chat[lang as "en" | "ru"]}
-					</Tag>
+					<MotionTag>{info.chat[lang as "en" | "ru"]}</MotionTag>
 				)}{" "}
-				<Box
-					as={motion.div}
-					drag
-					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-					whileDrag={{ scale: 1.2, rotate: -45 }}
-					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-					whileTap={{
-						scale: 0.9,
-					}}
-					whileHover={{
-						scale: 1.2,
-						transition: { type: "spring", bounce: 0.8, duration: 1 },
-					}}
-				>
+				<MotionBox>
 					<IconButton aria-label="Chat" icon={<MdOutlineMessage />} />
-				</Box>
+				</MotionBox>
 			</div>
 
 			<Stack spacing={5}>

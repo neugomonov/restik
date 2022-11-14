@@ -6,11 +6,9 @@ import {
 	IconButton,
 	Image,
 	Stack,
-	Tag,
 	Text,
 	useColorMode,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
@@ -19,6 +17,8 @@ import { useRecoilState } from "recoil";
 import info from "../lib/info";
 import promo from "../lib/promo";
 import { _blur } from "../lib/recoil-atoms";
+import MotionBox from "./motion/MotionBox";
+import MotionTag from "./motion/MotionTag";
 
 export default function PromoBox() {
 	const { t, lang } = useTranslation("common");
@@ -61,44 +61,11 @@ export default function PromoBox() {
 				}}
 			>
 				{info.isDevelopment && (
-					<Tag
-						as={motion.div}
-						cursor="pointer"
-						drag
-						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-						whileDrag={{ scale: 1.2, rotate: 10 }}
-						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-						whileTap={{
-							scale: 0.9,
-						}}
-						whileHover={{
-							scale: 1.2,
-							transition: { type: "spring", bounce: 0.8, duration: 1 },
-						}}
-						textTransform="uppercase"
-						colorScheme="orange"
-						variant="solid"
-						mb="1rem"
-					>
-						{info.promo[lang as "en" | "ru"]}
-					</Tag>
+					<MotionTag>{info.promo[lang as "en" | "ru"]}</MotionTag>
 				)}
-				<Box
-					as={motion.div}
-					drag
-					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-					whileDrag={{ scale: 1.2, rotate: -45 }}
-					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-					whileTap={{
-						scale: 0.9,
-					}}
-					whileHover={{
-						scale: 1.2,
-						transition: { type: "spring", bounce: 0.8, duration: 1 },
-					}}
-				>
+				<MotionBox>
 					<IconButton aria-label="Promo" icon={<IoRestaurantOutline />} />
-				</Box>
+				</MotionBox>
 			</div>
 			{promo(lang as "en" | "ru")
 				.map((item) => (
