@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import { MdOutlineMessage } from "react-icons/md";
 import ChatListBox from "../components/ChatListBox";
-import MotionBox from "../components/motion/MotionBox";
+import MotionTopIconBox from "../components/motion/MotionTopIconBox";
 import MotionTag from "../components/motion/MotionTag";
 import { WithSideContentLayout } from "../layouts/menu";
 import index from "../lib";
@@ -25,9 +25,9 @@ function Chat() {
 				{info.isDevelopment && (
 					<MotionTag>{info.chat[lang as "en" | "ru"] ?? t("chat")}</MotionTag>
 				)}
-				<MotionBox>
+				<MotionTopIconBox>
 					<IconButton aria-label="Chat" icon={<MdOutlineMessage />} />
-				</MotionBox>
+				</MotionTopIconBox>
 			</div>
 			<Stack spacing={5}>
 				<Stack

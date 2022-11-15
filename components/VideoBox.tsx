@@ -12,7 +12,7 @@ import { useRecoilState } from "recoil";
 import index from "../lib/index";
 import info from "../lib/info";
 import { _blur } from "../lib/recoil-atoms";
-import MotionBox from "./motion/MotionBox";
+import MotionTopIconBox from "./motion/MotionTopIconBox";
 import MotionTag from "./motion/MotionTag";
 
 export default function VideoBox() {
@@ -49,9 +49,9 @@ export default function VideoBox() {
 				{info.isDevelopment && (
 					<MotionTag>{info.video[lang as "en" | "ru"]}</MotionTag>
 				)}
-				<MotionBox>
+				<MotionTopIconBox>
 					<IconButton aria-label="Videos" icon={<BiMoviePlay />} />
-				</MotionBox>
+				</MotionTopIconBox>
 			</div>
 			<AspectRatio maxW="560px" ratio={16 / 9} my="6" mx="auto">
 				<iframe

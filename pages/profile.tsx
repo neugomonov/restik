@@ -17,7 +17,7 @@ import useTranslation from "next-translate/useTranslation";
 import { CgProfile } from "react-icons/cg";
 import { FiChevronDown } from "react-icons/fi";
 import LoginHeader from "../components/LoginHeader";
-import MotionBox from "../components/motion/MotionBox";
+import MotionTopIconBox from "../components/motion/MotionTopIconBox";
 import MotionTag from "../components/motion/MotionTag";
 import OrdersTable from "../components/OrdersTable";
 import ProfileButtons from "../components/ProfileButtons";
@@ -40,9 +40,9 @@ function Profile() {
 				}}
 			>
 				{info.isDevelopment && <MotionTag>{t("profile")}</MotionTag>}{" "}
-				<MotionBox>
+				<MotionTopIconBox>
 					<IconButton aria-label="Profile" icon={<CgProfile />} />
-				</MotionBox>
+				</MotionTopIconBox>
 			</div>
 			<Stack spacing={5}>
 				<Stack

@@ -17,7 +17,7 @@ import { useRecoilState } from "recoil";
 import info from "../lib/info";
 import news from "../lib/news";
 import { _blur } from "../lib/recoil-atoms";
-import MotionBox from "./motion/MotionBox";
+import MotionTopIconBox from "./motion/MotionTopIconBox";
 import MotionTag from "./motion/MotionTag";
 
 export default function NewsBox() {
@@ -62,9 +62,9 @@ export default function NewsBox() {
 				{info.isDevelopment && (
 					<MotionTag>{info.news[lang as "en" | "ru"]}</MotionTag>
 				)}
-				<MotionBox>
+				<MotionTopIconBox>
 					<IconButton aria-label="News" icon={<BiNews />} />
-				</MotionBox>
+				</MotionTopIconBox>
 			</div>
 			{news(lang as "en" | "ru")
 				.map((item) => (

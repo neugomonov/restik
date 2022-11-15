@@ -2,7 +2,11 @@ import { Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
-export default function MotionBox({ children }: { children: ReactNode }) {
+export default function MotionTopIconBox({
+	children,
+}: {
+	children: ReactNode;
+}) {
 	return (
 		<Box
 			as={motion.div}

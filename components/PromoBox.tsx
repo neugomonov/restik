@@ -17,7 +17,7 @@ import { useRecoilState } from "recoil";
 import info from "../lib/info";
 import promo from "../lib/promo";
 import { _blur } from "../lib/recoil-atoms";
-import MotionBox from "./motion/MotionBox";
+import MotionTopIconBox from "./motion/MotionTopIconBox";
 import MotionTag from "./motion/MotionTag";
 
 export default function PromoBox() {
@@ -63,9 +63,9 @@ export default function PromoBox() {
 				{info.isDevelopment && (
 					<MotionTag>{info.promo[lang as "en" | "ru"]}</MotionTag>
 				)}
-				<MotionBox>
+				<MotionTopIconBox>
 					<IconButton aria-label="Promo" icon={<IoRestaurantOutline />} />
-				</MotionBox>
+				</MotionTopIconBox>
 			</div>
 			{promo(lang as "en" | "ru")
 				.map((item) => (

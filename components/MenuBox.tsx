@@ -29,7 +29,7 @@ import info from "../lib/info";
 import menu from "../lib/menu";
 import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
-import MotionBox from "./motion/MotionBox";
+import MotionTopIconBox from "./motion/MotionTopIconBox";
 import MotionTag from "./motion/MotionTag";
 import OrderForm from "./OrderForm";
 
@@ -101,9 +101,9 @@ export default function MenuBox() {
 				{info.isDevelopment && (
 					<MotionTag>{info.menu[lang as "en" | "ru"]}</MotionTag>
 				)}
-				<MotionBox>
+				<MotionTopIconBox>
 					<IconButton aria-label="Pizza" icon={<IoPizzaOutline />} />
-				</MotionBox>
+				</MotionTopIconBox>
 			</div>
 			<Stack spacing={5}>
 				<Stack alignItems="center" spacing={3}>

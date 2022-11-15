@@ -10,7 +10,7 @@ import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
-import MotionBox from "../components/motion/MotionBox";
+import MotionTopIconBox from "../components/motion/MotionTopIconBox";
 import MotionTag from "../components/motion/MotionTag";
 import { WithSideContentLayout } from "../layouts/menu";
 import info from "../lib/info";
@@ -35,9 +35,9 @@ function Success() {
 				{info.isDevelopment && (
 					<MotionTag>{info.order[lang as "en" | "ru"]}</MotionTag>
 				)}{" "}
-				<MotionBox>
+				<MotionTopIconBox>
 					<IconButton aria-label="Check" icon={<AiOutlineCheckCircle />} />
-				</MotionBox>
+				</MotionTopIconBox>
 			</div>
 			<Stack spacing={5}>
 				<Stack

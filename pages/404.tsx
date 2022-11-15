@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { BiErrorAlt } from "react-icons/bi";
-import MotionBox from "../components/motion/MotionBox";
+import MotionTopIconBox from "../components/motion/MotionTopIconBox";
 import MotionTag from "../components/motion/MotionTag";
 import { WithSideContentLayout } from "../layouts/menu";
 import info from "../lib/info";
@@ -29,9 +29,9 @@ function FourOFour() {
 				}}
 			>
 				{info.isDevelopment && <MotionTag>404</MotionTag>}
-				<MotionBox>
+				<MotionTopIconBox>
 					<IconButton aria-label="Error" icon={<BiErrorAlt />} />
-				</MotionBox>
+				</MotionTopIconBox>
 			</div>
 			<Stack spacing={5}>
 				<Stack

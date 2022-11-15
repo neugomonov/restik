@@ -11,7 +11,7 @@ import {
 import useTranslation from "next-translate/useTranslation";
 import NextImage from "next/image";
 import { IoRestaurantOutline } from "react-icons/io5";
-import MotionBox from "../components/motion/MotionBox";
+import MotionTopIconBox from "../components/motion/MotionTopIconBox";
 import MotionTag from "../components/motion/MotionTag";
 import { WithSideContentLayout } from "../layouts/menu";
 import info from "../lib/info";
@@ -36,9 +36,9 @@ function Promo() {
 				{info.isDevelopment && (
 					<MotionTag>{info.promo[lang as "en" | "ru"]}</MotionTag>
 				)}{" "}
-				<MotionBox>
+				<MotionTopIconBox>
 					<IconButton aria-label="Promo" icon={<IoRestaurantOutline />} />
-				</MotionBox>
+				</MotionTopIconBox>
 			</div>
 			<Stack spacing={5}>
 				{" "}

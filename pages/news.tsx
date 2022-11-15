@@ -11,7 +11,7 @@ import {
 import useTranslation from "next-translate/useTranslation";
 import NextImage from "next/image";
 import { BiNews } from "react-icons/bi";
-import MotionBox from "../components/motion/MotionBox";
+import MotionTopIconBox from "../components/motion/MotionTopIconBox";
 import MotionTag from "../components/motion/MotionTag";
 import { WithSideContentLayout } from "../layouts/menu";
 import info from "../lib/info";
@@ -36,9 +36,9 @@ function News() {
 				{info.isDevelopment && (
 					<MotionTag>{info.news[lang as "en" | "ru"]}</MotionTag>
 				)}{" "}
-				<MotionBox>
+				<MotionTopIconBox>
 					<IconButton aria-label="News" icon={<BiNews />} />
-				</MotionBox>
+				</MotionTopIconBox>
 			</div>
 			<Stack spacing={5}>
 				<SimpleGrid

@@ -12,7 +12,7 @@ import {
 	useDocumentOnce,
 } from "react-firebase-hooks/firestore";
 import { MdOutlineMessage } from "react-icons/md";
-import MotionBox from "../../components/motion/MotionBox";
+import MotionTopIconBox from "../../components/motion/MotionTopIconBox";
 import MotionTag from "../../components/motion/MotionTag";
 import SendBar from "../../components/SendBar";
 import { db } from "../../firebase";
@@ -76,9 +76,9 @@ function Chat() {
 				{info.isDevelopment && (
 					<MotionTag>{info.chat[lang as "en" | "ru"]}</MotionTag>
 				)}{" "}
-				<MotionBox>
+				<MotionTopIconBox>
 					<IconButton aria-label="Chat" icon={<MdOutlineMessage />} />
-				</MotionBox>
+				</MotionTopIconBox>
 			</div>
 
 			<Stack spacing={5}>
