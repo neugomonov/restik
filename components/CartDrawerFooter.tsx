@@ -14,6 +14,7 @@ import { useRef } from "react";
 import { IoMdCheckmarkCircle, IoMdTrash } from "react-icons/io";
 import { useRecoilState } from "recoil";
 import { _blur, _cart } from "../lib/recoil-atoms";
+import MotionBox from "./motion/MotionBox";
 import stringifyCartPositions from "./stringifyCartPositions";
 
 const DrawerFooter = dynamic(
@@ -59,21 +60,7 @@ export default function CartDrawerFooter() {
 	// 🔨 There are other anonymous functions in the tree that need refactoring too, I'll deal with them later. Later...
 	return (
 		<DrawerFooter paddingBottom="1rem">
-			<Box
-				as={motion.div}
-				cursor="pointer"
-				drag
-				dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-				whileDrag={{ scale: 1.2, rotate: 10 }}
-				dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-				whileTap={{
-					scale: 0.9,
-				}}
-				whileHover={{
-					scale: 1.2,
-					transition: { type: "spring", bounce: 0.8, duration: 1 },
-				}}
-			>
+			<MotionBox>
 				<Button
 					mr="2"
 					colorScheme="red"
@@ -84,22 +71,8 @@ export default function CartDrawerFooter() {
 				>
 					{t("purge")}
 				</Button>
-			</Box>
-			<Box
-				as={motion.div}
-				cursor="pointer"
-				drag
-				dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-				whileDrag={{ scale: 1.2, rotate: 10 }}
-				dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-				whileTap={{
-					scale: 0.9,
-				}}
-				whileHover={{
-					scale: 1.2,
-					transition: { type: "spring", bounce: 0.8, duration: 1 },
-				}}
-			>
+			</MotionBox>
+			<MotionBox>
 				<Button
 					leftIcon={<IoMdCheckmarkCircle />}
 					mr={3}
@@ -111,7 +84,7 @@ export default function CartDrawerFooter() {
 				>
 					{t("proceed")}
 				</Button>
-			</Box>
+			</MotionBox>
 			<AlertDialog
 				isOpen={isAlertOpen}
 				// @ts-expect-error
@@ -133,21 +106,7 @@ export default function CartDrawerFooter() {
 						</AlertDialogHeader>
 						<AlertDialogBody>{t("purgeCartMessage")}</AlertDialogBody>
 						<AlertDialogFooter>
-							<Box
-								as={motion.div}
-								cursor="pointer"
-								drag
-								dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-								whileDrag={{ scale: 1.2, rotate: 10 }}
-								dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-								whileTap={{
-									scale: 0.9,
-								}}
-								whileHover={{
-									scale: 1.2,
-									transition: { type: "spring", bounce: 0.8, duration: 1 },
-								}}
-							>
+							<MotionBox>
 								<Button
 									// @ts-expect-error
 									ref={cancelRef}
@@ -155,22 +114,8 @@ export default function CartDrawerFooter() {
 								>
 									{t("cancel")}
 								</Button>
-							</Box>
-							<Box
-								as={motion.div}
-								cursor="pointer"
-								drag
-								dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-								whileDrag={{ scale: 1.2, rotate: 10 }}
-								dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-								whileTap={{
-									scale: 0.9,
-								}}
-								whileHover={{
-									scale: 1.2,
-									transition: { type: "spring", bounce: 0.8, duration: 1 },
-								}}
-							>
+							</MotionBox>
+							<MotionBox>
 								<Button
 									colorScheme="red"
 									ml={3}
@@ -187,7 +132,7 @@ export default function CartDrawerFooter() {
 								>
 									{t("confirm")}
 								</Button>
-							</Box>
+							</MotionBox>
 						</AlertDialogFooter>
 					</AlertDialogContent>
 				</AlertDialogOverlay>

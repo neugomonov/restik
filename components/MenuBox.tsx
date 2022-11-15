@@ -11,7 +11,6 @@ import {
 	IconButton,
 	SimpleGrid,
 	Stack,
-	Tag,
 	Text,
 	useColorMode,
 	useDisclosure,
@@ -30,6 +29,8 @@ import info from "../lib/info";
 import menu from "../lib/menu";
 import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
+import MotionTopIconBox from "./motion/MotionTopIconBox";
+import MotionTag from "./motion/MotionTag";
 import OrderForm from "./OrderForm";
 
 const stripePromise = loadStripe(process.env.stripe_public_key!);
@@ -98,44 +99,11 @@ export default function MenuBox() {
 				}}
 			>
 				{info.isDevelopment && (
-					<Tag
-						as={motion.div}
-						cursor="pointer"
-						drag
-						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-						whileDrag={{ scale: 1.2, rotate: 45 }}
-						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-						whileTap={{
-							scale: 0.9,
-						}}
-						whileHover={{
-							scale: 1.2,
-							transition: { type: "spring", bounce: 0.8, duration: 1 },
-						}}
-						textTransform="uppercase"
-						colorScheme="orange"
-						variant="solid"
-						mb="1rem"
-					>
-						{info.menu[lang as "en" | "ru"]}
-					</Tag>
+					<MotionTag>{info.menu[lang as "en" | "ru"]}</MotionTag>
 				)}
-				<Box
-					as={motion.div}
-					drag
-					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-					whileDrag={{ scale: 1.2, rotate: -45 }}
-					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-					whileTap={{
-						scale: 0.9,
-					}}
-					whileHover={{
-						scale: 1.2,
-						transition: { type: "spring", bounce: 0.8, duration: 1 },
-					}}
-				>
+				<MotionTopIconBox>
 					<IconButton aria-label="Pizza" icon={<IoPizzaOutline />} />
-				</Box>
+				</MotionTopIconBox>
 			</div>
 			<Stack spacing={5}>
 				<Stack alignItems="center" spacing={3}>
