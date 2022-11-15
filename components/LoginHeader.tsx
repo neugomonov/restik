@@ -1,7 +1,6 @@
 import {
 	Avatar,
 	Button,
-	Flex,
 	HStack,
 	Menu,
 	MenuButton,
@@ -15,6 +14,7 @@ import { motion } from "framer-motion";
 import { signIn, signOut, useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import router from "next/router";
+import MotionBox from "./motion/MotionBox";
 export default function LoginHeader() {
 	const { data: session } = useSession();
 	const handleClick = (route: string) => {
@@ -27,22 +27,7 @@ export default function LoginHeader() {
 	if (session) {
 		return (
 			<>
-				<Flex
-					alignItems={"center"}
-					as={motion.div}
-					cursor="pointer"
-					drag
-					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-					whileDrag={{ scale: 1.2, rotate: 10 }}
-					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-					whileTap={{
-						scale: 0.9,
-					}}
-					whileHover={{
-						scale: 1.2,
-						transition: { type: "spring", bounce: 0.8, duration: 1 },
-					}}
-				>
+				<MotionBox>
 					<Menu>
 						<MenuButton
 							py={2}
@@ -64,31 +49,13 @@ export default function LoginHeader() {
 							<MenuItem onClick={() => signOut()}>🚪 {t("signOut")}</MenuItem>
 						</MenuList>
 					</Menu>
-				</Flex>
+				</MotionBox>
 			</>
 		);
 	}
 	return (
 		<>
-			<Stack
-				flex={{ base: 1, md: 0 }}
-				justify={"center"}
-				direction={"row"}
-				spacing={6}
-				as={motion.div}
-				cursor="pointer"
-				drag
-				dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-				whileDrag={{ scale: 1.2, rotate: 10 }}
-				dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-				whileTap={{
-					scale: 0.9,
-				}}
-				whileHover={{
-					scale: 1.2,
-					transition: { type: "spring", bounce: 0.8, duration: 1 },
-				}}
-			>
+			<MotionBox>
 				<Button
 					variant="outline"
 					display={"inline-flex"}
@@ -100,7 +67,7 @@ export default function LoginHeader() {
 				>
 					{t("signIn")}
 				</Button>
-			</Stack>
+			</MotionBox>
 		</>
 	);
 }

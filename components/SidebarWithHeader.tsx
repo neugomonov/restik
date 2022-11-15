@@ -59,6 +59,7 @@ import info from "../lib/info";
 import { _blur } from "../lib/recoil-atoms";
 import LoginHeader from "./LoginHeader";
 import LoginSidebar from "./LoginSidebar";
+import MotionBox from "./motion/MotionBox";
 import NotificationList from "./NotificationList";
 import Pizza from "./pizza";
 const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
@@ -342,21 +343,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 						)}
 					</MenuList>
 				</Menu>
-				<Box
-					as={motion.div}
-					cursor="pointer"
-					drag
-					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-					whileDrag={{ scale: 0.9, rotate: 10 }}
-					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-					whileTap={{
-						scale: 0.9,
-					}}
-					whileHover={{
-						scale: 1.2,
-						transition: { type: "spring", bounce: 0.8, duration: 1 },
-					}}
-				>
+				<MotionBox>
 					<IconButton
 						size={"lg"}
 						icon={
@@ -370,7 +357,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 						aria-label={"Change Color Theme"}
 						onClick={toggleColorMode}
 					/>
-				</Box>
+				</MotionBox>
 			</Stack>
 			<Stack
 				direction="row"
@@ -379,21 +366,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				p="0 1rem"
 				mb="2"
 			>
-				<Box
-					as={motion.div}
-					cursor="pointer"
-					drag
-					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-					whileDrag={{ scale: 0.9, rotate: 10 }}
-					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-					whileTap={{
-						scale: 0.9,
-					}}
-					whileHover={{
-						scale: 1.2,
-						transition: { type: "spring", bounce: 0.8, duration: 1 },
-					}}
-				>
+				<MotionBox>
 					<IconButton
 						size={"lg"}
 						icon={<ImMagicWand />}
@@ -401,7 +374,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 						aria-label={"Toggle Blur"}
 						onClick={handleBlur}
 					/>
-				</Box>
+				</MotionBox>
 				<Menu
 					isLazy
 					isOpen={isMenuOpen}
@@ -611,21 +584,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			w="100%"
 			{...rest}
 		>
-			<Box
-				as={motion.div}
-				cursor="pointer"
-				drag
-				dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-				whileDrag={{ scale: 1.2, rotate: 10 }}
-				dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-				whileTap={{
-					scale: 0.9,
-				}}
-				whileHover={{
-					scale: 1.2,
-					transition: { type: "spring", bounce: 0.8, duration: 1 },
-				}}
-			>
+			<MotionBox>
 				<IconButton
 					display={{ base: "flex", md: "none" }}
 					onClick={onOpen}
@@ -633,7 +592,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 					aria-label="open menu"
 					icon={<FiMenu />}
 				/>
-			</Box>
+			</MotionBox>
 			<Text
 				display={{ base: "flex", md: "none" }}
 				fontSize="2xl"
@@ -643,21 +602,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			</Text>
 
 			<HStack spacing={{ base: "0", md: "6" }}>
-				<Box
-					as={motion.div}
-					cursor="pointer"
-					drag
-					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-					whileDrag={{ scale: 1.2, rotate: 10 }}
-					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-					whileTap={{
-						scale: 0.9,
-					}}
-					whileHover={{
-						scale: 1.2,
-						transition: { type: "spring", bounce: 0.8, duration: 1 },
-					}}
-				>
+				<MotionBox>
 					<IconButton
 						size={"lg"}
 						icon={
@@ -671,22 +616,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 						aria-label={"Change Color Theme"}
 						onClick={toggleColorMode}
 					/>
-				</Box>
-				<Box
-					as={motion.div}
-					cursor="pointer"
-					drag
-					dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-					whileDrag={{ scale: 1.2, rotate: 10 }}
-					dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-					whileTap={{
-						scale: 0.9,
-					}}
-					whileHover={{
-						scale: 1.2,
-						transition: { type: "spring", bounce: 0.8, duration: 1 },
-					}}
-				>
+				</MotionBox>
+				<MotionBox>
 					<Menu>
 						<IconButton
 							as={MenuButton}
@@ -747,7 +678,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 							)}
 						</MenuList>
 					</Menu>
-				</Box>
+				</MotionBox>
 				<LoginHeader />
 			</HStack>
 		</Flex>
