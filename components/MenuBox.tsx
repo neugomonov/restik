@@ -12,16 +12,12 @@ import {
 	SimpleGrid,
 	Stack,
 	Text,
-	useColorMode,
-	useDisclosure,
-	useToast,
 } from "@chakra-ui/react";
 import { loadStripe } from "@stripe/stripe-js";
 import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
 import NextImage from "next/image";
-import { useRouter } from "next/router";
 import { IoMdAdd } from "react-icons/io";
 import { IoPizzaOutline } from "react-icons/io5";
 import { useRecoilState } from "recoil";
@@ -29,8 +25,8 @@ import info from "../lib/info";
 import menu from "../lib/menu";
 import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
-import MotionTopIconBox from "./motion/MotionTopIconBox";
 import MotionTag from "./motion/MotionTag";
+import MotionTopIconBox from "./motion/MotionTopIconBox";
 import OrderForm from "./OrderForm";
 
 const stripePromise = loadStripe(process.env.stripe_public_key!);
@@ -58,17 +54,8 @@ const ProductImage = chakra(NextImage, {
 });
 
 export default function MenuBox() {
-	const router = useRouter();
 	const [cart, setCart] = useRecoilState(_cart);
-	const toast = useToast();
-	const { colorMode } = useColorMode();
-	const {
-		isOpen: isMenuOpen,
-		onOpen: onMenuOpen,
-		onClose: onMenuClose,
-	} = useDisclosure();
 	const { t, lang } = useTranslation("menu");
-
 	const deliveryHours = getDeliveryHours(new Date());
 	let stringified = "";
 	for (let index = 0; index < cart.items.length; ++index) {
@@ -77,17 +64,6 @@ export default function MenuBox() {
 			.concat("x ", cart.items[index].name, " (", cart.items[index].type, ")");
 		stringified = stringified.concat(", ", csvString);
 	}
-
-	const stringifiedProducts = stringified.substring(2);
-
-	const handleClick = (route: string) => {
-		return async () => {
-			await router.push(route, route);
-		};
-	};
-	type DescribableFunction = {
-		(value: string): void;
-	};
 
 	return (
 		<>
