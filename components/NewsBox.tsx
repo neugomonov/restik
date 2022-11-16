@@ -19,6 +19,7 @@ import news from "../lib/news";
 import { _blur } from "../lib/recoil-atoms";
 import MotionTopIconBox from "./motion/MotionTopIconBox";
 import MotionTag from "./motion/MotionTag";
+import { ProductImage } from "./MenuBox";
 
 export default function NewsBox() {
 	const router = useRouter();
@@ -70,17 +71,22 @@ export default function NewsBox() {
 				.map((item) => (
 					<Box padding="1rem">
 						<Stack spacing={3}>
-							<Image
-								src={`/${item.image}`}
-								alt={`${t("photoOf")} ${item.name}`}
-								draggable={false}
-								loading="lazy"
-								decoding="async"
-								width="auto"
-								height={150}
-								objectFit="cover"
-								borderRadius="md"
-							/>
+							<Box height="16rem" position="relative">
+								<ProductImage
+									src={`/${item.image}`}
+									alt={`${t("photoOf")} ${item.name}`}
+									draggable={false}
+									loading="lazy"
+									decoding="async"
+									// @ts-expect-error
+									fill
+									sizes="(max-width: 768px) 100vw,
+									(max-width: 1200px) 50vw,
+									33vw"
+									objectFit="cover"
+									borderRadius="md"
+								/>
+							</Box>
 							<Text colorScheme={"gray"}>{item.date}</Text>
 
 							<Heading mr="1%">{item.name}</Heading>

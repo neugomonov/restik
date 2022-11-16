@@ -111,7 +111,7 @@ const App = ({
 									color="#DD6B20"
 								/>
 								{Component.PageLayout ? (
-									<Component.PageLayout>
+									<Component.PageLayout {...pageProps}>
 										<Component {...pageProps} />
 									</Component.PageLayout>
 								) : (

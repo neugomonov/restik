@@ -43,6 +43,10 @@ const Logo = (props: { color: string }) => {
 		>
 			<Avatar
 				as={motion.div}
+				name={info.name}
+				src="/images/chief.jpg"
+				size="lg"
+				draggable={false}
 				whileTap={{
 					scale: 0.9,
 				}}
@@ -51,10 +55,6 @@ const Logo = (props: { color: string }) => {
 					rotate: 360,
 					transition: { type: "spring", bounce: 0.8, duration: 1 },
 				}}
-				name={info.name}
-				src="/images/chief.jpg"
-				size="lg"
-				draggable={false}
 			/>
 			<Heading as="h3" size="lg">
 				{info.title[lang as "en" | "ru"] ?? t("restaurantName")}

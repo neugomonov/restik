@@ -13,6 +13,7 @@ export const PizzaSpinner = () => (
 );
 
 export const PizzaContainer = forwardRef<HTMLDivElement>(
+	// @ts-expect-error
 	({ children }, ref) => (
 		<Box
 			ref={ref}
