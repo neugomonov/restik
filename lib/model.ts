@@ -1,4 +1,4 @@
-import { GLTFLoader } from "../vendor_mods/three/examples/jsm/loaders/GLTFLoader.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 export function loadGLTFModel(
 	scene: any,
