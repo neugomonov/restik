@@ -104,7 +104,7 @@ export default function OrderForm() {
 
 	const stringifiedProducts = stringified.substring(2);
 
-	const onSubmit = async (data: FormData) => {
+	const onSubmit = async () => {
 		const disco = cart.total - cart.total * 0.1;
 		const currentTime = new Date().getTime() / 1000;
 		const timeOfDiscoEnd = 1661776053;
