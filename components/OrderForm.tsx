@@ -77,7 +77,7 @@ export default function OrderForm() {
 	const router = useRouter();
 	const [cart, setCart] = useRecoilState(_cart);
 	const toast = useToast();
-	const { register, handleSubmit, watch } = useForm<FormState>();
+	const { register, handleSubmit } = useForm<FormState>();
 	const { colorMode } = useColorMode();
 	const { t, lang } = useTranslation("menu");
 	const [address, setAddress] = useState("");
