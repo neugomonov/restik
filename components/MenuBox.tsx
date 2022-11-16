@@ -49,8 +49,9 @@ const MenuItem = dynamic(
 	async () => (await import("@chakra-ui/react")).MenuItem
 );
 
-const ProductImage = chakra(NextImage, {
-	shouldForwardProp: (prop) => ["width", "height", "src", "alt"].includes(prop),
+export const ProductImage = chakra(NextImage, {
+	shouldForwardProp: (prop) =>
+		["width", "height", "src", "alt", "fill", "sizes"].includes(prop),
 });
 
 export default function MenuBox() {
@@ -150,17 +151,22 @@ export default function MenuBox() {
 							padding="1rem"
 						>
 							<Stack spacing={3}>
-								<ProductImage
-									src={`/${item.image}`}
-									alt={`${t("photoOf")} ${item.name}`}
-									draggable={false}
-									loading="lazy"
-									decoding="async"
-									width="3840"
-									height={1920}
-									objectFit="cover"
-									borderRadius="md"
-								/>
+								<Box height="10rem" position="relative">
+									<ProductImage
+										src={`/${item.image}`}
+										alt={`${t("photoOf")} ${item.name}`}
+										draggable={false}
+										loading="lazy"
+										decoding="async"
+										// @ts-expect-error
+										fill
+										sizes="(max-width: 768px) 100vw,
+										(max-width: 1200px) 50vw,
+										33vw"
+										objectFit="cover"
+										borderRadius="md"
+									/>
+								</Box>
 								<Flex width="100%" justifyContent="space-between">
 									<Heading size="md">{item.name}</Heading>
 									<Text colorScheme={"gray"}>¼ / ½ kg</Text>
