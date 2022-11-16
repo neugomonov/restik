@@ -77,7 +77,7 @@ export default function OrderForm() {
 	const router = useRouter();
 	const [cart, setCart] = useRecoilState(_cart);
 	const toast = useToast();
-	const { register, handleSubmit, watch } = useForm<FormState>();
+	const { register, handleSubmit } = useForm<FormState>();
 	const { colorMode } = useColorMode();
 	const { t, lang } = useTranslation("menu");
 	const [address, setAddress] = useState("");
@@ -203,7 +203,6 @@ export default function OrderForm() {
 			Math.round(((cart.total / 100) * multiplier + Number.EPSILON) * 100) / 100
 		);
 	};
-	// ! Some problem here. No button name change - watch isn't working
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<Stack spacing={5}>
@@ -414,7 +413,7 @@ export default function OrderForm() {
 								!deliveryHours || deliveryHours.length === 0 || cart.total == 0
 							}
 						>
-							{watch("payment") === "Online" ? t("placeAndPay") : t("pay")}
+							{payment === "Online" ? t("placeAndPay") : t("pay")}
 						</Button>
 					</Box>
 				</Stack>
