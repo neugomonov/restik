@@ -1,6 +1,5 @@
 import {
 	Box,
-	chakra,
 	Heading,
 	IconButton,
 	Link,
@@ -9,20 +8,16 @@ import {
 	Text,
 } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
-import NextImage from "next/image";
 import { IoRestaurantOutline } from "react-icons/io5";
-import MotionTopIconBox from "../components/motion/MotionTopIconBox";
+import { ProductImage } from "../components/MenuBox";
 import MotionTag from "../components/motion/MotionTag";
+import MotionTopIconBox from "../components/motion/MotionTopIconBox";
 import { WithSideContentLayout } from "../layouts/menu";
 import info from "../lib/info";
 import promo from "../lib/promo";
 
 function Promo() {
 	const { t, lang } = useTranslation("home");
-	const ProductImage = chakra(NextImage, {
-		shouldForwardProp: (prop) =>
-			["width", "height", "src", "alt"].includes(prop),
-	});
 
 	return (
 		<>
@@ -58,17 +53,22 @@ function Promo() {
 								padding="1rem"
 							>
 								<Stack spacing={3}>
-									<ProductImage
-										src={`/${item.image}`}
-										alt={`${t("photoOf")} ${item.name}`}
-										draggable={false}
-										loading="lazy"
-										decoding="async"
-										width="3840"
-										height={1920}
-										objectFit="cover"
-										borderRadius="md"
-									/>
+									<Box height="10rem" position="relative">
+										<ProductImage
+											src={`/${item.image}`}
+											alt={`${t("photoOf")} ${item.name}`}
+											draggable={false}
+											loading="lazy"
+											decoding="async"
+											// @ts-expect-error
+											fill
+											sizes="(max-width: 768px) 100vw,
+											(max-width: 1200px) 50vw,
+											33vw"
+											objectFit="cover"
+											borderRadius="md"
+										/>
+									</Box>
 									<Text colorScheme={"gray"}>{item.date}</Text>
 
 									<Heading size="md" mr="1%">
