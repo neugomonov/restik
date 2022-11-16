@@ -152,7 +152,7 @@ export default function OrderForm() {
 				read: false,
 			});
 
-			if (payment == "Online") {
+			if (payment === "Online") {
 				const stripe = await stripePromise;
 				const checkoutSession = await axios.post(
 					"api/create-checkout-session",
