@@ -69,7 +69,7 @@ export default function PromoBox() {
 			</div>
 			{promo(lang as "en" | "ru")
 				.map((item) => (
-					<Box padding="1rem">
+					<Box key={item.name} padding="1rem">
 						<Stack spacing={3}>
 							<Box height="16rem" position="relative">
 								<ProductImage
