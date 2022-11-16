@@ -212,7 +212,7 @@ export default function OrderForm() {
 					<FormControl isRequired id="name">
 						<FormLabel>{t("name")}</FormLabel>
 						<Input
-							ref={register({ required: true })}
+							{...register}
 							isRequired
 							name="name"
 							type="text"
@@ -223,7 +223,7 @@ export default function OrderForm() {
 					<FormControl isRequired id="email">
 						<FormLabel>{t("email")}</FormLabel>
 						<Input
-							ref={register({ required: true })}
+							{...register}
 							isRequired
 							name="email"
 							type="email"
@@ -239,7 +239,7 @@ export default function OrderForm() {
 								children={info.callingCode}
 							/>
 							<Input
-								ref={register({ required: true })}
+								{...register}
 								isRequired
 								name="phone"
 								type="phone"
@@ -251,7 +251,7 @@ export default function OrderForm() {
 					<FormControl id="company">
 						<FormLabel>{t("company")}</FormLabel>
 						<Input
-							ref={register}
+							{...register}
 							name="company"
 							type="text"
 							placeholder={t("companyPlaceholder")}
@@ -264,7 +264,7 @@ export default function OrderForm() {
 					<FormControl isRequired id="address">
 						<FormLabel>{t("address")}</FormLabel>
 						<Input
-							ref={register({ required: true })}
+							{...register}
 							isRequired
 							name="address"
 							type="text"
@@ -275,7 +275,7 @@ export default function OrderForm() {
 					<FormControl isRequired id="postal">
 						<FormLabel>{t("postal")}</FormLabel>
 						<Input
-							ref={register({ required: true })}
+							{...register}
 							isRequired
 							name="postal"
 							type="text"
@@ -286,7 +286,7 @@ export default function OrderForm() {
 					<FormControl isRequired id="city">
 						<FormLabel>{t("city")}</FormLabel>
 						<Input
-							ref={register({ required: true })}
+							{...register}
 							isRequired
 							name="city"
 							type="text"
@@ -297,7 +297,7 @@ export default function OrderForm() {
 					<FormControl id="floor">
 						<FormLabel>{t("floor")}</FormLabel>
 						<Input
-							ref={register}
+							{...register}
 							name="floor"
 							type="text"
 							placeholder="5"
@@ -310,7 +310,7 @@ export default function OrderForm() {
 					<FormControl isRequired id="time">
 						<FormLabel>{t("deliveryTime")}</FormLabel>
 						<Select
-							ref={register({ required: true })}
+							{...register}
 							isRequired
 							name="time"
 							placeholder={t("select")}
@@ -329,7 +329,7 @@ export default function OrderForm() {
 					<FormControl id="notes">
 						<FormLabel>{t("notes")}</FormLabel>
 						<Textarea
-							ref={register}
+							{...register}
 							name="notes"
 							resize="vertical"
 							placeholder={t("deliveryPlaceholder")}
@@ -342,7 +342,7 @@ export default function OrderForm() {
 					<FormControl isRequired id="payment">
 						<FormLabel>{t("paymentMethod")}</FormLabel>
 						<Select
-							ref={register({ required: true })}
+							{...register}
 							isRequired
 							name="payment"
 							placeholder={t("select")}
@@ -355,7 +355,7 @@ export default function OrderForm() {
 					<FormControl id="tip">
 						<FormLabel>{t("tip")}</FormLabel>
 						<Select
-							ref={register}
+							{...register}
 							name="tip"
 							defaultValue="none"
 							onChange={handleForm(setTip)}
