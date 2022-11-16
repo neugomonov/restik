@@ -414,7 +414,7 @@ export default function OrderForm() {
 								!deliveryHours || deliveryHours.length === 0 || cart.total == 0
 							}
 						>
-							{watch("payment") === "Online" ? t("placeAndPay") : t("pay")}
+							{payment === "Online" ? t("placeAndPay") : t("pay")}
 						</Button>
 					</Box>
 				</Stack>
