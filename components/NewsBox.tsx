@@ -68,7 +68,7 @@ export default function NewsBox() {
 			</div>
 			{news(lang as "en" | "ru")
 				.map((item) => (
-					<Box padding="1rem">
+					<Box padding="1rem" key={item.name}>
 						<Stack spacing={3}>
 							<Box height="16rem" position="relative">
 								<ProductImage

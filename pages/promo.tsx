@@ -36,7 +36,6 @@ function Promo() {
 				</MotionTopIconBox>
 			</div>
 			<Stack spacing={5}>
-				{" "}
 				<SimpleGrid
 					minChildWidth="15rem"
 					spacing={3}
@@ -45,13 +44,8 @@ function Promo() {
 					pt="1rem"
 				>
 					{promo(lang as "en" | "ru").map((item) => (
-						<Link>
-							<Box
-								key={item.name}
-								borderWidth="1px"
-								borderRadius="lg"
-								padding="1rem"
-							>
+						<Link key={item.name}>
+							<Box borderWidth="1px" borderRadius="lg" padding="1rem">
 								<Stack spacing={3}>
 									<Box height="10rem" position="relative">
 										<ProductImage
