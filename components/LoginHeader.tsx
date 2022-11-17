@@ -7,10 +7,8 @@ import {
 	MenuDivider,
 	MenuItem,
 	MenuList,
-	Stack,
 	useColorModeValue,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import { signIn, signOut, useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import router from "next/router";
@@ -22,7 +20,7 @@ export default function LoginHeader() {
 			await router.push(route, route);
 		};
 	};
-	const { t, lang } = useTranslation("common");
+	const { t } = useTranslation("common");
 
 	if (session) {
 		return (

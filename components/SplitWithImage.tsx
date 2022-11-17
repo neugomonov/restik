@@ -42,7 +42,7 @@ const Feature = ({ text, icon, iconBg }: FeatureProps) => {
 };
 
 export default function SplitWithImage() {
-	const { t, lang } = useTranslation("index");
+	const { lang } = useTranslation("index");
 
 	return (
 		<Container maxW={"5xl"} py={12}>

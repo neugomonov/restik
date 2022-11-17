@@ -4,7 +4,6 @@ import {
 	Button,
 	Heading,
 	IconButton,
-	Image,
 	Stack,
 	Text,
 	useColorMode,
@@ -17,9 +16,9 @@ import { useRecoilState } from "recoil";
 import info from "../lib/info";
 import news from "../lib/news";
 import { _blur } from "../lib/recoil-atoms";
-import MotionTopIconBox from "./motion/MotionTopIconBox";
-import MotionTag from "./motion/MotionTag";
 import { ProductImage } from "./MenuBox";
+import MotionTag from "./motion/MotionTag";
+import MotionTopIconBox from "./motion/MotionTopIconBox";
 
 export default function NewsBox() {
 	const router = useRouter();

@@ -1,6 +1,3 @@
-import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
-
 import {
 	ButtonGroup,
 	Divider,
@@ -11,11 +8,11 @@ import {
 	Text,
 	useColorMode,
 } from "@chakra-ui/react";
-
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import { IoMdAdd, IoMdRemove } from "react-icons/io";
 import { useRecoilState } from "recoil";
-
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
 

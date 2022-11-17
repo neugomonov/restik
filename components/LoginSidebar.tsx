@@ -24,7 +24,7 @@ import MotionBox from "./motion/MotionBox";
 export default function LoginSidebar() {
 	const { colorMode } = useColorMode();
 
-	const { data: session, status } = useSession();
+	const { data: session } = useSession();
 	const handleClick = (route: string) => {
 		return async () => {
 			await router.push(route, route);

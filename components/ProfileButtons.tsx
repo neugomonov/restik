@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
 import { Button, Stack, useToast } from "@chakra-ui/react";
-import { AiFillPhone } from "react-icons/ai";
-import { MdPlace } from "react-icons/md";
-import { useSession } from "next-auth/react";
 import { collection } from "@firebase/firestore";
-import { db } from "../firebase";
 import { doc, DocumentData, onSnapshot, updateDoc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-import { IoCash } from "react-icons/io5";
+import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
+import { useEffect, useState } from "react";
+import { AiFillPhone } from "react-icons/ai";
+import { IoCash } from "react-icons/io5";
+import { MdPlace } from "react-icons/md";
+import { db } from "../firebase";
 
 export default function ProfileButtons() {
 	const { data: session } = useSession();
 	const toast = useToast();
-	const auth = getAuth();
 	const [users, setUsers] = useState([{ name: "Loading...", id: "initial" }]);
 	useEffect(
 		() =>
@@ -27,7 +25,7 @@ export default function ProfileButtons() {
 			),
 		[]
 	);
-	const { t, lang } = useTranslation("common");
+	const { t } = useTranslation("common");
 	const handleEditAddress = async (id: string) => {
 		const address = prompt(t("addressPrompt"));
 		if (address != null && address != "") {

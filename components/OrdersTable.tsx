@@ -27,7 +27,6 @@ import {
 import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import { useEffect, useState } from "react";
-import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 
 export default function OrdersTable() {
@@ -67,7 +66,7 @@ export default function OrdersTable() {
 		});
 	}, [session]);
 
-	const { t, lang } = useTranslation("common");
+	const { t } = useTranslation("common");
 	const handleNew = async () => {
 		const products = prompt("Введите что хотите заказать 🍕");
 		if (products != null && products != "") {
@@ -90,7 +89,7 @@ export default function OrdersTable() {
 				timestamp,
 				status,
 			};
-			const docRef = await addDoc(collectionRef, payload);
+			await addDoc(collectionRef, payload);
 		}
 	};
 	const handleEditStatus = async (id: string) => {
@@ -117,12 +116,6 @@ export default function OrdersTable() {
 			});
 		}
 	};
-	const [snapshotAdmins] = useCollection(collection(db, "admins"));
-
-	const admins = snapshotAdmins?.docs.map((doc) => ({
-		id: doc.id,
-		...doc.data(),
-	}));
 
 	return (
 		<>

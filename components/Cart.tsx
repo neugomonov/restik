@@ -8,7 +8,6 @@ import {
 } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 import { useRef } from "react";
 import { IoMdCart } from "react-icons/io";
 import { useRecoilState } from "recoil";
@@ -31,8 +30,7 @@ const DrawerCloseButton = dynamic(
 );
 
 export default function Cart() {
-	const router = useRouter();
-	const [cart, setCart] = useRecoilState(_cart);
+	const [cart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const btnRef = useRef();

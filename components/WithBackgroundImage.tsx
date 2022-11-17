@@ -20,7 +20,7 @@ export default function WithBackgroundImage() {
 			await router.push(route, route);
 		};
 	};
-	const { t, lang } = useTranslation("index");
+	const { lang } = useTranslation("index");
 
 	return (
 		<Flex

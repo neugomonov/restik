@@ -13,7 +13,6 @@ import {
 	Stack,
 	Text,
 } from "@chakra-ui/react";
-import { loadStripe } from "@stripe/stripe-js";
 import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
@@ -29,24 +28,12 @@ import MotionTag from "./motion/MotionTag";
 import MotionTopIconBox from "./motion/MotionTopIconBox";
 import OrderForm from "./OrderForm";
 
-const stripePromise = loadStripe(process.env.stripe_public_key!);
-
 const Tooltip = dynamic(async () => (await import("@chakra-ui/react")).Tooltip);
 const UnorderedList = dynamic(
 	async () => (await import("@chakra-ui/react")).UnorderedList
 );
 const ListItem = dynamic(
 	async () => (await import("@chakra-ui/react")).ListItem
-);
-const Menu = dynamic(async () => (await import("@chakra-ui/react")).Menu);
-const MenuButton = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuButton
-);
-const MenuList = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuList
-);
-const MenuItem = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuItem
 );
 
 export const ProductImage = chakra(NextImage, {
