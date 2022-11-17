@@ -35,6 +35,7 @@ export default function LoginHeader() {
 							_focus={{ boxShadow: "none" }}
 						>
 							<HStack>
+								{/*eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain*/}
 								<Avatar size={"sm"} src={session?.user?.image!} />
 							</HStack>
 						</MenuButton>

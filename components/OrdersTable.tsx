@@ -127,7 +127,7 @@ export default function OrdersTable() {
 	return (
 		<>
 			{
-				// @ts-expect-error
+				// @ts-expect-error - Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.ts(2339)
 				session?.user?.role == "Админ" && (
 					<Button m={5} p={4} onClick={handleNew}>
 						Новый заказ 🍕
@@ -150,7 +150,7 @@ export default function OrdersTable() {
 					</Thead>
 					<Tbody>
 						{
-							// @ts-expect-error
+							// @ts-expect-error - Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.ts(2339)
 							session?.user?.role == "Админ"
 								? ordersAdmin.map((order: Record<string, string>) => (
 										<Tr key={order.id}>
@@ -171,6 +171,7 @@ export default function OrdersTable() {
 											<Td>{order.total}</Td>
 											<Td>{order.email}</Td>
 										</Tr>
+										// eslint-disable-next-line no-mixed-spaces-and-tabs
 								  ))
 								: orders.map((order: Record<string, string>) => (
 										<Tr key={order.id}>
@@ -182,6 +183,7 @@ export default function OrdersTable() {
 											<Td>{order.total}</Td>
 											<Td>{order.email}</Td>
 										</Tr>
+										// eslint-disable-next-line no-mixed-spaces-and-tabs
 								  ))
 						}
 					</Tbody>

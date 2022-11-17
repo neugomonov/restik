@@ -13,7 +13,8 @@ export const PizzaSpinner = () => (
 );
 
 export const PizzaContainer = forwardRef<HTMLDivElement>(
-	// @ts-expect-error
+	// @ts-expect-error - Property 'children' does not exist on type '{}'.ts(2339)
+	// eslint-disable-next-line react/prop-types
 	({ children }, ref) => (
 		<Box
 			ref={ref}
@@ -32,7 +33,7 @@ export const PizzaContainer = forwardRef<HTMLDivElement>(
 
 const Loader = () => {
 	return (
-		// @ts-expect-error
+		// @ts-expect-error - Property 'children' does not exist on type '{}'.ts(2339)
 		<PizzaContainer>
 			<PizzaSpinner />
 		</PizzaContainer>

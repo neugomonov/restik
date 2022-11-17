@@ -90,6 +90,7 @@ export default function ProfileButtons() {
 			<Stack direction={{ base: "column", xl: "row" }}>
 				{users
 					?.filter((user: Record<string, string>) =>
+						// eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
 						user.email?.includes(session?.user?.email!)
 					)
 					.map((user: Record<string, string>) => (
@@ -105,6 +106,7 @@ export default function ProfileButtons() {
 
 				{users
 					?.filter((user: Record<string, string>) =>
+						// eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
 						user.email?.includes(session?.user?.email!)
 					)
 					.map((user: Record<string, string>) => (
@@ -119,6 +121,7 @@ export default function ProfileButtons() {
 					))}
 				{users
 					?.filter((user: Record<string, string>) =>
+						// eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
 						user.email?.includes(session?.user?.email!)
 					)
 					.map((user: Record<string, string>) => (

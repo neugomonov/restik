@@ -13,6 +13,7 @@ import {
 import useTranslation from "next-translate/useTranslation";
 import index from "../lib";
 
+// eslint-disable-next-line prefer-spread
 const features = Array.apply(null, Array(8)).map(function (x, i) {
 	return {
 		id: i,

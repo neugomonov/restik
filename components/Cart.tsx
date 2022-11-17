@@ -75,7 +75,7 @@ export default function Cart() {
 			<Drawer
 				isOpen={isOpen}
 				placement="right"
-				// @ts-expect-error
+				// @ts-expect-error - Type 'MutableRefObject<undefined>' is not assignable to type 'RefObject<FocusableElement>'.
 				finalFocusRef={btnRef}
 				scrollBehavior="inside"
 				onClose={onClose}

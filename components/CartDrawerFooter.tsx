@@ -87,7 +87,7 @@ export default function CartDrawerFooter() {
 			</MotionBox>
 			<AlertDialog
 				isOpen={isAlertOpen}
-				// @ts-expect-error
+				// @ts-expect-error - Type 'MutableRefObject<undefined>' is not assignable to type 'RefObject<FocusableElement>'.
 				leastDestructiveRef={cancelRef}
 				onClose={onAlertClose}
 			>
@@ -108,7 +108,7 @@ export default function CartDrawerFooter() {
 						<AlertDialogFooter>
 							<MotionBox>
 								<Button
-									// @ts-expect-error
+									// @ts-expect-error - Type 'MutableRefObject<undefined>' is not assignable to type 'LegacyRef<HTMLButtonElement> | undefined'.
 									ref={cancelRef}
 									onClick={onAlertClose}
 								>

@@ -88,6 +88,7 @@ export default function OrderForm() {
 	const [name, setName] = useState("");
 	const [notes, setNotes] = useState("");
 	const [payment, setPayment] = useState("");
+	// eslint-disable-next-line prefer-const
 	let [phone, setPhone] = useState("");
 	const [postal, setPostal] = useState("");
 	const [time, setTime] = useState("");
