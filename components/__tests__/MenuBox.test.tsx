@@ -1,15 +1,14 @@
-import { render, screen, cleanup } from "@testing-library/react";
-import MenuBox from "../MenuBox";
+import { cleanup, render } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import { RecoilRoot } from "recoil";
-import { _cart, CartState } from "../../lib/recoil-atoms";
 import StateSaver from "../../components/state-saver";
+import MenuBox from "../MenuBox";
 
 afterEach(cleanup);
 
 it("renders without crashing", () => {
 	render(
-		<RecoilRoot initializeState={({ set }) => {}}>
+		<RecoilRoot>
 			<StateSaver>
 				<MenuBox />
 			</StateSaver>
@@ -19,7 +18,7 @@ it("renders without crashing", () => {
 it("matches snapshot", () => {
 	const tree = renderer
 		.create(
-			<RecoilRoot initializeState={({ set }) => {}}>
+			<RecoilRoot>
 				<StateSaver>
 					<MenuBox />
 				</StateSaver>

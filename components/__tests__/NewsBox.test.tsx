@@ -1,16 +1,15 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import NewsBox from "../NewsBox";
 import renderer from "react-test-renderer";
 import { RecoilRoot } from "recoil";
-import { _cart, CartState } from "../../lib/recoil-atoms";
 import StateSaver from "../../components/state-saver";
+import NewsBox from "../NewsBox";
 
 afterEach(cleanup);
 
 it("renders without crashing", () => {
 	render(
-		<RecoilRoot initializeState={({ set }) => {}}>
+		<RecoilRoot>
 			<StateSaver>
 				<NewsBox />
 			</StateSaver>
@@ -19,7 +18,7 @@ it("renders without crashing", () => {
 });
 it("renders component correctly", () => {
 	const { getByTestId } = render(
-		<RecoilRoot initializeState={({ set }) => {}}>
+		<RecoilRoot>
 			<StateSaver>
 				<NewsBox />
 			</StateSaver>
@@ -29,7 +28,7 @@ it("renders component correctly", () => {
 });
 it("allows me to go to news", () => {
 	const { getByTestId } = render(
-		<RecoilRoot initializeState={({ set }) => {}}>
+		<RecoilRoot>
 			<StateSaver>
 				<NewsBox />
 			</StateSaver>
@@ -41,7 +40,7 @@ it("allows me to go to news", () => {
 it("matches snapshot", () => {
 	const tree = renderer
 		.create(
-			<RecoilRoot initializeState={({ set }) => {}}>
+			<RecoilRoot>
 				<StateSaver>
 					<NewsBox />
 				</StateSaver>

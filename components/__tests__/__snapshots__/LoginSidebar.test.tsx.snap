@@ -6,9 +6,10 @@ exports[`matches snapshot 1`] = `
 >
   <div
     className="css-4g6ai3"
+    data-projection-id={3}
     draggable={false}
     style={
-      Object {
+      {
         "WebkitTouchCallout": "none",
         "WebkitUserSelect": "none",
         "touchAction": "none",
@@ -17,12 +18,12 @@ exports[`matches snapshot 1`] = `
     }
   >
     <button
-      className="chakra-button css-ufcox6"
+      className="chakra-button css-smtwy"
       data-testid="button"
       onClick={[Function]}
       type="button"
     >
-      common:signIn
+      signIn
     </button>
   </div>
 </div>
