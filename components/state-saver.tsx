@@ -16,7 +16,7 @@ const StateSaver = ({ children }: Props): JSX.Element => {
 		localStorage.setItem("blur", JSON.stringify(blur));
 	});
 
-	// @ts-expect-error
+	// @ts-expect-error - Type 'ReactNode' is not assignable to type 'Element'.
 	return children;
 };
 

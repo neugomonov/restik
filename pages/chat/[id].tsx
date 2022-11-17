@@ -24,7 +24,7 @@ function Chat() {
 	const router = useRouter();
 	const { id } = router.query;
 	const { data: session } = useSession();
-	// @ts-expect-error
+	// @ts-expect-error - No overload matches this call.  The last overload gave the following error.  Argument of type 'Firestore' is not assignable to parameter of type 'DocumentReference<unknown>'.	Type 'Firestore' is missing the following properties from type 'DocumentReference<unknown>': converter, firestore, id, path, and 2 more.ts(2769)
 	const docRef = doc(db, "chats", id);
 	const [snapshot, loadingSnapshot] = useDocumentOnce(docRef);
 	const q = query(collection(db, `chats/${id}/messages`), orderBy("timestamp"));
@@ -100,7 +100,7 @@ function Chat() {
 							{!loadingSnapshot &&
 							!snapshot
 								?.data()
-								?.users.includes(session?.user?.email! || "anonym") ? (
+								?.users.includes(session?.user?.email || "anonym") ? (
 								returnBack()
 							) : (
 								<Flex

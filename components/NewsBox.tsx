@@ -4,7 +4,6 @@ import {
 	Button,
 	Heading,
 	IconButton,
-	Image,
 	Stack,
 	Text,
 	useColorMode,
@@ -17,9 +16,9 @@ import { useRecoilState } from "recoil";
 import info from "../lib/info";
 import news from "../lib/news";
 import { _blur } from "../lib/recoil-atoms";
-import MotionTopIconBox from "./motion/MotionTopIconBox";
-import MotionTag from "./motion/MotionTag";
 import { ProductImage } from "./MenuBox";
+import MotionTag from "./motion/MotionTag";
+import MotionTopIconBox from "./motion/MotionTopIconBox";
 
 export default function NewsBox() {
 	const router = useRouter();
@@ -69,7 +68,7 @@ export default function NewsBox() {
 			</div>
 			{news(lang as "en" | "ru")
 				.map((item) => (
-					<Box padding="1rem">
+					<Box padding="1rem" key={item.name}>
 						<Stack spacing={3}>
 							<Box height="16rem" position="relative">
 								<ProductImage
@@ -78,7 +77,7 @@ export default function NewsBox() {
 									draggable={false}
 									loading="lazy"
 									decoding="async"
-									// @ts-expect-error
+									// @ts-expect-error - Type 'true' is not assignable to type 'ResponsiveValue<Union<"current" | Color  | ... 176 more ... | "chakra-placeholder-color">> | undefined'.ts(2322)
 									fill
 									sizes="(max-width: 768px) 100vw,
 									(max-width: 1200px) 50vw,

@@ -71,6 +71,7 @@ function Profile() {
 										position="relative"
 									>
 										<VStack>
+											{/* eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain */}
 											<Avatar size={"3xl"} src={session.user?.image!} />
 											<VStack alignItems="center" spacing="0" ml="2">
 												<Text fontSize="3xl">{session.user?.name}</Text>
@@ -78,6 +79,7 @@ function Profile() {
 													fontSize="sm"
 													color={useColorModeValue("gray.600", "gray.300")}
 												>
+													{/* eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain */}
 													{session.user?.email!}
 												</Text>
 												<ProfileButtons />{" "}

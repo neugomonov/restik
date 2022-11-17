@@ -40,7 +40,7 @@ const Feature = ({ title, text, icon }: FeatureProps) => {
 };
 
 export default function SimpleThreeColumns() {
-	const { t, lang } = useTranslation("index");
+	const { lang } = useTranslation("index");
 	return (
 		<Box as={Container} maxW="7xl" mt={14} p={4}>
 			<SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>

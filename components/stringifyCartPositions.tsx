@@ -15,7 +15,7 @@ export default function stringifyCartPositions() {
 	const [cart, setCart] = useRecoilState(_cart);
 	const toast = useToast();
 	const router = useRouter();
-	const { t, lang } = useTranslation("menu");
+	const { t } = useTranslation("menu");
 
 	let stringified = "";
 	for (let index = 0; index < cart.items.length; ++index) {
@@ -29,6 +29,8 @@ export default function stringifyCartPositions() {
 	let phone = "";
 	let payment = "";
 	let address = "";
+
+	// TODO: finish it!
 	interface CustomSession extends Session {
 		user: { phone: string; address: string; payment: string; email: string };
 	}
@@ -63,7 +65,7 @@ export default function stringifyCartPositions() {
 				timestamp,
 				status,
 			};
-			const docRef = await addDoc(collectionRef, payload);
+			await addDoc(collectionRef, payload);
 			setCart({ items: [], total: 0 });
 			toast({
 				title: t("success"),
@@ -99,7 +101,7 @@ export default function stringifyCartPositions() {
 			toast({
 				title: t("splendid"),
 				status: "info",
-				duration: 3000,
+				duration: 6000,
 				isClosable: true,
 			});
 		}

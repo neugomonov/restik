@@ -1,15 +1,12 @@
 import {
-	Box,
 	Button,
 	useColorMode,
 	useDisclosure,
 	useToast,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 import { useRef } from "react";
 import { IoMdCheckmarkCircle, IoMdTrash } from "react-icons/io";
 import { useRecoilState } from "recoil";
@@ -40,7 +37,6 @@ const AlertDialogOverlay = dynamic(
 );
 
 export default function CartDrawerFooter() {
-	const router = useRouter();
 	const { data: session } = useSession();
 
 	const [cart, setCart] = useRecoilState(_cart);
@@ -87,7 +83,7 @@ export default function CartDrawerFooter() {
 			</MotionBox>
 			<AlertDialog
 				isOpen={isAlertOpen}
-				// @ts-expect-error
+				// @ts-expect-error - Type 'MutableRefObject<undefined>' is not assignable to type 'RefObject<FocusableElement>'.
 				leastDestructiveRef={cancelRef}
 				onClose={onAlertClose}
 			>
@@ -108,7 +104,7 @@ export default function CartDrawerFooter() {
 						<AlertDialogFooter>
 							<MotionBox>
 								<Button
-									// @ts-expect-error
+									// @ts-expect-error - Type 'MutableRefObject<undefined>' is not assignable to type 'LegacyRef<HTMLButtonElement> | undefined'.
 									ref={cancelRef}
 									onClick={onAlertClose}
 								>

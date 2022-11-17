@@ -78,7 +78,7 @@ export default function PromoBox() {
 									draggable={false}
 									loading="lazy"
 									decoding="async"
-									// @ts-expect-error
+									// @ts-expect-error - Type 'true' is not assignable to type 'ResponsiveValue<Union<Color | "current" | ... 176 more ... | "chakra-placeholder-color">> | undefined'.ts(2322)
 									fill
 									sizes="(max-width: 768px) 100vw,
 									(max-width: 1200px) 50vw,

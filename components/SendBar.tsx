@@ -22,13 +22,14 @@ export default function SendBar({
 				name?: string | null | undefined;
 				email?: string | null | undefined;
 				image?: string | null | undefined;
+				// eslint-disable-next-line no-mixed-spaces-and-tabs
 		  }
 		| undefined;
 }) {
 	const [input, setInput] = useState("");
 	const { data: session } = useSession();
 	const { colorMode } = useColorMode();
-	const { t, lang } = useTranslation("common");
+	const { t } = useTranslation("common");
 	const sendMessage = async (event: React.FormEvent<HTMLDivElement>) => {
 		event.preventDefault();
 		if (input !== "") {

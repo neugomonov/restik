@@ -44,13 +44,8 @@ function News() {
 					pt="1rem"
 				>
 					{news(lang as "en" | "ru").map((item) => (
-						<Link>
-							<Box
-								key={item.name}
-								borderWidth="1px"
-								borderRadius="lg"
-								padding="1rem"
-							>
+						<Link key={item.name}>
+							<Box borderWidth="1px" borderRadius="lg" padding="1rem">
 								<Stack spacing={3}>
 									<Box height="10rem" position="relative">
 										<ProductImage
@@ -59,7 +54,7 @@ function News() {
 											draggable={false}
 											loading="lazy"
 											decoding="async"
-											// @ts-expect-error
+											// @ts-expect-error - Type 'true' is not assignable to type 'ResponsiveValue<Union<Color | "current" | ... 176 more ... | "chakra-placeholder-color">> | undefined'.ts(2322)
 											fill
 											sizes="(max-width: 768px) 100vw,
 											(max-width: 1200px) 50vw,

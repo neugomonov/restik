@@ -57,6 +57,8 @@ export default function ChatListBox() {
 			});
 		}
 	};
+
+	// TODO: finish it!
 	async function getOtherAvatar(chat: Record<string, string>) {
 		const usersDocument = await query(
 			collection(db, "users"),

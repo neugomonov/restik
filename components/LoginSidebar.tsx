@@ -24,7 +24,7 @@ import MotionBox from "./motion/MotionBox";
 export default function LoginSidebar() {
 	const { colorMode } = useColorMode();
 
-	const { data: session, status } = useSession();
+	const { data: session } = useSession();
 	const handleClick = (route: string) => {
 		return async () => {
 			await router.push(route, route);
@@ -75,6 +75,7 @@ export default function LoginSidebar() {
 								position="relative"
 							>
 								<HStack>
+									{/* eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain */}
 									<Avatar size={"sm"} src={session?.user?.image!} />
 									<VStack
 										display={{ base: "none", md: "flex" }}
@@ -87,9 +88,11 @@ export default function LoginSidebar() {
 											fontSize="xs"
 											color={useColorModeValue("gray.600", "gray.300")}
 										>
+											{/* eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain */}
 											{session?.user?.email!.length! >= 13
 												? `${session?.user?.email!.slice(0, 10)}...`
-												: session?.user?.email!}
+												: // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, no-mixed-spaces-and-tabs
+												  session?.user?.email!}
 										</Text>
 									</VStack>
 									<Box display={{ base: "none", md: "flex" }}>

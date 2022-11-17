@@ -40,7 +40,7 @@ import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ReactNode, ReactText, useEffect, useState } from "react";
+import { ReactText, useEffect, useState } from "react";
 import { IconType } from "react-icons";
 import { BiNews } from "react-icons/bi";
 import { FiBell, FiHome, FiMenu } from "react-icons/fi";
@@ -114,13 +114,9 @@ const LinkItems: Array<LinkItemProps> = [
 	{ name: info.kitchen, icon: MdKitchen, href: `/about` },
 ];
 
-export default function SidebarWithHeader({
-	children,
-}: {
-	children: ReactNode;
-}) {
+export default function SidebarWithHeader() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const [blurMode, setBlurMode] = useRecoilState(_blur);
+	const [blurMode] = useRecoilState(_blur);
 	return (
 		<Box>
 			<SidebarContent

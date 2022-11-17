@@ -1,7 +1,6 @@
 import {
 	Box,
 	Button,
-	chakra,
 	Checkbox,
 	Divider,
 	FormControl,
@@ -23,9 +22,6 @@ import axios from "axios";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
-import dynamic from "next/dynamic";
-import NextImage from "next/image";
-import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
@@ -35,24 +31,6 @@ import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
 
 const stripePromise = loadStripe(process.env.stripe_public_key!);
-
-const Tooltip = dynamic(async () => (await import("@chakra-ui/react")).Tooltip);
-const UnorderedList = dynamic(
-	async () => (await import("@chakra-ui/react")).UnorderedList
-);
-const ListItem = dynamic(
-	async () => (await import("@chakra-ui/react")).ListItem
-);
-const Menu = dynamic(async () => (await import("@chakra-ui/react")).Menu);
-const MenuButton = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuButton
-);
-const MenuList = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuList
-);
-const MenuItem = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuItem
-);
 
 type FormState = {
 	name: string;
@@ -69,17 +47,12 @@ type FormState = {
 	tip?: string;
 };
 
-const ProductImage = chakra(NextImage, {
-	shouldForwardProp: (prop) => ["width", "height", "src", "alt"].includes(prop),
-});
-
 export default function OrderForm() {
-	const router = useRouter();
 	const [cart, setCart] = useRecoilState(_cart);
 	const toast = useToast();
 	const { register, handleSubmit } = useForm<FormState>();
 	const { colorMode } = useColorMode();
-	const { t, lang } = useTranslation("menu");
+	const { t } = useTranslation("menu");
 	const [address, setAddress] = useState("");
 	const [city, setCity] = useState("");
 	const [company, setCompany] = useState("");
@@ -88,6 +61,7 @@ export default function OrderForm() {
 	const [name, setName] = useState("");
 	const [notes, setNotes] = useState("");
 	const [payment, setPayment] = useState("");
+	// eslint-disable-next-line prefer-const
 	let [phone, setPhone] = useState("");
 	const [postal, setPostal] = useState("");
 	const [time, setTime] = useState("");
@@ -135,7 +109,7 @@ export default function OrderForm() {
 			company,
 			city,
 		};
-		const phonePattern = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/i;
+		const phonePattern = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/i;
 		if (phonePattern.test(phone)) {
 			await addDoc(collectionRef, payload);
 			setCart({ items: [], total: 0 });
@@ -164,9 +138,9 @@ export default function OrderForm() {
 				);
 				const result = await stripe?.redirectToCheckout({
 					sessionId: checkoutSession.data.id,
-				})!;
-				if (result.error) {
-					alert(result.error.message);
+				});
+				if (result?.error) {
+					alert(result?.error.message);
 				}
 			}
 		} else {

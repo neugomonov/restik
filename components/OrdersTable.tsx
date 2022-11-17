@@ -27,7 +27,6 @@ import {
 import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import { useEffect, useState } from "react";
-import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 
 export default function OrdersTable() {
@@ -67,7 +66,7 @@ export default function OrdersTable() {
 		});
 	}, [session]);
 
-	const { t, lang } = useTranslation("common");
+	const { t } = useTranslation("common");
 	const handleNew = async () => {
 		const products = prompt("Введите что хотите заказать 🍕");
 		if (products != null && products != "") {
@@ -90,7 +89,7 @@ export default function OrdersTable() {
 				timestamp,
 				status,
 			};
-			const docRef = await addDoc(collectionRef, payload);
+			await addDoc(collectionRef, payload);
 		}
 	};
 	const handleEditStatus = async (id: string) => {
@@ -117,17 +116,11 @@ export default function OrdersTable() {
 			});
 		}
 	};
-	const [snapshotAdmins] = useCollection(collection(db, "admins"));
-
-	const admins = snapshotAdmins?.docs.map((doc) => ({
-		id: doc.id,
-		...doc.data(),
-	}));
 
 	return (
 		<>
 			{
-				// @ts-expect-error
+				// @ts-expect-error - Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.ts(2339)
 				session?.user?.role == "Админ" && (
 					<Button m={5} p={4} onClick={handleNew}>
 						Новый заказ 🍕
@@ -150,7 +143,7 @@ export default function OrdersTable() {
 					</Thead>
 					<Tbody>
 						{
-							// @ts-expect-error
+							// @ts-expect-error - Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.ts(2339)
 							session?.user?.role == "Админ"
 								? ordersAdmin.map((order: Record<string, string>) => (
 										<Tr key={order.id}>
@@ -171,6 +164,7 @@ export default function OrdersTable() {
 											<Td>{order.total}</Td>
 											<Td>{order.email}</Td>
 										</Tr>
+										// eslint-disable-next-line no-mixed-spaces-and-tabs
 								  ))
 								: orders.map((order: Record<string, string>) => (
 										<Tr key={order.id}>
@@ -182,6 +176,7 @@ export default function OrdersTable() {
 											<Td>{order.total}</Td>
 											<Td>{order.email}</Td>
 										</Tr>
+										// eslint-disable-next-line no-mixed-spaces-and-tabs
 								  ))
 						}
 					</Tbody>

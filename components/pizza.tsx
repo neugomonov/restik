@@ -34,7 +34,6 @@ const Pizza = () => {
 		}
 	}, [renderer]);
 
-	/* eslint-disable react-hooks/exhaustive-deps */
 	useEffect(() => {
 		const { current: container } = refContainer;
 		if (container && !renderer) {
@@ -62,7 +61,7 @@ const Pizza = () => {
 			);
 			camera.position.copy(initialCameraPosition);
 			camera.lookAt(target);
-			// @ts-expect-error
+			// @ts-expect-error - Argument of type 'OrthographicCamera' is not assignable to parameter of type 'SetStateAction<undefined>'.
 			setCamera(camera);
 
 			const ambientLight = new THREE.AmbientLight(0xcccccc, 1);
@@ -71,7 +70,7 @@ const Pizza = () => {
 			const controls = new OrbitControls(camera, renderer.domElement);
 			controls.autoRotate = true;
 			controls.target = target;
-			// @ts-expect-error
+			// @ts-expect-error - Argument of type 'OrbitControls' is not assignable to parameter of type 'SetStateAction<undefined>'.
 			setControls(controls);
 
 			loadGLTFModel(scene, "/pizza.glb", {
@@ -81,8 +80,7 @@ const Pizza = () => {
 				animate();
 				setLoading(false);
 			});
-			// @ts-expect-error
-			let req = null;
+			let req = 0;
 			let frame = 0;
 			const animate = () => {
 				req = requestAnimationFrame(animate);
@@ -108,7 +106,6 @@ const Pizza = () => {
 
 			return () => {
 				console.log("pizza unmounted");
-				// @ts-expect-error
 				cancelAnimationFrame(req);
 				renderer.dispose();
 			};
@@ -123,7 +120,7 @@ const Pizza = () => {
 	}, [renderer, handleWindowResize]);
 
 	return (
-		// @ts-expect-error
+		// @ts-expect-error - Type 'MutableRefObject<HTMLDivElement | undefined>' is not assignable to type 'Ref<HTMLDivElement> | undefined'.
 		<PizzaContainer ref={refContainer}>
 			{loading && <PizzaSpinner />}
 		</PizzaContainer>

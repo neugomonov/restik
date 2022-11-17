@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
 import { Button, Stack, useToast } from "@chakra-ui/react";
-import { AiFillPhone } from "react-icons/ai";
-import { MdPlace } from "react-icons/md";
-import { useSession } from "next-auth/react";
 import { collection } from "@firebase/firestore";
-import { db } from "../firebase";
 import { doc, DocumentData, onSnapshot, updateDoc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-import { IoCash } from "react-icons/io5";
+import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
+import { useEffect, useState } from "react";
+import { AiFillPhone } from "react-icons/ai";
+import { IoCash } from "react-icons/io5";
+import { MdPlace } from "react-icons/md";
+import { db } from "../firebase";
 
 export default function ProfileButtons() {
 	const { data: session } = useSession();
 	const toast = useToast();
-	const auth = getAuth();
 	const [users, setUsers] = useState([{ name: "Loading...", id: "initial" }]);
 	useEffect(
 		() =>
@@ -27,7 +25,7 @@ export default function ProfileButtons() {
 			),
 		[]
 	);
-	const { t, lang } = useTranslation("common");
+	const { t } = useTranslation("common");
 	const handleEditAddress = async (id: string) => {
 		const address = prompt(t("addressPrompt"));
 		if (address != null && address != "") {
@@ -44,7 +42,7 @@ export default function ProfileButtons() {
 	};
 	const handleEditPhone = async (id: string) => {
 		const phone = prompt(t("phonePrompt"));
-		const phonePattern = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/i;
+		const phonePattern = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/i;
 
 		if (phonePattern.test(phone!)) {
 			const docRef = doc(db, "users", id);
@@ -90,6 +88,7 @@ export default function ProfileButtons() {
 			<Stack direction={{ base: "column", xl: "row" }}>
 				{users
 					?.filter((user: Record<string, string>) =>
+						// eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
 						user.email?.includes(session?.user?.email!)
 					)
 					.map((user: Record<string, string>) => (
@@ -105,6 +104,7 @@ export default function ProfileButtons() {
 
 				{users
 					?.filter((user: Record<string, string>) =>
+						// eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
 						user.email?.includes(session?.user?.email!)
 					)
 					.map((user: Record<string, string>) => (
@@ -119,6 +119,7 @@ export default function ProfileButtons() {
 					))}
 				{users
 					?.filter((user: Record<string, string>) =>
+						// eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
 						user.email?.includes(session?.user?.email!)
 					)
 					.map((user: Record<string, string>) => (

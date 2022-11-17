@@ -11,14 +11,14 @@ import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { BiErrorAlt } from "react-icons/bi";
-import MotionTopIconBox from "../components/motion/MotionTopIconBox";
 import MotionTag from "../components/motion/MotionTag";
+import MotionTopIconBox from "../components/motion/MotionTopIconBox";
 import { WithSideContentLayout } from "../layouts/menu";
 import info from "../lib/info";
 
 function FourOFour() {
 	const router = useRouter();
-	const { t, lang } = useTranslation("404");
+	const { t } = useTranslation("404");
 	return (
 		<>
 			<div

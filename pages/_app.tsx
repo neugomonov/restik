@@ -117,7 +117,7 @@ const App = ({
 								) : (
 									<Component {...pageProps} />
 								)}
-								<SidebarWithHeader children />
+								<SidebarWithHeader />
 							</StateSaver>
 						</RecoilRoot>
 					) : (
