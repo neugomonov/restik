@@ -109,7 +109,7 @@ export default function OrderForm() {
 			company,
 			city,
 		};
-		const phonePattern = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/i;
+		const phonePattern = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/i;
 		if (phonePattern.test(phone)) {
 			await addDoc(collectionRef, payload);
 			setCart({ items: [], total: 0 });
@@ -138,9 +138,9 @@ export default function OrderForm() {
 				);
 				const result = await stripe?.redirectToCheckout({
 					sessionId: checkoutSession.data.id,
-				})!;
-				if (result.error) {
-					alert(result.error.message);
+				});
+				if (result?.error) {
+					alert(result?.error.message);
 				}
 			}
 		} else {
