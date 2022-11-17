@@ -100,7 +100,7 @@ function Chat() {
 							{!loadingSnapshot &&
 							!snapshot
 								?.data()
-								?.users.includes(session?.user?.email! || "anonym") ? (
+								?.users.includes(session?.user?.email || "anonym") ? (
 								returnBack()
 							) : (
 								<Flex
