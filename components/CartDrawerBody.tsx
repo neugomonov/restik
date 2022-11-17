@@ -30,6 +30,8 @@ const StatHelpText = dynamic(
 	async () => (await import("@chakra-ui/react")).StatHelpText
 );
 
+// TODO: make the drawer close on the text link click
+
 export default function CartDrawerBody() {
 	const router = useRouter();
 

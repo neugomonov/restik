@@ -29,6 +29,8 @@ export default function stringifyCartPositions() {
 	let phone = "";
 	let payment = "";
 	let address = "";
+
+	// TODO: finish it!
 	interface CustomSession extends Session {
 		user: { phone: string; address: string; payment: string; email: string };
 	}
