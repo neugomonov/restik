@@ -42,7 +42,7 @@ export default function ProfileButtons() {
 	};
 	const handleEditPhone = async (id: string) => {
 		const phone = prompt(t("phonePrompt"));
-		const phonePattern = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/i;
+		const phonePattern = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/i;
 
 		if (phonePattern.test(phone!)) {
 			const docRef = doc(db, "users", id);

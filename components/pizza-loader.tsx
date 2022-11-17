@@ -30,6 +30,7 @@ export const PizzaContainer = forwardRef<HTMLDivElement>(
 		</Box>
 	)
 );
+PizzaContainer.displayName = "PizzaContainer";
 
 const Loader = () => {
 	return (

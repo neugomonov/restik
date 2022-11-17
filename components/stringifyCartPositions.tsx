@@ -101,7 +101,7 @@ export default function stringifyCartPositions() {
 			toast({
 				title: t("splendid"),
 				status: "info",
-				duration: 3000,
+				duration: 6000,
 				isClosable: true,
 			});
 		}
