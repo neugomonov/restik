@@ -1,6 +1,7 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { ChakraProvider } from "@chakra-ui/react";
 import { css, Global } from "@emotion/react";
+import { AnimatePresence } from "framer-motion";
 import { SessionProvider } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import { AppProps } from "next/app";
@@ -109,10 +110,12 @@ const App = ({
 								<NextNProgress
 									options={{ showSpinner: false }}
 									color="#DD6B20"
-								/>
+								/>{" "}
 								{Component.PageLayout ? (
 									<Component.PageLayout {...pageProps}>
-										<Component {...pageProps} />
+										<AnimatePresence exitBeforeEnter>
+											<Component {...pageProps} />
+										</AnimatePresence>
 									</Component.PageLayout>
 								) : (
 									<Component {...pageProps} />

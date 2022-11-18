@@ -1,4 +1,5 @@
 import { Box, Flex, useColorMode } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { useRecoilState } from "recoil";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
