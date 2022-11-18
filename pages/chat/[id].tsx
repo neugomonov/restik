@@ -29,6 +29,7 @@ function Chat() {
 	const [snapshot, loadingSnapshot] = useDocumentOnce(docRef);
 	const q = query(collection(db, `chats/${id}/messages`), orderBy("timestamp"));
 	const [messages] = useCollectionData(q);
+	// TODO: finish it!
 	const bottomOfChat = useRef();
 	const getMessages = () =>
 		messages?.map((message) => {
