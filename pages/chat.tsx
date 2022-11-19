@@ -158,6 +158,7 @@ function Chat() {
 									</Stack>
 									<ChatListBox />
 								</Box>
+
 								<Stack
 									direction="column"
 									pl={{ base: "none", xl: "10%" }}
