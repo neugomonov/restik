@@ -7,11 +7,11 @@ import {
 	Stack,
 	Text,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import { IoRestaurantOutline } from "react-icons/io5";
 import MenuContentChakraWrapper from "../components/main/MenuContentChakraWrapper";
 import { ProductImage } from "../components/MenuBox";
+import MenuContentMotionWrapper from "../components/motion/MenuContentMotionWrapper";
 import MotionTag from "../components/motion/MotionTag";
 import MotionTopIconBox from "../components/motion/MotionTopIconBox";
 import { WithSideContentLayout } from "../layouts/menu";
@@ -23,16 +23,7 @@ function Promo() {
 
 	return (
 		<>
-			<motion.div
-				exit={{ y: -100, scale: 0.9 }}
-				initial={{ y: 1000, scale: 1.1 }}
-				animate={{
-					y: 0,
-					scale: 1,
-					transition: { type: "spring", bounce: 0.3, duration: 0.4 },
-				}}
-				key={"1"}
-			>
+			<MenuContentMotionWrapper>
 				<MenuContentChakraWrapper>
 					<div
 						style={{
@@ -91,7 +82,7 @@ function Promo() {
 						</SimpleGrid>
 					</Stack>
 				</MenuContentChakraWrapper>
-			</motion.div>
+			</MenuContentMotionWrapper>
 		</>
 	);
 }
