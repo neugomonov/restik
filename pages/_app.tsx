@@ -126,9 +126,21 @@ const App = ({
 								/>
 								{Component.PageLayout ? (
 									<Component.PageLayout {...pageProps}>
-										<AnimatePresence>
-											<Component {...pageProps} key={router.asPath} />
-										</AnimatePresence>
+										{
+											/**
+											 * The reason I had to write this nonsensical condition is because I was getting an error after coming out of a single chat screen.
+											 * // And if I got it - everyone has to get it.
+											 * The error: TypeError: Cannot read properties of undefined (reading 'indexOf')
+											 * On client: Application error: a client-side exception has occurred (see the browser console for more information).
+											 */
+											new RegExp("/chat/.*").test(router.asPath) ? (
+												<Component {...pageProps} key={router.asPath} />
+											) : (
+												<AnimatePresence>
+													<Component {...pageProps} key={router.asPath} />
+												</AnimatePresence>
+											)
+										}
 									</Component.PageLayout>
 								) : (
 									<Component {...pageProps} />
