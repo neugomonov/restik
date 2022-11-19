@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { BiNews } from "react-icons/bi";
 import { useRecoilState } from "recoil";
 import info from "../lib/info";
@@ -30,8 +30,9 @@ export default function NewsBox() {
 		};
 	};
 	const [blurMode] = useRecoilState(_blur);
+	const [random] = useState(Math.random() * (-1 - 9 + 1) + 9);
 	const chooseSideNews = useCallback(() => {
-		return Math.random() * (-1 - 9 + 1) + 9;
+		return random;
 	}, [router]);
 
 	return (

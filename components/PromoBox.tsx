@@ -10,15 +10,15 @@ import {
 } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { IoRestaurantOutline } from "react-icons/io5";
 import { useRecoilState } from "recoil";
 import info from "../lib/info";
 import promo from "../lib/promo";
 import { _blur } from "../lib/recoil-atoms";
-import MotionTopIconBox from "./motion/MotionTopIconBox";
-import MotionTag from "./motion/MotionTag";
 import { ProductImage } from "./MenuBox";
+import MotionTag from "./motion/MotionTag";
+import MotionTopIconBox from "./motion/MotionTopIconBox";
 
 export default function PromoBox() {
 	const { t, lang } = useTranslation("common");
@@ -31,8 +31,9 @@ export default function PromoBox() {
 		};
 	};
 	const [blurMode] = useRecoilState(_blur);
+	const [random] = useState(Math.random() * (-1 - 9 + 1) + 9);
 	const chooseSidePromo = useCallback(() => {
-		return Math.random() * (-1 - 9 + 1) + 9;
+		return random;
 	}, [router]);
 
 	return (
