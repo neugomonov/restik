@@ -10,6 +10,8 @@ import { useRouter } from "next/router";
 import NextNProgress from "nextjs-progressbar";
 import React, { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
+import Cart from "../components/Cart";
+import LargeWithNewsletter from "../components/Footer";
 import SidebarWithHeader from "../components/SidebarWithHeader";
 import StateSaver from "../components/state-saver";
 import info from "../lib/info";
@@ -131,7 +133,9 @@ const App = ({
 								) : (
 									<Component {...pageProps} />
 								)}
+								<LargeWithNewsletter />
 								<SidebarWithHeader />
+								<Cart />
 							</StateSaver>
 						</RecoilRoot>
 					) : (

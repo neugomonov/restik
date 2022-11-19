@@ -1,8 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
-import Cart from "../components/Cart";
-import LargeWithNewsletter from "../components/Footer";
 import MenuContentMotionWrapper from "../components/motion/MenuContentMotionWrapper";
 import NewsBox from "../components/NewsBox";
 import PromoBox from "../components/PromoBox";
@@ -26,7 +24,6 @@ export function WithSideContentLayout({
 						mr={{ base: "1rem", xl: "0" }}
 					>
 						{children}
-
 						<Flex
 							flexShrink={10}
 							flexDirection="column"
@@ -38,10 +35,8 @@ export function WithSideContentLayout({
 							{renderSideContent()}
 						</Flex>
 					</Flex>
-					<LargeWithNewsletter />
 				</Flex>
 			</MenuContentMotionWrapper>
-			<Cart />
 		</>
 	);
 }
