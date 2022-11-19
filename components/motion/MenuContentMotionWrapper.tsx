@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+
 export default function MenuContentMotionWrapper({
 	children,
 }: {
@@ -7,16 +8,27 @@ export default function MenuContentMotionWrapper({
 }) {
 	return (
 		<motion.div
-			exit={{ y: -100, scale: 0.9 }}
-			initial={{ y: 1000, scale: 1.1 }}
-			animate={{
-				y: 0,
-				scale: 1,
-				transition: { type: "spring", bounce: 0.3, duration: 4 },
+			exit="hidden"
+			initial="appearing"
+			animate="visible"
+			variants={{
+				hidden: {
+					y: "-1vh",
+					x: ["0vw", "-100vw"],
+					scale: 0.9,
+					position: "absolute",
+					zIndex: -1,
+					transition: { type: "spring", bounce: 0.3, duration: 0.8 },
+				},
+				appearing: { y: window.innerHeight },
+				visible: {
+					y: 0,
+					scale: 1,
+					transition: { type: "spring", bounce: 0.3 },
+				},
 			}}
-			key={Math.random()}
 		>
-			<div key={Math.random()}>{children}</div>
+			{children}
 		</motion.div>
 	);
 }

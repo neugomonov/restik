@@ -12,8 +12,10 @@ import {
 	useDocumentOnce,
 } from "react-firebase-hooks/firestore";
 import { MdOutlineMessage } from "react-icons/md";
-import MotionTopIconBox from "../../components/motion/MotionTopIconBox";
+import MenuContentChakraWrapper from "../../components/main/MenuContentChakraWrapper";
+import MenuContentMotionWrapper from "../../components/motion/MenuContentMotionWrapper";
 import MotionTag from "../../components/motion/MotionTag";
+import MotionTopIconBox from "../../components/motion/MotionTopIconBox";
 import SendBar from "../../components/SendBar";
 import { db } from "../../firebase";
 import { WithSideContentLayout } from "../../layouts/menu";
@@ -67,119 +69,128 @@ function Chat() {
 					💬
 				</title>
 			</Head>
-			<div
-				style={{
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "space-between",
-				}}
-			>
-				{info.isDevelopment && (
-					<MotionTag>{info.chat[lang as "en" | "ru"]}</MotionTag>
-				)}{" "}
-				<MotionTopIconBox>
-					<IconButton aria-label="Chat" icon={<MdOutlineMessage />} />
-				</MotionTopIconBox>
-			</div>
+			<MenuContentMotionWrapper>
+				<MenuContentChakraWrapper>
+					<div
+						style={{
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "space-between",
+						}}
+					>
+						{info.isDevelopment && (
+							<MotionTag>{info.chat[lang as "en" | "ru"]}</MotionTag>
+						)}{" "}
+						<MotionTopIconBox>
+							<IconButton aria-label="Chat" icon={<MdOutlineMessage />} />
+						</MotionTopIconBox>
+					</div>
 
-			<Stack spacing={5}>
-				<Stack
-					minW={{ base: "auto", xl: "20rem" }}
-					spacing={3}
-					px={{ base: "1rem", xl: "10%" }}
-					direction={"row"}
-				>
-					<Stack direction={{ base: "column-reverse", xl: "row" }} spacing={3}>
-						<Box
-							borderWidth="1px"
-							borderRadius="lg"
-							padding="1rem"
-							width="100%"
-							height="90vh"
-							minW={{ base: "auto", xl: "50%" }}
-						>
-							{!loadingSnapshot &&
-							!snapshot
-								?.data()
-								?.users.includes(session?.user?.email || "anonym") ? (
-								returnBack()
-							) : (
-								<Flex
-									direction="column"
-									sx={{ scrollbarWidth: "none" }}
-									flex={1}
-								>
-									<Flex
-										flex={1}
-										direction="column"
-										pt={4}
-										mx={5}
-										maxH="80vh"
-										minH="80vh"
-										overflowY="auto"
-										css={{
-											"&::-webkit-scrollbar": {
-												width: "4px",
-											},
-											"&::-webkit-scrollbar-track": {
-												width: "6px",
-											},
-											"&::-webkit-scrollbar-thumb": {
-												background: "rgba(6, 8, 13, 0.25)",
-												borderRadius: "24px",
-											},
-										}}
-									>
-										<Stack
-											direction={"row"}
-											alignItems="top"
-											justifyContent="space-around"
-										>
-											<motion.div
-												style={{
-													fontSize: "2.5rem",
-													marginTop: "-1rem",
-												}}
-												drag="y"
-												animate={{ x: move2 ? 10 : -10 }}
-												transition={{
-													type: "spring",
-													bounce: 0.8,
-													duration: 1,
-												}}
-												whileHover={{ scale: 2 }}
-												onClick={() => setMove2(!move2)}
-											>
-												📧
-											</motion.div>
-										</Stack>
-										{getMessages()}
-									</Flex>
-									<SendBar id={id} user={session?.user} />
-								</Flex>
-							)}
-						</Box>
+					<Stack spacing={5}>
 						<Stack
-							direction="column"
-							pl={{ base: "none", xl: "10%" }}
-							spacing={5}
+							minW={{ base: "auto", xl: "20rem" }}
+							spacing={3}
+							px={{ base: "1rem", xl: "10%" }}
+							direction={"row"}
 						>
-							<Heading size="lg">{index.chat[lang as "en" | "ru"]} </Heading>
-							<Image
-								src="/images/chat.gif"
-								alt="messages in the chat gif"
-								draggable={false}
-								loading="lazy"
-								decoding="async"
-								width="auto"
-								height={300}
-								objectFit="cover"
-								borderRadius="md"
-							/>
+							<Stack
+								direction={{ base: "column-reverse", xl: "row" }}
+								spacing={3}
+							>
+								<Box
+									borderWidth="1px"
+									borderRadius="lg"
+									padding="1rem"
+									width="100%"
+									height="90vh"
+									minW={{ base: "auto", xl: "50%" }}
+								>
+									{!loadingSnapshot &&
+									!snapshot
+										?.data()
+										?.users.includes(session?.user?.email || "anonym") ? (
+										returnBack()
+									) : (
+										<Flex
+											direction="column"
+											sx={{ scrollbarWidth: "none" }}
+											flex={1}
+										>
+											<Flex
+												flex={1}
+												direction="column"
+												pt={4}
+												mx={5}
+												maxH="80vh"
+												minH="80vh"
+												overflowY="auto"
+												css={{
+													"&::-webkit-scrollbar": {
+														width: "4px",
+													},
+													"&::-webkit-scrollbar-track": {
+														width: "6px",
+													},
+													"&::-webkit-scrollbar-thumb": {
+														background: "rgba(6, 8, 13, 0.25)",
+														borderRadius: "24px",
+													},
+												}}
+											>
+												<Stack
+													direction={"row"}
+													alignItems="top"
+													justifyContent="space-around"
+												>
+													<motion.div
+														style={{
+															fontSize: "2.5rem",
+															marginTop: "-1rem",
+														}}
+														drag="y"
+														animate={{ x: move2 ? 10 : -10 }}
+														transition={{
+															type: "spring",
+															bounce: 0.8,
+															duration: 1,
+														}}
+														whileHover={{ scale: 2 }}
+														onClick={() => setMove2(!move2)}
+													>
+														📧
+													</motion.div>
+												</Stack>
+												{getMessages()}
+											</Flex>
+											<SendBar id={id} user={session?.user} />
+										</Flex>
+									)}
+								</Box>
+								<Stack
+									direction="column"
+									pl={{ base: "none", xl: "10%" }}
+									spacing={5}
+								>
+									<Heading size="lg">
+										{index.chat[lang as "en" | "ru"]}{" "}
+									</Heading>
+									<Image
+										src="/images/chat.gif"
+										alt="messages in the chat gif"
+										draggable={false}
+										loading="lazy"
+										decoding="async"
+										width="auto"
+										height={300}
+										objectFit="cover"
+										borderRadius="md"
+									/>
+								</Stack>
+							</Stack>
 						</Stack>
 					</Stack>
-				</Stack>
-			</Stack>
+				</MenuContentChakraWrapper>
+			</MenuContentMotionWrapper>
 		</>
 	);
 }

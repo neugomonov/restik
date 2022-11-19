@@ -6,6 +6,7 @@ import { SessionProvider } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import { AppProps } from "next/app";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import NextNProgress from "nextjs-progressbar";
 import React, { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
@@ -57,6 +58,16 @@ const App = ({
 		}
 	}, []);
 	const { lang } = useTranslation("common");
+	const router = useRouter();
+
+	// TODO: make a conditional AnimatePresence render. When the layout hasn't changed, AnimatePresence is placed inside the layout. When it has changed, AnimatePresence is placed outside the layout.
+	// const [layout, setLayout] = useState<Component.PageLayout>(
+	// 	Component.PageLayout
+	// );
+	// const renderLayout = () => {
+	// 	setLayout((prevState) => ({prevState.Component.PageLayout)});
+	// };
+
 	// TODO: implement code splitting as dynamic imports, load modules asynchronously (await import, React.lazy) for a faster initial loading, shrink the initial  bundle size
 	return (
 		<SessionProvider session={session}>
@@ -110,11 +121,11 @@ const App = ({
 								<NextNProgress
 									options={{ showSpinner: false }}
 									color="#DD6B20"
-								/>{" "}
+								/>
 								{Component.PageLayout ? (
 									<Component.PageLayout {...pageProps}>
-										<AnimatePresence exitBeforeEnter>
-											<Component {...pageProps} />
+										<AnimatePresence>
+											<Component {...pageProps} key={router.asPath} />
 										</AnimatePresence>
 									</Component.PageLayout>
 								) : (
