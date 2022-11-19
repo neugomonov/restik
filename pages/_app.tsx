@@ -57,6 +57,15 @@ const App = ({
 		}
 	}, []);
 	const { lang } = useTranslation("common");
+
+	// TODO: make a conditional AnimatePresence render. When the layout hasn't changed, AnimatePresence is placed inside the layout. When it has changed, AnimatePresence is placed outside the layout.
+	// const [layout, setLayout] = useState<Component.PageLayout>(
+	// 	Component.PageLayout
+	// );
+	// const renderLayout = () => {
+	// 	setLayout((prevState) => ({prevState.Component.PageLayout)});
+	// };
+
 	// TODO: implement code splitting as dynamic imports, load modules asynchronously (await import, React.lazy) for a faster initial loading, shrink the initial  bundle size
 	return (
 		<SessionProvider session={session}>
