@@ -79,6 +79,7 @@ const App = ({
 	}, []);
 	const { lang } = useTranslation("common");
 	const router = useRouter();
+	const chatAntiAnimatePresence = new RegExp("/chat/.*");
 
 	// TODO: make a conditional AnimatePresence render. When the layout hasn't changed, AnimatePresence is placed inside the layout. When it has changed, AnimatePresence is placed outside the layout.
 	// const [layout, setLayout] = useState<Component.PageLayout>(
@@ -151,7 +152,7 @@ const App = ({
 											 * The error: TypeError: Cannot read properties of undefined (reading 'indexOf')
 											 * On client: Application error: a client-side exception has occurred (see the browser console for more information).
 											 */
-											new RegExp("/chat/.*").test(router.asPath) ? (
+											chatAntiAnimatePresence.test(router.asPath) ? (
 												<Component {...pageProps} key={router.asPath} />
 											) : (
 												<AnimatePresence>
