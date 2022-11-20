@@ -1,5 +1,9 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import { ChakraProvider } from "@chakra-ui/react";
+import {
+	ChakraProvider,
+	createLocalStorageManager,
+	extendTheme,
+} from "@chakra-ui/react";
 import { css, Global } from "@emotion/react";
 import { AnimatePresence } from "framer-motion";
 import { SessionProvider } from "next-auth/react";
@@ -27,6 +31,20 @@ type ComponentWithPageLayout = AppProps & {
 		PageLayout?: React.ComponentType;
 	};
 };
+const theme = extendTheme({
+	styles: {
+		global: {
+			body: {
+				transitionProperty: "all",
+				transitionDuration: "normal",
+			},
+		},
+	},
+	config: {
+		disableTransitionOnChange: false,
+	},
+});
+const manager = createLocalStorageManager("my-key");
 
 const App = ({
 	Component,
@@ -74,7 +92,7 @@ const App = ({
 	return (
 		<SessionProvider session={session}>
 			<ApolloProvider client={client}>
-				<ChakraProvider>
+				<ChakraProvider theme={theme} colorModeManager={manager}>
 					<Global
 						styles={css`
 							body {
