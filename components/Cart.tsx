@@ -80,6 +80,7 @@ export default function Cart() {
 			>
 				<DrawerOverlay>
 					<DrawerContent
+						transition="background-color .5s ease, backdrop-filter .3s ease"
 						backgroundColor={
 							colorMode === "dark"
 								? "rgba(6, 8, 13, 0.75)"

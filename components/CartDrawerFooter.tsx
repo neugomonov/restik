@@ -89,6 +89,7 @@ export default function CartDrawerFooter() {
 			>
 				<AlertDialogOverlay>
 					<AlertDialogContent
+						transition="background-color .5s ease, backdrop-filter .3s ease"
 						backdropFilter={blurMode.blur ? "auto" : "none"}
 						backgroundColor={
 							colorMode === "dark"
