@@ -223,7 +223,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
 	return (
 		<Box
-			as={useBreakpointValue({ base: Box, md: motion.div })}
+			as={useBreakpointValue({ base: Box, md: motion.div }, "md")}
 			initial="appearing"
 			animate="visible"
 			variants={{
