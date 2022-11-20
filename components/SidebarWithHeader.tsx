@@ -20,6 +20,7 @@ import {
 	Stack,
 	Tag,
 	Text,
+	useBreakpointValue,
 	useColorMode,
 	useColorModeValue,
 	useDisclosure,
@@ -218,12 +219,23 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 		onClose: onMenuClose,
 	} = useDisclosure();
 	const router = useRouter();
-
 	const { t, lang } = useTranslation("menu");
 
 	return (
 		<Box
-			transition=".3s ease"
+			as={useBreakpointValue({ base: Box, md: motion.div })}
+			initial="appearing"
+			animate="visible"
+			variants={{
+				appearing: { x: -240 },
+				visible: {
+					x: 0,
+					transition: {
+						ease: easeInOutExpo,
+						duration: 1,
+					},
+				},
+			}}
 			bg={useColorModeValue(
 				"rgba(255, 255, 255, 0.75)",
 				"rgba(6, 8, 13, 0.75)"
@@ -258,7 +270,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				<CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
 			</Flex>
 			<LoginSidebar />
-
 			<Stack
 				direction="row"
 				spacing={1}
@@ -439,6 +450,16 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 		</Box>
 	);
 };
+
+function easeInOutExpo(x: number): number {
+	return x === 0
+		? 0
+		: x === 1
+		? 1
+		: x < 0.5
+		? Math.pow(2, 20 * x - 10) / 2
+		: (2 - Math.pow(2, -20 * x + 10)) / 2;
+}
 
 interface NavItemProps extends FlexProps {
 	icon: IconType;
