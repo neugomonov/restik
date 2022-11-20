@@ -1,5 +1,9 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import { ChakraProvider } from "@chakra-ui/react";
+import {
+	ChakraProvider,
+	createLocalStorageManager,
+	extendTheme,
+} from "@chakra-ui/react";
 import { css, Global } from "@emotion/react";
 import { AnimatePresence } from "framer-motion";
 import { SessionProvider } from "next-auth/react";
@@ -27,6 +31,20 @@ type ComponentWithPageLayout = AppProps & {
 		PageLayout?: React.ComponentType;
 	};
 };
+const theme = extendTheme({
+	styles: {
+		global: {
+			body: {
+				transitionProperty: "all",
+				transitionDuration: "normal",
+			},
+		},
+	},
+	config: {
+		disableTransitionOnChange: false,
+	},
+});
+const manager = createLocalStorageManager("my-key");
 
 const App = ({
 	Component,
@@ -61,6 +79,7 @@ const App = ({
 	}, []);
 	const { lang } = useTranslation("common");
 	const router = useRouter();
+	const chatAntiAnimatePresence = new RegExp("/chat/.*");
 
 	// TODO: make a conditional AnimatePresence render. When the layout hasn't changed, AnimatePresence is placed inside the layout. When it has changed, AnimatePresence is placed outside the layout.
 	// const [layout, setLayout] = useState<Component.PageLayout>(
@@ -74,7 +93,7 @@ const App = ({
 	return (
 		<SessionProvider session={session}>
 			<ApolloProvider client={client}>
-				<ChakraProvider>
+				<ChakraProvider theme={theme} colorModeManager={manager}>
 					<Global
 						styles={css`
 							body {
@@ -133,7 +152,7 @@ const App = ({
 											 * The error: TypeError: Cannot read properties of undefined (reading 'indexOf')
 											 * On client: Application error: a client-side exception has occurred (see the browser console for more information).
 											 */
-											new RegExp("/chat/.*").test(router.asPath) ? (
+											chatAntiAnimatePresence.test(router.asPath) ? (
 												<Component {...pageProps} key={router.asPath} />
 											) : (
 												<AnimatePresence>

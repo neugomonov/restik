@@ -135,6 +135,7 @@ export default function SidebarWithHeader() {
 			>
 				<DrawerOverlay>
 					<DrawerContent
+						transition="box-shadow .5s ease, background-color .5s ease, border .3s ease, border-color .3s ease, background .3s ease, backdrop-filter .3s ease"
 						bg={useColorModeValue(
 							"rgba(255, 255, 255, 0)",
 							"rgba(6, 8, 13, 0)"
@@ -223,6 +224,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
 	return (
 		<Box
+			transition="box-shadow .5s ease, background-color .5s ease, border .3s ease, border-color .3s ease, background .3s ease, backdrop-filter .3s ease"
 			as={useBreakpointValue({ base: Box, md: motion.div }, "md")}
 			initial="appearing"
 			animate="visible"
@@ -492,7 +494,7 @@ const NavItem = ({ onClose, icon, href, children, ...rest }: NavItemProps) => {
 						await router.push(href, href);
 						await onClose();
 					}}
-					transition="background-color 0.2s"
+					transition="background-color 0.2s ease"
 					align="center"
 					p="4"
 					mx="4"
@@ -580,7 +582,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 
 	return (
 		<Flex
-			transition=".3s ease"
+			transition="box-shadow .5s ease, background-color .5s ease, border .3s ease, border-color .3s ease, background .3s ease, backdrop-filter .3s ease"
 			display={{ base: "flex", md: "none" }}
 			ml={{ base: 0, md: 60 }}
 			px={{ base: 4, md: 4 }}
