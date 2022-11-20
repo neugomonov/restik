@@ -17,7 +17,7 @@ export default function MainContentChakraWrapper({
 			mr={{ base: "1rem", xl: "0" }}
 		>
 			<Box
-				transition="box-shadow .5s ease, background-color .5s ease, border .5s ease, background .6s ease, backdrop-filter .3s ease"
+				transition="box-shadow .5s ease, background-color .5s ease, border .3s ease, border-color .3s ease, background .3s ease, backdrop-filter .3s ease"
 				borderWidth="1px"
 				borderRadius="lg"
 				padding="1rem"

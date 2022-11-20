@@ -38,7 +38,7 @@ export default function PromoBox() {
 
 	return (
 		<Box
-			transition="box-shadow .5s ease, background-color .5s ease, border .5s ease, background .6s ease, backdrop-filter .3s ease"
+			transition="box-shadow .5s ease, background-color .5s ease, border .3s ease, border-color .3s ease, background .3s ease, backdrop-filter .3s ease"
 			borderWidth="1px"
 			borderRadius="lg"
 			padding="1rem"
