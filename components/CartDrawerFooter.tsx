@@ -38,7 +38,6 @@ const AlertDialogOverlay = dynamic(
 
 export default function CartDrawerFooter() {
 	const { data: session } = useSession();
-
 	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
 	const toast = useToast();

@@ -24,7 +24,6 @@ const features = Array.apply(null, Array(8)).map(function (x, i) {
 
 export default function GridListWithHeading() {
 	const { t, lang } = useTranslation("common");
-
 	return (
 		<Box p={4}>
 			<Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
@@ -37,7 +36,6 @@ export default function GridListWithHeading() {
 					{index.GridListWithHeading2[lang as "en" | "ru"] ?? t("sampleText")}
 				</Text>
 			</Stack>
-
 			<Container maxW={"6xl"} mt={10}>
 				<SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={10}>
 					{features.map((feature) => (

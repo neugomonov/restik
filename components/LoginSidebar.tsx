@@ -23,7 +23,6 @@ import { FiChevronDown } from "react-icons/fi";
 import MotionBox from "./motion/MotionBox";
 export default function LoginSidebar() {
 	const { colorMode } = useColorMode();
-
 	const { data: session } = useSession();
 	const handleClick = (route: string) => {
 		return async () => {
@@ -31,7 +30,6 @@ export default function LoginSidebar() {
 		};
 	};
 	const { t } = useTranslation("common");
-
 	if (session) {
 		return (
 			<>

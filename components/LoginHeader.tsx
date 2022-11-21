@@ -21,7 +21,6 @@ export default function LoginHeader() {
 		};
 	};
 	const { t } = useTranslation("common");
-
 	if (session) {
 		return (
 			<>
