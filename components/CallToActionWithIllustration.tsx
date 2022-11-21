@@ -35,7 +35,6 @@ export default function CallToActionWithIllustration() {
 				>
 					{index.CallToActionWithIllustration1[lang as "en" | "ru"] ??
 						t("sampleHeading")}
-
 					<Text as={"span"} color={"orange.400"}>
 						{" "}
 						{index.CallToActionWithIllustration2[lang as "en" | "ru"] ??

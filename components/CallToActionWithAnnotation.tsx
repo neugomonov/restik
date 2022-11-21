@@ -46,7 +46,6 @@ export default function CallToActionWithAnnotation() {
 					>
 						{index.CallToActionWithAnnotation1[lang as "en" | "ru"] ??
 							t("sampleHeading")}
-
 						<br />
 						<Text as={"span"} color={"orange.400"}>
 							{index.CallToActionWithAnnotation2[lang as "en" | "ru"] ??

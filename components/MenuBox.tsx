@@ -186,7 +186,6 @@ export default function MenuBox() {
 										item.ingredients.join(", ")
 									)}
 								</Text>
-
 								<ButtonGroup
 									isAttached
 									as={motion.div}

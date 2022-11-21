@@ -34,7 +34,6 @@ const StatHelpText = dynamic(
 
 export default function CartDrawerBody() {
 	const router = useRouter();
-
 	const [cart, setCart] = useRecoilState(_cart);
 	const { colorMode } = useColorMode();
 	const { t } = useTranslation("common");
@@ -77,7 +76,6 @@ export default function CartDrawerBody() {
 			}
 		};
 	};
-
 	const handleAddPositionClick = (item: {
 		quantity: number;
 		name: string;

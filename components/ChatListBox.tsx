@@ -17,7 +17,6 @@ import { db } from "../firebase";
 import getOtherEmail from "../utils/getOtherEmail";
 export default function ChatListBox() {
 	const { data: session } = useSession();
-
 	const [snapshot] = useCollection(collection(db, "chats"));
 	const chats = snapshot?.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 	const router = useRouter();
@@ -26,7 +25,6 @@ export default function ChatListBox() {
 	const redirect = (id: string) => {
 		router.push(`/chat/${id}`);
 	};
-
 	const chatExists = (email: string) =>
 		chats?.find(
 			(chat: Record<string, string>) =>
@@ -57,7 +55,6 @@ export default function ChatListBox() {
 			});
 		}
 	};
-
 	// TODO: finish it!
 	async function getOtherAvatar(chat: Record<string, string>) {
 		const usersDocument = await query(
@@ -120,7 +117,6 @@ export default function ChatListBox() {
 			<Button my={5} p={4} width="100%" onClick={() => newChat()}>
 				{t("newChat")}
 			</Button>
-
 			<Flex direction="column" sx={{ scrollbarWidth: "none" }} flex={1}>
 				{chatList()}
 			</Flex>

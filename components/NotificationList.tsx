@@ -16,7 +16,6 @@ import { db } from "../firebase";
 
 export default function NotificationList() {
 	const { data: session } = useSession();
-
 	const [notifications, setNotifications] = useState([
 		{ name: "Loading...", id: "initial" },
 	]);
@@ -27,7 +26,6 @@ export default function NotificationList() {
 			where("recipient", "==", session?.user?.email),
 			orderBy("timestamp", "desc")
 		);
-
 		onSnapshot(q, (snapshot) => {
 			setNotifications(
 				snapshot.docs.map((doc: DocumentData) => ({
