@@ -584,8 +584,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 		<Flex
 			transition="box-shadow .5s ease, background-color .5s ease, border .3s ease, border-color .3s ease, background .3s ease, backdrop-filter .3s ease"
 			display={{ base: "flex", md: "none" }}
-			ml={{ base: 0, md: 60 }}
-			px={{ base: 4, md: 4 }}
+			mx="1%"
+			px={4}
 			height="20"
 			alignItems="center"
 			bg={useColorModeValue(
@@ -594,13 +594,14 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			)}
 			borderBottomWidth="1px"
 			borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+			borderRadius="2xl"
 			justifyContent={{ base: "space-between", md: "flex-end" }}
 			backdropFilter={blurMode.blur ? "auto" : "none"}
 			backdropBlur="20px"
 			as="header"
 			position="fixed"
-			top="0"
-			w="100%"
+			top="1"
+			w="98%"
 			{...rest}
 		>
 			<MotionBox>
