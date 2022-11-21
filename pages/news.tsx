@@ -20,7 +20,6 @@ import news from "../lib/news";
 
 function News() {
 	const { t, lang } = useTranslation("home");
-	// TODO: figure out the way to not to re-render the secondary component when not needed
 	return (
 		<>
 			<MenuContentMotionWrapper>
