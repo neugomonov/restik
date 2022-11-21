@@ -38,6 +38,6 @@ Restik is a restaurant app for ordering dishes and managing customers' orders.
 - ~~Made *prismatic* with [Prisma](https://prisma.io/)~~ <sub>```(uh-uh)```</sub>
 - Made *reliable* with [Jest 🤡](https://jestjs.io/) <sub>```(lol not really)```</sub>
 - Made *dimensional* with [Three.js](https://threejs.org/) 🍕
-- Made *monetary* with [Stripe 💵](https://stripe.com/)
+- Made *profitable* with [Stripe 💵](https://stripe.com/)
 
 <b> БУРГИР <a href="https://restik.vercel.app/">🍔</a></b>
