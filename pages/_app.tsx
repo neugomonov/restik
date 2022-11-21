@@ -106,7 +106,7 @@ const App = ({
 									top: 0;
 									left: 0;
 									background-color: black;
-									background: url("images/pizzabackground.jpg") no-repeat center
+									background: url("images/pizzaBackground.jpg") no-repeat center
 										center;
 									background-size: cover;
 									will-change: transform;
