@@ -11,11 +11,9 @@ const StateSaver = ({ children }: Props): JSX.Element => {
 	useRecoilTransactionObserver_UNSTABLE(({ snapshot }) => {
 		const cart = snapshot.getLoadable(_cart).contents;
 		const blur = snapshot.getLoadable(_blur).contents;
-
 		localStorage.setItem("cart", JSON.stringify(cart));
 		localStorage.setItem("blur", JSON.stringify(blur));
 	});
-
 	// @ts-expect-error - Type 'ReactNode' is not assignable to type 'Element'.
 	return children;
 };

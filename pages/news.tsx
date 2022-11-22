@@ -67,7 +67,6 @@ function News() {
 												/>
 											</Box>
 											<Text colorScheme={"gray"}>{item.date}</Text>
-
 											<Heading size="md" mr="1%">
 												{item.name}
 											</Heading>
