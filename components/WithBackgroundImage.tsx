@@ -21,7 +21,6 @@ export default function WithBackgroundImage() {
 		};
 	};
 	const { lang } = useTranslation("index");
-
 	return (
 		<Flex
 			w={"full"}
@@ -59,7 +58,6 @@ export default function WithBackgroundImage() {
 					>
 						{index.WithBackgroundImage2[lang as "en" | "ru"]}
 					</Text>
-
 					<Stack direction={"row"}>
 						<Box
 							as={motion.div}

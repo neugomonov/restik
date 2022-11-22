@@ -22,7 +22,6 @@ import MotionTopIconBox from "./motion/MotionTopIconBox";
 
 export default function PromoBox() {
 	const { t, lang } = useTranslation("common");
-
 	const router = useRouter();
 	const { colorMode } = useColorMode();
 	const handleClick = (route: string) => {
@@ -35,7 +34,6 @@ export default function PromoBox() {
 	const chooseSidePromo = useCallback(() => {
 		return random;
 	}, [router]);
-
 	return (
 		<Box
 			transition="box-shadow .5s ease, background-color .5s ease, border .3s ease, border-color .3s ease, background .3s ease, backdrop-filter .3s ease"
@@ -89,7 +87,6 @@ export default function PromoBox() {
 								/>
 							</Box>
 							<Text colorScheme={"gray"}>{item.date}</Text>
-
 							<Heading mr="1%">{item.name}</Heading>
 							<Text colorScheme={"gray"}>{item.ingredients.join(", ")}</Text>
 							<Button

@@ -108,6 +108,7 @@ export default function SplitScreen() {
 		</Stack>
 	);
 }
+
 export const Blob = (props: IconProps) => {
 	return (
 		<Icon
