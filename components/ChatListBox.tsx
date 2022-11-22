@@ -7,7 +7,7 @@ import {
 	useToast,
 } from "@chakra-ui/react";
 import { addDoc, collection } from "@firebase/firestore";
-import { doc, getDocs, query, where } from "firebase/firestore";
+import { getDocs, query, where } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
@@ -57,20 +57,24 @@ export default function ChatListBox() {
 	};
 	// TODO: finish it!
 	async function getOtherAvatar(chat: Record<string, string>) {
-		const usersDocument = await query(
-			collection(db, "users"),
+		const usersRef = collection(db, "users");
+		const userQuery = query(
+			usersRef,
 			where(
 				"email",
 				"==",
 				getOtherEmail(chat.users, session?.user?.email || "anonym")
 			)
 		);
-		const snapshot = await getDocs(usersDocument);
-		const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-		results.forEach(async (result) => {
-			const docRef = doc(db, "users", result.id);
-			return docRef;
+		const querySnapshot = await getDocs(userQuery);
+		let image = "";
+		querySnapshot.forEach((doc) => {
+			// doc.data() is never undefined for query doc snapshots
+			console.log(doc.id, " => ", doc.data().image);
+			image = doc.data().image;
+			return;
 		});
+		return image;
 	}
 	const chatList = () => {
 		return chats
