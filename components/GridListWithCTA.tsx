@@ -38,7 +38,6 @@ export default function gridListWithCTA() {
 		};
 	};
 	const { t, lang } = useTranslation("common");
-
 	return (
 		<Box as={Container} maxW="7xl" mt={14} p={4}>
 			<Grid

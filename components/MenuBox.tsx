@@ -52,7 +52,6 @@ export default function MenuBox() {
 			.concat("x ", cart.items[index].name, " (", cart.items[index].type, ")");
 		stringified = stringified.concat(", ", csvString);
 	}
-
 	return (
 		<>
 			<div
@@ -212,7 +211,6 @@ export default function MenuBox() {
 											isDisabled={!deliveryHours || deliveryHours.length === 0}
 											onClick={async () => {
 												const { merge } = await import("../utils/merge");
-
 												setCart((previous) => ({
 													items: merge(previous.items, {
 														name: item.name,

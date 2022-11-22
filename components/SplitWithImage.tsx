@@ -43,7 +43,6 @@ const Feature = ({ text, icon, iconBg }: FeatureProps) => {
 
 export default function SplitWithImage() {
 	const { lang } = useTranslation("index");
-
 	return (
 		<Container maxW={"5xl"} py={12}>
 			<SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>

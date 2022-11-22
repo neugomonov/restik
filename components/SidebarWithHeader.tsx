@@ -160,11 +160,9 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 	const { colorMode, toggleColorMode } = useColorMode();
 	const { data: session } = useSession();
 	const [notificationsCount, setNotificationsCount] = useState(0);
-
 	useEffect(() => {
 		async function getNotificationsCount() {
 			if (!session?.user || !session?.user?.email) return;
-
 			const qq = await query(
 				collection(db, "notifications"),
 				where("read", "==", false),
@@ -177,7 +175,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				count();
 			};
 		}
-
 		getNotificationsCount();
 	}, [session]);
 	const deleteAll = async () => {
@@ -208,7 +205,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 		});
 	};
 	const [blurMode, setBlurMode] = useRecoilState(_blur);
-
 	const handleBlur = () => {
 		setBlurMode((prevState) => ({
 			blur: !prevState.blur,
@@ -221,7 +217,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 	} = useDisclosure();
 	const router = useRouter();
 	const { t, lang } = useTranslation("menu");
-
 	return (
 		<Box
 			transition="box-shadow .5s ease, background-color .5s ease, border .3s ease, border-color .3s ease, background .3s ease, backdrop-filter .3s ease"
@@ -445,7 +440,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 					{link.name[lang as "en" | "ru"]}
 				</NavItem>
 			))}
-
 			<Flex mt="13rem">
 				<Pizza />
 			</Flex>
@@ -472,7 +466,6 @@ interface NavItemProps extends FlexProps {
 
 const NavItem = ({ onClose, icon, href, children, ...rest }: NavItemProps) => {
 	const router = useRouter();
-
 	return (
 		<>
 			<Box style={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
@@ -531,11 +524,9 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 	const { t, lang } = useTranslation("home");
 	const { data: session } = useSession();
 	const [notificationsCount, setNotificationsCount] = useState(0);
-
 	useEffect(() => {
 		async function getNotificationsCount() {
 			if (!session?.user || !session?.user?.email) return;
-
 			const qq = await query(
 				collection(db, "notifications"),
 				where("read", "==", false),
@@ -550,7 +541,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 		}
 		getNotificationsCount();
 	}, [session]);
-
 	const deleteAll = async () => {
 		const qq = await query(
 			collection(db, "notifications"),
@@ -579,7 +569,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 		});
 	};
 	const [blurMode] = useRecoilState(_blur);
-
 	return (
 		<Flex
 			transition="box-shadow .5s ease, background-color .5s ease, border .3s ease, border-color .3s ease, background .3s ease, backdrop-filter .3s ease"
@@ -620,7 +609,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 			>
 				{info.name ?? t("restaurantName")}
 			</Text>
-
 			<HStack spacing={{ base: "0", md: "6" }}>
 				<MotionBox>
 					<IconButton

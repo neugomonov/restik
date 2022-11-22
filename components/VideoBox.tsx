@@ -19,7 +19,6 @@ export default function VideoBox() {
 	const { colorMode } = useColorMode();
 	const [blurMode] = useRecoilState(_blur);
 	const { lang } = useTranslation("menu");
-
 	return (
 		<Box
 			transition="box-shadow .5s ease, background-color .5s ease, border .3s ease, border-color .3s ease, background .3s ease, backdrop-filter .3s ease"

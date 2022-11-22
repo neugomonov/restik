@@ -5,7 +5,6 @@ import info from "../lib/info";
 export default class MyDocument extends Document {
 	render(): JSX.Element {
 		const language = this.props.__NEXT_DATA__.locale;
-
 		return (
 			<Html>
 				<Head lang={language}>

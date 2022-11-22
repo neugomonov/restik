@@ -16,20 +16,17 @@ export default function stringifyCartPositions() {
 	const toast = useToast();
 	const router = useRouter();
 	const { t } = useTranslation("menu");
-
 	let stringified = "";
 	for (let index = 0; index < cart.items.length; ++index) {
 		const csvString = cart.items[index].quantity
 			.toString()
 			.concat("x ", cart.items[index].name, " (", cart.items[index].type, ")");
-
 		stringified = stringified.concat(", ", csvString);
 	}
 	const stringifiedProducts = stringified.substring(2);
 	let phone = "";
 	let payment = "";
 	let address = "";
-
 	// TODO: finish it!
 	interface CustomSession extends Session {
 		user: { phone: string; address: string; payment: string; email: string };

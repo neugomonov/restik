@@ -34,7 +34,6 @@ export default function NewsBox() {
 	const chooseSideNews = useCallback(() => {
 		return random;
 	}, [router]);
-
 	return (
 		<Box
 			transition="box-shadow .5s ease, background-color .5s ease, border .3s ease, border-color .3s ease, background .3s ease, backdrop-filter .3s ease"
@@ -88,7 +87,6 @@ export default function NewsBox() {
 								/>
 							</Box>
 							<Text colorScheme={"gray"}>{item.date}</Text>
-
 							<Heading mr="1%">{item.name}</Heading>
 							<Text colorScheme={"gray"}>{item.ingredients.join(", ")}</Text>
 							<Button

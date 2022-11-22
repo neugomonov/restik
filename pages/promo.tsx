@@ -20,7 +20,6 @@ import promo from "../lib/promo";
 
 function Promo() {
 	const { t, lang } = useTranslation("home");
-
 	return (
 		<>
 			<MenuContentMotionWrapper>
