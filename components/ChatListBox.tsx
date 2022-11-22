@@ -72,13 +72,10 @@ export default function ChatListBox() {
 			// doc.data() is never undefined for query doc snapshots
 			console.log(doc.id, " => ", doc.data().image);
 			image = doc.data().image;
-			image =
-				"https://lh3.googleusercontent.com/a-/AOh14Gjo6WKcqBWwMRbkh5oLnd7Fj-Ep6E9wUSq3KrnliA=s96-c";
 			return;
 		});
 		return image;
 	}
-
 	const chatList = () => {
 		return chats
 			?.filter((chat: Record<string, string>) =>
@@ -112,12 +109,7 @@ export default function ChatListBox() {
 					borderRadius="lg"
 					role="group"
 				>
-					<Avatar
-						src={getOtherAvatar(chat).then((value) => {
-							console.log(value);
-						})}
-						marginEnd={3}
-					/>
+					<Avatar src="" marginEnd={3} />
 					<Text fontSize={{ base: "xs", sm: "md" }}>
 						{getOtherEmail(chat.users, session?.user?.email || "anonym")}
 					</Text>
