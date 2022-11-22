@@ -17,7 +17,7 @@ import { RecoilRoot } from "recoil";
 import Cart from "../components/Cart";
 import LargeWithNewsletter from "../components/Footer";
 import SidebarWithHeader from "../components/SidebarWithHeader";
-import StateSaver from "../components/state-saver";
+import StateSaver from "../components/StateSaver";
 import info from "../lib/info";
 import { BlurState, CartState, _blur, _cart } from "../lib/recoil-atoms";
 
