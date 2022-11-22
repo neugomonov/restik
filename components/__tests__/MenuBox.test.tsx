@@ -1,7 +1,7 @@
 import { cleanup, render } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import { RecoilRoot } from "recoil";
-import StateSaver from "../../components/state-saver";
+import StateSaver from "../StateSaver";
 import MenuBox from "../MenuBox";
 
 afterEach(cleanup);

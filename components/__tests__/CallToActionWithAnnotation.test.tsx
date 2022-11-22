@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import renderer from "react-test-renderer";
 import { RecoilRoot } from "recoil";
 import CallToActionWithAnnotation from "../CallToActionWithAnnotation";
-import StateSaver from "../state-saver";
+import StateSaver from "../StateSaver";
 
 afterEach(cleanup);
 
