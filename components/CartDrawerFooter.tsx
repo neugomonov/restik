@@ -47,7 +47,7 @@ export default function CartDrawerFooter() {
 		onOpen: onAlertOpen,
 		onClose: onAlertClose,
 	} = useDisclosure();
-	const cancelRef = useRef();
+	const cancelRef = useRef(null);
 	const { t } = useTranslation("common");
 	const handleNew = stringifyCartPositions();
 	const [blurMode] = useRecoilState(_blur);
@@ -82,7 +82,6 @@ export default function CartDrawerFooter() {
 			</MotionBox>
 			<AlertDialog
 				isOpen={isAlertOpen}
-				// @ts-expect-error - Type 'MutableRefObject<undefined>' is not assignable to type 'RefObject<FocusableElement>'.
 				leastDestructiveRef={cancelRef}
 				onClose={onAlertClose}
 			>
@@ -103,11 +102,7 @@ export default function CartDrawerFooter() {
 						<AlertDialogBody>{t("purgeCartMessage")}</AlertDialogBody>
 						<AlertDialogFooter>
 							<MotionBox>
-								<Button
-									// @ts-expect-error - Type 'MutableRefObject<undefined>' is not assignable to type 'LegacyRef<HTMLButtonElement> | undefined'.
-									ref={cancelRef}
-									onClick={onAlertClose}
-								>
+								<Button ref={cancelRef} onClick={onAlertClose}>
 									{t("cancel")}
 								</Button>
 							</MotionBox>
