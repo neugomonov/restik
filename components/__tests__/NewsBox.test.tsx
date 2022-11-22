@@ -2,7 +2,7 @@ import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import renderer from "react-test-renderer";
 import { RecoilRoot } from "recoil";
-import StateSaver from "../../components/state-saver";
+import StateSaver from "../StateSaver";
 import NewsBox from "../NewsBox";
 
 afterEach(cleanup);
