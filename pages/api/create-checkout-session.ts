@@ -2,17 +2,6 @@ import { Request, Response } from "express";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-export interface IGetUserAuthInfoRequest extends Request {
-	items: {
-		name: string;
-		type: string;
-		price: number;
-		quantity: number;
-	}[];
-	email: string;
-	phone: string;
-}
-
 export default async (req: Request, res: Response) => {
 	const { items, email, phone } = req.body;
 	const transformedItems = items.map(
