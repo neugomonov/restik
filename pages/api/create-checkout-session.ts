@@ -1,21 +1,27 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+import { Request, Response } from "express";
+
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-export default async (req, res) => {
+export default async (req: Request, res: Response) => {
 	const { items, email, phone } = req.body;
-
-	const transformedItems = items.map((item) => ({
-		quantity: item.quantity,
-		price_data: {
-			currency: "rub",
-			unit_amount: item.price * 100,
-			product_data: {
-				name: item.name,
-				images: [item.image],
+	const transformedItems = items.map(
+		(item: {
+			quantity: number;
+			name: string;
+			price: number;
+			image: string;
+		}) => ({
+			quantity: item.quantity,
+			price_data: {
+				currency: "rub",
+				unit_amount: item.price * 100,
+				product_data: {
+					name: item.name,
+					images: [item.image],
+				},
 			},
-		},
-	}));
-
+		})
+	);
 	const session = await stripe.checkout.sessions.create({
 		payment_method_types: ["card"],
 		shipping_rates: ["shr_1LC4U2FxzVucXSOXI4V070yv"],
@@ -30,7 +36,9 @@ export default async (req, res) => {
 		metadata: {
 			email,
 			phone,
-			images: JSON.stringify(items.map((item) => item.image)),
+			images: JSON.stringify(
+				items.map((item: { image: string }) => item.image)
+			),
 		},
 	});
 	res.status(200).json({ id: session.id });

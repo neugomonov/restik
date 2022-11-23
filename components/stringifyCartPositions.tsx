@@ -2,7 +2,6 @@ import { useToast } from "@chakra-ui/react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { Session } from "next-auth/core/types";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
@@ -27,10 +26,6 @@ export default function stringifyCartPositions() {
 	let phone = "";
 	let payment = "";
 	let address = "";
-	// TODO: finish it!
-	interface CustomSession extends Session {
-		user: { phone: string; address: string; payment: string; email: string };
-	}
 	const handleNew = async (session: any) => {
 		const disco = cart.total - cart.total * 0.1;
 		const currentTime = new Date().getTime() / 1000;

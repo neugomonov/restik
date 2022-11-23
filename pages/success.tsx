@@ -6,10 +6,12 @@ import {
 	Stack,
 	Text,
 } from "@chakra-ui/react";
+import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
+import LoginHeader from "../components/LoginHeader";
 import MenuContentChakraWrapper from "../components/main/MenuContentChakraWrapper";
 import MenuContentMotionWrapper from "../components/motion/MenuContentMotionWrapper";
 import MotionTag from "../components/motion/MotionTag";
@@ -18,6 +20,7 @@ import { WithSideContentLayout } from "../layouts/menu";
 import info from "../lib/info";
 
 function Success() {
+	const { data: session } = useSession();
 	const router = useRouter();
 	const handleClick = (route: string) => {
 		return async () => {
@@ -38,7 +41,7 @@ function Success() {
 					>
 						{info.isDevelopment && (
 							<MotionTag>{info.order[lang as "en" | "ru"]}</MotionTag>
-						)}{" "}
+						)}
 						<MotionTopIconBox>
 							<IconButton aria-label="Check" icon={<AiOutlineCheckCircle />} />
 						</MotionTopIconBox>
@@ -58,13 +61,17 @@ function Success() {
 							/>{" "}
 							<Heading>{t("successHeading")}</Heading>
 							<Text colorScheme={"gray"}>{t("successText")}</Text>
-							<Button
-								leftIcon={<CgProfile />}
-								colorScheme="orange"
-								onClick={handleClick("/profile")}
-							>
-								{t("successButton")}
-							</Button>
+							{session ? (
+								<Button
+									leftIcon={<CgProfile />}
+									colorScheme="orange"
+									onClick={handleClick("/profile")}
+								>
+									{t("successButton")}
+								</Button>
+							) : (
+								<LoginHeader />
+							)}
 						</Stack>
 					</Stack>
 				</MenuContentChakraWrapper>
