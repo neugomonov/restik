@@ -119,14 +119,11 @@ export default function OrdersTable() {
 
 	return (
 		<>
-			{
-				// @ts-expect-error - Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.ts(2339)
-				session?.user?.role == "Админ" && (
-					<Button m={5} p={4} onClick={handleNew}>
-						Новый заказ 🍕
-					</Button>
-				)
-			}
+			{session?.user?.role == "Админ" && (
+				<Button m={5} p={4} onClick={handleNew}>
+					Новый заказ 🍕
+				</Button>
+			)}
 			<TableContainer>
 				<Table variant="striped" colorScheme="gray">
 					<TableCaption>{t("OrdersTable1")}</TableCaption>
@@ -142,43 +139,40 @@ export default function OrdersTable() {
 						</Tr>
 					</Thead>
 					<Tbody>
-						{
-							// @ts-expect-error - Property 'role' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.ts(2339)
-							session?.user?.role == "Админ"
-								? ordersAdmin.map((order: Record<string, string>) => (
-										<Tr key={order.id}>
-											<Td>
-												{order.status}
-												<IconButton
-													my="-2"
-													aria-label="Edit"
-													size="sm"
-													icon={<EditIcon />}
-													onClick={() => handleEditStatus(order.id)}
-												/>
-											</Td>
-											<Td>{order.products}</Td>
-											<Td>{order.phone}</Td>
-											<Td>{order.address}</Td>
-											<Td>{order.payment}</Td>
-											<Td>{order.total}</Td>
-											<Td>{order.email}</Td>
-										</Tr>
-										// eslint-disable-next-line no-mixed-spaces-and-tabs
-								  ))
-								: orders.map((order: Record<string, string>) => (
-										<Tr key={order.id}>
-											<Td>{order.status}</Td>
-											<Td>{order.products}</Td>
-											<Td>{order.phone}</Td>
-											<Td>{order.address}</Td>
-											<Td>{order.payment}</Td>
-											<Td>{order.total}</Td>
-											<Td>{order.email}</Td>
-										</Tr>
-										// eslint-disable-next-line no-mixed-spaces-and-tabs
-								  ))
-						}
+						{session?.user?.role == "Админ"
+							? ordersAdmin.map((order: Record<string, string>) => (
+									<Tr key={order.id}>
+										<Td>
+											{order.status}
+											<IconButton
+												my="-2"
+												aria-label="Edit"
+												size="sm"
+												icon={<EditIcon />}
+												onClick={() => handleEditStatus(order.id)}
+											/>
+										</Td>
+										<Td>{order.products}</Td>
+										<Td>{order.phone}</Td>
+										<Td>{order.address}</Td>
+										<Td>{order.payment}</Td>
+										<Td>{order.total}</Td>
+										<Td>{order.email}</Td>
+									</Tr>
+									// eslint-disable-next-line no-mixed-spaces-and-tabs
+							  ))
+							: orders.map((order: Record<string, string>) => (
+									<Tr key={order.id}>
+										<Td>{order.status}</Td>
+										<Td>{order.products}</Td>
+										<Td>{order.phone}</Td>
+										<Td>{order.address}</Td>
+										<Td>{order.payment}</Td>
+										<Td>{order.total}</Td>
+										<Td>{order.email}</Td>
+									</Tr>
+									// eslint-disable-next-line no-mixed-spaces-and-tabs
+							  ))}
 					</Tbody>
 					<Tfoot>
 						<Tr>
