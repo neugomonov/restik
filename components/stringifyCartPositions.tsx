@@ -2,7 +2,6 @@ import { useToast } from "@chakra-ui/react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { Session } from "next-auth/core/types";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
