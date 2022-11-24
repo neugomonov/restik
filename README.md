@@ -29,7 +29,7 @@ Restik is a restaurant app for ordering dishes and managing customers' orders.
 - Made *fast* with [React](https://reactjs.org/)
 - Made *faster* with [Next.js](https://nextjs.org/)
 - Made *stylish* with [Chakra UI](https://next.chakra-ui.com/)
-- Made *a bit **more** stylish* with [Emotion](https://emotion.sh/docs/introduction)
+- Made *stylish**er*** with [Emotion](https://emotion.sh/docs/introduction)
 - Made *alive* with [Framer Motion](https://www.framer.com/motion/) 
 - Made *atomic* with [Recoil](https://recoiljs.org/) <sub>```(wh)```</sub>
 - Made *fire**based*** with [Firebase](https://firebase.google.com/) <sub>```(💀)```</sub>
