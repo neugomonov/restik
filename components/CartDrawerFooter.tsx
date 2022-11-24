@@ -1,4 +1,9 @@
-import { useColorMode, useDisclosure, useToast } from "@chakra-ui/react";
+import {
+	Button,
+	useColorMode,
+	useDisclosure,
+	useToast,
+} from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
@@ -9,7 +14,6 @@ import { _blur, _cart } from "../lib/recoil-atoms";
 import MotionBox from "./motion/MotionBox";
 import stringifyCartPositions from "./stringifyCartPositions";
 
-const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
 const DrawerFooter = dynamic(
 	async () => (await import("@chakra-ui/react")).DrawerFooter
 );

@@ -1,17 +1,13 @@
-import { useToast } from "@chakra-ui/react";
+import { Button, Stack, useToast } from "@chakra-ui/react";
 import { collection } from "@firebase/firestore";
 import { doc, DocumentData, onSnapshot, updateDoc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
-import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { AiFillPhone } from "react-icons/ai";
 import { IoCash } from "react-icons/io5";
 import { MdPlace } from "react-icons/md";
 import { db } from "../firebase";
-
-const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
-const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
 
 export default function ProfileButtons() {
 	const { data: session } = useSession();

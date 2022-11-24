@@ -1,10 +1,27 @@
-import { useColorMode, useToast } from "@chakra-ui/react";
+import {
+	Box,
+	Button,
+	Checkbox,
+	Divider,
+	FormControl,
+	FormLabel,
+	Heading,
+	Input,
+	InputGroup,
+	InputLeftAddon,
+	Link,
+	Select,
+	SimpleGrid,
+	Stack,
+	Textarea,
+	useColorMode,
+	useToast,
+} from "@chakra-ui/react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
-import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
@@ -12,36 +29,6 @@ import { db } from "../firebase";
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
 import { getDeliveryHours } from "../utils/get-delivery-hours";
-
-const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
-const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
-const Checkbox = dynamic(
-	async () => (await import("@chakra-ui/react")).Checkbox
-);
-const Divider = dynamic(async () => (await import("@chakra-ui/react")).Divider);
-const FormControl = dynamic(
-	async () => (await import("@chakra-ui/react")).FormControl
-);
-const FormLabel = dynamic(
-	async () => (await import("@chakra-ui/react")).FormLabel
-);
-const Heading = dynamic(async () => (await import("@chakra-ui/react")).Heading);
-const Input = dynamic(async () => (await import("@chakra-ui/react")).Input);
-const InputGroup = dynamic(
-	async () => (await import("@chakra-ui/react")).InputGroup
-);
-const InputLeftAddon = dynamic(
-	async () => (await import("@chakra-ui/react")).InputLeftAddon
-);
-const Link = dynamic(async () => (await import("@chakra-ui/react")).Link);
-const Select = dynamic(async () => (await import("@chakra-ui/react")).Select);
-const SimpleGrid = dynamic(
-	async () => (await import("@chakra-ui/react")).SimpleGrid
-);
-const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
-const Textarea = dynamic(
-	async () => (await import("@chakra-ui/react")).Textarea
-);
 
 const stripePromise = loadStripe(process.env.stripe_public_key!);
 
@@ -79,6 +66,7 @@ export default function OrderForm() {
 	const [postal, setPostal] = useState("");
 	const [time, setTime] = useState("");
 	const [tip, setTip] = useState("");
+
 	const deliveryHours = getDeliveryHours(new Date());
 	let stringified = "";
 	for (let index = 0; index < cart.items.length; ++index) {
@@ -87,7 +75,9 @@ export default function OrderForm() {
 			.concat("x ", cart.items[index].name, " (", cart.items[index].type, ")");
 		stringified = stringified.concat(", ", csvString);
 	}
+
 	const stringifiedProducts = stringified.substring(2);
+
 	const onSubmit = async () => {
 		const disco = cart.total - cart.total * 0.1;
 		const currentTime = new Date().getTime() / 1000;
@@ -135,6 +125,7 @@ export default function OrderForm() {
 				timestamp: timestamp,
 				read: false,
 			});
+
 			if (payment === "Online") {
 				const stripe = await stripePromise;
 				const checkoutSession = await axios.post(
@@ -164,6 +155,7 @@ export default function OrderForm() {
 	type DescribableFunction = {
 		(value: string): void;
 	};
+
 	const handleForm = (
 		setter: DescribableFunction
 	): ((
@@ -179,6 +171,7 @@ export default function OrderForm() {
 			setter(event.currentTarget.value);
 		};
 	};
+
 	const tipCalculate = (multiplier: number): number => {
 		return (
 			Math.round(((cart.total / 100) * multiplier + Number.EPSILON) * 100) / 100

@@ -1,8 +1,5 @@
-import dynamic from "next/dynamic";
+import { Box, Spinner } from "@chakra-ui/react";
 import { forwardRef } from "react";
-
-const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
-const Spinner = dynamic(async () => (await import("@chakra-ui/react")).Spinner);
 
 export const PizzaSpinner = () => (
 	<Spinner

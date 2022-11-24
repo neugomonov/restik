@@ -1,21 +1,17 @@
 import { CheckIcon } from "@chakra-ui/icons";
+import {
+	Box,
+	Container,
+	Heading,
+	HStack,
+	Icon,
+	SimpleGrid,
+	Stack,
+	Text,
+	VStack,
+} from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
-import dynamic from "next/dynamic";
 import index from "../lib";
-
-const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
-const Container = dynamic(
-	async () => (await import("@chakra-ui/react")).Container
-);
-const Heading = dynamic(async () => (await import("@chakra-ui/react")).Heading);
-const HStack = dynamic(async () => (await import("@chakra-ui/react")).HStack);
-const Icon = dynamic(async () => (await import("@chakra-ui/react")).Icon);
-const SimpleGrid = dynamic(
-	async () => (await import("@chakra-ui/react")).SimpleGrid
-);
-const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
-const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
-const VStack = dynamic(async () => (await import("@chakra-ui/react")).VStack);
 
 // eslint-disable-next-line prefer-spread
 const features = Array.apply(null, Array(8)).map(function (x, i) {

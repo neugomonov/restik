@@ -1,7 +1,25 @@
 import {
+	Avatar,
 	BoxProps,
+	Button,
+	CloseButton,
+	Drawer,
+	DrawerContent,
+	DrawerOverlay,
+	Flex,
 	FlexProps,
+	Heading,
+	HStack,
+	Icon,
+	IconButton,
 	Link as ChakraLink,
+	Menu,
+	MenuButton,
+	MenuItem,
+	MenuList,
+	Stack,
+	Tag,
+	Text,
 	useBreakpointValue,
 	useColorMode,
 	useColorModeValue,
@@ -45,43 +63,10 @@ import LoginSidebar from "./LoginSidebar";
 import MotionBox from "./motion/MotionBox";
 import NotificationList from "./NotificationList";
 import Pizza from "./Pizza";
-
-const Avatar = dynamic(async () => (await import("@chakra-ui/react")).Avatar);
 const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
-const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
-const CloseButton = dynamic(
-	async () => (await import("@chakra-ui/react")).CloseButton
-);
-const Drawer = dynamic(async () => (await import("@chakra-ui/react")).Drawer);
-const DrawerContent = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerContent
-);
-const DrawerOverlay = dynamic(
-	async () => (await import("@chakra-ui/react")).DrawerOverlay
-);
-const Flex = dynamic(async () => (await import("@chakra-ui/react")).Flex);
-const Heading = dynamic(async () => (await import("@chakra-ui/react")).Heading);
-const HStack = dynamic(async () => (await import("@chakra-ui/react")).HStack);
-const Icon = dynamic(async () => (await import("@chakra-ui/react")).Icon);
-const IconButton = dynamic(
-	async () => (await import("@chakra-ui/react")).IconButton
-);
-const Menu = dynamic(async () => (await import("@chakra-ui/react")).Menu);
-const MenuButton = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuButton
-);
-const MenuItem = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuItem
-);
-const MenuList = dynamic(
-	async () => (await import("@chakra-ui/react")).MenuList
-);
-const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
-const Tag = dynamic(async () => (await import("@chakra-ui/react")).Tag);
-const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
-
 const Logo = (props: { color: string }) => {
 	const { t, lang } = useTranslation("home");
+
 	return (
 		<Stack
 			as={motion.div}

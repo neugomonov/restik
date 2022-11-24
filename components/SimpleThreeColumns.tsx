@@ -1,20 +1,16 @@
+import {
+	Box,
+	Container,
+	Flex,
+	Icon,
+	SimpleGrid,
+	Stack,
+	Text,
+} from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
-import dynamic from "next/dynamic";
 import { ReactElement } from "react";
 import { FcAssistant, FcInTransit, FcLike } from "react-icons/fc";
 import index from "../lib";
-
-const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
-const Container = dynamic(
-	async () => (await import("@chakra-ui/react")).Container
-);
-const Flex = dynamic(async () => (await import("@chakra-ui/react")).Flex);
-const Icon = dynamic(async () => (await import("@chakra-ui/react")).Icon);
-const SimpleGrid = dynamic(
-	async () => (await import("@chakra-ui/react")).SimpleGrid
-);
-const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
-const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
 
 interface FeatureProps {
 	title: string;

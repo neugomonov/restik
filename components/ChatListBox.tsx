@@ -1,20 +1,20 @@
-import { useColorModeValue, useToast } from "@chakra-ui/react";
+import {
+	Avatar,
+	Button,
+	Flex,
+	Text,
+	useColorModeValue,
+	useToast,
+} from "@chakra-ui/react";
 import { addDoc, collection } from "@firebase/firestore";
 import { getDocs, query, where } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 import getOtherEmail from "../utils/getOtherEmail";
-
-const Avatar = dynamic(async () => (await import("@chakra-ui/react")).Avatar);
-const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
-const Flex = dynamic(async () => (await import("@chakra-ui/react")).Flex);
-const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
-
 export default function ChatListBox() {
 	const { data: session } = useSession();
 	const [snapshot] = useCollection(collection(db, "chats"));

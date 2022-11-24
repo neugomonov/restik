@@ -1,23 +1,20 @@
-import { createIcon, IconProps } from "@chakra-ui/react";
+import {
+	Box,
+	Button,
+	Container,
+	createIcon,
+	Flex,
+	Heading,
+	Icon,
+	IconButton,
+	IconProps,
+	Image,
+	Stack,
+	Text,
+} from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import index from "../lib";
-
-const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
-const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
-const Container = dynamic(
-	async () => (await import("@chakra-ui/react")).Container
-);
-const Flex = dynamic(async () => (await import("@chakra-ui/react")).Flex);
-const Heading = dynamic(async () => (await import("@chakra-ui/react")).Heading);
-const Icon = dynamic(async () => (await import("@chakra-ui/react")).Icon);
-const IconButton = dynamic(
-	async () => (await import("@chakra-ui/react")).IconButton
-);
-const Image = dynamic(async () => (await import("@chakra-ui/react")).Image);
-const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
-const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
 
 export default function CallToActionWithVideo() {
 	const router = useRouter();

@@ -1,27 +1,21 @@
-import { useColorModeValue } from "@chakra-ui/react";
+import {
+	Container,
+	Flex,
+	Heading,
+	Icon,
+	Image,
+	SimpleGrid,
+	Stack,
+	StackDivider,
+	Text,
+	useColorModeValue,
+} from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
-import dynamic from "next/dynamic";
 import { ReactElement } from "react";
 import { BiDish } from "react-icons/bi";
 import { BsPeople } from "react-icons/bs";
 import { GiFruitBowl } from "react-icons/gi";
 import index from "../lib";
-
-const Container = dynamic(
-	async () => (await import("@chakra-ui/react")).Container
-);
-const Flex = dynamic(async () => (await import("@chakra-ui/react")).Flex);
-const Heading = dynamic(async () => (await import("@chakra-ui/react")).Heading);
-const Icon = dynamic(async () => (await import("@chakra-ui/react")).Icon);
-const Image = dynamic(async () => (await import("@chakra-ui/react")).Image);
-const SimpleGrid = dynamic(
-	async () => (await import("@chakra-ui/react")).SimpleGrid
-);
-const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
-const StackDivider = dynamic(
-	async () => (await import("@chakra-ui/react")).StackDivider
-);
-const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
 
 interface FeatureProps {
 	text: string;

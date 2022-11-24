@@ -1,4 +1,11 @@
-import { useColorMode, useDisclosure } from "@chakra-ui/react";
+import {
+	IconButton,
+	Stack,
+	Tag,
+	Text,
+	useColorMode,
+	useDisclosure,
+} from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
 import { useRef } from "react";
@@ -21,12 +28,6 @@ const DrawerContent = dynamic(
 const DrawerCloseButton = dynamic(
 	async () => (await import("@chakra-ui/react")).DrawerCloseButton
 );
-const IconButton = dynamic(
-	async () => (await import("@chakra-ui/react")).IconButton
-);
-const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
-const Tag = dynamic(async () => (await import("@chakra-ui/react")).Tag);
-const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
 
 export default function Cart() {
 	const [cart] = useRecoilState(_cart);

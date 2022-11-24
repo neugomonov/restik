@@ -1,4 +1,18 @@
-import { chakra } from "@chakra-ui/react";
+import {
+	Avatar,
+	AvatarBadge,
+	Box,
+	Button,
+	ButtonGroup,
+	chakra,
+	Divider,
+	Flex,
+	Heading,
+	IconButton,
+	SimpleGrid,
+	Stack,
+	Text,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
@@ -14,32 +28,12 @@ import MotionTag from "./motion/MotionTag";
 import MotionTopIconBox from "./motion/MotionTopIconBox";
 import OrderForm from "./OrderForm";
 
-const Avatar = dynamic(async () => (await import("@chakra-ui/react")).Avatar);
-const AvatarBadge = dynamic(
-	async () => (await import("@chakra-ui/react")).AvatarBadge
-);
-const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
-const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
-const ButtonGroup = dynamic(
-	async () => (await import("@chakra-ui/react")).ButtonGroup
-);
-const Divider = dynamic(async () => (await import("@chakra-ui/react")).Divider);
-const Flex = dynamic(async () => (await import("@chakra-ui/react")).Flex);
-const Heading = dynamic(async () => (await import("@chakra-ui/react")).Heading);
-const IconButton = dynamic(
-	async () => (await import("@chakra-ui/react")).IconButton
-);
-const SimpleGrid = dynamic(
-	async () => (await import("@chakra-ui/react")).SimpleGrid
-);
-const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
-const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
-const ListItem = dynamic(
-	async () => (await import("@chakra-ui/react")).ListItem
-);
 const Tooltip = dynamic(async () => (await import("@chakra-ui/react")).Tooltip);
 const UnorderedList = dynamic(
 	async () => (await import("@chakra-ui/react")).UnorderedList
+);
+const ListItem = dynamic(
+	async () => (await import("@chakra-ui/react")).ListItem
 );
 
 export const ProductImage = chakra(NextImage, {

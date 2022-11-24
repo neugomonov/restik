@@ -1,7 +1,14 @@
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { useColorMode } from "@chakra-ui/react";
+import {
+	Box,
+	Button,
+	Heading,
+	IconButton,
+	Stack,
+	Text,
+	useColorMode,
+} from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
 import { BiNews } from "react-icons/bi";
@@ -12,15 +19,6 @@ import { _blur } from "../lib/recoil-atoms";
 import { ProductImage } from "./MenuBox";
 import MotionTag from "./motion/MotionTag";
 import MotionTopIconBox from "./motion/MotionTopIconBox";
-
-const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
-const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
-const Heading = dynamic(async () => (await import("@chakra-ui/react")).Heading);
-const IconButton = dynamic(
-	async () => (await import("@chakra-ui/react")).IconButton
-);
-const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
-const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
 
 export default function NewsBox() {
 	const router = useRouter();
