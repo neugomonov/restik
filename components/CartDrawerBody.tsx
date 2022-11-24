@@ -1,13 +1,4 @@
-import {
-	ButtonGroup,
-	Divider,
-	Heading,
-	IconButton,
-	Link,
-	Stack,
-	Text,
-	useColorMode,
-} from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -15,7 +6,17 @@ import { IoMdAdd, IoMdRemove } from "react-icons/io";
 import { useRecoilState } from "recoil";
 import info from "../lib/info";
 import { _cart } from "../lib/recoil-atoms";
-
+const ButtonGroup = dynamic(
+	async () => (await import("@chakra-ui/react")).ButtonGroup
+);
+const Divider = dynamic(async () => (await import("@chakra-ui/react")).Divider);
+const Heading = dynamic(async () => (await import("@chakra-ui/react")).Heading);
+const IconButton = dynamic(
+	async () => (await import("@chakra-ui/react")).IconButton
+);
+const Link = dynamic(async () => (await import("@chakra-ui/react")).Link);
+const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
+const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
 const DrawerBody = dynamic(
 	async () => (await import("@chakra-ui/react")).DrawerBody
 );

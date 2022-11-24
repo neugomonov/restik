@@ -1,17 +1,4 @@
 import { EditIcon } from "@chakra-ui/icons";
-import {
-	Button,
-	IconButton,
-	Table,
-	TableCaption,
-	TableContainer,
-	Tbody,
-	Td,
-	Tfoot,
-	Th,
-	Thead,
-	Tr,
-} from "@chakra-ui/react";
 import { addDoc, collection } from "@firebase/firestore";
 import {
 	doc,
@@ -26,12 +13,30 @@ import {
 } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 
+const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
+const IconButton = dynamic(
+	async () => (await import("@chakra-ui/react")).IconButton
+);
+const Table = dynamic(async () => (await import("@chakra-ui/react")).Table);
+const TableCaption = dynamic(
+	async () => (await import("@chakra-ui/react")).TableCaption
+);
+const TableContainer = dynamic(
+	async () => (await import("@chakra-ui/react")).TableContainer
+);
+const Tbody = dynamic(async () => (await import("@chakra-ui/react")).Tbody);
+const Td = dynamic(async () => (await import("@chakra-ui/react")).Td);
+const Tfoot = dynamic(async () => (await import("@chakra-ui/react")).Tfoot);
+const Th = dynamic(async () => (await import("@chakra-ui/react")).Th);
+const Thead = dynamic(async () => (await import("@chakra-ui/react")).Thead);
+const Tr = dynamic(async () => (await import("@chakra-ui/react")).Tr);
+
 export default function OrdersTable() {
 	const { data: session } = useSession();
-
 	const [orders, setOrders] = useState([{ name: "Loading...", id: "initial" }]);
 	const [ordersAdmin, setOrdersAdmin] = useState([
 		{ name: "Loading...", id: "initial" },
@@ -51,7 +56,6 @@ export default function OrdersTable() {
 				}))
 			);
 		});
-
 		const queryAdmin = query(
 			collection(db, "orders"),
 			orderBy("timestamp", "desc")
@@ -65,7 +69,6 @@ export default function OrdersTable() {
 			);
 		});
 	}, [session]);
-
 	const { t } = useTranslation("common");
 	const handleNew = async () => {
 		const products = prompt("Введите что хотите заказать 🍕");
@@ -77,7 +80,6 @@ export default function OrdersTable() {
 			const email = prompt("Введите ваш email 📧");
 			const timestamp = serverTimestamp();
 			const status = t("accepted");
-
 			const collectionRef = collection(db, "orders");
 			const payload = {
 				products,
@@ -116,7 +118,6 @@ export default function OrdersTable() {
 			});
 		}
 	};
-
 	return (
 		<>
 			{session?.user?.role == "Админ" && (

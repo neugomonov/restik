@@ -1,17 +1,16 @@
-import {
-	Box,
-	Button,
-	Flex,
-	Stack,
-	Text,
-	useBreakpointValue,
-	useColorModeValue,
-	VStack,
-} from "@chakra-ui/react";
+import { useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import index from "../lib";
+
+const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
+const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
+const Flex = dynamic(async () => (await import("@chakra-ui/react")).Flex);
+const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
+const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
+const VStack = dynamic(async () => (await import("@chakra-ui/react")).VStack);
 
 export default function WithBackgroundImage() {
 	const router = useRouter();

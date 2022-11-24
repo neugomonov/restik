@@ -1,18 +1,22 @@
-import {
-	Box,
-	Button,
-	chakra,
-	Container,
-	Divider,
-	Flex,
-	Grid,
-	GridItem,
-	VStack,
-} from "@chakra-ui/react";
+import { chakra } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import index from "../lib";
 import info from "../lib/info";
+
+const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
+const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
+const Container = dynamic(
+	async () => (await import("@chakra-ui/react")).Container
+);
+const Divider = dynamic(async () => (await import("@chakra-ui/react")).Divider);
+const Flex = dynamic(async () => (await import("@chakra-ui/react")).Flex);
+const Grid = dynamic(async () => (await import("@chakra-ui/react")).Grid);
+const GridItem = dynamic(
+	async () => (await import("@chakra-ui/react")).GridItem
+);
+const VStack = dynamic(async () => (await import("@chakra-ui/react")).VStack);
 
 interface FeatureProps {
 	heading: string;

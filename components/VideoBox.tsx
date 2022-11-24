@@ -1,19 +1,23 @@
-import {
-	AspectRatio,
-	Box,
-	Flex,
-	Heading,
-	IconButton,
-	useColorMode,
-} from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
 import { BiMoviePlay } from "react-icons/bi";
 import { useRecoilState } from "recoil";
 import index from "../lib/index";
 import info from "../lib/info";
 import { _blur } from "../lib/recoil-atoms";
-import MotionTopIconBox from "./motion/MotionTopIconBox";
 import MotionTag from "./motion/MotionTag";
+import MotionTopIconBox from "./motion/MotionTopIconBox";
+
+const AspectRatio = dynamic(
+	async () => (await import("@chakra-ui/react")).AspectRatio
+);
+const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
+const Flex = dynamic(async () => (await import("@chakra-ui/react")).Flex);
+const Heading = dynamic(async () => (await import("@chakra-ui/react")).Heading);
+const IconButton = dynamic(
+	async () => (await import("@chakra-ui/react")).IconButton
+);
 
 export default function VideoBox() {
 	const { colorMode } = useColorMode();

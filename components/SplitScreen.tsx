@@ -1,17 +1,16 @@
-import {
-	Button,
-	Flex,
-	Heading,
-	Icon,
-	IconProps,
-	Image,
-	Stack,
-	Text,
-	useBreakpointValue,
-} from "@chakra-ui/react";
+import { IconProps, useBreakpointValue } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import index from "../lib";
+
+const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
+const Flex = dynamic(async () => (await import("@chakra-ui/react")).Flex);
+const Heading = dynamic(async () => (await import("@chakra-ui/react")).Heading);
+const Icon = dynamic(async () => (await import("@chakra-ui/react")).Icon);
+const Image = dynamic(async () => (await import("@chakra-ui/react")).Image);
+const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
+const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
 
 export default function SplitScreen() {
 	const router = useRouter();

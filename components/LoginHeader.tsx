@@ -1,18 +1,27 @@
-import {
-	Avatar,
-	Button,
-	HStack,
-	Menu,
-	MenuButton,
-	MenuDivider,
-	MenuItem,
-	MenuList,
-	useColorModeValue,
-} from "@chakra-ui/react";
+import { useColorModeValue } from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
 import router from "next/router";
 import MotionBox from "./motion/MotionBox";
+
+const Avatar = dynamic(async () => (await import("@chakra-ui/react")).Avatar);
+const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
+const HStack = dynamic(async () => (await import("@chakra-ui/react")).HStack);
+const Menu = dynamic(async () => (await import("@chakra-ui/react")).Menu);
+const MenuButton = dynamic(
+	async () => (await import("@chakra-ui/react")).MenuButton
+);
+const MenuDivider = dynamic(
+	async () => (await import("@chakra-ui/react")).MenuDivider
+);
+const MenuItem = dynamic(
+	async () => (await import("@chakra-ui/react")).MenuItem
+);
+const MenuList = dynamic(
+	async () => (await import("@chakra-ui/react")).MenuList
+);
+
 export default function LoginHeader() {
 	const { data: session } = useSession();
 	const handleClick = (route: string) => {

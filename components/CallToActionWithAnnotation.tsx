@@ -1,18 +1,19 @@
-import {
-	Box,
-	Button,
-	Container,
-	createIcon,
-	Heading,
-	Icon,
-	Stack,
-	Text,
-	useColorModeValue,
-} from "@chakra-ui/react";
+import { createIcon, useColorModeValue } from "@chakra-ui/react";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import index from "../lib";
+
+const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
+const Button = dynamic(async () => (await import("@chakra-ui/react")).Button);
+const Container = dynamic(
+	async () => (await import("@chakra-ui/react")).Container
+);
+const Heading = dynamic(async () => (await import("@chakra-ui/react")).Heading);
+const Icon = dynamic(async () => (await import("@chakra-ui/react")).Icon);
+const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
+const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
 
 export default function CallToActionWithAnnotation() {
 	const router = useRouter();
@@ -22,7 +23,6 @@ export default function CallToActionWithAnnotation() {
 		};
 	};
 	const { t, lang } = useTranslation("home");
-
 	return (
 		<>
 			<Head>

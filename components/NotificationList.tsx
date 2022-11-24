@@ -1,4 +1,3 @@
-import { MenuItem } from "@chakra-ui/react";
 import {
 	collection,
 	doc,
@@ -10,9 +9,14 @@ import {
 	where,
 } from "firebase/firestore";
 import { useSession } from "next-auth/react";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
+
+const MenuItem = dynamic(
+	async () => (await import("@chakra-ui/react")).MenuItem
+);
 
 export default function NotificationList() {
 	const { data: session } = useSession();

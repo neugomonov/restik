@@ -1,23 +1,7 @@
-import {
-	Avatar,
-	Box,
-	chakra,
-	Container,
-	Heading,
-	HStack,
-	IconButton,
-	Image,
-	Input,
-	Link,
-	SimpleGrid,
-	Stack,
-	Text,
-	useColorMode,
-	useColorModeValue,
-	VisuallyHidden,
-} from "@chakra-ui/react";
+import { chakra, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
 import { BiMailSend } from "react-icons/bi";
@@ -25,6 +9,28 @@ import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { useRecoilState } from "recoil";
 import info from "../lib/info";
 import { _blur } from "../lib/recoil-atoms";
+
+const Avatar = dynamic(async () => (await import("@chakra-ui/react")).Avatar);
+const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
+const Container = dynamic(
+	async () => (await import("@chakra-ui/react")).Container
+);
+const Heading = dynamic(async () => (await import("@chakra-ui/react")).Heading);
+const HStack = dynamic(async () => (await import("@chakra-ui/react")).HStack);
+const IconButton = dynamic(
+	async () => (await import("@chakra-ui/react")).IconButton
+);
+const Image = dynamic(async () => (await import("@chakra-ui/react")).Image);
+const Input = dynamic(async () => (await import("@chakra-ui/react")).Input);
+const Link = dynamic(async () => (await import("@chakra-ui/react")).Link);
+const SimpleGrid = dynamic(
+	async () => (await import("@chakra-ui/react")).SimpleGrid
+);
+const Stack = dynamic(async () => (await import("@chakra-ui/react")).Stack);
+const Text = dynamic(async () => (await import("@chakra-ui/react")).Text);
+const VisuallyHidden = dynamic(
+	async () => (await import("@chakra-ui/react")).VisuallyHidden
+);
 
 const Logo = (props: { color: string }) => {
 	const { t, lang } = useTranslation("menu");

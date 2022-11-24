@@ -1,16 +1,20 @@
-import {
-	FormControl,
-	HStack,
-	IconButton,
-	Input,
-	useColorMode,
-} from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { MdOutlineSend } from "react-icons/md";
 import { db } from "../firebase";
+
+const FormControl = dynamic(
+	async () => (await import("@chakra-ui/react")).FormControl
+);
+const HStack = dynamic(async () => (await import("@chakra-ui/react")).HStack);
+const IconButton = dynamic(
+	async () => (await import("@chakra-ui/react")).IconButton
+);
+const Input = dynamic(async () => (await import("@chakra-ui/react")).Input);
 
 export default function SendBar({
 	id,
