@@ -31,7 +31,6 @@ import { db } from "../firebase";
 
 export default function OrdersTable() {
 	const { data: session } = useSession();
-
 	const [orders, setOrders] = useState([{ name: "Loading...", id: "initial" }]);
 	const [ordersAdmin, setOrdersAdmin] = useState([
 		{ name: "Loading...", id: "initial" },
@@ -51,7 +50,6 @@ export default function OrdersTable() {
 				}))
 			);
 		});
-
 		const queryAdmin = query(
 			collection(db, "orders"),
 			orderBy("timestamp", "desc")
@@ -65,7 +63,6 @@ export default function OrdersTable() {
 			);
 		});
 	}, [session]);
-
 	const { t } = useTranslation("common");
 	const handleNew = async () => {
 		const products = prompt("Введите что хотите заказать 🍕");
@@ -77,7 +74,6 @@ export default function OrdersTable() {
 			const email = prompt("Введите ваш email 📧");
 			const timestamp = serverTimestamp();
 			const status = t("accepted");
-
 			const collectionRef = collection(db, "orders");
 			const payload = {
 				products,
@@ -116,7 +112,6 @@ export default function OrdersTable() {
 			});
 		}
 	};
-
 	return (
 		<>
 			{session?.user?.role == "Админ" && (

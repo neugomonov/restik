@@ -63,10 +63,10 @@ import LoginSidebar from "./LoginSidebar";
 import MotionBox from "./motion/MotionBox";
 import NotificationList from "./NotificationList";
 import Pizza from "./Pizza";
+
 const Box = dynamic(async () => (await import("@chakra-ui/react")).Box);
 const Logo = (props: { color: string }) => {
 	const { t, lang } = useTranslation("home");
-
 	return (
 		<Stack
 			as={motion.div}

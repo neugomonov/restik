@@ -35,7 +35,7 @@ const Pizza = () => {
 	const refContainer = useRef<HTMLDivElement>(null);
 	const [loading, setLoading] = useState(true);
 	const [renderer, setRenderer] = useState<any>();
-	const [_camera, setCamera] = useState();
+	const [, setCamera] = useState();
 	const [target] = useState(new THREE.Vector3(0, 0.25, 0));
 	const [initialCameraPosition] = useState(
 		new THREE.Vector3(
@@ -45,7 +45,7 @@ const Pizza = () => {
 		)
 	);
 	const [scene] = useState(new THREE.Scene());
-	const [_controls, setControls] = useState();
+	const [, setControls] = useState();
 	const handleWindowResize = useCallback(() => {
 		const { current: container } = refContainer;
 		if (container && renderer) {

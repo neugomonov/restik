@@ -28,7 +28,6 @@ import { _blur } from "../lib/recoil-atoms";
 
 const Logo = (props: { color: string }) => {
 	const { t, lang } = useTranslation("menu");
-
 	return (
 		<Stack
 			as={motion.div}

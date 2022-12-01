@@ -43,7 +43,6 @@ export default function ProfileButtons() {
 	const handleEditPhone = async (id: string) => {
 		const phone = prompt(t("phonePrompt"));
 		const phonePattern = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/i;
-
 		if (phonePattern.test(phone!)) {
 			const docRef = doc(db, "users", id);
 			const payload = { phone };
@@ -82,7 +81,6 @@ export default function ProfileButtons() {
 			});
 		}
 	};
-
 	return (
 		<>
 			<Stack direction={{ base: "column", xl: "row" }}>
@@ -101,7 +99,6 @@ export default function ProfileButtons() {
 							{user.phone}
 						</Button>
 					))}
-
 				{users
 					?.filter((user: Record<string, string>) =>
 						// eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
