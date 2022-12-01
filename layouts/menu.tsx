@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
-import MenuContentMotionWrapper from "../components/motion/MenuContentMotionWrapper";
+import MainContentMotionWrapper from "../components/motion/MainContentMotionWrapper";
 import NewsBox from "../components/NewsBox";
 import PromoBox from "../components/PromoBox";
 import VideoBox from "../components/VideoBox";
@@ -17,7 +17,7 @@ export function WithSideContentLayout({
 	}, [router]);
 	return (
 		<>
-			<MenuContentMotionWrapper>
+			<MainContentMotionWrapper>
 				<Flex flexDirection="column" ml={{ base: "0", md: "60" }}>
 					<Flex
 						flexDirection={{ base: "column", xl: "row" }}
@@ -36,7 +36,7 @@ export function WithSideContentLayout({
 						</Flex>
 					</Flex>
 				</Flex>
-			</MenuContentMotionWrapper>
+			</MainContentMotionWrapper>
 		</>
 	);
 }

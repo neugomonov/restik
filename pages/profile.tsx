@@ -1,40 +1,37 @@
 import {
-	Avatar,
 	Box,
 	Flex,
 	Heading,
 	IconButton,
 	Image,
 	Stack,
-	Text,
 	useColorMode,
 	useColorModeValue,
-	VStack,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import { CgProfile } from "react-icons/cg";
-import { FiChevronDown } from "react-icons/fi";
 import LoginHeader from "../components/LoginHeader";
 import MenuContentChakraWrapper from "../components/main/MenuContentChakraWrapper";
-import MenuContentMotionWrapper from "../components/motion/MenuContentMotionWrapper";
+import MainContentMotionWrapper from "../components/motion/MainContentMotionWrapper";
 import MotionTag from "../components/motion/MotionTag";
 import MotionTopIconBox from "../components/motion/MotionTopIconBox";
 import OrdersTable from "../components/OrdersTable";
-import ProfileButtons from "../components/ProfileButtons";
 import { WithSideContentLayout } from "../layouts/menu";
 import index from "../lib";
 import info from "../lib/info";
+import { ProfileUserBlock } from "./../components/ProfileUserBlock";
 
 function Profile() {
 	const { colorMode } = useColorMode();
 	const { data: session } = useSession();
 	const { t, lang } = useTranslation("common");
+	const color = useColorModeValue("gray.600", "gray.300");
+
 	// TODO: there is a problem with the gif on narrow devices. Gotta fix.
 	return (
 		<>
-			<MenuContentMotionWrapper>
+			<MainContentMotionWrapper>
 				<MenuContentChakraWrapper>
 					<div
 						style={{
@@ -43,7 +40,7 @@ function Profile() {
 							justifyContent: "space-between",
 						}}
 					>
-						{info.isDevelopment && <MotionTag>{t("profile")}</MotionTag>}{" "}
+						{info.isDevelopment && <MotionTag>{t("profile")}</MotionTag>}
 						<MotionTopIconBox>
 							<IconButton aria-label="Profile" icon={<CgProfile />} />
 						</MotionTopIconBox>
@@ -116,10 +113,10 @@ function Profile() {
 							</Stack>
 						) : (
 							<></>
-						)}{" "}
+						)}
 					</Stack>
 				</MenuContentChakraWrapper>
-			</MenuContentMotionWrapper>
+			</MainContentMotionWrapper>
 		</>
 	);
 }
