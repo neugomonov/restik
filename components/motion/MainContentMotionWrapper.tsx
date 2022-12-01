@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
-export default function MenuContentMotionWrapper({
+export default function MainContentMotionWrapper({
 	children,
 }: {
 	children: ReactNode;
