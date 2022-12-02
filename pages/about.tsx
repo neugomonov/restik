@@ -1,7 +1,7 @@
 import GridListWithCTA from "../components/GridListWithCTA";
 import GridListWithHeading from "../components/GridListWithHeading";
 import MainContentChakraWrapper from "../components/main/MainContentChakraWrapper";
-import MenuContentMotionWrapper from "../components/motion/MenuContentMotionWrapper";
+import MainContentMotionWrapper from "../components/motion/MainContentMotionWrapper";
 import SimpleThreeColumns from "../components/SimpleThreeColumns";
 import SplitWithImage from "../components/SplitWithImage";
 import { IndexLayout } from "../layouts";
@@ -9,14 +9,14 @@ import { IndexLayout } from "../layouts";
 function About() {
 	return (
 		<>
-			<MenuContentMotionWrapper>
+			<MainContentMotionWrapper>
 				<MainContentChakraWrapper>
 					<SplitWithImage />
 					<GridListWithHeading />
 					<GridListWithCTA />
 					<SimpleThreeColumns />
 				</MainContentChakraWrapper>
-			</MenuContentMotionWrapper>
+			</MainContentMotionWrapper>
 		</>
 	);
 }

@@ -54,7 +54,6 @@ const App = ({
 	const [blurMode, setBlurMode] = useState<BlurState | undefined>(undefined);
 	useEffect(() => {
 		const previous = localStorage.getItem("cart");
-
 		if (previous) {
 			try {
 				setCart(JSON.parse(previous));

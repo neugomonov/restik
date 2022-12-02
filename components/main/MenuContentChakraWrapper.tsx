@@ -1,4 +1,5 @@
 import { Box, useColorMode } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { ReactNode } from "react";
 import { useRecoilState } from "recoil";
 import { _blur } from "../../lib/recoil-atoms";
@@ -13,6 +14,26 @@ export default function MenuContentChakraWrapper({
 
 	return (
 		<Box
+			as={motion.div}
+			exit="hidden"
+			initial="appearing"
+			animate="visible"
+			variants={{
+				hidden: {
+					y: "-1vh",
+					x: ["0vw", "-100vw"],
+					scale: 0.9,
+					position: "absolute",
+					zIndex: -1,
+					transition: { type: "spring", bounce: 0.3, duration: 0.8 },
+				},
+				appearing: { y: window.innerHeight },
+				visible: {
+					y: 0,
+					scale: 1,
+					transition: { type: "spring", bounce: 0.3 },
+				},
+			}}
 			transition="box-shadow .5s ease, background-color .5s ease, border .3s ease, border-color .3s ease, background .3s ease, backdrop-filter .3s ease"
 			borderWidth="1px"
 			borderRadius="lg"

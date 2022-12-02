@@ -2,7 +2,7 @@ import CallToActionWithAnnotation from "../components/CallToActionWithAnnotation
 import CallToActionWithIllustration from "../components/CallToActionWithIllustration";
 import CallToActionWithVideo from "../components/CallToActionWithVideo";
 import MainContentChakraWrapper from "../components/main/MainContentChakraWrapper";
-import MenuContentMotionWrapper from "../components/motion/MenuContentMotionWrapper";
+import MainContentMotionWrapper from "../components/motion/MainContentMotionWrapper";
 import SplitScreen from "../components/SplitScreen";
 import WithBackgroundImage from "../components/WithBackgroundImage";
 import { IndexLayout } from "../layouts";
@@ -10,7 +10,7 @@ import { IndexLayout } from "../layouts";
 function Home() {
 	return (
 		<>
-			<MenuContentMotionWrapper>
+			<MainContentMotionWrapper>
 				<MainContentChakraWrapper>
 					<WithBackgroundImage />
 					<CallToActionWithVideo />
@@ -18,7 +18,7 @@ function Home() {
 					<CallToActionWithIllustration />
 					<CallToActionWithAnnotation />
 				</MainContentChakraWrapper>
-			</MenuContentMotionWrapper>
+			</MainContentMotionWrapper>
 		</>
 	);
 }

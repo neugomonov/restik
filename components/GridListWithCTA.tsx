@@ -30,6 +30,45 @@ const Feature = ({ heading, text }: FeatureProps) => {
 	);
 };
 
+const FeaturesGrid = () => {
+	const { t, lang } = useTranslation("common");
+	return (
+		<Grid
+			templateColumns={{
+				base: "repeat(1, 1fr)",
+				sm: "repeat(2, 1fr)",
+				md: "repeat(4, 1fr)",
+			}}
+			gap={{ base: "8", sm: "12", md: "16" }}
+		>
+			<Feature
+				heading={
+					index.GridListWithCTA3[lang as "en" | "ru"] ?? t("sampleHeading")
+				}
+				text={index.GridListWithCTA4[lang as "en" | "ru"] ?? t("sampleText")}
+			/>
+			<Feature
+				heading={
+					index.GridListWithCTA5[lang as "en" | "ru"] ?? t("sampleHeading")
+				}
+				text={index.GridListWithCTA6[lang as "en" | "ru"] ?? t("sampleText")}
+			/>
+			<Feature
+				heading={
+					index.GridListWithCTA7[lang as "en" | "ru"] ?? t("sampleHeading")
+				}
+				text={index.GridListWithCTA8[lang as "en" | "ru"] ?? t("sampleText")}
+			/>
+			<Feature
+				heading={
+					index.GridListWithCTA9[lang as "en" | "ru"] ?? t("sampleHeading")
+				}
+				text={index.GridListWithCTA10[lang as "en" | "ru"] ?? t("sampleText")}
+			/>
+		</Grid>
+	);
+};
+
 export default function gridListWithCTA() {
 	const router = useRouter();
 	const handleClick = (route: string) => {
@@ -72,39 +111,7 @@ export default function gridListWithCTA() {
 				</GridItem>
 			</Grid>
 			<Divider mt={12} mb={12} />
-			<Grid
-				templateColumns={{
-					base: "repeat(1, 1fr)",
-					sm: "repeat(2, 1fr)",
-					md: "repeat(4, 1fr)",
-				}}
-				gap={{ base: "8", sm: "12", md: "16" }}
-			>
-				<Feature
-					heading={
-						index.GridListWithCTA3[lang as "en" | "ru"] ?? t("sampleHeading")
-					}
-					text={index.GridListWithCTA4[lang as "en" | "ru"] ?? t("sampleText")}
-				/>
-				<Feature
-					heading={
-						index.GridListWithCTA5[lang as "en" | "ru"] ?? t("sampleHeading")
-					}
-					text={index.GridListWithCTA6[lang as "en" | "ru"] ?? t("sampleText")}
-				/>
-				<Feature
-					heading={
-						index.GridListWithCTA7[lang as "en" | "ru"] ?? t("sampleHeading")
-					}
-					text={index.GridListWithCTA8[lang as "en" | "ru"] ?? t("sampleText")}
-				/>
-				<Feature
-					heading={
-						index.GridListWithCTA9[lang as "en" | "ru"] ?? t("sampleHeading")
-					}
-					text={index.GridListWithCTA10[lang as "en" | "ru"] ?? t("sampleText")}
-				/>
-			</Grid>
+			<FeaturesGrid></FeaturesGrid>{" "}
 		</Box>
 	);
 }
