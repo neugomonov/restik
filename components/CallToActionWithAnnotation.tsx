@@ -22,7 +22,6 @@ export default function CallToActionWithAnnotation() {
 		};
 	};
 	const { t, lang } = useTranslation("home");
-
 	return (
 		<>
 			<Head>

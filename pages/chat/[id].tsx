@@ -64,7 +64,7 @@ function ChatSingle() {
 		<>
 			<Head>
 				<title>
-					{info.title[lang as "en" | "ru"]} ⸻ {info.chat[lang as "en" | "ru"]}{" "}
+					{info.title[lang as "en" | "ru"]} ⸻ {info.chat[lang as "en" | "ru"]}
 					💬
 				</title>
 			</Head>
@@ -78,7 +78,7 @@ function ChatSingle() {
 				>
 					{info.isDevelopment && (
 						<MotionTag>{info.chat[lang as "en" | "ru"]}</MotionTag>
-					)}{" "}
+					)}
 					<MotionTopIconBox>
 						<IconButton aria-label="Chat" icon={<MdOutlineMessage />} />
 					</MotionTopIconBox>

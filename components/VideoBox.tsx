@@ -61,7 +61,7 @@ export default function VideoBox() {
 			</AspectRatio>
 			<Flex my="5" justifyContent="center">
 				<Heading as="h3" size="md" maxW="61%" textAlign="center">
-					{index.videoCapture[lang as "en" | "ru"]}{" "}
+					{index.videoCapture[lang as "en" | "ru"]}
 				</Heading>
 			</Flex>
 		</Box>

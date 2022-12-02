@@ -51,7 +51,7 @@ export default function NotificationList() {
 					setRead(notification.id);
 				}}
 			>
-				{notification.text}{" "}
+				{notification.text}
 			</MenuItem>
 		));
 	};

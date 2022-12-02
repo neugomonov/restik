@@ -227,7 +227,7 @@ const NotificationsButton = () => {
 					aria-label="open menu"
 					leftIcon={
 						<Stack direction="row" spacing={2}>
-							<FiBell />{" "}
+							<FiBell />
 							{notificationsCount > 0 && (
 								<Tag
 									borderRadius="full"
@@ -640,7 +640,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 							aria-label="open menu"
 							icon={
 								<Stack direction="row" spacing={2}>
-									<FiBell />{" "}
+									<FiBell />
 									{notificationsCount > 0 && (
 										<Tag
 											borderRadius="full"
