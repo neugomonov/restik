@@ -106,6 +106,7 @@ interface LinkItemProps {
 	icon: IconType;
 	href: string;
 }
+
 const LinkItems: Array<LinkItemProps> = [
 	{ name: info.home, icon: FiHome, href: `/` },
 	{ name: info.menu, icon: IoPizzaOutline, href: `/menu` },
@@ -151,14 +152,9 @@ export default function SidebarWithHeader() {
 		</Box>
 	);
 }
-
-interface SidebarProps extends BoxProps {
-	onClose: () => void;
-}
-
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
-	const { colorMode, toggleColorMode } = useColorMode();
+const NotificationsButton = () => {
 	const { data: session } = useSession();
+	const { t, lang } = useTranslation("menu");
 	const [notificationsCount, setNotificationsCount] = useState(0);
 	useEffect(() => {
 		async function getNotificationsCount() {
@@ -204,6 +200,86 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			await updateDoc(docRef, payload);
 		});
 	};
+	return (
+		<Menu>
+			<Box
+				as={motion.div}
+				cursor="pointer"
+				drag
+				dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+				whileDrag={{ scale: 0.9, rotate: 10 }}
+				dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
+				whileTap={{
+					scale: 0.9,
+				}}
+				whileHover={{
+					scale: 1.1,
+					transition: { type: "spring", bounce: 0.8, duration: 1 },
+				}}
+			>
+				<Button
+					as={MenuButton}
+					p="2"
+					align="center"
+					justify="center"
+					size="lg"
+					variant="ghost"
+					aria-label="open menu"
+					leftIcon={
+						<Stack direction="row" spacing={2}>
+							<FiBell />{" "}
+							{notificationsCount > 0 && (
+								<Tag
+									borderRadius="full"
+									colorScheme="red"
+									variant="solid"
+									position="absolute"
+									top={notificationsCount >= 10 ? -3 : -1}
+									left={-1}
+								>
+									{notificationsCount >= 10 ? "10+" : notificationsCount}
+								</Tag>
+							)}
+						</Stack>
+					}
+				>
+					{info.notifications[lang as "en" | "ru"]}
+				</Button>
+			</Box>
+			<MenuList
+				bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
+				borderColor={useColorModeValue("gray.200", "gray.700")}
+			>
+				{session ? (
+					<>
+						<Flex align="center" justify="space-around">
+							<Text alignSelf="center" as={ChakraLink} onClick={deleteAll}>
+								🧹 {info.clear[lang as "en" | "ru"] ?? t("clear")}
+							</Text>
+							<Text alignSelf="center" as={ChakraLink} onClick={readAll}>
+								{info.read[lang as "en" | "ru"] ?? t("read")} ✉️
+							</Text>
+						</Flex>
+						<NotificationList />
+					</>
+				) : (
+					<Flex align="center" justify="space-around" onClick={() => signIn()}>
+						<Text alignSelf="center" as={ChakraLink}>
+							🔔 {info.signIn[lang as "en" | "ru"] ?? t("signIn")} 🙋
+						</Text>
+					</Flex>
+				)}
+			</MenuList>
+		</Menu>
+	);
+};
+
+interface SidebarProps extends BoxProps {
+	onClose: () => void;
+}
+
+const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+	const { colorMode, toggleColorMode } = useColorMode();
 	const [blurMode, setBlurMode] = useRecoilState(_blur);
 	const handleBlur = () => {
 		setBlurMode((prevState) => ({
@@ -216,7 +292,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 		onClose: onMenuClose,
 	} = useDisclosure();
 	const router = useRouter();
-	const { t, lang } = useTranslation("menu");
+	const { lang } = useTranslation("menu");
 	return (
 		<Box
 			transition="box-shadow .5s ease, background-color .5s ease, border .3s ease, border-color .3s ease, background .3s ease, backdrop-filter .3s ease"
@@ -273,80 +349,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 				p="1rem 1rem 0 1rem"
 				display={{ base: "none", md: "flex" }}
 			>
-				<Menu>
-					<Box
-						as={motion.div}
-						cursor="pointer"
-						drag
-						dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-						whileDrag={{ scale: 0.9, rotate: 10 }}
-						dragTransition={{ bounceStiffness: 1399, bounceDamping: 10 }}
-						whileTap={{
-							scale: 0.9,
-						}}
-						whileHover={{
-							scale: 1.1,
-							transition: { type: "spring", bounce: 0.8, duration: 1 },
-						}}
-					>
-						<Button
-							as={MenuButton}
-							p="2"
-							align="center"
-							justify="center"
-							size="lg"
-							variant="ghost"
-							aria-label="open menu"
-							leftIcon={
-								<Stack direction="row" spacing={2}>
-									<FiBell />{" "}
-									{notificationsCount > 0 && (
-										<Tag
-											borderRadius="full"
-											colorScheme="red"
-											variant="solid"
-											position="absolute"
-											top={notificationsCount >= 10 ? -3 : -1}
-											left={-1}
-										>
-											{notificationsCount >= 10 ? "10+" : notificationsCount}
-										</Tag>
-									)}
-								</Stack>
-							}
-						>
-							{info.notifications[lang as "en" | "ru"]}
-						</Button>
-					</Box>
-					<MenuList
-						bg={useColorModeValue("rgb(255, 255, 255)", "rgb(6, 8, 13)")}
-						borderColor={useColorModeValue("gray.200", "gray.700")}
-					>
-						{session ? (
-							<>
-								<Flex align="center" justify="space-around">
-									<Text alignSelf="center" as={ChakraLink} onClick={deleteAll}>
-										🧹 {info.clear[lang as "en" | "ru"] ?? t("clear")}
-									</Text>
-									<Text alignSelf="center" as={ChakraLink} onClick={readAll}>
-										{info.read[lang as "en" | "ru"] ?? t("read")} ✉️
-									</Text>
-								</Flex>
-								<NotificationList />
-							</>
-						) : (
-							<Flex
-								align="center"
-								justify="space-around"
-								onClick={() => signIn()}
-							>
-								<Text alignSelf="center" as={ChakraLink}>
-									🔔 {info.signIn[lang as "en" | "ru"] ?? t("signIn")} 🙋
-								</Text>
-							</Flex>
-						)}
-					</MenuList>
-				</Menu>
+				<NotificationsButton></NotificationsButton>
 				<MotionBox>
 					<IconButton
 						size={"lg"}
@@ -411,7 +414,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 							aria-label="Change language"
 							rightIcon={
 								<Stack direction="row" spacing={2}>
-									<HiOutlineTranslate />{" "}
+									<HiOutlineTranslate />
 								</Stack>
 							}
 						>
