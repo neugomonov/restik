@@ -102,15 +102,131 @@ const ListHeader = ({ children }: { children: ReactNode }) => {
 	);
 };
 
-export default function LargeWithNewsletter() {
-	const { colorMode } = useColorMode();
+function FooterFirstColumn() {
 	const { t, lang } = useTranslation("common");
+	return (
+		<Stack spacing={6}>
+			<Box>
+				<Logo color={useColorModeValue("gray.700", "white")} />
+			</Box>
+			<Text fontSize={"sm"}>
+				{info.address[lang as "en" | "ru"] ?? t("sampleText")}
+			</Text>
+			<Text fontSize={"sm"}>
+				{`© ${new Date().getFullYear()} ${
+					info.title[lang as "en" | "ru"] ?? t("restaurantName")
+				}. ${t("rightsReserved")}`}
+			</Text>
+			<Stack direction={"row"} spacing={6}>
+				<SocialButton label={"Twitter"} href={"https://twitter.com"}>
+					<FaTwitter />
+				</SocialButton>
+				<SocialButton label={"YouTube"} href={"https://youtube.com"}>
+					<FaYoutube />
+				</SocialButton>
+				<SocialButton label={"Instagram"} href={"https://instagram.com"}>
+					<FaInstagram />
+				</SocialButton>
+			</Stack>
+			<Stack spacing={3}>
+				<Text>{t("powered")}</Text>
+				<HStack direction="row" isInline={true} spacing={5}>
+					<Link isExternal href="https://reactjs.org/">
+						<Image
+							src="/images/reactjs.svg"
+							alt="Reactjs"
+							draggable={false}
+							loading="lazy"
+							decoding="async"
+							width="7rem"
+						/>
+					</Link>
+					<Link isExternal href="https://nextjs.org/">
+						<Image
+							src="/images/Nextjs.svg"
+							alt="Nextjs"
+							draggable={false}
+							loading="lazy"
+							decoding="async"
+							width="5rem"
+							filter="auto"
+							dropShadow="0px 0px 6px black"
+						/>
+					</Link>
+				</HStack>
+			</Stack>
+		</Stack>
+	);
+}
+
+function FooterSecondColumn() {
+	const { t } = useTranslation("common");
 	const router = useRouter();
 	const handleClick = (route: string) => {
 		return async () => {
 			await router.push(route, route);
 		};
 	};
+	return (
+		<Stack align={"flex-start"}>
+			<ListHeader>{t("companyFooter")}</ListHeader>
+			<Link onClick={handleClick("/about")}>{t("kitchen")}</Link>
+			<Link onClick={handleClick("/news")}>{t("news")}</Link>
+			<Link onClick={handleClick("/chat")}>{t("chat")}</Link>
+			<Link onClick={handleClick("/promo")}>{t("promo")}</Link>
+			<Link onClick={handleClick("/menu")}>{t("menu")}</Link>
+		</Stack>
+	);
+}
+
+function FooterThirdColumn() {
+	const { t } = useTranslation("common");
+	return (
+		<Stack align={"flex-start"}>
+			<ListHeader>{t("support")}</ListHeader>
+			<Link href={"https://en.wikipedia.org/wiki/Terms_of_service"}>
+				{t("tos")}
+			</Link>
+			<Link href={"https://en.wikipedia.org/wiki/Wikipedia:Legal_disclaimer"}>
+				{t("legal")}
+			</Link>
+			<Link href={"https://foundation.wikimedia.org/wiki/Privacy_policy"}>
+				{t("privacyFooter")}
+			</Link>
+		</Stack>
+	);
+}
+
+function FooterFourthColumn() {
+	const { t } = useTranslation("common");
+	return (
+		<Stack align={"flex-start"}>
+			<ListHeader>{t("emailNotifications")}</ListHeader>
+			<Stack direction={"row"}>
+				<Input
+					placeholder={t("emailNotificationsPlaceholder")}
+					bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
+					border={0}
+					_focus={{
+						bg: "whiteAlpha.300",
+					}}
+				/>
+				<IconButton
+					bg={useColorModeValue("orange.400", "yellow.500")}
+					color={useColorModeValue("white", "gray.800")}
+					_hover={{
+						bg: "orange.600",
+					}}
+					aria-label="Subscribe"
+					icon={<BiMailSend />}
+				/>
+			</Stack>
+		</Stack>
+	);
+}
+
+export default function LargeWithNewsletter() {
+	const { colorMode } = useColorMode();
 	const [blurMode] = useRecoilState(_blur);
 	return (
 		<Box
@@ -136,101 +252,10 @@ export default function LargeWithNewsletter() {
 					templateColumns={{ sm: "1fr 1fr", lg: "2fr 1fr 1fr 2fr" }}
 					spacing={8}
 				>
-					<Stack spacing={6}>
-						<Box>
-							<Logo color={useColorModeValue("gray.700", "white")} />
-						</Box>
-						<Text fontSize={"sm"}>
-							{info.address[lang as "en" | "ru"] ?? t("sampleText")}{" "}
-						</Text>
-						<Text fontSize={"sm"}>
-							{`© ${new Date().getFullYear()} ${
-								info.title[lang as "en" | "ru"] ?? t("restaurantName")
-							}. ${t("rightsReserved")}`}
-						</Text>
-						<Stack direction={"row"} spacing={6}>
-							<SocialButton label={"Twitter"} href={"https://twitter.com"}>
-								<FaTwitter />
-							</SocialButton>
-							<SocialButton label={"YouTube"} href={"https://youtube.com"}>
-								<FaYoutube />
-							</SocialButton>
-							<SocialButton label={"Instagram"} href={"https://instagram.com"}>
-								<FaInstagram />
-							</SocialButton>
-						</Stack>
-						<Stack spacing={3}>
-							<Text>{t("powered")}</Text>
-							<HStack direction="row" isInline={true} spacing={5}>
-								<Link isExternal href="https://reactjs.org/">
-									<Image
-										src="/images/reactjs.svg"
-										alt="Reactjs"
-										draggable={false}
-										loading="lazy"
-										decoding="async"
-										width="7rem"
-									/>
-								</Link>
-								<Link isExternal href="https://nextjs.org/">
-									<Image
-										src="/images/Nextjs.svg"
-										alt="Nextjs"
-										draggable={false}
-										loading="lazy"
-										decoding="async"
-										width="5rem"
-										filter="auto"
-										dropShadow="0px 0px 6px black"
-									/>
-								</Link>
-							</HStack>
-						</Stack>
-					</Stack>
-					<Stack align={"flex-start"}>
-						<ListHeader>{t("companyFooter")}</ListHeader>
-						<Link onClick={handleClick("/about")}>{t("kitchen")}</Link>
-						<Link onClick={handleClick("/news")}>{t("news")}</Link>
-						<Link onClick={handleClick("/chat")}>{t("chat")}</Link>
-						<Link onClick={handleClick("/promo")}>{t("promo")}</Link>
-						<Link onClick={handleClick("/menu")}>{t("menu")}</Link>
-					</Stack>
-					<Stack align={"flex-start"}>
-						<ListHeader>{t("support")}</ListHeader>
-						<Link href={"https://en.wikipedia.org/wiki/Terms_of_service"}>
-							{t("tos")}
-						</Link>
-						<Link
-							href={"https://en.wikipedia.org/wiki/Wikipedia:Legal_disclaimer"}
-						>
-							{t("legal")}
-						</Link>
-						<Link href={"https://foundation.wikimedia.org/wiki/Privacy_policy"}>
-							{t("privacyFooter")}
-						</Link>
-					</Stack>
-					<Stack align={"flex-start"}>
-						<ListHeader>{t("emailNotifications")}</ListHeader>
-						<Stack direction={"row"}>
-							<Input
-								placeholder={t("emailNotificationsPlaceholder")}
-								bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
-								border={0}
-								_focus={{
-									bg: "whiteAlpha.300",
-								}}
-							/>
-							<IconButton
-								bg={useColorModeValue("orange.400", "yellow.500")}
-								color={useColorModeValue("white", "gray.800")}
-								_hover={{
-									bg: "orange.600",
-								}}
-								aria-label="Subscribe"
-								icon={<BiMailSend />}
-							/>
-						</Stack>
-					</Stack>
+					<FooterFirstColumn></FooterFirstColumn>
+					<FooterSecondColumn></FooterSecondColumn>
+					<FooterThirdColumn></FooterThirdColumn>
+					<FooterFourthColumn></FooterFourthColumn>
 				</SimpleGrid>
 			</Container>
 		</Box>
