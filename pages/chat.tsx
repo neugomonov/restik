@@ -11,170 +11,180 @@ import { WithSideContentLayout } from "../layouts/menu";
 import index from "../lib";
 import info from "../lib/info";
 
-function Chat() {
+function ChatHeader() {
 	const { t, lang } = useTranslation("info");
+	return (
+		<div
+			style={{
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "space-between",
+			}}
+		>
+			{info.isDevelopment && (
+				<MotionTag>{info.chat[lang as "en" | "ru"] ?? t("chat")}</MotionTag>
+			)}
+			<MotionTopIconBox>
+				<IconButton aria-label="Chat" icon={<MdOutlineMessage />} />
+			</MotionTopIconBox>
+		</div>
+	);
+}
+
+function ChatContent() {
+	const { lang } = useTranslation("info");
 	const { data: session } = useSession();
 	return (
-		<>
-			<MenuContentChakraWrapper>
-				<div
-					style={{
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "space-between",
-					}}
-				>
-					{info.isDevelopment && (
-						<MotionTag>{info.chat[lang as "en" | "ru"] ?? t("chat")}</MotionTag>
-					)}
-					<MotionTopIconBox>
-						<IconButton aria-label="Chat" icon={<MdOutlineMessage />} />
-					</MotionTopIconBox>
-				</div>
-				<Stack spacing={5}>
-					<Stack
-						minW={{ base: "auto", xl: "20rem" }}
-						spacing={3}
-						px={{ base: "1rem", xl: "10%" }}
-						direction={"row"}
+		<Stack spacing={5}>
+			<Stack
+				minW={{ base: "auto", xl: "20rem" }}
+				spacing={3}
+				px={{ base: "1rem", xl: "10%" }}
+				direction={"row"}
+			>
+				<Stack direction={{ base: "column-reverse", xl: "row" }} spacing={3}>
+					<Box
+						borderWidth="1px"
+						borderRadius="lg"
+						padding="1rem"
+						width="100%"
+						minW={{ base: "auto", xl: "50%" }}
+						height="90vh"
+						maxH="90vh"
+						overflowY="auto"
+						css={{
+							"&::-webkit-scrollbar": {
+								width: "4px",
+							},
+							"&::-webkit-scrollbar-track": {
+								width: "6px",
+							},
+							"&::-webkit-scrollbar-thumb": {
+								background: "rgba(6, 8, 13, 0.25)",
+								borderRadius: "24px",
+							},
+						}}
 					>
+						{session && (
+							<Heading size="md">
+								{index.chatSessionMessage[lang as "en" | "ru"]}
+							</Heading>
+						)}
 						<Stack
-							direction={{ base: "column-reverse", xl: "row" }}
-							spacing={3}
+							direction={"row"}
+							alignItems="top"
+							justifyContent="space-around"
 						>
-							<Box
-								borderWidth="1px"
-								borderRadius="lg"
-								padding="1rem"
-								width="100%"
-								minW={{ base: "auto", xl: "50%" }}
-								height="90vh"
-								maxH="90vh"
-								overflowY="auto"
-								css={{
-									"&::-webkit-scrollbar": {
-										width: "4px",
-									},
-									"&::-webkit-scrollbar-track": {
-										width: "6px",
-									},
-									"&::-webkit-scrollbar-thumb": {
-										background: "rgba(6, 8, 13, 0.25)",
-										borderRadius: "24px",
+							<motion.div
+								style={{
+									fontSize: "2.5rem",
+									marginTop: "-.45rem",
+								}}
+								drag
+								dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+								whileDrag={{ scale: 1.2, rotate: 10 }}
+								dragTransition={{
+									bounceStiffness: 1399,
+									bounceDamping: 10,
+								}}
+								whileTap={{
+									scale: 0.9,
+								}}
+								whileHover={{
+									scale: 1.2,
+									transition: {
+										type: "spring",
+										bounce: 0.8,
+										duration: 1,
 									},
 								}}
 							>
-								{session && (
-									<Heading size="md">
-										{index.chatSessionMessage[lang as "en" | "ru"]}{" "}
-									</Heading>
-								)}
-								<Stack
-									direction={"row"}
-									alignItems="top"
-									justifyContent="space-around"
-								>
-									<motion.div
-										style={{
-											fontSize: "2.5rem",
-											marginTop: "-.45rem",
-										}}
-										drag
-										dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-										whileDrag={{ scale: 1.2, rotate: 10 }}
-										dragTransition={{
-											bounceStiffness: 1399,
-											bounceDamping: 10,
-										}}
-										whileTap={{
-											scale: 0.9,
-										}}
-										whileHover={{
-											scale: 1.2,
-											transition: {
-												type: "spring",
-												bounce: 0.8,
-												duration: 1,
-											},
-										}}
-									>
-										📨
-									</motion.div>
-									<motion.div
-										style={{
-											fontSize: "2.5rem",
-										}}
-										drag
-										dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-										whileDrag={{ scale: 1.2 }}
-										dragTransition={{
-											bounceStiffness: 1399,
-											bounceDamping: 10,
-										}}
-										whileTap={{
-											scale: 0.9,
-										}}
-										whileHover={{
-											scale: 1.2,
-											transition: {
-												type: "spring",
-												bounce: 0.8,
-												duration: 1,
-											},
-										}}
-									>
-										📧
-									</motion.div>
-									<motion.div
-										style={{
-											fontSize: "2.5rem",
-											marginTop: "-.45rem",
-										}}
-										drag
-										dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-										whileDrag={{ scale: 1.2, rotate: -10 }}
-										dragTransition={{
-											bounceStiffness: 1399,
-											bounceDamping: 10,
-										}}
-										whileTap={{
-											scale: 0.9,
-										}}
-										whileHover={{
-											scale: 1.2,
-											transition: {
-												type: "spring",
-												bounce: 0.8,
-												duration: 1,
-											},
-										}}
-									>
-										📩
-									</motion.div>
-								</Stack>
-								<ChatListBox />
-							</Box>
-							<Stack
-								direction="column"
-								pl={{ base: "none", xl: "10%" }}
-								spacing={5}
+								📨
+							</motion.div>
+							<motion.div
+								style={{
+									fontSize: "2.5rem",
+								}}
+								drag
+								dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+								whileDrag={{ scale: 1.2 }}
+								dragTransition={{
+									bounceStiffness: 1399,
+									bounceDamping: 10,
+								}}
+								whileTap={{
+									scale: 0.9,
+								}}
+								whileHover={{
+									scale: 1.2,
+									transition: {
+										type: "spring",
+										bounce: 0.8,
+										duration: 1,
+									},
+								}}
 							>
-								<Heading size="lg">{index.chat[lang as "en" | "ru"]}</Heading>
-								<Image
-									src="/images/chat.gif"
-									alt="messages in the chat gif"
-									draggable={false}
-									loading="lazy"
-									decoding="async"
-									width="auto"
-									height={300}
-									objectFit="cover"
-									borderRadius="md"
-								/>
-							</Stack>
+								📧
+							</motion.div>
+							<motion.div
+								style={{
+									fontSize: "2.5rem",
+									marginTop: "-.45rem",
+								}}
+								drag
+								dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+								whileDrag={{ scale: 1.2, rotate: -10 }}
+								dragTransition={{
+									bounceStiffness: 1399,
+									bounceDamping: 10,
+								}}
+								whileTap={{
+									scale: 0.9,
+								}}
+								whileHover={{
+									scale: 1.2,
+									transition: {
+										type: "spring",
+										bounce: 0.8,
+										duration: 1,
+									},
+								}}
+							>
+								📩
+							</motion.div>
 						</Stack>
+						<ChatListBox />
+					</Box>
+					<Stack
+						direction="column"
+						pl={{ base: "none", xl: "10%" }}
+						spacing={5}
+					>
+						<Heading size="lg">{index.chat[lang as "en" | "ru"]}</Heading>
+						<Image
+							src="/images/chat.gif"
+							alt="messages in the chat gif"
+							draggable={false}
+							loading="lazy"
+							decoding="async"
+							width="auto"
+							height={300}
+							objectFit="cover"
+							borderRadius="md"
+						/>
 					</Stack>
 				</Stack>
+			</Stack>
+		</Stack>
+	);
+}
+
+function Chat() {
+	return (
+		<>
+			<MenuContentChakraWrapper>
+				<ChatHeader></ChatHeader>
+				<ChatContent></ChatContent>
 			</MenuContentChakraWrapper>
 		</>
 	);
