@@ -10,7 +10,6 @@ export default function MainContentChakraWrapper({
 }) {
 	const { colorMode } = useColorMode();
 	const [blurMode] = useRecoilState(_blur);
-
 	return (
 		<Flex
 			flexDirection={{ base: "column", xl: "row" }}

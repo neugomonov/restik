@@ -37,7 +37,7 @@ export function ProfileUserBlock({
 						{/* eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain */}
 						{session.user?.email!}
 					</Text>
-					<ProfileButtons />{" "}
+					<ProfileButtons />
 				</VStack>
 				<Box
 					display={{

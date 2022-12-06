@@ -11,7 +11,6 @@ export default function MenuContentChakraWrapper({
 }) {
 	const { colorMode } = useColorMode();
 	const [blurMode] = useRecoilState(_blur);
-
 	return (
 		<Box
 			as={motion.div}

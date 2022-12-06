@@ -13,6 +13,7 @@ import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import index from "../lib";
+import MotionIndexPageButtonBox from "./motion/MotionIndexPageButtonBox";
 
 export default function CallToActionWithAnnotation() {
 	const router = useRouter();
@@ -22,7 +23,6 @@ export default function CallToActionWithAnnotation() {
 		};
 	};
 	const { t, lang } = useTranslation("home");
-
 	return (
 		<>
 			<Head>
@@ -63,19 +63,21 @@ export default function CallToActionWithAnnotation() {
 						alignSelf={"center"}
 						position={"relative"}
 					>
-						<Button
-							colorScheme={"orange"}
-							px={6}
-							data-testid="button"
-							boxShadow={useColorModeValue(
-								"xl",
-								"0 0 5px 1px #fff, 0 0 10px 7px #ECC94B, 0 0 20px 15px #ED8936"
-							)}
-							onClick={handleClick("/menu")}
-						>
-							{index.CallToActionWithAnnotationButton1[lang as "en" | "ru"] ??
-								t("sampleButton")}
-						</Button>
+						<MotionIndexPageButtonBox>
+							<Button
+								colorScheme={"orange"}
+								px={6}
+								data-testid="button"
+								boxShadow={useColorModeValue(
+									"xl",
+									"0 0 5px 1px #fff, 0 0 10px 7px #ECC94B, 0 0 20px 15px #ED8936"
+								)}
+								onClick={handleClick("/menu")}
+							>
+								{index.CallToActionWithAnnotationButton1[lang as "en" | "ru"] ??
+									t("sampleButton")}
+							</Button>
+						</MotionIndexPageButtonBox>
 						<Button
 							variant={"link"}
 							colorScheme={"orange"}

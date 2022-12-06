@@ -111,7 +111,7 @@ export default function gridListWithCTA() {
 				</GridItem>
 			</Grid>
 			<Divider mt={12} mb={12} />
-			<FeaturesGrid></FeaturesGrid>{" "}
+			<FeaturesGrid></FeaturesGrid>
 		</Box>
 	);
 }

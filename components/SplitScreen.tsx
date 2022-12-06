@@ -42,10 +42,10 @@ export default function SplitScreen() {
 						>
 							{index.SplitScreen1[lang as "en" | "ru"] ?? t("sampleHeading")}
 						</Text>
-						<br />{" "}
+						<br />
 						<Text color={"orange.400"} as={"span"}>
 							{index.SplitScreen2[lang as "en" | "ru"]}
-						</Text>{" "}
+						</Text>
 					</Heading>
 					<Text fontSize={{ base: "md", lg: "lg" }} colorScheme={"gray"}>
 						{index.SplitScreen3[lang as "en" | "ru"] ?? t("sampleText")}
