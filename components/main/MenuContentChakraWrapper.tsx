@@ -6,14 +6,16 @@ import { _blur } from "../../lib/recoil-atoms";
 
 export default function MenuContentChakraWrapper({
 	children,
+	unMotioned,
 }: {
 	children: ReactNode;
+	unMotioned?: boolean;
 }) {
 	const { colorMode } = useColorMode();
 	const [blurMode] = useRecoilState(_blur);
 	return (
 		<Box
-			as={motion.div}
+			as={unMotioned ? Box : motion.div}
 			exit="hidden"
 			initial="appearing"
 			animate="visible"
