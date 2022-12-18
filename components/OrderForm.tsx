@@ -55,14 +55,14 @@ function AgreeAndPlace(props: { total: number; payment: string }) {
 	return (
 		<Stack spacing={10} minWidth="18rem" pt="1rem">
 			<Checkbox isRequired>
-				{t("iAgree")}
+				{t("iAgree")}{" "}
 				<Link
 					color={colorMode === "dark" ? "yellow.500" : "orange.500"}
 					href="https://en.wikipedia.org/wiki/Terms_of_service"
 				>
 					{t("terms")}
-				</Link>
-				{t("and")}
+				</Link>{" "}
+				{t("and")}{" "}
 				<Link
 					color={colorMode === "dark" ? "yellow.500" : "orange.500"}
 					href="https://foundation.wikimedia.org/wiki/Privacy_policy"
