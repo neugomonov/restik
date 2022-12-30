@@ -1,6 +1,6 @@
 <div align="center">
-	<h1><a href="https://restik.vercel.app/">Restik</a></h1>
 	<img src="public/favicon.png" alt="Logo" width="200"/>
+	<h1><a href="https://restik.vercel.app/">Restik</a></h1>
 
 Restik is a restaurant app for ordering dishes and managing customers' orders.
 
